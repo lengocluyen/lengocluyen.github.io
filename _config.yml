@@ -12,12 +12,12 @@ safe: true
 
 # edit here to achieve your personal greatness
 url: http://lengocluyen.github.io/
-baseurl: /sustain/
+baseurl: /
 title: Le Ngoc Luyen
 author: Le Ngoc Luyen
 description: Personal blog and resume
 avatar: profile.png
-email: luyenlengoc@email.com
+email: luyenlengoc@gmail.com
 github: lengocluyen # username
 twitter: lengocluyen
 linkedin: lengocluyen
