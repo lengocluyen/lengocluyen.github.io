@@ -12,7 +12,7 @@ safe: true
 
 # edit here to achieve your personal greatness
 url: http://lengocluyen.github.io/
-baseurl:
+baseurl: /
 title: Le's Personal blog and resume
 author: Le Ngoc Luyen
 description: Personal blog and resume
