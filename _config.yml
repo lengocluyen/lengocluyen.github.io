@@ -12,8 +12,8 @@ safe: true
 
 # edit here to achieve your personal greatness
 url: http://lengocluyen.github.io/
-baseurl: 
-title: Le Ngoc Luyen
+baseurl: /lengocluyen/
+title: Le's Personal blog and resume
 author: Le Ngoc Luyen
 description: Personal blog and resume
 avatar: profile.png
@@ -21,7 +21,8 @@ email: luyenlengoc@gmail.com
 github: lengocluyen # username
 twitter: lengocluyen
 linkedin: lengocluyen
-stackoverflow: lengocluyen   #e.g: users/2735833/proton1h1
+stackoverflow: users/7595772/le-ngoc-luyen   #e.g: users/2735833/proton1h1
+googlescholar: tFnk5VIAAAAJ
 #Comment out if you don't want disqus 
 disqus: username
 google_analytics: UA-69391421-1
