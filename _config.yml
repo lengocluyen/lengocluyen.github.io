@@ -14,7 +14,7 @@ safe: true
 # url: http://localhost:3000/
 # baseurl: http://localhost:3000/
 url: lengocluyen.github.io/
-baseurl: lengocluyen.github.io/
+baseurl: /
 title: Le Ngoc Luyen's Personal blog and resume
 author: Le Ngoc Luyen
 description: Personal blog and resume
