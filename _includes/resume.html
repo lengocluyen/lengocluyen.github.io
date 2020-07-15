@@ -1,0 +1,53 @@
+<section id="resumes">
+<link rel="stylesheet" href="{{ site.baseurl }}static/css/base.css">
+<link rel="stylesheet" href="{{ site.baseurl }}static/css/skeleton.css">
+<link rel="stylesheet" href="{{ site.baseurl }}static/css/layout.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+  <h3>Curriculum Vitae</h3>
+  <div class="panel-default">
+    <div class="panel-body">
+		<header class="three columns" style="text-align: center;">
+				<img src="{{ site.baseurl }}static/img/profile.png" class="me">
+				<h1>{{ site.author }}</h1>
+				<p>
+					<a style="text-decoration: none;" href="{{ site.tel_full }}"><i class="fa fa-phone-square"></i> <br/>{{ site.tel }}</a>
+				</p>
+				<address>
+
+					<a style="text-decoration: none;"  href="{{ site.google_maps }}">
+						<i class="fa fa-map-marker"></i><br/> {{ site.address.street }}<br/>
+						{{ site.address.postcode }} &nbsp; {{ site.address.city }} <br/>
+						{{ site.address.country }}
+					</a>
+				</address>
+				<p>
+					<a style="text-decoration: none;"  href="{{ site.website_full }}"><i class="fa fa-id-card"></i> <br/>{{ site.website }}</a>
+				</p>
+				<p>
+					<a style="text-decoration: none;"  href="mailto:{{ site.email }}"><i class="fa fa-envelope-square"></i> <br/><span style="margin-left: -10px;">{{ site.email }}</span></a>
+				</p>
+				<p>
+					<a style="text-decoration: none;"  href="https://github.com/{{ site.github }}"><i class="fa fa-github"></i> <br/>Github</a> <br/> 
+					<a style="text-decoration: none;"  href="https://twitter.com/{{ site.twitter }}"><i class="fa fa-twitter"></i> <br/>Twitter</a>
+				</p>
+			</header>
+			<div class="thirteen columns clearfix">
+
+				{% include experience.html %}
+
+				{% include education.html %}
+				
+				{% include skills.html %}
+				
+				{% include languages.html %}
+
+				{% include awards.html %}
+				
+				{% include interests.html %}
+				
+			</div>
+		</div>
+	</div>
+</div>
+</section>

@@ -11,9 +11,11 @@ safe: true
 
 
 # edit here to achieve your personal greatness
-url: http://lengocluyen.github.io/
-baseurl: /
-title: Le's Personal blog and resume
+# url: http://localhost:3000/
+# baseurl: http://localhost:3000/
+url: lengocluyen.github.io/
+baseurl: lengocluyen.github.io/
+title: Le Ngoc Luyen's Personal blog and resume
 author: Le Ngoc Luyen
 description: Personal blog and resume
 avatar: profile.png
@@ -21,12 +23,21 @@ email: luyenlengoc@gmail.com
 github: lengocluyen # username
 twitter: lengocluyen
 linkedin: lengocluyen
-stackoverflow: users/7595772/le-ngoc-luyen   #e.g: users/2735833/proton1h1
 googlescholar: tFnk5VIAAAAJ
+stackoverflow: users/7595772/le-ngoc-luyen   #e.g: users/2735833/proton1h1
 #Comment out if you don't want disqus 
 disqus: username
 google_analytics: UA-69391421-1
-
+google_maps: https://www.google.com/maps/place/5+Place+de+Bretagne,+29280+Plouzan%C3%A9/@48.4146378,-4.6157262,9.58z/data=!4m5!3m4!1s0x481695fbce01cd65:0xffbb7734644874f2!8m2!3d48.3796522!4d-4.599694
+tel: +33 7 83 75 95 10
+tel_full: tel:+33 7 83 75 95 10
+website: lengocluyen.github.io
+website_full: https://lengocluyen.github.io
+address:
+  street: 05 Place de Bretagne
+  postcode: 29280
+  city: Plouzané
+  country: France
 
 # needed for travis-ci build
 exclude: [vendor]

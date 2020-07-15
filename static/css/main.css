@@ -18,14 +18,20 @@ body {
   /* Pad bottom by footer height */
   /*padding: 0 0 60px;*/
 }
+.justify {
+  text-align: justify;
+  text-justify: inter-word;
+}
 .div-justify {
   text-align: justify;
   text-indent: 45px; 
   text-justify: inter-word;
+  padding-bottom: 10px;
 }
 .div-justify-pub {
   text-align: justify;
   text-justify: inter-word;
+  padding-bottom: 10px;
 }
 /* Navbar
 -------------------------------------------------- */
@@ -49,6 +55,7 @@ body {
 .navbar-default .navbar-nav > li > a {
   color: #6b6b6b;
 }
+
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #6b6b6b;
 }
@@ -97,7 +104,7 @@ body {
 
 .container {
   width: auto;
-  max-width: 800px;
+  max-width: 960px;
   text-align: center;
 }
 .container .text-muted {
@@ -138,13 +145,35 @@ body {
 }
 .panel-body {
   padding-top: -10px;
+  padding-left:0px;
+  padding-right: 0px;
   text-align: left;
+  line-height: 30px;
+  font-size: 18px;
 }
 .social {
   padding-top: 12px;
   word-spacing: 25px;
 }
+.footer-line{
+  clear:both;margin-top:-20px;
+  font-size: 16px;
+}
+.footer-line div.left{
+  float:left;
+}
+.footer-line div.right{
+  float:right;
+}
+.panel-default h5.icon-bar, h5.icon-bar  {
+  text-align: center;
+  line-height: 30px;
+  font-size: 18px;
+}
 .social h4 > a {
+  color: #000000;
+}
+.social h5 > a {
   color: #000000;
 }
 .avatar {
@@ -177,6 +206,7 @@ body {
 
 .footer {
   text-decoration: none !important;
+
 }
 .text-muted {
 	color: #6b6b6b;

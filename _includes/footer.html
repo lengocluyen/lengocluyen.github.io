@@ -1,7 +1,29 @@
 <footer>
+    
     <div id="footer">
         <div class="container">
-            <p class="text-muted">© 2020 All rights reserved</p>
+            <hr/>
+            <div class="footer-line">
+            <div class="left">
+                <p class="text-muted">© 2020 All rights reserved</p>
+            </div>
+            <div class="right">
+                <div class="social">
+                    <h5 class="icon-bar">
+              {% if site.stackoverflow %}
+                <a href="http://facebook.com/{{ site.github }}"><i class="fa fa-facebook-square"></i></a>
+
+              {% endif %}
+              {% if site.linkedin %}
+              <a href="http://instagram.com/{{ site.github }}"><i class="fa fa-instagram"></i></a>
+            {% endif %}
+              
+              </h5>
+
+            </div>
+            </div>
+        </div>
+            
         </div>
     </div>
 </footer>
