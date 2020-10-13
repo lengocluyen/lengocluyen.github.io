@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>//</loc>
-    <lastmod>2020-10-13T20:54:15+02:00</lastmod>
+    <loc>http://localhost:3000/</loc>
+    <lastmod>2020-10-13T21:28:10+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   
     <url>
-      <loc>//post1.html</loc>
+      <loc>http://localhost:3000/post1.html</loc>
       
         <lastmod>2013-06-05T00:00:00+02:00</lastmod>
       
@@ -21,7 +21,7 @@
     </url>
   
     <url>
-      <loc>//post2.html</loc>
+      <loc>http://localhost:3000/post2.html</loc>
       
         <lastmod>2013-05-27T00:00:00+02:00</lastmod>
       
@@ -34,7 +34,7 @@
     </url>
   
     <url>
-      <loc>//post3.html</loc>
+      <loc>http://localhost:3000/post3.html</loc>
       
         <lastmod>2013-04-02T00:00:00+02:00</lastmod>
       
@@ -47,7 +47,7 @@
     </url>
   
     <url>
-      <loc>//post4.html</loc>
+      <loc>http://localhost:3000/post4.html</loc>
       
         <lastmod>2013-03-15T00:00:00+01:00</lastmod>
       
@@ -60,7 +60,7 @@
     </url>
   
     <url>
-      <loc>//post5.html</loc>
+      <loc>http://localhost:3000/post5.html</loc>
       
         <lastmod>2013-02-10T00:00:00+01:00</lastmod>
       
@@ -73,7 +73,7 @@
     </url>
   
     <url>
-      <loc>//post6.html</loc>
+      <loc>http://localhost:3000/post6.html</loc>
       
         <lastmod>2013-01-24T00:00:00+01:00</lastmod>
       
@@ -86,7 +86,7 @@
     </url>
   
     <url>
-      <loc>//post7.html</loc>
+      <loc>http://localhost:3000/post7.html</loc>
       
         <lastmod>2012-11-04T00:00:00+01:00</lastmod>
       
@@ -100,22 +100,9 @@
   
   
   <url>
-    <loc>//404</loc>
+    <loc>http://localhost:3000/404</loc>
     
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>//atom.xml</loc>
-    
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -126,22 +113,9 @@
   </url>
   
   <url>
-    <loc>//blog</loc>
+    <loc>http://localhost:3000/atom.xml</loc>
     
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>//</loc>
-    
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -152,22 +126,9 @@
   </url>
   
   <url>
-    <loc>//projects</loc>
+    <loc>http://localhost:3000/blog</loc>
     
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>//publications</loc>
-    
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -178,22 +139,9 @@
   </url>
   
   <url>
-    <loc>//resume</loc>
+    <loc>http://localhost:3000/</loc>
     
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>//sitemap.xml</loc>
-    
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -204,9 +152,9 @@
   </url>
   
   <url>
-    <loc>//assets/css/style.css</loc>
+    <loc>http://localhost:3000/projects</loc>
     
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -217,9 +165,61 @@
   </url>
   
   <url>
-    <loc>//page2/</loc>
+    <loc>http://localhost:3000/publications</loc>
     
-      <lastmod>2020-10-13T20:54:15+02:00</lastmod>
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:3000/resume</loc>
+    
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:3000/sitemap.xml</loc>
+    
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:3000/assets/css/style.css</loc>
+    
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:3000/page2/</loc>
+    
+      <lastmod>2020-10-13T21:28:10+02:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
