@@ -34,6 +34,13 @@ hosted in [Github pages](https://pages.github.com/).
 Simply clone/fork this repository, and then run `jekyll serve` inside the directory.
 Edit the site attributes in *_config.yml* and edit the various entries in *_includes/* and *_posts/*.
 
+## Running at localhost
+bundle exec jekyll serve
++ jekyll serve
++ jekyll build
++ git add *
++ git commit -m 'update'
++ git push origin master
 
 ## Issues and contributing 
 
