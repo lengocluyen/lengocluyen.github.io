@@ -16,9 +16,12 @@ safe: true
 url: /
 baseurl: /
 title: Le Ngoc Luyen's Personal blog and resume
-author: Le Ngoc Luyen
+author: Ngoc Luyen LE
 description: Personal blog and resume
-avatar: profile.png
+avatar: profile.jpg
+photoavatar: photocuzco.jpg
+photoavatar1: photo2.jpg
+photoavatar2: photo3.jpg
 email: luyenlengoc@gmail.com
 github: lengocluyen # username
 twitter: lengocluyen
@@ -28,15 +31,15 @@ stackoverflow: users/7595772/le-ngoc-luyen   #e.g: users/2735833/proton1h1
 #Comment out if you don't want disqus 
 disqus: username
 google_analytics: UA-69391421-1
-google_maps: https://www.google.com/maps/place/5+Place+de+Bretagne,+29280+Plouzan%C3%A9/@48.4146378,-4.6157262,9.58z/data=!4m5!3m4!1s0x481695fbce01cd65:0xffbb7734644874f2!8m2!3d48.3796522!4d-4.599694
+google_maps: https://www.google.com/maps/place/13+Rue+Winston+Churchill,+60200+Compi%C3%A8gne/@49.4106871,2.8128797,17z/data=!3m1!4b1!4m6!3m5!1s0x47e7d42710caccc1:0xf38b75e779ba1187!8m2!3d49.4106871!4d2.8128797!16s%2Fg%2F11c0z4jzyq?entry=ttu
 tel: +33 7 83 75 95 10
 tel_full: tel:+33 7 83 75 95 10
 website: lengocluyen.github.io
 website_full: https://lengocluyen.github.io
 address:
-  street: 05 Place de Bretagne
-  postcode: 29280
-  city: Plouzané
+  street: 13 Rue Winston Churchill
+  postcode: 60200
+  city: Compiègne
   country: France
 
 # needed for travis-ci build

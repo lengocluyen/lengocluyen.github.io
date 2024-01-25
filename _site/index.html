@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <meta name="author" content="Le Ngoc Luyen" />
+	  <meta name="author" content="Ngoc Luyen LE" />
     <meta name="description" content="Personal blog and resume">
     <link rel="favicon" href="/static/img/favicon.ico">
 
@@ -51,14 +51,14 @@
     <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
+      <a class="navbar-brand" href="http://localhost:3000"><i class="fa fa-home"></i></a>
     </div>
     <div id="navbar">
       <ul class="nav navbar-nav navbar-right">
         <!--<li><a href="/blog.html">BLOG</a></li>-->
-        <li><a href="/publications.html">PUBLICATIONS</a></li>
-        <li><a href="/projects.html">PROJECTS</a></li>
-        <li><a href="/resume.html">RESUME</a></li>
+        <li><a href="http://localhost:3000publications.html">PUBLICATIONS</a></li>
+        <li><a href="http://localhost:3000projects.html">PROJECTS</a></li>
+        <li><a href="http://localhost:3000resume.html">RESUME</a></li>
       </ul>
     </div>
   </div>
@@ -68,16 +68,71 @@
     <section id="about">
 	<div class="container">
 		<div class="panel-default">
-		  <div class="panel-body">
-			<div class="avatar" style="text-align: center;margin-bottom: 50px;margin-top:-30px;">
-				<img class="img-circle " width="150" height="150" src="/static/img/profile.png" alt="Responsive image">
+		  <div class="panel-body" style="margin-top:0px;padding-top:0px">
+			<div class="avatar" style="text-align: center;margin-bottom: 50px;margin-top:0px;padding-top:0px">
+				<!--<img class="rounded float-right" width="250" src="/static/img/photocuzco.jpg" alt="Responsive image">-->
+				<div class="carousel">
+					<ul class="slides">
+					  <input type="radio" name="radio-buttons" id="img-1" checked />
+					  <li class="slide-container">
+						<div class="slide-image">
+						  <img class="img-thumbnail" src="/static/img/photocuzco.jpg">
+						</div>
+						<div class="carousel-controls">
+						  <label for="img-3" class="prev-slide">
+							<span>&lsaquo;</span>
+						  </label>
+						  <label for="img-2" class="next-slide">
+							<span>&rsaquo;</span>
+						  </label>
+						</div>
+					  </li>
+					  <input type="radio" name="radio-buttons" id="img-2" />
+					  <li class="slide-container">
+						<div class="slide-image">
+						  <img class="img-thumbnail" src="/static/img/photo2.jpg">
+						</div>
+						<div class="carousel-controls">
+						  <label for="img-1" class="prev-slide">
+							<span>&lsaquo;</span>
+						  </label>
+						  <label for="img-3" class="next-slide">
+							<span>&rsaquo;</span>
+						  </label>
+						</div>
+					  </li>
+					  <input type="radio" name="radio-buttons" id="img-3" />
+					  <li class="slide-container">
+						<div class="slide-image">
+						  <img  class="img-thumbnail" src="/static/img/photo3.jpg">
+						</div>
+						<div class="carousel-controls">
+						  <label for="img-2" class="prev-slide">
+							<span>&lsaquo;</span>
+						  </label>
+						  <label for="img-1" class="next-slide">
+							<span>&rsaquo;</span>
+						  </label>
+						</div>
+					  </li>
+					  <div class="carousel-dots">
+						<label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+						<label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+						<label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+					  </div>
+					</ul>
+				  </div>
 			</div>
-			<h5> <div class="div-justify">Welcome to my personal page !, I am <strong>Le Ngoc Luyen</strong>, PhD, researcher in Deep Learning, Natural Language Processing and Semantic Representation fields. </div>
+			<h5> <div class="div-justify">Welcome to my personal page !, I am <strong>Ngoc Luyen LE</strong>, a PhD researcher specializing in Natural Language Processing, Semantic Representation, and Recommender System fields. </div>
 			</h5>
-			<h5><div class="div-justify">	
+
+			<h5><div class="div-justify">I conducted my PhD research at the LAB-STICC laboratory at IMT Atlantique, France, under the supervision of Professors Yannis Haralambous and Philippe Lenca. My doctoral research focused on the study of semantic representation for the French language, utilizing Combinatory Categorial Grammar and Discourse Representation Theory.</div></h5>
+			<h5><div class="div-justify">My current research focuses on applying advanced techniques in Natural Language Processing to enhance semantic representation and optimize recommender systems. I am particularly interested in exploring innovative approaches that leverage cutting-edge technologies to improve the understanding of linguistic nuances, enabling more accurate and context-aware semantic modeling. Through my work, I aim to contribute to the development of intelligent systems that can better comprehend and respond to the intricacies of human language, ultimately advancing the capabilities of recommender systems in various domains.</div></h5>
+
+			<!--<h5><div class="div-justify">	
 			I have done my phd research  at the LAB-STICC laboaratory at IMT Atlantique, France under the supervision of Prof. Yannis Haralambous and Prof. Philippe Lenca. My doctoral research focuses on studying of semantic representation for french language based on using the Combinatory Categorial Grammar and Discours Representation Theory.</div></h5>
-			<h5><div class="div-justify">Understanding natural language is extremely complex task for ameliorating the capacity of human-computer interaction because the meaning of an utterance is not only dependent on using vocabularies, grammars but also on the context of the communication. In addition, the explosion of neural network research brings diversity of deep neural network architectures as well as effective solutions about performance and accuracy in different fields. According to this view, my interesting domain research is Natural Language Understanding, Semantic Representation and Deep Neural Networks.</div></h5>
-			<h5> <div class="div-justify" style="padding-bottom:0px;">Have a look at some of my <a href="/projects.html"> Coding Projects</a> and my recent <a href="/publications.html"> Research Publications</a>. For more check out my academic &amp; professional <a href="/resume.html">Curriculum Vitae</a>. Feel free to contact me at <a href="http://twitter.com/lengocluyen">@lengocluyen</a> or by <a href="mailto:luyenlengoc@gmail.com">luyenlengoc@gmail.com</a></div></h5>
+			<h5><div class="div-justify">Understanding natural language is extremely complex task for ameliorating the capacity of human-computer interaction because the meaning of an utterance is not only dependent on using vocabularies, grammars but also on the context of the communication. In addition, the explosion of neural network research brings diversity of deep neural network architectures as well as effective solutions about performance and accuracy in different fields. According to this view, my interesting domain research is Natural Language Understanding, Semantic Representation and Deep Neural Networks.</div></h5>-->
+			<h5> <div class="div-justify" style="padding-bottom:0px;">Have a look at some of my <a href="/projects.html"> Coding Projects</a> and my recent <a href="/publications.html"> Research Publications</a>. For more check out my academic &amp; professional <a href="http://localhost:3000resume.html">Curriculum Vitae</a>. Feel free to contact me at <a href="http://twitter.com/lengocluyen">@lengocluyen</a> or by <a href="mailto:luyenlengoc@gmail.com">luyenlengoc@gmail.com</a></div></h5>
 			
 			<div class="social">
 	<h5 class="icon-bar">
@@ -121,7 +176,7 @@
             <hr/>
             <div class="footer-line">
             <div class="left">
-                <p class="text-muted">© 2020 All rights reserved</p>
+                <p class="text-muted">© 2020-2024 All rights reserved</p>
             </div>
             <div class="right">
                 <div class="social">

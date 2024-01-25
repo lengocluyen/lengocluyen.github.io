@@ -1,0 +1,12 @@
+# ruby install on ubuntu
+sudo apt install ruby-full
+sudo apt install build-essential dh-autoreconf
+sudo gem update
+
+# install jekyll 
+sudo gem install jekyll bundler
+jekyll -v
+
+#run
+bundle
+bundle exec jekyll serve
