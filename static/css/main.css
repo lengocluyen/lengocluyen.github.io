@@ -432,7 +432,7 @@ input:checked + .slide-container .nav label { display: block; }
 
     .navbar-nav > li.active > a {
     background-color: #01579B;
-    color: white !important;
+    color: #2c3e50 !important;
     font-weight: 600;
     border-radius: 4px;
   }
