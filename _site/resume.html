@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <meta name="author" content="Ngoc Luyen LE" />
+	  <meta name="author" content="Ngoc Luyen Le" />
     <meta name="description" content="Personal blog and resume">
     <link rel="favicon" href="/static/img/favicon.ico">
 
@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
     <link rel="stylesheet" href="/static/css/academicons.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="/static/css/syntax.css" />
 
     <!-- Google Analytics -->
@@ -48,22 +48,32 @@
   <!-- Wrap all page content here -->
   <div id="wrap">
     <!-- Navbar header -->
-    <nav class="navbar navbar-default">
+    
+<nav class="navbar navbar-default shadow-sm custom-navbar">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="http://localhost:3000"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand custom-brand" href="http://localhost:3000">
+        <i class="fa fa-home"></i><span class="hidden-xs"> ABOUT ME</span>
+      </a>
     </div>
-    <div id="navbar">
+    <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="/blog.html">BLOG</a></li>-->
-        <li><a href="http://localhost:3000publications.html">PUBLICATIONS</a></li>
-        <li><a href="http://localhost:3000projects.html">PROJECTS</a></li>
-        <li><a href="http://localhost:3000resume.html">RESUME</a></li>
+        <!--<li><a href="http://localhost:3000blogs.html">BLOG</a></li>-->
+        <li><a href="http://localhost:3000/services.html">SERVICES</a></li>
+        <li><a href="http://localhost:3000/publications.html">PUBLICATIONS</a></li>
+        <li><a href="http://localhost:3000/projects.html">PROJECTS</a></li>
+        <li><a href="http://localhost:3000/resume.html">RESUME</a></li>
       </ul>
     </div>
+    <hr/>
   </div>
 </nav>
-
 
     <section id="resumes">
 <link rel="stylesheet" href="/static/css/base.css">
@@ -71,38 +81,131 @@
 <link rel="stylesheet" href="/static/css/layout.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
-  <h3>Curriculum Vitae</h3>
+	<h2 class="section-title mb-5" style="margin-bottom:35px;"><i class="fa fa-vcard fa-xs"></i>&nbsp;CURRICULUM VITAE</h2>
   <div class="panel-default">
     <div class="panel-body">
 		<header class="three columns" style="text-align: center;">
 				<img src="/static/img/profile.jpg" class="img-thumbnail">
-				<h1>Ngoc Luyen LE</h1>
-				<p>
-					<a style="text-decoration: none;" href="tel:+33 7 83 75 95 10"><i class="fa fa-phone-square"></i> <br/>+33 7 83 75 95 10</a>
-				</p>
-				<address>
+				<h1>Ngoc Luyen Le</h1>
 
-					<a style="text-decoration: none;"  href="https://www.google.com/maps/place/13+Rue+Winston+Churchill,+60200+Compi%C3%A8gne/@49.4106871,2.8128797,17z/data=!3m1!4b1!4m6!3m5!1s0x47e7d42710caccc1:0xf38b75e779ba1187!8m2!3d49.4106871!4d2.8128797!16s%2Fg%2F11c0z4jzyq?entry=ttu">
-						<i class="fa fa-map-marker"></i><br/> 13 Rue Winston Churchill<br/>
-						60200 &nbsp; Compiègne <br/>
+				<div class="profile-links">
+				<a  class="link-block" href="tel:+33 7 83 75 95 10"><i class="fa fa-phone-square  fa-lg"></i> <br/>+33 7 83 75 95 10</a>
+				<div class="profile-links">
+				<a  class="link-block"  href="https://www.google.com/maps/place/13+Rue+Winston+Churchill,+60200+Compi%C3%A8gne/@49.4106871,2.8128797,17z/data=!3m1!4b1!4m6!3m5!1s0x47e7d42710caccc1:0xf38b75e779ba1187!8m2!3d49.4106871!4d2.8128797!16s%2Fg%2F11c0z4jzyq?entry=ttu">
+						<i class="fa fa-map-marker  fa-lg"></i>Compiègne<br/>
 						France
-					</a>
-				</address>
-				<p>
-					<a style="text-decoration: none;"  href="https://lengocluyen.github.io"><i class="fa fa-id-card"></i> <br/>lengocluyen.github.io</a>
-				</p>
-				<p>
-					<a style="text-decoration: none;"  href="mailto:luyenlengoc@gmail.com"><i class="fa fa-envelope-square"></i> <br/><span style="margin-left: -10px;">luyenlengoc@gmail.com</span></a>
-				</p>
-				<p>
-					<a style="text-decoration: none;"  href="https://github.com/lengocluyen"><i class="fa fa-github"></i> <br/>Github</a> <br/> 
-					<a style="text-decoration: none;"  href="https://twitter.com/lengocluyen"><i class="fa fa-twitter"></i> <br/>Twitter</a>
-				</p>
+					</a></div>
+				<div class="profile-links"><a  class="link-block" href="https://lengocluyen.github.io"><i class="fa fa-id-card  fa-lg"></i><br> lengocluyen<br>.github.io</a></div>
+				<div class="profile-links"><a  class="link-block"  href="mailto:luyenlengoc@gmail.com"><i class="fa fa-envelope-square  fa-lg"></i> luyenlengoc<br>@gmail.com</a></div>
+				<div class="profile-links"><a  class="link-block"  href="https://github.com/lengocluyen"><i class="fab fa-github fa-lg"></i> <br/>Github</a> </div> 
+				<div class="profile-links"><a  class="link-block" href="https://twitter.com/lengocluyen"><i class="fab fa-twitter fa-lg"></i> <br/>Twitter</a></div>
+				<div class="profile-links"><a  class="link-block"  href="http://linkedin.com/in/lengocluyen"><i class="fab fa-linkedin fa-lg"></i> <br/>Linkedin</a></div>
+				<div class="profile-links">	<a  class="link-block"  href="http://instagram.com/lengocluyen"><i class="fab fa-instagram fa-lg"></i> <br/>Instagram</a></div>
+
+				<div class="profile-links"><a  class="link-block"  href="/static/04_cv_main_en.pdf"><i class="fas fa-file-pdf fa-lg"></i> <br/>CV in English</a></div>
+				<div class="profile-links" style="margin-bottom:20px;">	<a  class="link-block"  href="/static/04_cv_main.pdf"><i class="fas fa-file-pdf fa-lg"></i> <br/>CV en français</a></div>
+
+			</div>
 			</header>
 			<div class="thirteen columns clearfix">
 
 				<section class="thirteen columns">
-    <h1>Experience</h1>
+    <div class="section-header d-flex justify-content-between align-items-center mt-4">
+        <span>EXPERIENCE</span>
+      </div>
+
+      <!-- Job Entry -->
+      <div class="experience-card"  style="margin-top:20px;">
+        <div class="experience-header">
+          <h4>Research & Development Engineer</h4>
+          <div class="experience-meta">
+            <span class="left-meta"><i class="fa fa-university fa-xs"></i> Gamaizer & UTC - Heudiasyc Lab, France</span>
+            <span class="center-meta"><i class="fas fa-map-marker-alt"></i> Paris, France</span>
+            <span class="right-meta"><i class="fa fa-calendar-alt"></i> Dec 2024 - May 2026</span>
+          </div>
+        </div>
+        <p>
+            <p>
+                Designed and developed <span class="tag">knowledge bases</span> for <span class="tag">skill management</span>,
+                incorporating <span class="tag">ontologies</span> to represent competencies and
+                <span class="tag">learner profiles</span>. Built a <span class="tag">recommender system</span> for
+                training programs and courses, tailored to individual
+                skill gaps, career objectives, and
+                <span class="tag">contextual constraints</span>. Contributed to the development of a
+                skill management portal, enhanced with
+                <span class="tag">LLMs</span> and <span class="tag">Generative AI</span> for personalized guidance.
+              </p>      </div>
+  <div class="experience-card">
+    <div class="experience-header">
+      <h4>Post-doctoral Researcher</h4>
+      <div class="experience-meta">
+        <span class="left-meta"><i class="fa fa-university fa-xs"></i> Vivocaz & UTC - Heudiasyc Lab, France</span>
+        <span class="center-meta"><i class="fas fa-map-marker-alt"></i> Compiègne, France</span>
+        <span class="right-meta"><i class="fa fa-calendar-alt"></i> May 2021 - Nov 2023</span>
+      </div>
+    </div>
+    <p>
+      Built a <span class="tag">recommender system</span> for vehicle buying and selling. Developed <span class="tag">ontologies</span> for vehicle models and transactions, proposed <span class="tag">user profile-based ontologies</span>, introduced a method for estimating RDF <span class="tag">semantic similarity</span>, and implemented a personalized recommender using <span class="tag">Protégé</span>
+      , <span class="tag">SPARQL</span>, <span class="tag">AllegroGraph</span>, and <span class="tag">Python</span>.
+    </p>
+  </div>
+
+  <div class="experience-card">
+    <div class="experience-header">
+      <h4>PhD Researcher</h4>
+      <div class="experience-meta">
+        <span class="left-meta"><i class="fa fa-university fa-xs"></i> IMT Atlantique, LAB-STICC Lab</span>
+        <span class="center-meta"><i class="fas fa-map-marker-alt"></i> Brest, France</span>
+        <span class="right-meta"><i class="fa fa-calendar-alt"></i> Nov 2016 - Sep 2020</span>
+      </div>
+    </div>
+    <p>
+      Proposed methods for automatically constructing <span class="tag">CCG</span> trees and ontologies to detect missing info in appointment requests at Crédit Mutuel ARKÉA. Introduced a <span class="tag">supervised sequence-to-sequence model</span> for super-labeling and a new French CCG resource. Developed semantic representations of French discourse.
+    </p>
+  </div>
+
+  <div class="experience-card">
+    <div class="experience-header">
+      <h4>Lecturer</h4>
+      <div class="experience-meta">
+        <span class="left-meta"><i class="fa fa-university fa-xs"></i> Dalat University</span>
+        <span class="center-meta"><i class="fas fa-map-marker-alt"></i> Dalat, Vietnam</span>
+        <span class="right-meta"><i class="fa fa-calendar-alt"></i> Jun 2011 - Nov 2019</span>
+      </div>
+    </div>
+    <p>
+      Taught "Information Technology Fundamentals" to first-year students and courses in Software Engineering: <span class="tag">Java Programming</span>, <span class="tag">Web Development</span>, <span class="tag">Algorithms and Data Structures</span>.
+    </p>
+  </div>
+
+  <div class="experience-card">
+    <div class="experience-header">
+      <h4>Software Engineer</h4>
+      <div class="experience-meta">
+        <span class="left-meta"><i class="fa fa-user"></i> Freelance</span>
+        <span class="center-meta"><i class="fas fa-map-marker-alt"></i> Dalat, Vietnam</span>
+        <span class="right-meta"><i class="fa fa-calendar-alt"></i> 2011 - 2013</span>
+      </div>
+    </div>
+    <p>
+      Designed and developed web and desktop apps for businesses in Da Lat using <span class="tag">.NET frameworks</span> (<span class="tag">C#</span>, <span class="tag">ASP.NET</span>, <span class="tag">SQL</span>).
+    </p>
+  </div>
+
+  <div class="experience-card"   style="margin-bottom:0px">
+    <div class="experience-header">
+      <h4>Master Internship</h4>
+      <div class="experience-meta">
+        <span class="left-meta"><i class="fa fa-university fa-xs"></i> IBC, LIRMM Lab</span>
+        <span class="center-meta"><i class="fas fa-map-marker-alt"></i> Montpellier, France</span>
+        <span class="right-meta"><i class="fa fa-calendar-alt"></i> Apr 2015 - Oct 2015</span>
+      </div>
+    </div>
+    <p>
+      Studied and developed a <span class="tag">knowledge-based system</span> for <span class="tag">big data</span> (phenotyping data of rice - O. Sativa) using <span class="tag">Semantic Web</span> technologies, <span class="tag">RDF</span>, <span class="tag">ontologies</span>, and <span class="tag">big data</span> platforms like <span class="tag">MongoDB</span> and <span class="tag">Neo4j</span>.
+    </p>
+  </div>
+  <!--
     <article>
         <header>
             <h1>Researcher</h1>
@@ -140,134 +243,189 @@
         <p  class="justify"> Study and developpment of a knowledge system for big data: application to phenotyping data of rice (O.Sativa) based on semantic web technology with RDF data formats, ontologies in association with big data management systems such as MongoDB and Neo4j. 
         </p>
     </article>
+    -->
 </section>
 
 
 				<section class="thirteen columns">
-    <h1>Education</h1>
-    <article>
-        <header>
-            <h1>Phd Researcher in Computer Science</h1>
-            <span>IMT Atlantique</span>
-            <span><address>Brest, France</address><time>Novembre 2016 to Septembre 2020</time></span>
-        </header>
-        <p>
-            <em>Thesis: French Language Discourse Represenation Structure Parsing</em>
-        </p>
-    </article>
-    <article>
-        <header>
-            <h1>Master Degree, Intelligent System and Multimedia</h1>
-            <span>University of La Rochelle</span>
-            <span><address>La Rochelle, France</address><time>Septembre 2013 to April 2015</time></span>
-            <span>Double degree obtained during my master studies at the Institut Francophone International (Ha Noi, Viet Nam) for Computer Science specialist</span>
-        </header>
-        <p>
-            <em>Thesis: Developpment of a Knowledge System for Big Data: Application to Phenotyping Data of Rice (O.Sativa)</em>
-        </p>
-    </article>
-    <article>
-        <header>
-            <h1>Information Technology Engineering Degree, Software Engineering</h1>
-            <span>Universtity of Da Lat</span>
-            <span><address>Da Lat, Viet Nam</address><time>Septembre 2006 to January 2011</time></span>
-        </header>
-        <p>
-            <em>Thesis: Design and Development of an Online Learning System Supporting for Elementary Students</em>
-        </p>
-    </article>
+    <div class="section-header d-flex justify-content-between align-items-center mt-4">
+        <span>EDUCATION</span>
+      </div>
+   <!-- PhD -->
+  <div class="education-card" style="margin-top:20px;">
+    <div class="edu-header">
+      <h4>PhD Researcher in Computer Science</h4>
+      <div class="experience-meta">
+        <span class="left-meta"><i class="fa fa-university fa-xs"></i> IMT Atlantique</span>
+        <span class="center-meta"><i class="fas fa-map-marker-alt"></i> Brest, France</span>
+        <span class="right-meta"><i class="fa fa-calendar-alt"></i> Nov 2016 - Sep 2020</span>
+      </div>
+    </div>
+    <p>Thesis: French Language Discourse Representation Structure Parsing</p>
+  </div>
+
+  <!-- Master -->
+  <div class="education-card">
+    <div class="edu-header">
+      <h4>Master's Degree in Intelligent Systems and Multimedia</h4>
+      <div class="experience-meta">
+        <span class="left-meta"><i class="fa fa-university fa-xs"></i> University of La Rochelle</span>
+        <span class="center-meta"><i class="fas fa-map-marker-alt"></i> La Rochelle, France</span>
+        <span class="right-meta"><i class="fa fa-calendar-alt"></i> Sep 2013 - Apr 2015</span>
+      </div>
+
+      <small class="edu-note">
+        Double degree obtained at the Institut Francophone International (Ha Noi, Vietnam) - Computer Science
+      </small>
+    </div>
+    <p>Thesis: Development of a Knowledge System for Big Data: Application to Phenotyping Data of Rice (O. Sativa)</p>
+  </div>
+
+  <!-- Engineering -->
+  <div class="education-card"  style="margin-bottom:0px">
+    <div class="edu-header">
+      <h4>Engineering Degree in Software Engineering</h4>
+      <div class="experience-meta">
+        <span class="left-meta"><i class="fa fa-university fa-xs"></i> University of Dalat</span>
+        <span class="center-meta"><i class="fas fa-map-marker-alt"></i> Dalat, Vietnam</span>
+        <span class="right-meta"><i class="fa fa-calendar-alt"></i> Sep 2006 - Jan 2011</span>
+      </div>
+    </div>
+    <p>Thesis: Design and Development of an Online Learning System Supporting Elementary Students</p>
+  </div>
 </section>
 
 				
 				<section class="thirteen columns">
-    <h1>Skills</h1>
-    <article>
-        <header>
-            <h1>Systems</h1>
-        </header>
-        <p><em>Linux, Window, Android</em></p>
-    </article>
-    <article>
-        <header>
-            <h1>Programming Languages</h1>
-        </header>
-        <p><em>Python, CSharp, Java, C/C++, ASP.NET, JSP, Prolog, SPARQL</em></p>
-    </article>
-    <article>
-        <header>
-            <h1>Tools and IDE</h1>
-        </header>
-        <p><em>Pycharm Community, Visual Studio, Eclipse, Scilab</em></p>
-    </article>
-    <article>
-        <header>
-            <h1>Database Management Systems</h1>
-        </header>
-        <p><em>MySQL, Microsoft SQL, Postgres, NoSQL (MongoDB, Neo4j)</em></p>
-    </article>
-    <article>
-        <header>
-            <h1>Analysis Tools</h1>
-        </header>
-        <p><em>UML, Design Patterns</em></p>
-    </article>
-    <article>
-        <header>
-            <h1>Others</h1>
-        </header>
-        <p><em>Tensorflow, Pytorch, Keras, Git, Latex, Markdown</em></p>
-    </article>
+    <div class="section-header d-flex justify-content-between align-items-center mt-4">
+        <span>SKILL</span>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-block">
+          <h5><i class="fa fa-desktop"></i> Systems</h5>
+          <p>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Windows</span>
+            <span class="skill-tag">Android</span>
+            <span class="skill-tag">Docker</span>
+          </p>
+        </div>
+    
+        <div class="skill-block">
+          <h5><i class="fa fa-terminal"></i> Programming Languages</h5>
+          <p>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C/C++</span>
+            <span class="skill-tag">ASP.NET</span>
+            <span class="skill-tag">JSP</span>
+            <span class="skill-tag">Prolog</span>
+            <span class="skill-tag">SPARQL</span>
+          </p>
+        </div>
+    
+        <div class="skill-block">
+          <h5><i class="fa fa-wrench"></i> Tools & Editors</h5>
+          <p>
+            <span class="skill-tag">PyCharm</span>
+            <span class="skill-tag">Visual Studio</span>
+            <span class="skill-tag">Eclipse</span>
+            <span class="skill-tag">Scilab</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">LaTeX</span>
+          </p>
+        </div>
+    
+        <div class="skill-block">
+          <h5><i class="fa fa-database"></i> Databases</h5>
+          <p>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">SQL Server</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Neo4j</span>
+          </p>
+        </div>
+    
+        <div class="skill-block">
+          <h5><i class="fas fa-project-diagram"></i> Analysis Tools</h5>
+          <p>
+            <span class="skill-tag">UML</span>
+            <span class="skill-tag">Design Patterns</span>
+            <span class="skill-tag">Protégé</span>
+          </p>
+        </div>
+    
+        <div class="skill-block">
+          <h5><i class="fa fa-cubes"></i>Machine & Deep Learning</h5>
+          <p>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">Keras</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Transformer</span>
+            <span class="skill-tag">LLMs</span>
+            <span class="skill-tag">Huggingface</span>
+          </p>
+        </div>
+    
+      </div>
 </section>
 				
 				<section class="thirteen columns">
-    <h1>Languages</h1>
-    <article>
-        <header>
-            <h1>English</h1>
-        </header>
-        <p><em>Intermediate level (read, written, spoken)</em></p>
-    </article>
-    <article>
-        <header>
-            <h1>French</h1>
-        </header>
-        <p><em>Intermediate level (read, written, spoken - DELF B1)</em></p>
-    </article>
-    <article>
-        <header>
-            <h1>Vietnamese</h1>
-        </header>
-        <p><em>Native Language</em></p>
-    </article>
+    <div class="section-header d-flex justify-content-between align-items-center mt-4">
+        <span>LANGUAGES</span>
+      </div>
+      <div class="language-grid">
+
+        <div class="language-item">
+          <h5>English</h5> <span class="badge badge-fluent">Fluent</span>
+        </div>
+    
+        <div class="language-item">
+          <h5>French</h5> <span class="badge badge-fluent">Fluent</span>
+        </div>
+    
+        <div class="language-item">
+              <h5>Vietnamese</h5>
+              <span class="badge badge-native">Native</span>
+          </div>
+    
+      </div>
 </section>
 
 				<section class="thirteen columns">
-    <h1>Honors and Awards</h1>    
-    <article>
-        <header>
-            <h1>2009</h1>
-        </header>
-        <p><em>Second prize in Microsoft's Imagine Cup competition in Vietnam</em></p>
-    </article>
-    <article>
-        <header>
-            <h1>2010</h1>
-        </header>
-        <p><em>Certificate of Merit from the Minister of Education and Training of Vietnam for the best students</em></p>
-    </article>
-    <article>
-        <header>
-            <h1>2016</h1>
-        </header>
-        <p><em>Member of the winning team of the first Agro Hackathon, Montpellier, France</em></p>
-    </article>
+    <div class="section-header d-flex justify-content-between align-items-center mt-4">
+        <span>HONORS & AWARDS</span>
+      </div> 
+      <div class="awards-grid">
+        <article style="margin-bottom:0px">
+          <header>2009</header>
+          <p><em>Second prize in Microsoft's Imagine Cup competition in Vietnam</em></p>
+        </article>
+        <article style="margin-bottom:0px">
+          <header>2010</header>
+          <p><em>Merit Certificate from Vietnam's Ministry of Education for top students</em></p>
+        </article>
+        <article style="margin-bottom:0px">
+          <header>2016</header>
+          <p><em>Winning team of the first Agro Hackathon, Montpellier, France</em></p>
+        </article>
+      </div>
 </section>
 				
 				<section class="thirteen columns">
-    <h1>Hobbies</h1>
-    <article>
-        <p>Music, Movies, Football, Travelling, Lecture.</p>
-    </article>
+    <div class="section-header d-flex justify-content-between align-items-center mt-4">
+        <span>HOBBIES</span>
+      </div>
+      <div class="interest-tags">
+        <span class="tag">Music</span>
+        <span class="tag">Movies</span>
+        <span class="tag">Football</span>
+        <span class="tag">Travelling</span>
+        <span class="tag">Lecturing</span>
+      </div>
 </section>
 				
 			</div>
@@ -285,19 +443,25 @@
     <div id="footer">
         <div class="container">
             <hr/>
-            <div class="footer-line">
+            <div style="margin-top:20px;" class="footer-line">
             <div class="left">
-                <p class="text-muted">© 2020-2024 All rights reserved</p>
+                <p class="text-muted">© 2020-2025 All rights reserved</p>
             </div>
             <div class="right">
                 <div class="social">
                     <h5 class="icon-bar">
+                      
+                      <a href="http://github.com/lengocluyen"><i class="fab fa-github"></i></a>
+                      
+                  
+                      
+                      <a href="http://twitter.com/lengocluyen"><i class="fab fa-twitter"></i></a>
+                      
+                      
+                      <a href="http://linkedin.com/in/lengocluyen"><i class="fab fa-linkedin"></i></a>
+                      
               
-                <a href="http://facebook.com/lengocluyen"><i class="fa fa-facebook-square"></i></a>
-
-              
-              
-              <a href="http://instagram.com/lengocluyen"><i class="fa fa-instagram"></i></a>
+              <a href="http://instagram.com/lengocluyen"><i class="fab fa-instagram"></i></a>
             
               
               </h5>

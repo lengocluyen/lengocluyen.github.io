@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <meta name="author" content="Ngoc Luyen LE" />
+	  <meta name="author" content="Ngoc Luyen Le" />
     <meta name="description" content="Personal blog and resume">
     <link rel="favicon" href="/static/img/favicon.ico">
 
     
-      <title>Le Ngoc Luyen's Personal blog and resume</title>
+      <title>Le Ngoc Luyen's Personal Site</title>
     
 	
     <!-- Bootstrap -->
@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
     <link rel="stylesheet" href="/static/css/academicons.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="/static/css/syntax.css" />
 
     <!-- Google Analytics -->
@@ -48,114 +48,120 @@
   <!-- Wrap all page content here -->
   <div id="wrap">
     <!-- Navbar header -->
-    <nav class="navbar navbar-default">
+    
+<nav class="navbar navbar-default shadow-sm custom-navbar">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="http://localhost:3000"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand custom-brand" href="http://localhost:3000">
+        <i class="fa fa-home"></i><span class="hidden-xs"> ABOUT ME</span>
+      </a>
     </div>
-    <div id="navbar">
+    <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="/blog.html">BLOG</a></li>-->
-        <li><a href="http://localhost:3000publications.html">PUBLICATIONS</a></li>
-        <li><a href="http://localhost:3000projects.html">PROJECTS</a></li>
-        <li><a href="http://localhost:3000resume.html">RESUME</a></li>
+        <!--<li><a href="http://localhost:3000blogs.html">BLOG</a></li>-->
+        <li><a href="http://localhost:3000/services.html">SERVICES</a></li>
+        <li><a href="http://localhost:3000/publications.html">PUBLICATIONS</a></li>
+        <li><a href="http://localhost:3000/projects.html">PROJECTS</a></li>
+        <li><a href="http://localhost:3000/resume.html">RESUME</a></li>
       </ul>
     </div>
+    <hr/>
   </div>
 </nav>
-
 
     <section id="about">
 	<div class="container">
 		<div class="panel-default">
 		  <div class="panel-body" style="margin-top:0px;padding-top:0px">
-			<div class="avatar" style="text-align: center;margin-bottom: 50px;margin-top:0px;padding-top:0px">
-				<!--<img class="rounded float-right" width="250" src="/static/img/photocuzco.jpg" alt="Responsive image">-->
-				<div class="carousel">
-					<ul class="slides">
-					  <input type="radio" name="radio-buttons" id="img-1" checked />
-					  <li class="slide-container">
-						<div class="slide-image">
-						  <img class="img-thumbnail" src="/static/img/photocuzco.jpg">
-						</div>
-						<div class="carousel-controls">
-						  <label for="img-3" class="prev-slide">
-							<span>&lsaquo;</span>
-						  </label>
-						  <label for="img-2" class="next-slide">
-							<span>&rsaquo;</span>
-						  </label>
-						</div>
-					  </li>
-					  <input type="radio" name="radio-buttons" id="img-2" />
-					  <li class="slide-container">
-						<div class="slide-image">
-						  <img class="img-thumbnail" src="/static/img/photo2.jpg">
-						</div>
-						<div class="carousel-controls">
-						  <label for="img-1" class="prev-slide">
-							<span>&lsaquo;</span>
-						  </label>
-						  <label for="img-3" class="next-slide">
-							<span>&rsaquo;</span>
-						  </label>
-						</div>
-					  </li>
-					  <input type="radio" name="radio-buttons" id="img-3" />
-					  <li class="slide-container">
-						<div class="slide-image">
-						  <img  class="img-thumbnail" src="/static/img/photo3.jpg">
-						</div>
-						<div class="carousel-controls">
-						  <label for="img-2" class="prev-slide">
-							<span>&lsaquo;</span>
-						  </label>
-						  <label for="img-1" class="next-slide">
-							<span>&rsaquo;</span>
-						  </label>
-						</div>
-					  </li>
-					  <div class="carousel-dots">
-						<label for="img-1" class="carousel-dot" id="img-dot-1"></label>
-						<label for="img-2" class="carousel-dot" id="img-dot-2"></label>
-						<label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+			<div class="avatar text-center mb-5 mt-3 pt-0" style="margin-top:0px;padding-top:0px">
+				<div class="carousel-avatar">
+				  <ul class="slides">
+					<input type="radio" name="radio-buttons" id="img-1" checked />
+					<li class="slide-container">
+					  <div class="slide-image">
+						<img class="img-thumbnail" src="/static/img/photocuzco.jpg" alt="Avatar 1">
 					  </div>
-					</ul>
-				  </div>
-			</div>
-			<h5> <div class="div-justify">Welcome to my personal page !, I am <strong>Ngoc Luyen LE</strong>, a PhD researcher specializing in Natural Language Processing, Semantic Representation, and Recommender System fields. </div>
-			</h5>
-
-			<h5><div class="div-justify">I conducted my PhD research at the LAB-STICC laboratory at IMT Atlantique, France, under the supervision of Professors Yannis Haralambous and Philippe Lenca. My doctoral research focused on the study of semantic representation for the French language, utilizing Combinatory Categorial Grammar and Discourse Representation Theory.</div></h5>
-			<h5><div class="div-justify">My current research focuses on applying advanced techniques in Natural Language Processing to enhance semantic representation and optimize recommender systems. I am particularly interested in exploring innovative approaches that leverage cutting-edge technologies to improve the understanding of linguistic nuances, enabling more accurate and context-aware semantic modeling. Through my work, I aim to contribute to the development of intelligent systems that can better comprehend and respond to the intricacies of human language, ultimately advancing the capabilities of recommender systems in various domains.</div></h5>
-
+					  <div class="carousel-controls">
+						<label for="img-3" class="prev-slide"><span>&lsaquo;</span></label>
+						<label for="img-2" class="next-slide"><span>&rsaquo;</span></label>
+					  </div>
+					</li>
+			  
+					<input type="radio" name="radio-buttons" id="img-2" />
+					<li class="slide-container">
+					  <div class="slide-image">
+						<img class="img-thumbnail" src="/static/img/photo2.jpg" alt="Avatar 2">
+					  </div>
+					  <div class="carousel-controls">
+						<label for="img-1" class="prev-slide"><span>&lsaquo;</span></label>
+						<label for="img-3" class="next-slide"><span>&rsaquo;</span></label>
+					  </div>
+					</li>
+			  
+					<input type="radio" name="radio-buttons" id="img-3" />
+					<li class="slide-container">
+					  <div class="slide-image">
+						<img class="img-thumbnail" src="/static/img/photo3.jpg" alt="Avatar 3">
+					  </div>
+					  <div class="carousel-controls">
+						<label for="img-2" class="prev-slide"><span>&lsaquo;</span></label>
+						<label for="img-1" class="next-slide"><span>&rsaquo;</span></label>
+					  </div>
+					</li>
+			  
+					<div class="carousel-dots">
+					  <label for="img-1" class="carousel-dot"></label>
+					  <label for="img-2" class="carousel-dot"></label>
+					  <label for="img-3" class="carousel-dot"></label>
+					</div>
+				  </ul>
+				</div>
+			  </div>
+			  <h5>
+				<div class="div-justify">
+				  Hi! I am <strong>Ngoc Luyen Le</strong>, currently working as a Research and Development Engineer specializing in Natural Language Processing (NLP), Large Language Models (LLMs), Semantic Representation, and Recommender Systems.
+				</div>
+			  </h5>
+			  
+			  <h5>
+				<div class="div-justify">
+				  Previously, I held a postdoctoral research position at the Heudiasyc Laboratory of the Université de Technologie de Compiègne, under the supervision of Professor Marie-Hélène Abel. My work focused on recommender systems and knowledge representation, particularly in vehicle-related applications. Prior to that, I earned my PhD from the LAB-STICC Laboratory at IMT Atlantique, France, under the supervision of Professors Yannis Haralambous and Philippe Lenca. My doctoral research explored semantic representation for the French language using Combinatory Categorial Grammar (CCG) and Discourse Representation Theory (DRT).
+				</div>
+			  </h5>
+			  
+			  <h5>
+				<div class="div-justify">
+				  My current research focuses on applying advanced NLP techniques, LLMs, and Generative AI to enhance semantic modeling and optimize recommender systems across various application domains. I am particularly interested in developing context-aware, linguistically informed systems capable of understanding and responding to human language in specialized areas such as skill management and education. Through this work, I aim to contribute to the development of intelligent, adaptive technologies for real-world applications.
+				</div>
+			  </h5>
+			  
 			<!--<h5><div class="div-justify">	
 			I have done my phd research  at the LAB-STICC laboaratory at IMT Atlantique, France under the supervision of Prof. Yannis Haralambous and Prof. Philippe Lenca. My doctoral research focuses on studying of semantic representation for french language based on using the Combinatory Categorial Grammar and Discours Representation Theory.</div></h5>
 			<h5><div class="div-justify">Understanding natural language is extremely complex task for ameliorating the capacity of human-computer interaction because the meaning of an utterance is not only dependent on using vocabularies, grammars but also on the context of the communication. In addition, the explosion of neural network research brings diversity of deep neural network architectures as well as effective solutions about performance and accuracy in different fields. According to this view, my interesting domain research is Natural Language Understanding, Semantic Representation and Deep Neural Networks.</div></h5>-->
-			<h5> <div class="div-justify" style="padding-bottom:0px;">Have a look at some of my <a href="/projects.html"> Coding Projects</a> and my recent <a href="/publications.html"> Research Publications</a>. For more check out my academic &amp; professional <a href="http://localhost:3000resume.html">Curriculum Vitae</a>. Feel free to contact me at <a href="http://twitter.com/lengocluyen">@lengocluyen</a> or by <a href="mailto:luyenlengoc@gmail.com">luyenlengoc@gmail.com</a></div></h5>
+			<h5> <div class="div-justify" style="padding-bottom:0px;">Have a look at some of my <a href="//projects.html"> Coding Projects</a> and my recent <a href="//publications.html"> Research Publications</a>. For more check out my academic &amp; professional <a href="http://localhost:3000/resume.html">Curriculum Vitae</a>. Feel free to contact me at <a href="http://linkedin.com/in/lengocluyen">http://linkedin.com/in/lengocluyen</a> or by <a href="mailto:luyenlengoc@gmail.com">luyenlengoc@gmail.com</a></div></h5>
 			
 			<div class="social">
 	<h5 class="icon-bar">
     
-	  <a href="http://github.com/lengocluyen"><i class="fa fa-github"></i></a>
-    
-    
-	  <a href="mailto:luyenlengoc@gmail.com"><i class="fa fa-envelope"></i></a>
+	  <a href="https://cv.hal.science/luyen-le-ngoc"><i class="ai ai-hal-square ai-3x"></i></a>
     
 
     
-	  <a href="http://twitter.com/lengocluyen"><i class="fa fa-twitter"></i></a>
-    
-    
-	  <a href="http://linkedin.com/in/lengocluyen"><i class="fa fa-linkedin-square"></i></a>
-    
-    
-    
-	  <a href="http://stackoverflow.com/users/7595772/le-ngoc-luyen"><i class="fa fa-stack-overflow"></i></a>
+	  <a href="https://www.researchgate.net/profile/le-luyen"><i class="ai ai-researchgate-square ai-3x"></i></a>
     
 
     
-	  <a href="https://scholar.google.fr/citations?user=tFnk5VIAAAAJ"><i class="fa fa-graduation-cap"></i></a>
+	  <a href="https://scholar.google.fr/citations?user=tFnk5VIAAAAJ"><i class="ai ai-google-scholar-square ai-3x"></i></a>
+    
+
+    
+	  <a href="https://orcid.org/0000-0002-2043-0679"><i class="ai ai-orcid-square ai-3x"></i>
     
 	</h5>
 </div>
@@ -174,19 +180,25 @@
     <div id="footer">
         <div class="container">
             <hr/>
-            <div class="footer-line">
+            <div style="margin-top:20px;" class="footer-line">
             <div class="left">
-                <p class="text-muted">© 2020-2024 All rights reserved</p>
+                <p class="text-muted">© 2020-2025 All rights reserved</p>
             </div>
             <div class="right">
                 <div class="social">
                     <h5 class="icon-bar">
+                      
+                      <a href="http://github.com/lengocluyen"><i class="fab fa-github"></i></a>
+                      
+                  
+                      
+                      <a href="http://twitter.com/lengocluyen"><i class="fab fa-twitter"></i></a>
+                      
+                      
+                      <a href="http://linkedin.com/in/lengocluyen"><i class="fab fa-linkedin"></i></a>
+                      
               
-                <a href="http://facebook.com/lengocluyen"><i class="fa fa-facebook-square"></i></a>
-
-              
-              
-              <a href="http://instagram.com/lengocluyen"><i class="fa fa-instagram"></i></a>
+              <a href="http://instagram.com/lengocluyen"><i class="fab fa-instagram"></i></a>
             
               
               </h5>

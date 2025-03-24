@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <meta name="author" content="Ngoc Luyen LE" />
+	  <meta name="author" content="Ngoc Luyen Le" />
     <meta name="description" content="Personal blog and resume">
     <link rel="favicon" href="/static/img/favicon.ico">
 
@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
     <link rel="stylesheet" href="/static/css/academicons.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="/static/css/syntax.css" />
 
     <!-- Google Analytics -->
@@ -48,52 +48,232 @@
   <!-- Wrap all page content here -->
   <div id="wrap">
     <!-- Navbar header -->
-    <nav class="navbar navbar-default">
+    
+<nav class="navbar navbar-default shadow-sm custom-navbar">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="http://localhost:3000"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand custom-brand" href="http://localhost:3000">
+        <i class="fa fa-home"></i><span class="hidden-xs"> ABOUT ME</span>
+      </a>
     </div>
-    <div id="navbar">
+    <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="/blog.html">BLOG</a></li>-->
-        <li><a href="http://localhost:3000publications.html">PUBLICATIONS</a></li>
-        <li><a href="http://localhost:3000projects.html">PROJECTS</a></li>
-        <li><a href="http://localhost:3000resume.html">RESUME</a></li>
+        <!--<li><a href="http://localhost:3000blogs.html">BLOG</a></li>-->
+        <li><a href="http://localhost:3000/services.html">SERVICES</a></li>
+        <li><a href="http://localhost:3000/publications.html">PUBLICATIONS</a></li>
+        <li><a href="http://localhost:3000/projects.html">PROJECTS</a></li>
+        <li><a href="http://localhost:3000/resume.html">RESUME</a></li>
       </ul>
     </div>
+    <hr/>
   </div>
 </nav>
 
-
     <section id="projects">
 <div class="container">
-  <h3>Projects</h3>
+  
+	<h2 class="section-title mb-4"><i class="fa fa-folder-open  fa-xs"></i>&nbsp;PROJECTS</h2>
+
+	<div class="section-header d-flex justify-content-between align-items-center">
+		<span>Vehicle Recommender System Project</span>
+	  </div>
   <div class="panel-default">
     <div class="panel-body">
-		<h5><div class="div-justify-pub">
-			<i class="fa fa-github"></i>&nbsp;&nbsp;<strong><a href="https://github.com/lengocluyen/vivo_portals"  target=”_blank” >Vehicle Recommender System Project</a></strong>
-			In this project, our focus is on examining various recommender systems customized for the vehicle domain through a comprehensive analysis of existing algorithms. We consider diverse factors, including user preferences, historical interactions, and a semantic understanding of vehicle features, aiming to develop specialized recommendation models that not only factor in traditional aspects like make and model but also incorporate user-specific preferences and contextual information within the automotive market. The integration of ontologies enhances our ability to represent complex relationships, providing a nuanced understanding of user needs. Our research extends to estimating semantic similarity among vehicles, contributing to the evolution of recommendation systems beyond statistical associations. Ultimately, our goal is to advance recommender systems within the vehicle domain, delivering personalized and contextually relevant suggestions that align seamlessly with users' unique preferences and requirements.	
-		
-		</div>
+		<h5>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Comprehensive analysis of various recommender system algorithms tailored for the vehicle domain.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Integration of user preferences, historical interactions, and semantic understanding of vehicle features.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Development of personalized models considering make, model, and contextual factors.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Use of ontologies to represent complex relationships and better capture user intent.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Research on semantic similarity estimation between vehicles beyond basic attributes.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Development of a personalized, context-aware vehicle recommendations aligned with unique user needs.
+		  </div>
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Github link to the Vehicle Recommender System Project: <a href="https://github.com/lengocluyen/vivo_portals" target="_blank" class="githublink">Vivo_portals</a>
+		  </div>
 		</h5>
-		<h5><div class="div-justify-pub">
-			<i class="fa fa-github"></i>&nbsp;&nbsp;<strong><a href="https://github.com/lengocluyen/Syspherice"  target=”_blank” >SYSPHERICE Project</a></strong>
-			- Studies of the genetic and phenotypic diversity of Asian and African rice varieties require the manipulation of a large volume of data which are in fact heterogeneous in nature and stored in different forms. In this context, we have developed a generic integration and indexing tool in order to be able to navigate, share and annotate this data.
-		</div>
+</div>
+  </div>
+
+  <div class="section-header d-flex justify-content-between align-items-center">
+	<span>SYSPHERICE Project</span>
+  </div>
+  <div class="panel-default">
+    <div class="panel-body">
+		<h5>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Focus on the study of genetic and phenotypic diversity in Asian and African rice varieties.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Challenges addressed: handling large, heterogeneous datasets stored in varied formats.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Developed a generic integration and indexing tool to streamline data navigation, sharing, and annotation.
+		  </div>
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			  
+				GitHub link to the SYSPHERICE Project:  <a href="https://github.com/lengocluyen/Syspherice" target="_blank"> Syspherice</i></a>
+		  </div>
 		</h5>
-    <h5><div class="div-justify-pub">
-			<i class="fa fa-github"></i>&nbsp;&nbsp;<strong><a href="https://github.com/lengocluyen/semanticextraction"  target=”_blank” >Terms Extracting</a></strong>
-			- Implementing a tool to extract concepts and terms from pdf text files based on the patterns of POS tagging analysis from input sentences and frequency of occurrence of concepts and terms in general context. As a result, the triplet data set matching the common SVO structure from the input statements was constructed.
-		</div>
+	</div>
+</div>	
+
+<div class="section-header d-flex justify-content-between align-items-center">
+	<span>Terms Extracting</span>
+  </div>
+<div class="panel-default">
+    <div class="panel-body">
+    <h5>
+	  
+	  <div class="div-justify-pub">
+		<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+		Developed a tool to extract concepts and terms from PDF text files.
+	  </div>
+	  
+	  <div class="div-justify-pub">
+		<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+		Used POS tagging to identify meaningful patterns in input sentences.
+	  </div>
+	  
+	  <div class="div-justify-pub">
+		<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+		Incorporated frequency analysis to detect commonly occurring terms in general context.
+	  </div>
+	  
+	  <div class="div-justify-pub">
+		<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+		Generated a triplet dataset matching the standard Subject–Verb–Object (SVO) structure.
+	  </div>
+	  <div class="div-justify-pub">
+		<i class="fa fa-caret-right"></i>&nbsp;&nbsp;GitHub link to the Terms Extracting: 
+		  <a href="https://github.com/lengocluyen/semanticextraction" target="_blank">
+			Semanticextraction
+		  </a>
+	  </div>
 		</h5>
-		<h5><div class="div-justify-pub">
-			<i class="fa fa-github"></i>&nbsp;&nbsp;<strong><a href="https://github.com/lengocluyen/FrenchCCGBank"  target=”_blank” >The French CCG Corpus</a></strong>
-			- Combinatory Categorial Grammars (CCG) provide an interface between surface syntax and underlying semantic representation. In this work, we implement a novel approach for building CCG derivation trees from dependency syntax trees, and apply it to French language. We first introduce an algorithm for binarizing the syntax tree structure. Then, we  assign lexical categories by considering the context and dependency relations of words and word classes. Finally we build complete derivations by using the binary tree and CCG combinatory rules. The method is evaluated over the 21,550-sentence French Treebank Corpus.
-		</div>
+	</div>
+</div>	
+		<div class="section-header d-flex justify-content-between align-items-center">
+			<span>The French CCG Corpus</span>
+		  </div>
+		  <div class="panel-default">
+			<div class="panel-body">
+			<h5>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Combinatory Categorial Grammars (CCG) serve as a bridge between surface syntax and semantic representations.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Introduced a novel method to generate CCG derivation trees from dependency syntax trees, focused on the French language.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Developed a binarization algorithm to convert dependency tree structures into binary trees.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Assigned lexical categories by leveraging context and dependency relations of words and POS tags.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Generated full CCG derivations using binary structures and CCG combinatory rules.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Evaluation performed on the 21,550-sentence French Treebank Corpus.
+		  </div>
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			GitHub link to the French CCG Corpus: 
+			  <a href="https://github.com/lengocluyen/FrenchCCGBank" target="_blank">
+				FrenchCCGBank
+			  </a>
+		  </div>
 		</h5>
-		<h5><div class="div-justify-pub">
-			<i class="fa fa-github"></i>&nbsp;&nbsp;<strong><a href="https://github.com/lengocluyen/ccg_supertagging_french"  target=”_blank” >CCG Supertagging Task</a></strong>
-			We use the French CCG corpus and the Groningen Tree Bank corpus for the English language, to train a new BiLSTM+CRF neural architecture that uses (a)~morphosyntactic input features and (b)~feature correlations as input features. We show experimentally that for an inflected language like French, dependency syntax information allows significant improvement of the accuracy of the CCG supertagging task, when using deep learning techniques.</div>
+	</div>
+</div>
+
+<div class="section-header d-flex justify-content-between align-items-center">
+	<span>CCG Supertagging Task</span>
+  </div>
+<div class="panel-default">
+    <div class="panel-body">
+		<h5>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Used the French CCG corpus and the Groningen Treebank for English as training datasets.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Developed a new BiLSTM+CRF neural architecture for supertagging.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Incorporated morphosyntactic input features and feature correlation embeddings.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Demonstrated that dependency syntax significantly improves supertagging accuracy for French.
+		  </div>
+		  
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			Results highlight the effectiveness of deep learning for inflectional languages in syntactic tasks.
+		  </div>
+		  <div class="div-justify-pub">
+			<i class="fa fa-caret-right"></i>&nbsp;&nbsp;
+			GitHub link to CCG Supertagging Task:
+			  <a href="https://github.com/lengocluyen/ccg_supertagging_french" target="_blank">
+				CCG Supertagging Task
+			  </a>
+		  </div>
 		</h5>
     </div>
   </div>
@@ -109,19 +289,25 @@
     <div id="footer">
         <div class="container">
             <hr/>
-            <div class="footer-line">
+            <div style="margin-top:20px;" class="footer-line">
             <div class="left">
-                <p class="text-muted">© 2020-2024 All rights reserved</p>
+                <p class="text-muted">© 2020-2025 All rights reserved</p>
             </div>
             <div class="right">
                 <div class="social">
                     <h5 class="icon-bar">
+                      
+                      <a href="http://github.com/lengocluyen"><i class="fab fa-github"></i></a>
+                      
+                  
+                      
+                      <a href="http://twitter.com/lengocluyen"><i class="fab fa-twitter"></i></a>
+                      
+                      
+                      <a href="http://linkedin.com/in/lengocluyen"><i class="fab fa-linkedin"></i></a>
+                      
               
-                <a href="http://facebook.com/lengocluyen"><i class="fa fa-facebook-square"></i></a>
-
-              
-              
-              <a href="http://instagram.com/lengocluyen"><i class="fa fa-instagram"></i></a>
+              <a href="http://instagram.com/lengocluyen"><i class="fab fa-instagram"></i></a>
             
               
               </h5>

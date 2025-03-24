@@ -3,19 +3,25 @@
     <div id="footer">
         <div class="container">
             <hr/>
-            <div class="footer-line">
+            <div style="margin-top:20px;" class="footer-line">
             <div class="left">
-                <p class="text-muted">© 2020-2024 All rights reserved</p>
+                <p class="text-muted">© 2020-2025 All rights reserved</p>
             </div>
             <div class="right">
                 <div class="social">
                     <h5 class="icon-bar">
-              {% if site.stackoverflow %}
-                <a href="http://facebook.com/{{ site.github }}"><i class="fa fa-facebook-square"></i></a>
-
-              {% endif %}
+                      {% if site.github %}
+                      <a href="http://github.com/{{ site.github }}"><i class="fab fa-github"></i></a>
+                      {% endif %}
+                  
+                      {% if site.twitter %}
+                      <a href="http://twitter.com/{{ site.twitter }}"><i class="fab fa-twitter"></i></a>
+                      {% endif %}
+                      {% if site.linkedin %}
+                      <a href="http://linkedin.com/in/{{ site.linkedin }}"><i class="fab fa-linkedin"></i></a>
+                      {% endif %}
               {% if site.linkedin %}
-              <a href="http://instagram.com/{{ site.github }}"><i class="fa fa-instagram"></i></a>
+              <a href="http://instagram.com/{{ site.github }}"><i class="fab fa-instagram"></i></a>
             {% endif %}
               
               </h5>

@@ -10,5 +10,34 @@ jQuery(document).ready(function(e) {
         }, 1e3)
     })
 });
+$(document).ready(function () {
+    var currentPath = window.location.pathname;
 
+    $(".navbar-nav li a").each(function () {
+      var href = $(this).attr("href");
 
+      if (href && currentPath.indexOf(href.replace('{{ site.url }}', '')) !== -1) {
+        $(this).parent().addClass("active");
+      }
+    });
+  });
+
+  $(function () {
+    const radios = $('input[name="radio-buttons"]');
+
+    function getActiveIndex() {
+      return radios.index(radios.filter(':checked'));
+    }
+
+    $('.next-slide').on('click', function (e) {
+      e.preventDefault();
+      let index = getActiveIndex();
+      radios.eq((index + 1) % radios.length).prop('checked', true);
+    });
+
+    $('.prev-slide').on('click', function (e) {
+      e.preventDefault();
+      let index = getActiveIndex();
+      radios.eq((index - 1 + radios.length) % radios.length).prop('checked', true);
+    });
+  });

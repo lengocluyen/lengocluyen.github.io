@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <meta name="author" content="Ngoc Luyen LE" />
+	  <meta name="author" content="Ngoc Luyen Le" />
     <meta name="description" content="Personal blog and resume">
     <link rel="favicon" href="/static/img/favicon.ico">
 
@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
     <link rel="stylesheet" href="/static/css/academicons.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="/static/css/syntax.css" />
 
     <!-- Google Analytics -->
@@ -48,22 +48,32 @@
   <!-- Wrap all page content here -->
   <div id="wrap">
     <!-- Navbar header -->
-    <nav class="navbar navbar-default">
+    
+<nav class="navbar navbar-default shadow-sm custom-navbar">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="http://localhost:3000"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand custom-brand" href="http://localhost:3000">
+        <i class="fa fa-home"></i><span class="hidden-xs"> ABOUT ME</span>
+      </a>
     </div>
-    <div id="navbar">
+    <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="/blog.html">BLOG</a></li>-->
-        <li><a href="http://localhost:3000publications.html">PUBLICATIONS</a></li>
-        <li><a href="http://localhost:3000projects.html">PROJECTS</a></li>
-        <li><a href="http://localhost:3000resume.html">RESUME</a></li>
+        <!--<li><a href="http://localhost:3000blogs.html">BLOG</a></li>-->
+        <li><a href="http://localhost:3000/services.html">SERVICES</a></li>
+        <li><a href="http://localhost:3000/publications.html">PUBLICATIONS</a></li>
+        <li><a href="http://localhost:3000/projects.html">PROJECTS</a></li>
+        <li><a href="http://localhost:3000/resume.html">RESUME</a></li>
       </ul>
     </div>
+    <hr/>
   </div>
 </nav>
-
 
     <div class="container">
 	<div class="blog-post">
@@ -347,19 +357,25 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
     <div id="footer">
         <div class="container">
             <hr/>
-            <div class="footer-line">
+            <div style="margin-top:20px;" class="footer-line">
             <div class="left">
-                <p class="text-muted">© 2020-2024 All rights reserved</p>
+                <p class="text-muted">© 2020-2025 All rights reserved</p>
             </div>
             <div class="right">
                 <div class="social">
                     <h5 class="icon-bar">
+                      
+                      <a href="http://github.com/lengocluyen"><i class="fab fa-github"></i></a>
+                      
+                  
+                      
+                      <a href="http://twitter.com/lengocluyen"><i class="fab fa-twitter"></i></a>
+                      
+                      
+                      <a href="http://linkedin.com/in/lengocluyen"><i class="fab fa-linkedin"></i></a>
+                      
               
-                <a href="http://facebook.com/lengocluyen"><i class="fa fa-facebook-square"></i></a>
-
-              
-              
-              <a href="http://instagram.com/lengocluyen"><i class="fa fa-instagram"></i></a>
+              <a href="http://instagram.com/lengocluyen"><i class="fab fa-instagram"></i></a>
             
               
               </h5>

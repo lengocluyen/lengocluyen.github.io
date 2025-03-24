@@ -1,25 +1,19 @@
 <div class="social">
 	<h5 class="icon-bar">
-    {% if site.github %}
-	  <a href="http://github.com/{{ site.github }}"><i class="fa fa-github"></i></a>
-    {% endif %}
-    {% if site.email %}
-	  <a href="mailto:{{ site.email}}"><i class="fa fa-envelope"></i></a>
+    {% if site.hal %}
+	  <a href="https://cv.hal.science/{{ site.hal }}"><i class="ai ai-hal-square ai-3x"></i></a>
     {% endif %}
 
-    {% if site.twitter %}
-	  <a href="http://twitter.com/{{ site.twitter }}"><i class="fa fa-twitter"></i></a>
-    {% endif %}
-    {% if site.linkedin %}
-	  <a href="http://linkedin.com/in/{{ site.linkedin }}"><i class="fa fa-linkedin-square"></i></a>
-    {% endif %}
-    
-    {% if site.stackoverflow %}
-	  <a href="http://stackoverflow.com/{{ site.stackoverflow }}"><i class="fa fa-stack-overflow"></i></a>
+    {% if site.researchgate %}
+	  <a href="https://www.researchgate.net/profile/{{ site.researchgate }}"><i class="ai ai-researchgate-square ai-3x"></i></a>
     {% endif %}
 
     {% if site.googlescholar %}
-	  <a href="https://scholar.google.fr/citations?user={{ site.googlescholar }}"><i class="fa fa-graduation-cap"></i></a>
+	  <a href="https://scholar.google.fr/citations?user={{ site.googlescholar }}"><i class="ai ai-google-scholar-square ai-3x"></i></a>
+    {% endif %}
+
+    {% if site.orcid %}
+	  <a href="https://orcid.org/{{ site.orcid }}"><i class="ai ai-orcid-square ai-3x"></i>
     {% endif %}
 	</h5>
 </div>

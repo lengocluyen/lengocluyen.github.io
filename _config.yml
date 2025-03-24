@@ -15,15 +15,20 @@ safe: true
 # baseurl: http://localhost:3000/
 url: /
 baseurl: /
-title: Le Ngoc Luyen's Personal blog and resume
-author: Ngoc Luyen LE
+title: Le Ngoc Luyen's Personal Site
+author: Ngoc Luyen Le
 description: Personal blog and resume
 avatar: profile.jpg
 photoavatar: photocuzco.jpg
 photoavatar1: photo2.jpg
 photoavatar2: photo3.jpg
 email: luyenlengoc@gmail.com
+cvfullen: 04_cv_main_en.pdf
+cvfullfr: 04_cv_main.pdf
 github: lengocluyen # username
+hal: luyen-le-ngoc
+researchgate: le-luyen
+orcid: 0000-0002-2043-0679
 twitter: lengocluyen
 linkedin: lengocluyen
 googlescholar: tFnk5VIAAAAJ
