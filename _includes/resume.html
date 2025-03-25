@@ -1,53 +1,38 @@
 <section id="resumes">
-<div class="container">
-	
-<link rel="stylesheet" href="{{ site.baseurl }}static/css/base.css">
-<link rel="stylesheet" href="{{ site.baseurl }}static/css/skeleton.css">
-<link rel="stylesheet" href="{{ site.baseurl }}static/css/layout.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<h2 class="section-title mb-5" style="margin-bottom:35px;"><i class="fa fa-vcard fa-xs"></i>&nbsp;CURRICULUM VITAE</h2>
-  <div class="panel-default">
-    <div class="panel-body">
-		<header class="three columns" style="text-align: center;">
-				<img src="{{ site.baseurl }}static/img/{{ site.avatar }}" class="img-thumbnail">
-				<h1>{{ site.author }}</h1>
-
-				<div class="profile-links">
-				<a  class="link-block" href="{{ site.tel_full }}"><i class="fa fa-phone-square  fa-lg"></i> {{ site.tel }}</a>
-				<div class="profile-links">
-				<a  class="link-block"  href="{{ site.google_maps }}">
-						<i class="fa fa-map-marker  fa-lg"></i>{{ site.address.city }}<br/>
-						{{ site.address.country }}
-					</a></div>
-				<div class="profile-links"><a  class="link-block" href="{{ site.website_full }}"><i class="fa fa-id-card  fa-lg"></i> lengocluyen<br>.github.io</a></div>
-				<div class="profile-links"><a  class="link-block"  href="mailto:{{ site.email }}"><i class="fa fa-envelope-square  fa-lg"></i> luyenlengoc<br>@gmail.com</a></div>
-				<div class="profile-links"><a  class="link-block"  href="https://github.com/{{ site.github }}"><i class="fab fa-github fa-lg"></i> Github</a> </div> 
-				<div class="profile-links"><a  class="link-block" href="https://twitter.com/{{ site.twitter }}"><i class="fab fa-twitter fa-lg"></i> Twitter</a></div>
-				<div class="profile-links"><a  class="link-block"  href="http://linkedin.com/in/{{ site.linkedin }}"><i class="fab fa-linkedin fa-lg"></i> Linkedin</a></div>
-				<div class="profile-links">	<a  class="link-block"  href="http://instagram.com/{{ site.github }}"><i class="fab fa-instagram fa-lg"></i> Instagram</a></div>
-
-				<div class="profile-links"><a  class="link-block"  href="{{ site.baseurl }}static/{{site.cvfullen}}"><i class="fas fa-file-pdf fa-lg"></i> CV in English</a></div>
-				<div class="profile-links" style="margin-bottom:20px;">	<a  class="link-block"  href="{{ site.baseurl }}static/{{site.cvfullfr}}"><i class="fas fa-file-pdf fa-lg"></i> CV en français</a></div>
-
-			</div>
-			</header>
-			<div class="thirteen columns">
-
-				{% include experience.html %}
-
-				{% include education.html %}
-				
-				{% include skills.html %}
-				
-				{% include languages.html %}
-
-				{% include awards.html %}
-				
-				{% include interests.html %}
-				
-			</div>
-		</div>
+	<div class="container" style="margin-bottom:0px;">
+		<h2 class="section-title"><i class="fa fa-address-card fa-xs"></i>&nbsp;CURRICULUM VITAE</h2>
 	</div>
-</div>
-</section>
+	<div class="cv-container">
+  
+	  <!-- Profile Sidebar (Left) -->
+	  <aside class="cv-sidebar">
+		<img src="{{ site.baseurl }}static/img/{{ site.avatar }}" class="profile-pic img-thumbnail" alt="Profile">
+		<h1>{{ site.author }}</h1>
+  
+		<div class="profile-links">
+		  <a class="link-block" href="{{ site.tel_full }}"><i class="fa fa-phone-square fa-lg"></i> {{ site.tel }}</a>
+		  <a class="link-block" href="{{ site.google_maps }}"><i class="fa fa-map-marker fa-lg"></i> {{ site.address.city }}, {{ site.address.country }}</a>
+		  <a class="link-block" href="{{ site.website_full }}"><i class="fa fa-id-card fa-lg"></i> lengocluyen.github.io</a>
+		  <a class="link-block" href="mailto:{{ site.email }}"><i class="fa fa-envelope-square fa-lg"></i> luyenlengoc</br>@gmail.com</a>
+		  <a class="link-block" href="https://github.com/{{ site.github }}"><i class="fab fa-github fa-lg"></i> Github</a>
+		  <a class="link-block" href="https://twitter.com/{{ site.twitter }}"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
+		  <a class="link-block" href="http://linkedin.com/in/{{ site.linkedin }}"><i class="fab fa-linkedin fa-lg"></i> Linkedin</a>
+		  <a class="link-block" href="http://instagram.com/{{ site.github }}"><i class="fab fa-instagram fa-lg"></i> Instagram</a>
+		  <a class="link-block" href="{{ site.baseurl }}static/{{site.cvfullen}}"><i class="fas fa-file-pdf fa-lg"></i> CV in English</a>
+		  <a class="link-block" href="{{ site.baseurl }}static/{{site.cvfullfr}}"><i class="fas fa-file-pdf fa-lg"></i> CV en français</a>
+		</div>
+	  </aside>
+  
+	  <!-- CV Content (Right) -->
+	  <main class="cv-content">
+  
+		{% include experience.html %}
+		{% include education.html %}
+		{% include skills.html %}
+		{% include languages.html %}
+		{% include awards.html %}
+		{% include interests.html %}
+	  </main>
+  
+	</div>
+  </section>
