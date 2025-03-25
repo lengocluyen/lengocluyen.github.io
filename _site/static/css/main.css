@@ -432,7 +432,7 @@ input:checked + .slide-container .nav label { display: block; }
 
     .navbar-nav > li.active > a {
     background-color: #01579B;
-    color: white !important;
+    color: #2c3e50 !important;
     font-weight: 600;
     border-radius: 4px;
   }
@@ -499,6 +499,7 @@ input:checked + .slide-container .nav label { display: block; }
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /*  important for mobile */
   }
 
   .badge-primary {
@@ -507,6 +508,18 @@ input:checked + .slide-container .nav label { display: block; }
     padding: 5px 5px;
     border-radius: 4px;
     color: #fff;
+    white-space: nowrap;
+    margin-left: auto;  /* ✅ pushes it to the right even when wrapped */
+  }
+
+  .div-justify-pub .icon {
+    margin-top: 2px;
+    flex-shrink: 0;
+    color: #01579B;
+  }
+  
+  .div-justify-pub .text {
+    flex: 1;
   }
 
   .publication-entry {
