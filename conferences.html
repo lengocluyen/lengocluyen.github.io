@@ -275,7 +275,7 @@ permalink: /conferences.html
           <div class="button-grid">
             <button id="enableNotifBtn">Enable notifications</button>
             <button class="secondary" id="exportBtn">Export JSON</button>
-            <button class="secondary" id="checkNowBtn">Check reminders now</button>
+            <button class="secondary" id="checkNowBtn">Check now</button>
             <button class="secondary" id="importBtn">Import JSON</button>
           </div>
           <p class="hint" id="notifStatus"></p>
@@ -550,13 +550,22 @@ permalink: /conferences.html
     }
 
     function runReminderCheck() {
+      let foundCount = 0;
       conferences.forEach(conf => {
         const remaining = daysRemaining(conf.deadline);
         const notifyDays = Number(conf.notifyDays || 14);
         if (remaining >= 0 && remaining <= notifyDays) {
           maybeNotify(conf, remaining);
+          foundCount++;
         }
       });
+
+      // show feedback to user
+      const msg = `Reminder check complete. Found ${foundCount} conference(s) due soon.`;
+      els.notifStatus.textContent = msg;
+      setTimeout(() => {
+        els.notifStatus.textContent = '';
+      }, 3000);
     }
 
     function exportJson() {
