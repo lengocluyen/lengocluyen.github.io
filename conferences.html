@@ -274,13 +274,11 @@ permalink: /conferences.html
       </section>
     
       <section class="panel" style="margin-top: 22px;">
-        <div class="toolbar">
-          <button class="secondary" id="loadSampleBtn">Load sample conferences</button>
+        <div id="list" class="list"></div>
+        <div class="toolbar" style="margin-top:12px;">
           <button class="secondary" id="exportBtn">Export JSON</button>
           <button class="secondary" id="importBtn">Import JSON</button>
-          <button class="ghost" id="clearBtn">Clear all</button>
         </div>
-        <div id="list" class="list"></div>
         <div class="footer-note">
           Suggested next step for automation: keep a <strong>conferences.json</strong> file in your GitHub repo and refresh it with a GitHub Action (daily/weekly). This page can then fetch that file automatically without needing a backend server.
         </div>
@@ -319,8 +317,8 @@ permalink: /conferences.html
 
   <script>
     const STORAGE_KEY = 'conference-deadline-tracker-v1';
-    let conferences = loadConferences();
-    let notifiedMap = loadNotifiedMap();
+    let conferences = [];
+    let notifiedMap = {};
 
     const els = {
       list: document.getElementById('list'),
@@ -342,7 +340,21 @@ permalink: /conferences.html
       return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
     }
 
-    function loadConferences() {
+    async function loadConferences() {
+      // try to fetch a JSON file from the site root first
+      try {
+        const resp = await fetch('conferences.json');
+        if (resp.ok) {
+          const data = await resp.json();
+          if (Array.isArray(data)) {
+            return data;
+          }
+        }
+      } catch (e) {
+        // ignore, fall back to storage
+      }
+
+      // fallback to localStorage if fetch failed or returned non-array
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         return raw ? JSON.parse(raw) : [];
@@ -504,29 +516,6 @@ permalink: /conferences.html
     window.deleteConference = deleteConference;
     window.duplicateConference = duplicateConference;
 
-    function loadSampleData() {
-      const now = new Date();
-      const addDays = days => {
-        const d = new Date(now);
-        d.setDate(d.getDate() + days);
-        d.setHours(23, 59, 0, 0);
-        return d.toISOString().slice(0, 16);
-      };
-
-      conferences = [
-        { id: uid(), name: 'AAAI 2027', rank: 'A*', location: 'Sample', url: '', deadline: addDays(12), notifyDays: 14, category: 'AI', source: 'sample' },
-        { id: uid(), name: 'ACL 2027', rank: 'A*', location: 'Sample', url: '', deadline: addDays(35), notifyDays: 21, category: 'NLP', source: 'sample' },
-        { id: uid(), name: 'WWW 2027', rank: 'A*', location: 'Sample', url: '', deadline: addDays(48), notifyDays: 21, category: 'AI', source: 'sample' },
-        { id: uid(), name: 'ISWC 2027', rank: 'A', location: 'Sample', url: '', deadline: addDays(22), notifyDays: 14, category: 'Semantic Web', source: 'sample' },
-        { id: uid(), name: 'LAK 2027', rank: 'A', location: 'Sample', url: '', deadline: addDays(8), notifyDays: 10, category: 'EdTech', source: 'sample' }
-      ];
-
-      notifiedMap = {};
-      saveConferences();
-      saveNotifiedMap();
-      render();
-      runReminderCheck();
-    }
 
     async function requestNotificationPermission() {
       if (!('Notification' in window)) {
@@ -597,21 +586,9 @@ permalink: /conferences.html
       input.click();
     }
 
-    function clearAll() {
-      const ok = confirm('Delete all conferences from local storage?');
-      if (!ok) return;
-      conferences = [];
-      notifiedMap = {};
-      saveConferences();
-      saveNotifiedMap();
-      render();
-    }
-
     document.getElementById('addBtn').addEventListener('click', addConference);
-    document.getElementById('loadSampleBtn').addEventListener('click', loadSampleData);
     document.getElementById('exportBtn').addEventListener('click', exportJson);
     document.getElementById('importBtn').addEventListener('click', importJson);
-    document.getElementById('clearBtn').addEventListener('click', clearAll);
     document.getElementById('enableNotifBtn').addEventListener('click', requestNotificationPermission);
     document.getElementById('checkNowBtn').addEventListener('click', runReminderCheck);
 
@@ -629,10 +606,16 @@ permalink: /conferences.html
     // initial state
     showTab('list');
 
-    updateNotifStatus(typeof Notification !== 'undefined' ? Notification.permission : 'unsupported');
-    render();
-    runReminderCheck();
-    setInterval(runReminderCheck, 60 * 1000);
+    // after functions defined we initialize
+    (async () => {
+      conferences = await loadConferences();
+      notifiedMap = loadNotifiedMap();
+
+      updateNotifStatus(typeof Notification !== 'undefined' ? Notification.permission : 'unsupported');
+      render();
+      runReminderCheck();
+      setInterval(runReminderCheck, 60 * 1000);
+    })();
   </script>
 </body>
 </html>
