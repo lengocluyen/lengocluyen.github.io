@@ -263,11 +263,15 @@ permalink: /conferences.html
         </div>
 
         <div class="panel">
-          <h2>Notifications</h2>
-          <p>Enable browser notifications to receive reminders while the app is open.</p>
+          <h2>Settings</h2>
+          <p>Enable browser notifications to receive reminders while the app is open. You can also export or import the conference list.</p>
           <div class="toolbar" style="margin-top: 14px;">
             <button id="enableNotifBtn">Enable notifications</button>
             <button class="secondary" id="checkNowBtn">Check reminders now</button>
+          </div>
+          <div class="toolbar" style="margin-top: 12px;">
+            <button class="secondary" id="exportBtn">Export JSON</button>
+            <button class="secondary" id="importBtn">Import JSON</button>
           </div>
           <p class="hint" id="notifStatus">Notification permission: unknown</p>
         </div>
@@ -275,10 +279,6 @@ permalink: /conferences.html
     
       <section class="panel" style="margin-top: 22px;">
         <div id="list" class="list"></div>
-        <div class="toolbar" style="margin-top:12px;">
-          <button class="secondary" id="exportBtn">Export JSON</button>
-          <button class="secondary" id="importBtn">Import JSON</button>
-        </div>
         <div class="footer-note">
           Suggested next step for automation: keep a <strong>conferences.json</strong> file in your GitHub repo and refresh it with a GitHub Action (daily/weekly). This page can then fetch that file automatically without needing a backend server.
         </div>
