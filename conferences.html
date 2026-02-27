@@ -207,69 +207,114 @@ permalink: /conferences.html
       .small-actions { justify-content: flex-start; }
       .stats { grid-template-columns: 1fr; }
     }
+
+    /* tab styles */
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .tabs button {
+      padding: 8px 16px;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    .tabs button.active {
+      background: var(--accent);
+      color: #000;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <section class="hero">
-      <div class="panel">
-        <h1>Conference Deadline Tracker</h1>
-        <p>
-          Track important conference dates, get browser notifications, and keep everything in a single static app you can publish on GitHub Pages.
+    <!-- tabs for switching between list and add forms -->
+    <div class="tabs">
+      <button id="tabList" class="active">All conferences / journals</button>
+      <button id="tabAdd">Add new</button>
+    </div>
+
+    <div id="sectionList">
+      <section class="hero">
+        <div class="panel">
+          <h1>Conference Deadline Tracker</h1>
+          <p>
+            Track important conference dates, get browser notifications, and keep everything in a single static app you can publish on GitHub Pages.
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <div class="value" id="totalCount">0</div>
+              <div class="meta">Tracked conferences</div>
+            </div>
+            <div class="stat">
+              <div class="value" id="upcomingCount">0</div>
+              <div class="meta">Upcoming</div>
+            </div>
+            <div class="stat">
+              <div class="value" id="soonCount">0</div>
+              <div class="meta">Due within 14 days</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Notifications</h2>
+          <p>Enable browser notifications to receive reminders while the app is open.</p>
+          <div class="toolbar" style="margin-top: 14px;">
+            <button id="enableNotifBtn">Enable notifications</button>
+            <button class="secondary" id="checkNowBtn">Check reminders now</button>
+          </div>
+          <p class="hint" id="notifStatus">Notification permission: unknown</p>
+        </div>
+      </section>
+    
+      <section class="panel" style="margin-top: 22px;">
+        <div class="toolbar">
+          <button class="secondary" id="loadSampleBtn">Load sample conferences</button>
+          <button class="secondary" id="exportBtn">Export JSON</button>
+          <button class="secondary" id="importBtn">Import JSON</button>
+          <button class="ghost" id="clearBtn">Clear all</button>
+        </div>
+        <div id="list" class="list"></div>
+        <div class="footer-note">
+          Suggested next step for automation: keep a <strong>conferences.json</strong> file in your GitHub repo and refresh it with a GitHub Action (daily/weekly). This page can then fetch that file automatically without needing a backend server.
+        </div>
+      </section>
+    </div>
+
+    <div id="sectionAdd" style="display:none;">
+      <section class="panel">
+        <h2>Add a conference</h2>
+        <div class="controls">
+          <input id="nameInput" class="span-2" type="text" placeholder="Conference name (e.g., ISWC 2027)" />
+          <input id="rankInput" type="text" placeholder="Rank (A, A*, B...)" />
+          <input id="locationInput" class="span-2" type="text" placeholder="Location / notes" />
+          <input id="urlInput" type="url" placeholder="CFP URL (optional)" />
+
+          <input id="deadlineInput" type="datetime-local" />
+          <input id="notifyDaysInput" type="number" min="0" value="14" placeholder="Notify days before" />
+          <select id="categoryInput">
+            <option value="AI">AI</option>
+            <option value="NLP">NLP</option>
+            <option value="Semantic Web">Semantic Web</option>
+            <option value="EdTech">EdTech</option>
+            <option value="Data Mining">Data Mining</option>
+            <option value="Other">Other</option>
+          </select>
+          <input id="sourceInput" class="span-3" type="text" placeholder="Source note (manual, WikiCFP, organizer page...)" />
+
+          <button id="addBtn" class="full">Add conference</button>
+        </div>
+        <p class="hint">
+          This static app stores data locally in your browser. For true automatic collection from conference websites, use a small backend or a GitHub Action that updates a JSON file in your repo.
         </p>
-        <div class="stats">
-          <div class="stat">
-            <div class="value" id="totalCount">0</div>
-            <div class="meta">Tracked conferences</div>
-          </div>
-          <div class="stat">
-            <div class="value" id="upcomingCount">0</div>
-            <div class="meta">Upcoming</div>
-          </div>
-          <div class="stat">
-            <div class="value" id="soonCount">0</div>
-            <div class="meta">Due within 14 days</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <h2>Notifications</h2>
-        <p>Enable browser notifications to receive reminders while the app is open.</p>
-        <div class="toolbar" style="margin-top: 14px;">
-          <button id="enableNotifBtn">Enable notifications</button>
-          <button class="secondary" id="checkNowBtn">Check reminders now</button>
-        </div>
-        <p class="hint" id="notifStatus">Notification permission: unknown</p>
-      </div>
-    </section>
-
-    <section class="panel">
-      <h2>Add a conference</h2>
-      <div class="controls">
-        <input id="nameInput" class="span-2" type="text" placeholder="Conference name (e.g., ISWC 2027)" />
-        <input id="rankInput" type="text" placeholder="Rank (A, A*, B...)" />
-        <input id="locationInput" class="span-2" type="text" placeholder="Location / notes" />
-        <input id="urlInput" type="url" placeholder="CFP URL (optional)" />
-
-        <input id="deadlineInput" type="datetime-local" />
-        <input id="notifyDaysInput" type="number" min="0" value="14" placeholder="Notify days before" />
-        <select id="categoryInput">
-          <option value="AI">AI</option>
-          <option value="NLP">NLP</option>
-          <option value="Semantic Web">Semantic Web</option>
-          <option value="EdTech">EdTech</option>
-          <option value="Data Mining">Data Mining</option>
-          <option value="Other">Other</option>
-        </select>
-        <input id="sourceInput" class="span-3" type="text" placeholder="Source note (manual, WikiCFP, organizer page...)" />
-
-        <button id="addBtn" class="full">Add conference</button>
-      </div>
-      <p class="hint">
-        This static app stores data locally in your browser. For true automatic collection from conference websites, use a small backend or a GitHub Action that updates a JSON file in your repo.
-      </p>
-    </section>
+      </section>
+    </div>
 
     <section class="panel" style="margin-top: 22px;">
       <div class="toolbar">
@@ -582,6 +627,20 @@ permalink: /conferences.html
     document.getElementById('clearBtn').addEventListener('click', clearAll);
     document.getElementById('enableNotifBtn').addEventListener('click', requestNotificationPermission);
     document.getElementById('checkNowBtn').addEventListener('click', runReminderCheck);
+
+    // tab logic
+    function showTab(tab) {
+      document.getElementById('tabList').classList.toggle('active', tab === 'list');
+      document.getElementById('tabAdd').classList.toggle('active', tab === 'add');
+      document.getElementById('sectionList').style.display = tab === 'list' ? 'block' : 'none';
+      document.getElementById('sectionAdd').style.display = tab === 'add' ? 'block' : 'none';
+    }
+
+    document.getElementById('tabList').addEventListener('click', () => showTab('list'));
+    document.getElementById('tabAdd').addEventListener('click', () => showTab('add'));
+
+    // initial state
+    showTab('list');
 
     updateNotifStatus(typeof Notification !== 'undefined' ? Notification.permission : 'unsupported');
     render();
