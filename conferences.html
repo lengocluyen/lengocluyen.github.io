@@ -465,6 +465,19 @@ permalink: /conferences.html
         .replace(/'/g, '&#039;');
     }
 
+    async function saveToServer() {
+      // attempt to persist conferences to Vercel API; failures are non-fatal
+      try {
+        await fetch('/api/save-conferences', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ conferences }),
+        });
+      } catch (e) {
+        console.error('server save failed', e);
+      }
+    }
+
     function addConference() {
       const name = els.nameInput.value.trim();
       const deadline = els.deadlineInput.value;
@@ -489,6 +502,7 @@ permalink: /conferences.html
       clearForm();
       render();
       runReminderCheck();
+      saveToServer();
     }
 
     function clearForm() {
