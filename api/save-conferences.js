@@ -12,26 +12,41 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'conferences must be an array' });
   }
 
-  const token = process.env.GITHUB_TOKEN;          // set in Vercel dashboard
+  const token = process.env.GITHUB_TOKEN; // set in Vercel dashboard
+  if (!token) {
+    return res
+      .status(500)
+      .json({ error: 'Missing GITHUB_TOKEN environment variable' });
+  }
+
   const owner = 'lengocluyen';                     // replace with your GitHub username/org if different
   const repo  = 'lengocluyen.github.io';           // repository name
   const path  = 'conferences.json';
 
   try {
+    const ghHeaders = {
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'vercel-save-conferences',
+      'X-GitHub-Api-Version': '2022-11-28',
+    };
+
     // fetch current file to obtain SHA
     const getRes = await fetch(
       `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
       {
-        headers: {
-          Authorization: `token ${token}`,
-          Accept: 'application/vnd.github.v3+json',
-        },
+        headers: ghHeaders,
       }
     );
-    if (!getRes.ok) throw new Error('could not read file');
+    const getBody = await getRes.json();
+    if (!getRes.ok) {
+      return res.status(getRes.status).json({
+        error: 'GitHub read failed',
+        details: getBody,
+      });
+    }
 
-    const fileData = await getRes.json();
-    const sha = fileData.sha;
+    const sha = getBody.sha;
 
     const content = Buffer.from(JSON.stringify(conferences, null, 2)).toString(
       'base64'
@@ -42,9 +57,8 @@ export default async function handler(req, res) {
       {
         method: 'PUT',
         headers: {
-          Authorization: `token ${token}`,
           'Content-Type': 'application/json',
-          Accept: 'application/vnd.github.v3+json',
+          ...ghHeaders,
         },
         body: JSON.stringify({
           message: 'Update conferences.json via API',
@@ -54,8 +68,15 @@ export default async function handler(req, res) {
       }
     );
 
-    const result = await putRes.json();
-    return res.status(putRes.status).json(result);
+    const putBody = await putRes.json();
+    if (!putRes.ok) {
+      return res.status(putRes.status).json({
+        error: 'GitHub update failed',
+        details: putBody,
+      });
+    }
+
+    return res.status(200).json(putBody);
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: err.message });
