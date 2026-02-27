@@ -1,0 +1,592 @@
+---
+layout: null
+permalink: /conferences.html
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conference Deadline Tracker</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --card: #1f2937;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #38bdf8;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #0b1220, #111827);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .panel {
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+    }
+
+    h1, h2, h3 { margin: 0 0 10px; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.15rem; }
+    p { margin: 0; color: var(--muted); line-height: 1.5; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .stat {
+      background: rgba(31, 41, 55, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .stat .value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .controls .full { grid-column: span 6; }
+    .controls .span-2 { grid-column: span 2; }
+    .controls .span-3 { grid-column: span 3; }
+
+    input, button, select, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #0f172a;
+      color: var(--text);
+      padding: 12px 14px;
+      font-size: 0.95rem;
+    }
+
+    textarea { min-height: 100px; resize: vertical; }
+
+    button {
+      cursor: pointer;
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      border: none;
+      font-weight: 600;
+    }
+
+    button.secondary {
+      background: #1e293b;
+      border: 1px solid var(--border);
+    }
+
+    button.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .card {
+      background: rgba(31, 41, 55, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .title {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .badge.ok { color: #bbf7d0; background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.25); }
+    .badge.warn { color: #fde68a; background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.25); }
+    .badge.danger { color: #fecaca; background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.25); }
+
+    .small-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .small-actions button {
+      width: auto;
+      padding: 8px 10px;
+      font-size: 0.85rem;
+    }
+
+    .hint {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 10px;
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
+      .controls .full, .controls .span-2, .controls .span-3 { grid-column: auto; }
+      .card { grid-template-columns: 1fr; }
+      .small-actions { justify-content: flex-start; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="panel">
+        <h1>Conference Deadline Tracker</h1>
+        <p>
+          Track important conference dates, get browser notifications, and keep everything in a single static app you can publish on GitHub Pages.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <div class="value" id="totalCount">0</div>
+            <div class="meta">Tracked conferences</div>
+          </div>
+          <div class="stat">
+            <div class="value" id="upcomingCount">0</div>
+            <div class="meta">Upcoming</div>
+          </div>
+          <div class="stat">
+            <div class="value" id="soonCount">0</div>
+            <div class="meta">Due within 14 days</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Notifications</h2>
+        <p>Enable browser notifications to receive reminders while the app is open.</p>
+        <div class="toolbar" style="margin-top: 14px;">
+          <button id="enableNotifBtn">Enable notifications</button>
+          <button class="secondary" id="checkNowBtn">Check reminders now</button>
+        </div>
+        <p class="hint" id="notifStatus">Notification permission: unknown</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Add a conference</h2>
+      <div class="controls">
+        <input id="nameInput" class="span-2" type="text" placeholder="Conference name (e.g., ISWC 2027)" />
+        <input id="rankInput" type="text" placeholder="Rank (A, A*, B...)" />
+        <input id="locationInput" class="span-2" type="text" placeholder="Location / notes" />
+        <input id="urlInput" type="url" placeholder="CFP URL (optional)" />
+
+        <input id="deadlineInput" type="datetime-local" />
+        <input id="notifyDaysInput" type="number" min="0" value="14" placeholder="Notify days before" />
+        <select id="categoryInput">
+          <option value="AI">AI</option>
+          <option value="NLP">NLP</option>
+          <option value="Semantic Web">Semantic Web</option>
+          <option value="EdTech">EdTech</option>
+          <option value="Data Mining">Data Mining</option>
+          <option value="Other">Other</option>
+        </select>
+        <input id="sourceInput" class="span-3" type="text" placeholder="Source note (manual, WikiCFP, organizer page...)" />
+
+        <button id="addBtn" class="full">Add conference</button>
+      </div>
+      <p class="hint">
+        This static app stores data locally in your browser. For true automatic collection from conference websites, use a small backend or a GitHub Action that updates a JSON file in your repo.
+      </p>
+    </section>
+
+    <section class="panel" style="margin-top: 22px;">
+      <div class="toolbar">
+        <button class="secondary" id="loadSampleBtn">Load sample conferences</button>
+        <button class="secondary" id="exportBtn">Export JSON</button>
+        <button class="secondary" id="importBtn">Import JSON</button>
+        <button class="ghost" id="clearBtn">Clear all</button>
+      </div>
+      <div id="list" class="list"></div>
+      <div class="footer-note">
+        Suggested next step for automation: keep a <strong>conferences.json</strong> file in your GitHub repo and refresh it with a GitHub Action (daily/weekly). This page can then fetch that file automatically without needing a backend server.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'conference-deadline-tracker-v1';
+    let conferences = loadConferences();
+    let notifiedMap = loadNotifiedMap();
+
+    const els = {
+      list: document.getElementById('list'),
+      totalCount: document.getElementById('totalCount'),
+      upcomingCount: document.getElementById('upcomingCount'),
+      soonCount: document.getElementById('soonCount'),
+      notifStatus: document.getElementById('notifStatus'),
+      nameInput: document.getElementById('nameInput'),
+      rankInput: document.getElementById('rankInput'),
+      locationInput: document.getElementById('locationInput'),
+      urlInput: document.getElementById('urlInput'),
+      deadlineInput: document.getElementById('deadlineInput'),
+      notifyDaysInput: document.getElementById('notifyDaysInput'),
+      categoryInput: document.getElementById('categoryInput'),
+      sourceInput: document.getElementById('sourceInput')
+    };
+
+    function uid() {
+      return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    }
+
+    function loadConferences() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveConferences() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(conferences));
+    }
+
+    function loadNotifiedMap() {
+      try {
+        const raw = localStorage.getItem(`${STORAGE_KEY}-notified`);
+        return raw ? JSON.parse(raw) : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveNotifiedMap() {
+      localStorage.setItem(`${STORAGE_KEY}-notified`, JSON.stringify(notifiedMap));
+    }
+
+    function formatDate(dt) {
+      const d = new Date(dt);
+      return d.toLocaleString([], {
+        year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit'
+      });
+    }
+
+    function daysRemaining(deadline) {
+      const now = new Date();
+      const diffMs = new Date(deadline).getTime() - now.getTime();
+      return diffMs / (1000 * 60 * 60 * 24);
+    }
+
+    function getStatus(conf) {
+      const days = daysRemaining(conf.deadline);
+      if (days < 0) return { label: 'Passed', cls: 'danger' };
+      if (days <= 14) return { label: 'Soon', cls: 'warn' };
+      return { label: 'Upcoming', cls: 'ok' };
+    }
+
+    function render() {
+      const sorted = [...conferences].sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+      const upcoming = sorted.filter(c => daysRemaining(c.deadline) >= 0);
+      const soon = sorted.filter(c => {
+        const d = daysRemaining(c.deadline);
+        return d >= 0 && d <= 14;
+      });
+
+      els.totalCount.textContent = sorted.length;
+      els.upcomingCount.textContent = upcoming.length;
+      els.soonCount.textContent = soon.length;
+
+      if (!sorted.length) {
+        els.list.innerHTML = '<div class="empty">No conferences yet. Add one or load sample data.</div>';
+        return;
+      }
+
+      els.list.innerHTML = sorted.map(conf => {
+        const status = getStatus(conf);
+        const remaining = daysRemaining(conf.deadline);
+        const humanRemaining = remaining < 0
+          ? `${Math.abs(Math.ceil(remaining))} day(s) ago`
+          : `${Math.ceil(remaining)} day(s) left`;
+
+        const safeUrl = conf.url ? `<a href="${escapeHtml(conf.url)}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">CFP</a>` : '—';
+
+        return `
+          <div class="card">
+            <div>
+              <div class="title">${escapeHtml(conf.name)}</div>
+              <div class="meta">${escapeHtml(conf.category || 'Other')} • ${escapeHtml(conf.rank || '—')} • ${escapeHtml(conf.location || 'No location')}</div>
+              <div class="meta" style="margin-top: 6px;">Source: ${escapeHtml(conf.source || 'manual')} • Link: ${safeUrl}</div>
+            </div>
+            <div>
+              <div class="title">Deadline</div>
+              <div class="meta">${formatDate(conf.deadline)}</div>
+            </div>
+            <div>
+              <span class="badge ${status.cls}">${status.label}</span>
+              <div class="meta" style="margin-top: 8px;">${humanRemaining}</div>
+              <div class="meta">Reminder: ${Number(conf.notifyDays || 14)} day(s) before</div>
+            </div>
+            <div class="small-actions">
+              <button class="secondary" onclick="duplicateConference('${conf.id}')">Duplicate</button>
+              <button class="ghost" onclick="deleteConference('${conf.id}')">Delete</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function addConference() {
+      const name = els.nameInput.value.trim();
+      const deadline = els.deadlineInput.value;
+      if (!name || !deadline) {
+        alert('Please provide at least a conference name and deadline.');
+        return;
+      }
+
+      conferences.push({
+        id: uid(),
+        name,
+        rank: els.rankInput.value.trim(),
+        location: els.locationInput.value.trim(),
+        url: els.urlInput.value.trim(),
+        deadline,
+        notifyDays: Number(els.notifyDaysInput.value || 14),
+        category: els.categoryInput.value,
+        source: els.sourceInput.value.trim()
+      });
+
+      saveConferences();
+      clearForm();
+      render();
+      runReminderCheck();
+    }
+
+    function clearForm() {
+      els.nameInput.value = '';
+      els.rankInput.value = '';
+      els.locationInput.value = '';
+      els.urlInput.value = '';
+      els.deadlineInput.value = '';
+      els.notifyDaysInput.value = 14;
+      els.categoryInput.value = 'AI';
+      els.sourceInput.value = '';
+    }
+
+    function deleteConference(id) {
+      conferences = conferences.filter(c => c.id !== id);
+      delete notifiedMap[id];
+      saveConferences();
+      saveNotifiedMap();
+      render();
+    }
+
+    function duplicateConference(id) {
+      const conf = conferences.find(c => c.id === id);
+      if (!conf) return;
+      conferences.push({ ...conf, id: uid(), name: `${conf.name} (copy)` });
+      saveConferences();
+      render();
+    }
+
+    window.deleteConference = deleteConference;
+    window.duplicateConference = duplicateConference;
+
+    function loadSampleData() {
+      const now = new Date();
+      const addDays = days => {
+        const d = new Date(now);
+        d.setDate(d.getDate() + days);
+        d.setHours(23, 59, 0, 0);
+        return d.toISOString().slice(0, 16);
+      };
+
+      conferences = [
+        { id: uid(), name: 'AAAI 2027', rank: 'A*', location: 'Sample', url: '', deadline: addDays(12), notifyDays: 14, category: 'AI', source: 'sample' },
+        { id: uid(), name: 'ACL 2027', rank: 'A*', location: 'Sample', url: '', deadline: addDays(35), notifyDays: 21, category: 'NLP', source: 'sample' },
+        { id: uid(), name: 'WWW 2027', rank: 'A*', location: 'Sample', url: '', deadline: addDays(48), notifyDays: 21, category: 'AI', source: 'sample' },
+        { id: uid(), name: 'ISWC 2027', rank: 'A', location: 'Sample', url: '', deadline: addDays(22), notifyDays: 14, category: 'Semantic Web', source: 'sample' },
+        { id: uid(), name: 'LAK 2027', rank: 'A', location: 'Sample', url: '', deadline: addDays(8), notifyDays: 10, category: 'EdTech', source: 'sample' }
+      ];
+
+      notifiedMap = {};
+      saveConferences();
+      saveNotifiedMap();
+      render();
+      runReminderCheck();
+    }
+
+    async function requestNotificationPermission() {
+      if (!('Notification' in window)) {
+        els.notifStatus.textContent = 'Notifications are not supported in this browser.';
+        return;
+      }
+      const permission = await Notification.requestPermission();
+      updateNotifStatus(permission);
+    }
+
+    function updateNotifStatus(permission = Notification.permission) {
+      els.notifStatus.textContent = `Notification permission: ${permission}`;
+    }
+
+    function maybeNotify(conf, remainingDays) {
+      if (!('Notification' in window) || Notification.permission !== 'granted') return;
+      const key = `${conf.id}-${new Date(conf.deadline).toDateString()}`;
+      if (notifiedMap[key]) return;
+
+      new Notification(`Conference reminder: ${conf.name}`, {
+        body: `Deadline in ${Math.ceil(remainingDays)} day(s): ${formatDate(conf.deadline)}`,
+        tag: key
+      });
+
+      notifiedMap[key] = true;
+      saveNotifiedMap();
+    }
+
+    function runReminderCheck() {
+      conferences.forEach(conf => {
+        const remaining = daysRemaining(conf.deadline);
+        const notifyDays = Number(conf.notifyDays || 14);
+        if (remaining >= 0 && remaining <= notifyDays) {
+          maybeNotify(conf, remaining);
+        }
+      });
+    }
+
+    function exportJson() {
+      const blob = new Blob([JSON.stringify(conferences, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'conferences.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importJson() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'application/json';
+      input.onchange = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          if (!Array.isArray(data)) throw new Error('Invalid format');
+          conferences = data.map(item => ({ ...item, id: item.id || uid() }));
+          saveConferences();
+          render();
+          runReminderCheck();
+        } catch {
+          alert('Invalid JSON file.');
+        }
+      };
+      input.click();
+    }
+
+    function clearAll() {
+      const ok = confirm('Delete all conferences from local storage?');
+      if (!ok) return;
+      conferences = [];
+      notifiedMap = {};
+      saveConferences();
+      saveNotifiedMap();
+      render();
+    }
+
+    document.getElementById('addBtn').addEventListener('click', addConference);
+    document.getElementById('loadSampleBtn').addEventListener('click', loadSampleData);
+    document.getElementById('exportBtn').addEventListener('click', exportJson);
+    document.getElementById('importBtn').addEventListener('click', importJson);
+    document.getElementById('clearBtn').addEventListener('click', clearAll);
+    document.getElementById('enableNotifBtn').addEventListener('click', requestNotificationPermission);
+    document.getElementById('checkNowBtn').addEventListener('click', runReminderCheck);
+
+    updateNotifStatus(typeof Notification !== 'undefined' ? Notification.permission : 'unsupported');
+    render();
+    runReminderCheck();
+    setInterval(runReminderCheck, 60 * 1000);
+  </script>
+</body>
+</html>
