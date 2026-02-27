@@ -208,6 +208,14 @@ permalink: /conferences.html
       .stats { grid-template-columns: 1fr; }
     }
 
+    /* button grid for settings */
+    .button-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
     /* tab styles */
     .tabs {
       display: flex;
@@ -264,16 +272,13 @@ permalink: /conferences.html
 
         <div class="panel">
           <h2>Settings</h2>
-          <p>Enable browser notifications to receive reminders while the app is open. You can also export or import the conference list.</p>
-          <div class="toolbar" style="margin-top: 14px;">
+          <div class="button-grid">
             <button id="enableNotifBtn">Enable notifications</button>
-            <button class="secondary" id="checkNowBtn">Check reminders now</button>
-          </div>
-          <div class="toolbar" style="margin-top: 12px;">
             <button class="secondary" id="exportBtn">Export JSON</button>
+            <button class="secondary" id="checkNowBtn">Check reminders now</button>
             <button class="secondary" id="importBtn">Import JSON</button>
           </div>
-          <p class="hint" id="notifStatus">Notification permission: unknown</p>
+          <p class="hint" id="notifStatus"></p>
         </div>
       </section>
     
