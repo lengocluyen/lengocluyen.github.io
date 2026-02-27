@@ -1,324 +1,175 @@
 ---
-layout: null
+layout: page
+title: Conferences
 permalink: /conferences.html
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Conference Deadline Tracker</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --card: #1f2937;
-      --muted: #94a3b8;
-      --text: #e5e7eb;
-      --accent: #38bdf8;
-      --ok: #22c55e;
-      --warn: #f59e0b;
-      --danger: #ef4444;
-      --border: #334155;
-    }
+<style>
+  /* Conference tracker: Bootstrap-friendly styling to match the rest of the site */
+  #conferences-app .tabs { margin: 15px 0 20px; }
+  #conferences-app .tabs .btn { margin-right: 6px; }
+  #conferences-app .tabs .btn.active {
+    background: #01579B;
+    border-color: #01579B;
+    color: #fff;
+  }
+  #conferences-app .stat {
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background: #fafafa;
+    text-align: center;
+  }
+  #conferences-app .stat .value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #01579B;
+  }
+  #conferences-app .conf-title { font-weight: 700; font-size: 18px; }
+  #conferences-app .conf-meta { color: #777; font-size: 14px; }
+  #conferences-app .list-group-item { text-align: left; }
+  #conferences-app .small-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  @media (max-width: 768px) {
+    #conferences-app .small-actions { justify-content: flex-start; }
+  }
+</style>
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #0b1220, #111827);
-      color: var(--text);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 20px;
-      margin-bottom: 24px;
-    }
-
-    .panel {
-      background: rgba(17, 24, 39, 0.92);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(8px);
-    }
-
-    h1, h2, h3 { margin: 0 0 10px; }
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.15rem; }
-    p { margin: 0; color: var(--muted); line-height: 1.5; }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .stat {
-      background: rgba(31, 41, 55, 0.8);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px;
-    }
-
-    .stat .value {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: #fff;
-    }
-
-    .controls {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 12px;
-      margin: 22px 0;
-    }
-
-    .controls .full { grid-column: span 6; }
-    .controls .span-2 { grid-column: span 2; }
-    .controls .span-3 { grid-column: span 3; }
-
-    input, button, select, textarea {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: #0f172a;
-      color: var(--text);
-      padding: 12px 14px;
-      font-size: 0.95rem;
-    }
-
-    textarea { min-height: 100px; resize: vertical; }
-
-    button {
-      cursor: pointer;
-      background: linear-gradient(135deg, #0284c7, #0ea5e9);
-      border: none;
-      font-weight: 600;
-    }
-
-    button.secondary {
-      background: #1e293b;
-      border: 1px solid var(--border);
-    }
-
-    button.ghost {
-      background: transparent;
-      border: 1px solid var(--border);
-    }
-
-    .toolbar {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    .list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .card {
-      background: rgba(31, 41, 55, 0.9);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 16px;
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr auto;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .title {
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .meta {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      border: 1px solid transparent;
-    }
-
-    .badge.ok { color: #bbf7d0; background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.25); }
-    .badge.warn { color: #fde68a; background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.25); }
-    .badge.danger { color: #fecaca; background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.25); }
-
-    .small-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .small-actions button {
-      width: auto;
-      padding: 8px 10px;
-      font-size: 0.85rem;
-    }
-
-    .hint {
-      margin-top: 14px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .empty {
-      text-align: center;
-      color: var(--muted);
-      padding: 30px 10px;
-      border: 1px dashed var(--border);
-      border-radius: 16px;
-    }
-
-    .footer-note {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .controls { grid-template-columns: 1fr; }
-      .controls .full, .controls .span-2, .controls .span-3 { grid-column: auto; }
-      .card { grid-template-columns: 1fr; }
-      .small-actions { justify-content: flex-start; }
-      .stats { grid-template-columns: 1fr; }
-    }
-
-    /* button grid for settings */
-    .button-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    /* tab styles */
-    .tabs {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .tabs button {
-      padding: 8px 16px;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      color: var(--text);
-      border-radius: 12px;
-      transition: background 0.2s;
-    }
-
-    .tabs button.active {
-      background: var(--accent);
-      color: #000;
-    }
-  </style>
-</head>
-<body>
+<section id="conferences-app">
   <div class="container">
-    <!-- tabs for switching between list and add forms -->
-    <div class="tabs">
-      <button id="tabList" class="active">All conferences / journals</button>
-      <button id="tabAdd">Add new</button>
-    </div>
-
-    <div id="sectionList">
-      <section class="hero">
-        <div class="panel">
-          <h1>Conference Deadline Tracker</h1>
-          <p>
-            Track important conference dates, get browser notifications, and keep everything in a single static app you can publish on GitHub Pages.
-          </p>
-          <div class="stats">
-            <div class="stat">
-              <div class="value" id="totalCount">0</div>
-              <div class="meta">Tracked conferences</div>
-            </div>
-            <div class="stat">
-              <div class="value" id="upcomingCount">0</div>
-              <div class="meta">Upcoming</div>
-            </div>
-            <div class="stat">
-              <div class="value" id="soonCount">0</div>
-              <div class="meta">Due within 14 days</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h2>Settings</h2>
-          <div class="button-grid">
-            <button id="enableNotifBtn">Enable notifications</button>
-            <button class="secondary" id="exportBtn">Export JSON</button>
-            <button class="secondary" id="checkNowBtn">Check now</button>
-            <button class="secondary" id="importBtn">Import JSON</button>
-          </div>
-          <p class="hint" id="notifStatus"></p>
-        </div>
-      </section>
-    
-      <section class="panel" style="margin-top: 22px;">
-        <div id="list" class="list"></div>
-        <div class="footer-note">
-          Suggested next step for automation: keep a <strong>conferences.json</strong> file in your GitHub repo and refresh it with a GitHub Action (daily/weekly). This page can then fetch that file automatically without needing a backend server.
-        </div>
-      </section>
-    </div>
-
-    <div id="sectionAdd" style="display:none;">
-      <section class="panel">
-        <h2>Add a conference</h2>
-        <div class="controls">
-          <input id="nameInput" class="span-2" type="text" placeholder="Conference name (e.g., ISWC 2027)" />
-          <input id="rankInput" type="text" placeholder="Rank (A, A*, B...)" />
-          <input id="locationInput" class="span-2" type="text" placeholder="Location / notes" />
-          <input id="urlInput" type="url" placeholder="CFP URL (optional)" />
-
-          <input id="deadlineInput" type="datetime-local" />
-          <input id="notifyDaysInput" type="number" min="0" value="14" placeholder="Notify days before" />
-          <select id="categoryInput">
-            <option value="AI">AI</option>
-            <option value="NLP">NLP</option>
-            <option value="Semantic Web">Semantic Web</option>
-            <option value="EdTech">EdTech</option>
-            <option value="Data Mining">Data Mining</option>
-            <option value="Other">Other</option>
-          </select>
-          <input id="sourceInput" class="span-3" type="text" placeholder="Source note (manual, WikiCFP, organizer page...)" />
-
-          <button id="addBtn" class="full">Add conference</button>
-        </div>
-        <p class="hint">
-          This static app stores data locally in your browser. For true automatic collection from conference websites, use a small backend or a GitHub Action that updates a JSON file in your repo.
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4 style="margin-top: 0;">Conference Deadline Tracker</h4>
+        <p class="text-muted">
+          Track important conference dates, get browser notifications, and save updates to <code>conferences.json</code> via your Vercel API.
         </p>
-      </section>
+
+        <div class="tabs" role="tablist" aria-label="Conferences tabs">
+          <button id="tabList" type="button" class="btn btn-default active">All conferences / journals</button>
+          <button id="tabAdd" type="button" class="btn btn-default">Add new</button>
+        </div>
+
+        <div id="sectionList">
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-sm-4">
+              <div class="stat">
+                <div class="value" id="totalCount">0</div>
+                <div class="conf-meta">Tracked conferences</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="stat">
+                <div class="value" id="upcomingCount">0</div>
+                <div class="conf-meta">Upcoming</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="stat">
+                <div class="value" id="soonCount">0</div>
+                <div class="conf-meta">Due within 14 days</div>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12">
+              <div class="btn-toolbar" role="toolbar" aria-label="Conferences actions">
+                <div class="btn-group btn-group-sm" role="group">
+                  <button id="enableNotifBtn" type="button" class="btn btn-primary">Enable notifications</button>
+                  <button id="checkNowBtn" type="button" class="btn btn-default">Check now</button>
+                  <button id="exportBtn" type="button" class="btn btn-default">Export JSON</button>
+                  <button id="importBtn" type="button" class="btn btn-default">Import JSON</button>
+                </div>
+              </div>
+              <p class="help-block" id="notifStatus" style="margin-top: 8px;"></p>
+            </div>
+          </div>
+
+          <div id="list" class="list-group"></div>
+        </div>
+
+        <div id="sectionAdd" style="display:none;">
+          <h4 id="formTitle">Add a conference</h4>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="nameInput">Name</label>
+                <input id="nameInput" class="form-control" type="text" placeholder="Conference name (e.g., ISWC 2027)" />
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="rankInput">Rank</label>
+                <input id="rankInput" class="form-control" type="text" placeholder="A, A*, B..." />
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="categoryInput">Category</label>
+                <select id="categoryInput" class="form-control">
+                  <option value="AI">AI</option>
+                  <option value="NLP">NLP</option>
+                  <option value="Semantic Web">Semantic Web</option>
+                  <option value="EdTech">EdTech</option>
+                  <option value="Data Mining">Data Mining</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="locationInput">Location / notes</label>
+                <input id="locationInput" class="form-control" type="text" placeholder="Location / notes" />
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="urlInput">CFP URL (optional)</label>
+                <input id="urlInput" class="form-control" type="url" placeholder="https://..." />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="deadlineInput">Deadline</label>
+                <input id="deadlineInput" class="form-control" type="datetime-local" />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="notifyDaysInput">Notify days before</label>
+                <input id="notifyDaysInput" class="form-control" type="number" min="0" value="14" />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="sourceInput">Source note</label>
+                <input id="sourceInput" class="form-control" type="text" placeholder="manual, WikiCFP..." />
+              </div>
+            </div>
+          </div>
+
+          <button id="addBtn" type="button" class="btn btn-primary btn-block">Add conference</button>
+          <button id="cancelEditBtn" type="button" class="btn btn-default btn-block" style="display:none;">Cancel edit</button>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
   <script>
     const STORAGE_KEY = 'conference-deadline-tracker-v1';
@@ -331,6 +182,7 @@ permalink: /conferences.html
       upcomingCount: document.getElementById('upcomingCount'),
       soonCount: document.getElementById('soonCount'),
       notifStatus: document.getElementById('notifStatus'),
+      formTitle: document.getElementById('formTitle'),
       nameInput: document.getElementById('nameInput'),
       rankInput: document.getElementById('rankInput'),
       locationInput: document.getElementById('locationInput'),
@@ -338,8 +190,12 @@ permalink: /conferences.html
       deadlineInput: document.getElementById('deadlineInput'),
       notifyDaysInput: document.getElementById('notifyDaysInput'),
       categoryInput: document.getElementById('categoryInput'),
-      sourceInput: document.getElementById('sourceInput')
+      sourceInput: document.getElementById('sourceInput'),
+      addBtn: document.getElementById('addBtn'),
+      cancelEditBtn: document.getElementById('cancelEditBtn')
     };
+
+    let editingId = null;
 
     function uid() {
       return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
@@ -348,7 +204,7 @@ permalink: /conferences.html
     async function loadConferences() {
       // try to fetch a JSON file from the site root first
       try {
-        const resp = await fetch('conferences.json');
+        const resp = await fetch('{{ site.baseurl }}/conferences.json');
         if (resp.ok) {
           const data = await resp.json();
           if (Array.isArray(data)) {
@@ -400,9 +256,9 @@ permalink: /conferences.html
 
     function getStatus(conf) {
       const days = daysRemaining(conf.deadline);
-      if (days < 0) return { label: 'Passed', cls: 'danger' };
-      if (days <= 14) return { label: 'Soon', cls: 'warn' };
-      return { label: 'Upcoming', cls: 'ok' };
+      if (days < 0) return { label: 'Passed', cls: 'label-danger' };
+      if (days <= 14) return { label: 'Soon', cls: 'label-warning' };
+      return { label: 'Upcoming', cls: 'label-success' };
     }
 
     function render() {
@@ -418,7 +274,7 @@ permalink: /conferences.html
       els.soonCount.textContent = soon.length;
 
       if (!sorted.length) {
-        els.list.innerHTML = '<div class="empty">No conferences yet. Add one or load sample data.</div>';
+        els.list.innerHTML = '<div class="alert alert-info" style="margin: 0;">No conferences yet. Click “Add new” to create one, or use “Import JSON”.</div>';
         return;
       }
 
@@ -429,27 +285,31 @@ permalink: /conferences.html
           ? `${Math.abs(Math.ceil(remaining))} day(s) ago`
           : `${Math.ceil(remaining)} day(s) left`;
 
-        const safeUrl = conf.url ? `<a href="${escapeHtml(conf.url)}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">CFP</a>` : '—';
+        const safeUrl = conf.url
+          ? `<a href="${escapeHtml(conf.url)}" target="_blank" rel="noopener">CFP</a>`
+          : '—';
 
         return `
-          <div class="card">
-            <div>
-              <div class="title">${escapeHtml(conf.name)}</div>
-              <div class="meta">${escapeHtml(conf.category || 'Other')} • ${escapeHtml(conf.rank || '—')} • ${escapeHtml(conf.location || 'No location')}</div>
-              <div class="meta" style="margin-top: 6px;">Source: ${escapeHtml(conf.source || 'manual')} • Link: ${safeUrl}</div>
-            </div>
-            <div>
-              <div class="title">Deadline</div>
-              <div class="meta">${formatDate(conf.deadline)}</div>
-            </div>
-            <div>
-              <span class="badge ${status.cls}">${status.label}</span>
-              <div class="meta" style="margin-top: 8px;">${humanRemaining}</div>
-              <div class="meta">Reminder: ${Number(conf.notifyDays || 14)} day(s) before</div>
+          <div class="list-group-item">
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="conf-title">${escapeHtml(conf.name)}</div>
+                <div class="conf-meta">${escapeHtml(conf.category || 'Other')} • ${escapeHtml(conf.rank || '—')} • ${escapeHtml(conf.location || 'No location')}</div>
+                <div class="conf-meta" style="margin-top: 6px;">Source: ${escapeHtml(conf.source || 'manual')} • Link: ${safeUrl}</div>
+              </div>
+              <div class="col-sm-3" style="margin-top: 6px;">
+                <div><strong>Deadline</strong></div>
+                <div class="conf-meta">${formatDate(conf.deadline)}</div>
+              </div>
+              <div class="col-sm-2" style="margin-top: 6px;">
+                <div style="margin-bottom: 6px;"><span class="label ${status.cls}">${status.label}</span></div>
+                <div class="conf-meta">${humanRemaining}</div>
+                <div class="conf-meta">Reminder: ${Number(conf.notifyDays || 14)} day(s) before</div>
+              </div>
             </div>
             <div class="small-actions">
-              <button class="secondary" onclick="duplicateConference('${conf.id}')">Duplicate</button>
-              <button class="ghost" onclick="deleteConference('${conf.id}')">Delete</button>
+              <button class="btn btn-xs btn-default" type="button" onclick="startEditConference('${conf.id}')">Edit</button>
+              <button class="btn btn-xs btn-danger" type="button" onclick="deleteConference('${conf.id}')">Delete</button>
             </div>
           </div>
         `;
@@ -465,16 +325,42 @@ permalink: /conferences.html
         .replace(/'/g, '&#039;');
     }
 
+    function getServerBaseUrl() {
+      // If this page is hosted on GitHub Pages, the API is hosted on Vercel.
+      // If hosted on Vercel, same-origin API calls are fine.
+      const host = window.location.host;
+      if (host.endsWith('.vercel.app')) return '';
+      return 'https://lengocluyen.vercel.app';
+    }
+
     async function saveToServer() {
       // attempt to persist conferences to Vercel API; failures are non-fatal
       try {
-        await fetch('/api/save-conferences', {
+        const apiBase = getServerBaseUrl();
+        const resp = await fetch(`${apiBase}/api/save-conferences`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ conferences }),
         });
+
+        if (!resp.ok) {
+          const body = await resp.json().catch(() => ({}));
+          console.error('server save failed', resp.status, body);
+          els.notifStatus.textContent = `Server save failed (${resp.status}).`;
+          setTimeout(() => {
+            if (els.notifStatus.textContent.startsWith('Server save failed')) {
+              els.notifStatus.textContent = '';
+            }
+          }, 4000);
+        }
       } catch (e) {
         console.error('server save failed', e);
+        els.notifStatus.textContent = 'Server save failed (network/CORS).';
+        setTimeout(() => {
+          if (els.notifStatus.textContent.startsWith('Server save failed')) {
+            els.notifStatus.textContent = '';
+          }
+        }, 4000);
       }
     }
 
@@ -486,8 +372,7 @@ permalink: /conferences.html
         return;
       }
 
-      conferences.push({
-        id: uid(),
+      const updated = {
         name,
         rank: els.rankInput.value.trim(),
         location: els.locationInput.value.trim(),
@@ -496,10 +381,18 @@ permalink: /conferences.html
         notifyDays: Number(els.notifyDaysInput.value || 14),
         category: els.categoryInput.value,
         source: els.sourceInput.value.trim()
-      });
+      };
+
+      if (editingId) {
+        conferences = conferences.map(c => (c.id === editingId ? { ...c, ...updated } : c));
+        exitEditMode();
+        showTab('list');
+      } else {
+        conferences.push({ id: uid(), ...updated });
+        clearForm();
+      }
 
       saveConferences();
-      clearForm();
       render();
       runReminderCheck();
       saveToServer();
@@ -516,24 +409,48 @@ permalink: /conferences.html
       els.sourceInput.value = '';
     }
 
+    function enterEditMode(conf) {
+      editingId = conf.id;
+      els.formTitle.textContent = 'Edit a conference';
+      els.addBtn.textContent = 'Save changes';
+      els.cancelEditBtn.style.display = '';
+
+      els.nameInput.value = conf.name || '';
+      els.rankInput.value = conf.rank || '';
+      els.locationInput.value = conf.location || '';
+      els.urlInput.value = conf.url || '';
+      els.deadlineInput.value = conf.deadline ? String(conf.deadline).slice(0, 16) : '';
+      els.notifyDaysInput.value = Number(conf.notifyDays ?? 14);
+      els.categoryInput.value = conf.category || 'AI';
+      els.sourceInput.value = conf.source || '';
+    }
+
+    function exitEditMode() {
+      editingId = null;
+      els.formTitle.textContent = 'Add a conference';
+      els.addBtn.textContent = 'Add conference';
+      els.cancelEditBtn.style.display = 'none';
+      clearForm();
+    }
+
     function deleteConference(id) {
       conferences = conferences.filter(c => c.id !== id);
       delete notifiedMap[id];
       saveConferences();
       saveNotifiedMap();
       render();
+      saveToServer();
     }
 
-    function duplicateConference(id) {
+    function startEditConference(id) {
       const conf = conferences.find(c => c.id === id);
       if (!conf) return;
-      conferences.push({ ...conf, id: uid(), name: `${conf.name} (copy)` });
-      saveConferences();
-      render();
+      enterEditMode(conf);
+      showTab('add');
     }
 
     window.deleteConference = deleteConference;
-    window.duplicateConference = duplicateConference;
+    window.startEditConference = startEditConference;
 
 
     async function requestNotificationPermission() {
@@ -604,9 +521,12 @@ permalink: /conferences.html
           const data = JSON.parse(text);
           if (!Array.isArray(data)) throw new Error('Invalid format');
           conferences = data.map(item => ({ ...item, id: item.id || uid() }));
+          notifiedMap = {};
           saveConferences();
+          saveNotifiedMap();
           render();
           runReminderCheck();
+          saveToServer();
         } catch {
           alert('Invalid JSON file.');
         }
@@ -615,6 +535,10 @@ permalink: /conferences.html
     }
 
     document.getElementById('addBtn').addEventListener('click', addConference);
+    document.getElementById('cancelEditBtn').addEventListener('click', () => {
+      exitEditMode();
+      showTab('list');
+    });
     document.getElementById('exportBtn').addEventListener('click', exportJson);
     document.getElementById('importBtn').addEventListener('click', importJson);
     document.getElementById('enableNotifBtn').addEventListener('click', requestNotificationPermission);
@@ -645,5 +569,3 @@ permalink: /conferences.html
       setInterval(runReminderCheck, 60 * 1000);
     })();
   </script>
-</body>
-</html>

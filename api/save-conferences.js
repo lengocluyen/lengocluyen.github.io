@@ -2,6 +2,25 @@
 // Vercel serverless function to update conferences.json in the repo.
 
 export default async function handler(req, res) {
+  const origin = req.headers.origin;
+  const allowedOrigins = new Set([
+    'https://lengocluyen.github.io',
+    'https://lengocluyen.vercel.app',
+    'http://localhost:4000',
+    'http://127.0.0.1:4000',
+  ]);
+
+  if (origin && allowedOrigins.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).end('Method Not Allowed');
