@@ -212,9 +212,10 @@ permalink: /conferences.html
         }
       })();
 
-      // try to fetch a JSON file from the site root first
+      // Best source of truth (immediate after saves): ask the Vercel API, which reads from GitHub directly.
       try {
-        const url = `{{ site.baseurl }}/conferences.json?ts=${Date.now()}`;
+        const apiBase = getServerBaseUrl();
+        const url = `${apiBase}/api/conferences?ts=${Date.now()}`;
         const resp = await fetch(url, { cache: 'no-store' });
         if (resp.ok) {
           const data = await resp.json();
@@ -228,6 +229,21 @@ permalink: /conferences.html
               return local;
             }
 
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            return data;
+          }
+        }
+      } catch (e) {
+        // ignore, try the GitHub Pages JSON next
+      }
+
+      // Fallback: try to fetch a JSON file from the GitHub Pages site (can lag due to Pages caching/build).
+      try {
+        const url = `{{ '/conferences.json' | relative_url }}?ts=${Date.now()}`;
+        const resp = await fetch(url, { cache: 'no-store' });
+        if (resp.ok) {
+          const data = await resp.json();
+          if (Array.isArray(data)) {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
             return data;
           }

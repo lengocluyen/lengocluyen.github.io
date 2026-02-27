@@ -11,10 +11,10 @@ safe: true
 
 
 # edit here to achieve your personal greatness
-# url: http://localhost:3000/
-# baseurl: http://localhost:3000/
-url: /
-baseurl: /
+# url: http://localhost:3000
+# baseurl: ""
+url: https://lengocluyen.github.io
+baseurl: ""
 title: Le Ngoc Luyen's Personal Site
 author: Ngoc Luyen Le
 description: Personal blog and resume
