@@ -24,12 +24,12 @@
   {
     "id": "1772229009138-glrw47",
     "name": "ISWC 2026",
-    "rank": "",
-    "location": "",
-    "url": "",
+    "rank": "A",
+    "location": "Bari, Italy",
+    "url": "https://iswc2026.semanticweb.org/",
     "deadline": "2026-05-02T00:00",
     "notifyDays": 14,
-    "category": "AI",
+    "category": "Semantic Web",
     "source": ""
   }
 ]
