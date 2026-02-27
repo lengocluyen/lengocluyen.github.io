@@ -173,6 +173,7 @@ permalink: /conferences.html
 
   <script>
     const STORAGE_KEY = 'conference-deadline-tracker-v1';
+    const SERVER_WRITE_AT_KEY = `${STORAGE_KEY}-serverWriteAt`;
     let conferences = [];
     let notifiedMap = {};
 
@@ -202,12 +203,32 @@ permalink: /conferences.html
     }
 
     async function loadConferences() {
+      const local = (() => {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch {
+          return [];
+        }
+      })();
+
       // try to fetch a JSON file from the site root first
       try {
-        const resp = await fetch('{{ site.baseurl }}/conferences.json');
+        const url = `{{ site.baseurl }}/conferences.json?ts=${Date.now()}`;
+        const resp = await fetch(url, { cache: 'no-store' });
         if (resp.ok) {
           const data = await resp.json();
           if (Array.isArray(data)) {
+            // If we recently wrote to the server, GitHub Pages may still serve an older version.
+            // Prefer local data for a short window to avoid deleted items "coming back" on refresh.
+            const lastWriteAt = Number(localStorage.getItem(SERVER_WRITE_AT_KEY) || 0);
+            const recentWriteWindowMs = 10 * 60 * 1000;
+            const wroteRecently = lastWriteAt && Date.now() - lastWriteAt < recentWriteWindowMs;
+            if (Array.isArray(local) && local.length && wroteRecently) {
+              return local;
+            }
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
             return data;
           }
         }
@@ -216,12 +237,7 @@ permalink: /conferences.html
       }
 
       // fallback to localStorage if fetch failed or returned non-array
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        return raw ? JSON.parse(raw) : [];
-      } catch {
-        return [];
-      }
+      return Array.isArray(local) ? local : [];
     }
 
     function saveConferences() {
@@ -336,6 +352,7 @@ permalink: /conferences.html
     async function saveToServer() {
       // attempt to persist conferences to Vercel API; failures are non-fatal
       try {
+        els.notifStatus.textContent = 'Saving to server...';
         const apiBase = getServerBaseUrl();
         const resp = await fetch(`${apiBase}/api/save-conferences`, {
           method: 'POST',
@@ -352,7 +369,17 @@ permalink: /conferences.html
               els.notifStatus.textContent = '';
             }
           }, 4000);
+          return false;
         }
+
+        localStorage.setItem(SERVER_WRITE_AT_KEY, String(Date.now()));
+        els.notifStatus.textContent = 'Saved to server.';
+        setTimeout(() => {
+          if (els.notifStatus.textContent === 'Saved to server.') {
+            els.notifStatus.textContent = '';
+          }
+        }, 2500);
+        return true;
       } catch (e) {
         console.error('server save failed', e);
         els.notifStatus.textContent = 'Server save failed (network/CORS).';
@@ -361,6 +388,7 @@ permalink: /conferences.html
             els.notifStatus.textContent = '';
           }
         }, 4000);
+        return false;
       }
     }
 
@@ -433,13 +461,13 @@ permalink: /conferences.html
       clearForm();
     }
 
-    function deleteConference(id) {
+    async function deleteConference(id) {
       conferences = conferences.filter(c => c.id !== id);
       delete notifiedMap[id];
       saveConferences();
       saveNotifiedMap();
       render();
-      saveToServer();
+      await saveToServer();
     }
 
     function startEditConference(id) {
@@ -520,8 +548,19 @@ permalink: /conferences.html
           const text = await file.text();
           const data = JSON.parse(text);
           if (!Array.isArray(data)) throw new Error('Invalid format');
-          conferences = data.map(item => ({ ...item, id: item.id || uid() }));
-          notifiedMap = {};
+
+          const existingIds = new Set(conferences.map(c => c.id));
+          const imported = data
+            .filter(item => item && typeof item === 'object')
+            .map(item => {
+              const base = { ...item };
+              let id = base.id || uid();
+              if (existingIds.has(id)) id = uid();
+              existingIds.add(id);
+              return { ...base, id };
+            });
+
+          conferences = [...conferences, ...imported];
           saveConferences();
           saveNotifiedMap();
           render();
