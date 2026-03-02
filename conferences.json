@@ -31,5 +31,16 @@
     "notifyDays": 14,
     "category": "Semantic Web",
     "source": ""
+  },
+  {
+    "id": "1772456346386-7zf2du",
+    "name": "RecSys 2026 - The ACM Conference Series on Recommender Systems",
+    "rank": "A",
+    "location": "Minneapolis, USA",
+    "url": "https://recsys.acm.org/recsys26/call/",
+    "deadline": "2026-04-14T00:01",
+    "notifyDays": 14,
+    "category": "AI",
+    "source": "https://recsys.acm.org/recsys26/call/"
   }
 ]
