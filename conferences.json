@@ -42,5 +42,16 @@
     "notifyDays": 14,
     "category": "AI",
     "source": "https://recsys.acm.org/recsys26/call/"
+  },
+  {
+    "id": "1772457004142-p6o11c",
+    "name": "CIKM 2026 - The ACM International Conference on Information and Knowledge Management",
+    "rank": "A",
+    "location": "Rome, Italy",
+    "url": "",
+    "deadline": "2026-05-02T00:00",
+    "notifyDays": 14,
+    "category": "AI",
+    "source": ""
   }
 ]
