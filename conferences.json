@@ -53,5 +53,16 @@
     "notifyDays": 14,
     "category": "AI",
     "source": ""
+  },
+  {
+    "id": "1773052756582-d7wfcz",
+    "name": "Special Issue on MEDES 2025",
+    "rank": "Q1",
+    "location": "Springer",
+    "url": "https://link.springer.com/collections/bbeaijdgde",
+    "deadline": "2026-04-10T00:00",
+    "notifyDays": 14,
+    "category": "AI",
+    "source": "https://link.springer.com/collections/bbeaijdgde"
   }
 ]
