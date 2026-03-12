@@ -64,5 +64,16 @@
     "notifyDays": 14,
     "category": "AI",
     "source": "https://link.springer.com/collections/bbeaijdgde"
+  },
+  {
+    "id": "1773300660826-odlk1h",
+    "name": "HICSS",
+    "rank": "A",
+    "location": "Hawaii",
+    "url": "June 15",
+    "deadline": "2026-06-15T00:00",
+    "notifyDays": 14,
+    "category": "AI",
+    "source": "https://hicss.hawaii.edu/minitrack-chairs/"
   }
 ]
