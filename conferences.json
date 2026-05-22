@@ -75,5 +75,16 @@
     "notifyDays": 14,
     "category": "AI",
     "source": "https://hicss.hawaii.edu/minitrack-chairs/"
+  },
+  {
+    "id": "1779433629641-w19t56",
+    "name": "MEDES 2026",
+    "rank": "C",
+    "location": "Coruña, Spain",
+    "url": "https://conferences.sigappfr.org/medes2026",
+    "deadline": "2026-07-15T00:00",
+    "notifyDays": 30,
+    "category": "Data Mining",
+    "source": "https://conferences.sigappfr.org/medes2026/important-dates/"
   }
 ]
