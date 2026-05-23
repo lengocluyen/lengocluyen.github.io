@@ -3,79 +3,119 @@ layout: home
 ---
 
 <section id="about">
-	<div class="container">
-		<div class="panel-default">
-		  <div class="panel-body" style="margin-top:0px;padding-top:0px">
-			<div class="avatar text-center mb-5 mt-3 pt-0" style="margin-top:0px;padding-top:0px">
-				<div class="carousel-avatar">
-				  <ul class="slides">
-					<input type="radio" name="radio-buttons" id="img-1" checked />
-					<li class="slide-container">
-					  <div class="slide-image">
-						<img class="img-thumbnail" src="{{ site.baseurl }}static/img/{{ site.photoavatar }}" alt="Avatar 1">
-					  </div>
-					  <div class="carousel-controls">
-						<label for="img-3" class="prev-slide"><span>&lsaquo;</span></label>
-						<label for="img-2" class="next-slide"><span>&rsaquo;</span></label>
-					  </div>
-					</li>
-			  
-					<input type="radio" name="radio-buttons" id="img-2" />
-					<li class="slide-container">
-					  <div class="slide-image">
-						<img class="img-thumbnail" src="{{ site.baseurl }}static/img/{{ site.photoavatar1 }}" alt="Avatar 2">
-					  </div>
-					  <div class="carousel-controls">
-						<label for="img-1" class="prev-slide"><span>&lsaquo;</span></label>
-						<label for="img-3" class="next-slide"><span>&rsaquo;</span></label>
-					  </div>
-					</li>
-			  
-					<input type="radio" name="radio-buttons" id="img-3" />
-					<li class="slide-container">
-					  <div class="slide-image">
-						<img class="img-thumbnail" src="{{ site.baseurl }}static/img/{{ site.photoavatar2 }}" alt="Avatar 3">
-					  </div>
-					  <div class="carousel-controls">
-						<label for="img-2" class="prev-slide"><span>&lsaquo;</span></label>
-						<label for="img-1" class="next-slide"><span>&rsaquo;</span></label>
-					  </div>
-					</li>
-			  
-					<div class="carousel-dots">
-					  <label for="img-1" class="carousel-dot"></label>
-					  <label for="img-2" class="carousel-dot"></label>
-					  <label for="img-3" class="carousel-dot"></label>
-					</div>
-				  </ul>
-				</div>
-			  </div>
-			  <h5>
-				<div class="div-justify" style="margin-top:30px;">
-				  Hi! I am <strong>Ngoc Luyen Le</strong>, currently working as a Research and Development Engineer specializing in Natural Language Processing (NLP), Large Language Models (LLMs), Semantic Representation, and Recommender Systems.
-				</div>
-			  </h5>
-			  
-			  <h5>
-				<div class="div-justify">
-				  Previously, I held a postdoctoral research position at the Heudiasyc Laboratory of the Université de Technologie de Compiègne, under the supervision of Professor Marie-Hélène Abel. My work focused on recommender systems and knowledge representation, particularly in vehicle-related applications. Prior to that, I earned my PhD from the LAB-STICC Laboratory at IMT Atlantique, France, under the supervision of Professors Yannis Haralambous and Philippe Lenca. My doctoral research explored semantic representation for the French language using Combinatory Categorial Grammar (CCG) and Discourse Representation Theory (DRT).
-				</div>
-			  </h5>
-			  
-			  <h5>
-				<div class="div-justify">
-				  My current research focuses on applying advanced NLP techniques, LLMs, and Generative AI to enhance semantic modeling and optimize recommender systems across various application domains. I am particularly interested in developing context-aware, linguistically informed systems capable of understanding and responding to human language in specialized areas such as skill management and education. Through this work, I aim to contribute to the development of intelligent, adaptive technologies for real-world applications.
-				</div>
-			  </h5>
-			  
-			<!--<h5><div class="div-justify">	
-			I have done my phd research  at the LAB-STICC laboaratory at IMT Atlantique, France under the supervision of Prof. Yannis Haralambous and Prof. Philippe Lenca. My doctoral research focuses on studying of semantic representation for french language based on using the Combinatory Categorial Grammar and Discours Representation Theory.</div></h5>
-			<h5><div class="div-justify">Understanding natural language is extremely complex task for ameliorating the capacity of human-computer interaction because the meaning of an utterance is not only dependent on using vocabularies, grammars but also on the context of the communication. In addition, the explosion of neural network research brings diversity of deep neural network architectures as well as effective solutions about performance and accuracy in different fields. According to this view, my interesting domain research is Natural Language Understanding, Semantic Representation and Deep Neural Networks.</div></h5>-->
-			<h5> <div class="div-justify" style="padding-bottom:0px;">Have a look at some of my <a href="{{ '/projects.html' | relative_url }}"> Coding Projects</a> and my recent <a href="{{ '/publications.html' | relative_url }}"> Research Publications</a>. For more check out my academic &amp; professional <a href="{{ '/resume.html' | relative_url }}">Curriculum Vitae</a>. Feel free to contact me at <a href="http://linkedin.com/in/{{ site.linkedin }}">http://linkedin.com/in/{{ site.linkedin }}</a> or by <a href="mailto:luyenlengoc@gmail.com">luyenlengoc@gmail.com</a></div></h5>
-			
-			{% include social.html %}
+  <div class="container">
+    <div class="panel-default">
+      <div class="panel-body" style="margin-top:0;padding-top:0">
 
-			</div>
-		</div>
-	</div>
+        <!-- Photo carousel -->
+        <div class="avatar text-center mb-5 mt-3 pt-0 fade-in-up" style="margin-top:0;padding-top:0">
+          <div class="carousel-avatar">
+            <ul class="slides">
+              <input type="radio" name="radio-buttons" id="img-1" checked />
+              <li class="slide-container">
+                <div class="slide-image">
+                  <img class="img-thumbnail" src="{{ site.baseurl }}static/img/{{ site.photoavatar }}" alt="Avatar 1">
+                </div>
+                <div class="carousel-controls">
+                  <label for="img-3" class="prev-slide"><span>&lsaquo;</span></label>
+                  <label for="img-2" class="next-slide"><span>&rsaquo;</span></label>
+                </div>
+              </li>
+
+              <input type="radio" name="radio-buttons" id="img-2" />
+              <li class="slide-container">
+                <div class="slide-image">
+                  <img class="img-thumbnail" src="{{ site.baseurl }}static/img/{{ site.photoavatar1 }}" alt="Avatar 2">
+                </div>
+                <div class="carousel-controls">
+                  <label for="img-1" class="prev-slide"><span>&lsaquo;</span></label>
+                  <label for="img-3" class="next-slide"><span>&rsaquo;</span></label>
+                </div>
+              </li>
+
+              <input type="radio" name="radio-buttons" id="img-3" />
+              <li class="slide-container">
+                <div class="slide-image">
+                  <img class="img-thumbnail" src="{{ site.baseurl }}static/img/{{ site.photoavatar2 }}" alt="Avatar 3">
+                </div>
+                <div class="carousel-controls">
+                  <label for="img-2" class="prev-slide"><span>&lsaquo;</span></label>
+                  <label for="img-1" class="next-slide"><span>&rsaquo;</span></label>
+                </div>
+              </li>
+
+              <div class="carousel-dots">
+                <label for="img-1" class="carousel-dot"></label>
+                <label for="img-2" class="carousel-dot"></label>
+                <label for="img-3" class="carousel-dot"></label>
+              </div>
+            </ul>
+          </div>
+        </div><!-- /.avatar -->
+
+        <!-- Bio -->
+        <div class="fade-in-up">
+          <h5>
+            <div class="div-justify" style="margin-top:30px;">
+              Hi! I am <strong>Ngoc Luyen Le</strong>, currently working as a Research and Development Engineer specializing in Natural Language Processing (NLP), Large Language Models (LLMs), Semantic Representation, and Recommender Systems.
+            </div>
+          </h5>
+
+          <h5>
+            <div class="div-justify">
+              Previously, I held a postdoctoral research position at the Heudiasyc Laboratory of the Université de Technologie de Compiègne, under the supervision of Professor Marie-Hélène Abel. My work focused on recommender systems and knowledge representation, particularly in vehicle-related applications. Prior to that, I earned my PhD from the LAB-STICC Laboratory at IMT Atlantique, France, under the supervision of Professors Yannis Haralambous and Philippe Lenca. My doctoral research explored semantic representation for the French language using Combinatory Categorial Grammar (CCG) and Discourse Representation Theory (DRT).
+            </div>
+          </h5>
+
+          <h5>
+            <div class="div-justify">
+              My current research focuses on applying advanced NLP techniques, LLMs, and Generative AI to enhance semantic modeling and optimize recommender systems across various application domains. I am particularly interested in developing context-aware, linguistically informed systems capable of understanding and responding to human language in specialized areas such as skill management and education.
+            </div>
+          </h5>
+        </div>
+
+        <!-- Stats bar -->
+        <div class="stats-bar fade-in-up">
+          <div class="stat-card">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Publications</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Years Research</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Countries</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">PhD</span>
+            <span class="stat-label">IMT Atlantique</span>
+          </div>
+        </div>
+
+        <!-- CTA buttons -->
+        <div class="cta-buttons fade-in-up">
+          <a href="{{ '/resume.html' | relative_url }}" class="btn-primary-custom">
+            <i class="fas fa-file-alt"></i> View Resume
+          </a>
+          <a href="{{ '/publications.html' | relative_url }}" class="btn-outline-custom">
+            <i class="fas fa-book-open"></i> Publications
+          </a>
+          <a href="{{ '/static/' | relative_url }}{{ site.cvfullen }}" class="btn-outline-custom" target="_blank">
+            <i class="fas fa-download"></i> Download CV
+          </a>
+          <a href="mailto:{{ site.email }}" class="btn-outline-custom">
+            <i class="fas fa-envelope"></i> Contact Me
+          </a>
+        </div>
+
+        <!-- Social icons -->
+        <div class="fade-in-up">
+          {% include social.html %}
+        </div>
+
+      </div>
+    </div>
+  </div>
 </section>

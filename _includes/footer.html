@@ -1,36 +1,71 @@
-<footer>
-    
-    <div id="footer">
-        <div class="container">
-            <hr/>
-            <div style="margin-top:20px;" class="footer-line">
-            <div class="left">
-                <p class="text-muted">© 2020-2025 All rights reserved</p>
-            </div>
-            <div class="right">
-                <div class="social">
-                    <h5 class="icon-bar">
-                      {% if site.github %}
-                      <a href="http://github.com/{{ site.github }}"><i class="fab fa-github"></i></a>
-                      {% endif %}
-                  
-                      {% if site.twitter %}
-                      <a href="http://twitter.com/{{ site.twitter }}"><i class="fab fa-twitter"></i></a>
-                      {% endif %}
-                      {% if site.linkedin %}
-                      <a href="http://linkedin.com/in/{{ site.linkedin }}"><i class="fab fa-linkedin"></i></a>
-                      {% endif %}
-              {% if site.linkedin %}
-              <a href="http://instagram.com/{{ site.github }}"><i class="fab fa-instagram"></i></a>
-            {% endif %}
-              
-              </h5>
+<footer class="footer-v11">
+  <div class="container">
+    <div class="footer-cols">
 
-            </div>
-            </div>
+      <!-- Col 1: About -->
+      <div>
+        <div class="footer-brand">Ngoc Luyen Le</div>
+        <p class="footer-tagline">
+          R&amp;D Engineer · NLP &amp; LLMs · Recommender Systems<br>
+          Based in Compiègne, France
+        </p>
+        <div class="footer-social">
+          {% if site.github %}
+          <a href="http://github.com/{{ site.github }}" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          {% endif %}
+          {% if site.linkedin %}
+          <a href="http://linkedin.com/in/{{ site.linkedin }}" aria-label="LinkedIn" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          {% endif %}
+          {% if site.twitter %}
+          <a href="http://twitter.com/{{ site.twitter }}" aria-label="Twitter" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          {% endif %}
+          {% if site.googlescholar %}
+          <a href="https://scholar.google.fr/citations?user={{ site.googlescholar }}" aria-label="Google Scholar" title="Google Scholar">
+            <i class="ai ai-google-scholar"></i>
+          </a>
+          {% endif %}
+          {% if site.researchgate %}
+          <a href="https://www.researchgate.net/profile/{{ site.researchgate }}" aria-label="ResearchGate" title="ResearchGate">
+            <i class="ai ai-researchgate"></i>
+          </a>
+          {% endif %}
         </div>
-            
-        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div>
+        <h6>Quick Links</h6>
+        <a href="{{ '/' | relative_url }}"><i class="fas fa-user fa-fw" style="width:16px;margin-right:6px;"></i>About</a>
+        <a href="{{ '/publications.html' | relative_url }}"><i class="fas fa-book fa-fw" style="width:16px;margin-right:6px;"></i>Publications</a>
+        <a href="{{ '/projects.html' | relative_url }}"><i class="fas fa-code fa-fw" style="width:16px;margin-right:6px;"></i>Projects</a>
+        <a href="{{ '/services.html' | relative_url }}"><i class="fas fa-chalkboard-teacher fa-fw" style="width:16px;margin-right:6px;"></i>Services</a>
+        <a href="{{ '/resume.html' | relative_url }}"><i class="fas fa-file-alt fa-fw" style="width:16px;margin-right:6px;"></i>Resume</a>
+      </div>
+
+      <!-- Col 3: Contact -->
+      <div>
+        <h6>Contact</h6>
+        <a href="mailto:{{ site.email }}"><i class="fas fa-envelope fa-fw" style="width:16px;margin-right:6px;"></i>{{ site.email }}</a>
+        {% if site.tel %}
+        <a href="{{ site.tel_full }}"><i class="fas fa-phone fa-fw" style="width:16px;margin-right:6px;"></i>{{ site.tel }}</a>
+        {% endif %}
+        <a href="http://github.com/{{ site.github }}" style="word-break:break-all;"><i class="fab fa-github fa-fw" style="width:16px;margin-right:6px;"></i>github.com/{{ site.github }}</a>
+        {% if site.cvfullen %}
+        <a href="{{ '/static/' | relative_url }}{{ site.cvfullen }}" target="_blank"><i class="fas fa-download fa-fw" style="width:16px;margin-right:6px;"></i>Download CV (EN)</a>
+        {% endif %}
+      </div>
+
+    </div><!-- /.footer-cols -->
+
+    <div class="footer-bottom">
+      <span>© 2020–2025 Ngoc Luyen Le · All rights reserved</span>
+      <span>Built with Jekyll &amp; GitHub Pages</span>
     </div>
+  </div>
 </footer>
-<div class="footer"></div>
