@@ -55,8 +55,8 @@
     <!-- Google Analytics -->
     {% include analytics.html %}
 
-    <!-- Anti-FOUC: apply saved/system theme before first paint -->
-    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark-mode');}else if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark-mode');}}catch(e){}})();</script>
+    <!-- Anti-FOUC: apply saved theme before first paint; default is light mode. -->
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark-mode');}}catch(e){}})();</script>
   </head>
   <!-- Main Body-->
   <body>
