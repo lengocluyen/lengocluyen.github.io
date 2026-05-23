@@ -1,121 +1,158 @@
 ---
 layout: home
+description: Ngoc Luyen Le is a research and development engineer specializing in NLP, large language models, semantic representation, knowledge graphs, and recommender systems.
 ---
 
-<section id="about">
-  <div class="container">
-    <div class="panel-default">
-      <div class="panel-body" style="margin-top:0;padding-top:0">
+<section id="about" class="home-page">
+  <div class="container home-container">
+    <div class="home-hero home-hero-upgraded fade-in-up">
+      <div class="hero-copy">
+        <p class="hero-kicker">Applied AI for knowledge-intensive domains</p>
+        <h1>Ngoc Luyen Le</h1>
+        <p class="hero-lede">
+          I build explainable NLP, knowledge graph, and recommender systems that connect
+          domain expertise with large language models.
+        </p>
 
-        <!-- Photo carousel -->
-        <div class="avatar text-center mb-5 mt-3 pt-0 fade-in-up" style="margin-top:0;padding-top:0">
-          <div class="carousel-avatar">
-            <ul class="slides">
-              <input type="radio" name="radio-buttons" id="img-1" checked />
-              <li class="slide-container">
-                <div class="slide-image">
-                  <img class="img-thumbnail" src="{{ site.baseurl }}static/img/{{ site.photoavatar }}" alt="Avatar 1">
-                </div>
-                <div class="carousel-controls">
-                  <label for="img-3" class="prev-slide"><span>&lsaquo;</span></label>
-                  <label for="img-2" class="next-slide"><span>&rsaquo;</span></label>
-                </div>
-              </li>
-
-              <input type="radio" name="radio-buttons" id="img-2" />
-              <li class="slide-container">
-                <div class="slide-image">
-                  <img class="img-thumbnail" src="{{ site.baseurl }}static/img/{{ site.photoavatar1 }}" alt="Avatar 2">
-                </div>
-                <div class="carousel-controls">
-                  <label for="img-1" class="prev-slide"><span>&lsaquo;</span></label>
-                  <label for="img-3" class="next-slide"><span>&rsaquo;</span></label>
-                </div>
-              </li>
-
-              <input type="radio" name="radio-buttons" id="img-3" />
-              <li class="slide-container">
-                <div class="slide-image">
-                  <img class="img-thumbnail" src="{{ site.baseurl }}static/img/{{ site.photoavatar2 }}" alt="Avatar 3">
-                </div>
-                <div class="carousel-controls">
-                  <label for="img-2" class="prev-slide"><span>&lsaquo;</span></label>
-                  <label for="img-1" class="next-slide"><span>&rsaquo;</span></label>
-                </div>
-              </li>
-
-              <div class="carousel-dots">
-                <label for="img-1" class="carousel-dot"></label>
-                <label for="img-2" class="carousel-dot"></label>
-                <label for="img-3" class="carousel-dot"></label>
-              </div>
-            </ul>
-          </div>
-        </div><!-- /.avatar -->
-
-        <!-- Bio -->
-        <div class="fade-in-up">
-          <h5>
-            <div class="div-justify" style="margin-top:30px;">
-              Hi! I am <strong>Ngoc Luyen Le</strong>, currently working as a Research and Development Engineer specializing in Natural Language Processing (NLP), Large Language Models (LLMs), Semantic Representation, and Recommender Systems.
-            </div>
-          </h5>
-
-          <h5>
-            <div class="div-justify">
-              Previously, I held a postdoctoral research position at the Heudiasyc Laboratory of the Université de Technologie de Compiègne, under the supervision of Professor Marie-Hélène Abel. My work focused on recommender systems and knowledge representation, particularly in vehicle-related applications. Prior to that, I earned my PhD from the LAB-STICC Laboratory at IMT Atlantique, France, under the supervision of Professors Yannis Haralambous and Philippe Lenca. My doctoral research explored semantic representation for the French language using Combinatory Categorial Grammar (CCG) and Discourse Representation Theory (DRT).
-            </div>
-          </h5>
-
-          <h5>
-            <div class="div-justify">
-              My current research focuses on applying advanced NLP techniques, LLMs, and Generative AI to enhance semantic modeling and optimize recommender systems across various application domains. I am particularly interested in developing context-aware, linguistically informed systems capable of understanding and responding to human language in specialized areas such as skill management and education.
-            </div>
-          </h5>
+        <div class="hero-tags" aria-label="Research areas">
+          <span>AI Engineering</span>
+          <span>LLMs</span>
+          <span>Agentic AI</span>
+          <span>Knowledge Graphs</span>
         </div>
 
-        <!-- Stats bar -->
-        <div class="stats-bar fade-in-up">
-          <div class="stat-card">
-            <span class="stat-number">10+</span>
-            <span class="stat-label">Publications</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">8+</span>
-            <span class="stat-label">Years Research</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">3</span>
-            <span class="stat-label">Countries</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">PhD</span>
-            <span class="stat-label">IMT Atlantique</span>
-          </div>
+        <div class="hero-current">
+          <span>Current focus</span>
+          <strong>LLMs, agentic AI, grounded skill search, competency modeling, and personalized training recommendation.</strong>
         </div>
 
-        <!-- CTA buttons -->
-        <div class="cta-buttons fade-in-up">
+        <div class="cta-buttons">
           <a href="{{ '/resume.html' | relative_url }}" class="btn-primary-custom">
-            <i class="fas fa-file-alt"></i> View Resume
+            <i class="fas fa-file-alt" aria-hidden="true"></i> View Resume
           </a>
           <a href="{{ '/publications.html' | relative_url }}" class="btn-outline-custom">
-            <i class="fas fa-book-open"></i> Publications
+            <i class="fas fa-book-open" aria-hidden="true"></i> Publications
           </a>
-          <a href="{{ '/static/' | relative_url }}{{ site.cvfullen }}" class="btn-outline-custom" target="_blank">
-            <i class="fas fa-download"></i> Download CV
+          <a href="{{ '/static/' | relative_url }}{{ site.cvfullen }}" class="btn-outline-custom" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-download" aria-hidden="true"></i> Download CV
           </a>
           <a href="mailto:{{ site.email }}" class="btn-outline-custom">
-            <i class="fas fa-envelope"></i> Contact Me
+            <i class="fas fa-envelope" aria-hidden="true"></i> Contact
           </a>
         </div>
-
-        <!-- Social icons -->
-        <div class="fade-in-up">
-          {% include social.html %}
-        </div>
-
       </div>
+
+      <aside class="hero-profile-panel" aria-label="Profile summary">
+        <figure class="hero-portrait">
+          <img
+            src="{{ '/static/img/profile.jpg' | relative_url }}"
+            width="350"
+            height="450"
+            alt="Ngoc Luyen Le"
+            decoding="async"
+            fetchpriority="high">
+        </figure>
+        <div class="hero-profile-note">
+          <span>Based in Compiègne, France</span>
+          <strong>R&amp;D Engineer working across NLP, ontologies, LLMs, and recommendation.</strong>
+        </div>
+      </aside>
+    </div>
+
+    <div class="home-highlights fade-in-up" aria-label="Profile highlights">
+      <div>
+        <strong>34</strong>
+        <span>listed publications</span>
+      </div>
+      <div>
+        <strong>10+</strong>
+        <span>years in research and engineering</span>
+      </div>
+      <div>
+        <strong>PhD</strong>
+        <span>Computer Science, IMT Atlantique</span>
+      </div>
+    </div>
+
+    <section class="home-overview fade-in-up" aria-labelledby="overview-title">
+      <div>
+        <h2 id="overview-title" class="home-section-heading">What I Work On</h2>
+        <p>
+          My recent work focuses on grounded AI systems for education, skill management,
+          vehicle recommendation, and semantic search. I am interested in systems that can
+          explain their recommendations, respect domain knowledge, and adapt to user context.
+        </p>
+      </div>
+      <div>
+        <h2 class="home-section-heading">Research Path</h2>
+        <p>
+          I previously held a postdoctoral position at Heudiasyc, Université de Technologie
+          de Compiègne. I earned my PhD at IMT Atlantique, where my doctoral research explored
+          semantic representation for French with CCG and DRT.
+        </p>
+      </div>
+    </section>
+
+    <div class="home-sections">
+      <section class="focus-section fade-in-up" aria-labelledby="focus-title">
+        <h2 id="focus-title" class="home-section-heading">Focus Areas</h2>
+        <div class="focus-list">
+          <article>
+            <i class="fas fa-diagram-project" aria-hidden="true"></i>
+            <h3>AI Engineering</h3>
+            <p>Applied AI systems that connect data pipelines, knowledge services, retrieval, evaluation, and user-facing workflows.</p>
+          </article>
+          <article>
+            <i class="fas fa-robot" aria-hidden="true"></i>
+            <h3>LLMs &amp; Agentic AI</h3>
+            <p>Grounded LLM workflows, tool-using agents, skill search, explanation, and human-in-the-loop decision support.</p>
+          </article>
+          <article>
+            <i class="fas fa-route" aria-hidden="true"></i>
+            <h3>Knowledge &amp; Recommendation</h3>
+            <p>Ontologies, RDF graphs, competency models, and context-aware recommender systems with transparent reasoning.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="selected-work fade-in-up" aria-labelledby="selected-work-title">
+        <h2 id="selected-work-title" class="home-section-heading">Selected Work</h2>
+        <a href="https://hal.science/hal-05610286" target="_blank" rel="noopener noreferrer">
+          <span>2026</span>
+          <strong>KG-First, LLM-Fallback: grounded skill search and explanation</strong>
+        </a>
+        <a href="https://link.springer.com/article/10.1007/s11280-025-01358-8" target="_blank" rel="noopener noreferrer">
+          <span>2025</span>
+          <strong>Multi-head attention for multi-criteria group recommender systems</strong>
+        </a>
+        <a href="https://onlinelibrary.wiley.com/doi/10.1002/mcda.70012" target="_blank" rel="noopener noreferrer">
+          <span>2025</span>
+          <strong>Deep feature interaction learning for context-aware recommendation</strong>
+        </a>
+      </section>
+    </div>
+
+    <section class="project-preview fade-in-up" aria-labelledby="project-preview-title">
+      <div class="project-preview-heading">
+        <h2 id="project-preview-title" class="home-section-heading">Featured Projects</h2>
+        <a href="{{ '/projects.html' | relative_url }}">View all projects</a>
+      </div>
+      <div class="project-preview-list">
+        <article>
+          <span>Skiller</span>
+          <h3>Skill management and grounded recommendation</h3>
+          <p>Ontology-backed competency modeling, skill gap analysis, and LLM-assisted explanation for training guidance.</p>
+        </article>
+        <article>
+          <span>Vehicle Recommender</span>
+          <h3>Context-aware recommendation with semantic graphs</h3>
+          <p>Knowledge representation, RDF similarity, user profiles, and personalized recommendation for vehicle search.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="home-social fade-in-up">
+      {% include social.html %}
     </div>
   </div>
 </section>

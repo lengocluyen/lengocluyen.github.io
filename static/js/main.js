@@ -1,13 +1,28 @@
-/* main.js — v1.1 */
+/* main.js — v1.3 */
 $(document).ready(function () {
 
-  /* ── Active nav link highlighting ── */
-  var currentPath = window.location.pathname;
-  $('.navbar-nav li a').each(function () {
-    var href = $(this).attr('href');
-    if (href && currentPath.indexOf(href.replace('{{ site.url }}', '')) !== -1) {
-      $(this).parent().addClass('active');
+  /* ── Theme toggle ── */
+  function updateThemeIcon() {
+    var isDark = document.documentElement.classList.contains('dark-mode');
+    var $icon = $('#theme-icon');
+    if (isDark) {
+      $icon.removeClass('fa-moon').addClass('fa-sun');
+    } else {
+      $icon.removeClass('fa-sun').addClass('fa-moon');
     }
+  }
+  updateThemeIcon();
+
+  $('#theme-toggle').on('click', function () {
+    var isDark = document.documentElement.classList.contains('dark-mode');
+    if (isDark) {
+      document.documentElement.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    }
+    updateThemeIcon();
   });
 
   /* ── Sticky navbar scroll shrink ── */

@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
+    
+    
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <meta name="author" content="Ngoc Luyen Le" />
-    <meta name="description" content="Personal blog and resume">
-    <link rel="favicon" href="/static/img/favicon.ico">
+	  <meta name="author" content="Ngoc Luyen Le">
+    <meta name="description" content="Ngoc Luyen Le is a research and development engineer specializing in NLP, large language models, semantic representation, knowledge graphs, and recommender systems.">
+    <meta name="theme-color" content="#01579B">
+    <link rel="canonical" href="http://localhost:3000/">
+    <meta property="og:site_name" content="Ngoc Luyen Le" />
+    <meta property="og:title" content="Ngoc Luyen Le | NLP, LLMs, Knowledge Graphs" />
+    <meta property="og:description" content="Ngoc Luyen Le is a research and development engineer specializing in NLP, large language models, semantic representation, knowledge graphs, and recommender systems." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://localhost:3000/" />
+    
+    <meta property="og:image" content="http://localhost:3000/static/img/profile.jpg" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="http://localhost:3000/static/img/profile.jpg">
+    
+    <meta name="twitter:title" content="Ngoc Luyen Le | NLP, LLMs, Knowledge Graphs">
+    <meta name="twitter:description" content="Ngoc Luyen Le is a research and development engineer specializing in NLP, large language models, semantic representation, knowledge graphs, and recommender systems.">
+    <link rel="icon" href="/static/img/lnl.ico" type="image/x-icon">
+
 
     
-      <title>Le Ngoc Luyen's Personal Site</title>
+      <title>Ngoc Luyen Le | NLP, LLMs, Knowledge Graphs</title>
     
 	
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
-    crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,21 +42,18 @@
 	<!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
     <link rel="stylesheet" href="/static/css/academicons.css">
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="/static/css/syntax.css" />
 
     <!-- Google Analytics -->
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
 
-  ga('create', 'UA-69391421-1', 'auto');
-  ga('send', 'pageview');
 
-</script>
+    <!-- Anti-FOUC: apply saved/system theme before first paint -->
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark-mode');}else if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark-mode');}}catch(e){}})();</script>
   </head>
   <!-- Main Body-->
   <body>
@@ -49,182 +61,284 @@
   <div id="wrap">
     <!-- Navbar header -->
     
-<nav class="navbar navbar-default shadow-sm custom-navbar">
+<nav class="navbar navbar-default custom-navbar" id="main-navbar">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-        aria-expanded="false">
+        aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand custom-brand" href="//index.html">
-        <i class="fa fa-home"></i><span class="hidden-xs"> ABOUT ME</span>
+      <a class="navbar-brand custom-brand" href="/">
+        <img src="/static/img/lnl4.png" width="18" height="18" alt="LNL" decoding="async" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">
+        <span class="hidden-xs" style="font-weight:700;letter-spacing:0;">NGOC LUYEN LE</span>
       </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="http://localhost:3000blogs.html">BLOG</a></li>-->
-        <li><a href="//services.html">SERVICES</a></li>
-        <li><a href="//publications.html">PUBLICATIONS</a></li>
-        <li><a href="//projects.html">PROJECTS</a></li>
-        <li><a href="//resume.html">RESUME</a></li>
+        <li><a href="/services.html">SERVICES</a></li>
+        <li><a href="/publications.html">PUBLICATIONS</a></li>
+        <li><a href="/projects.html">PROJECTS</a></li>
+        <li><a href="/resume.html">RESUME</a></li>
       </ul>
     </div>
-    <hr/>
   </div>
 </nav>
 
-    <section id="about">
-	<div class="container">
-		<div class="panel-default">
-		  <div class="panel-body" style="margin-top:0px;padding-top:0px">
-			<div class="avatar text-center mb-5 mt-3 pt-0" style="margin-top:0px;padding-top:0px">
-				<div class="carousel-avatar">
-				  <ul class="slides">
-					<input type="radio" name="radio-buttons" id="img-1" checked />
-					<li class="slide-container">
-					  <div class="slide-image">
-						<img class="img-thumbnail" src="/static/img/photocuzco.jpg" alt="Avatar 1">
-					  </div>
-					  <div class="carousel-controls">
-						<label for="img-3" class="prev-slide"><span>&lsaquo;</span></label>
-						<label for="img-2" class="next-slide"><span>&rsaquo;</span></label>
-					  </div>
-					</li>
-			  
-					<input type="radio" name="radio-buttons" id="img-2" />
-					<li class="slide-container">
-					  <div class="slide-image">
-						<img class="img-thumbnail" src="/static/img/photo2.jpg" alt="Avatar 2">
-					  </div>
-					  <div class="carousel-controls">
-						<label for="img-1" class="prev-slide"><span>&lsaquo;</span></label>
-						<label for="img-3" class="next-slide"><span>&rsaquo;</span></label>
-					  </div>
-					</li>
-			  
-					<input type="radio" name="radio-buttons" id="img-3" />
-					<li class="slide-container">
-					  <div class="slide-image">
-						<img class="img-thumbnail" src="/static/img/photo3.jpg" alt="Avatar 3">
-					  </div>
-					  <div class="carousel-controls">
-						<label for="img-2" class="prev-slide"><span>&lsaquo;</span></label>
-						<label for="img-1" class="next-slide"><span>&rsaquo;</span></label>
-					  </div>
-					</li>
-			  
-					<div class="carousel-dots">
-					  <label for="img-1" class="carousel-dot"></label>
-					  <label for="img-2" class="carousel-dot"></label>
-					  <label for="img-3" class="carousel-dot"></label>
-					</div>
-				  </ul>
-				</div>
-			  </div>
-			  <h5>
-				<div class="div-justify" style="margin-top:30px;">
-				  Hi! I am <strong>Ngoc Luyen Le</strong>, currently working as a Research and Development Engineer specializing in Natural Language Processing (NLP), Large Language Models (LLMs), Semantic Representation, and Recommender Systems.
-				</div>
-			  </h5>
-			  
-			  <h5>
-				<div class="div-justify">
-				  Previously, I held a postdoctoral research position at the Heudiasyc Laboratory of the Université de Technologie de Compiègne, under the supervision of Professor Marie-Hélène Abel. My work focused on recommender systems and knowledge representation, particularly in vehicle-related applications. Prior to that, I earned my PhD from the LAB-STICC Laboratory at IMT Atlantique, France, under the supervision of Professors Yannis Haralambous and Philippe Lenca. My doctoral research explored semantic representation for the French language using Combinatory Categorial Grammar (CCG) and Discourse Representation Theory (DRT).
-				</div>
-			  </h5>
-			  
-			  <h5>
-				<div class="div-justify">
-				  My current research focuses on applying advanced NLP techniques, LLMs, and Generative AI to enhance semantic modeling and optimize recommender systems across various application domains. I am particularly interested in developing context-aware, linguistically informed systems capable of understanding and responding to human language in specialized areas such as skill management and education. Through this work, I aim to contribute to the development of intelligent, adaptive technologies for real-world applications.
-				</div>
-			  </h5>
-			  
-			<!--<h5><div class="div-justify">	
-			I have done my phd research  at the LAB-STICC laboaratory at IMT Atlantique, France under the supervision of Prof. Yannis Haralambous and Prof. Philippe Lenca. My doctoral research focuses on studying of semantic representation for french language based on using the Combinatory Categorial Grammar and Discours Representation Theory.</div></h5>
-			<h5><div class="div-justify">Understanding natural language is extremely complex task for ameliorating the capacity of human-computer interaction because the meaning of an utterance is not only dependent on using vocabularies, grammars but also on the context of the communication. In addition, the explosion of neural network research brings diversity of deep neural network architectures as well as effective solutions about performance and accuracy in different fields. According to this view, my interesting domain research is Natural Language Understanding, Semantic Representation and Deep Neural Networks.</div></h5>-->
-			<h5> <div class="div-justify" style="padding-bottom:0px;">Have a look at some of my <a href="//projects.html"> Coding Projects</a> and my recent <a href="//publications.html"> Research Publications</a>. For more check out my academic &amp; professional <a href="//resume.html">Curriculum Vitae</a>. Feel free to contact me at <a href="http://linkedin.com/in/lengocluyen">http://linkedin.com/in/lengocluyen</a> or by <a href="mailto:luyenlengoc@gmail.com">luyenlengoc@gmail.com</a></div></h5>
-			
-			<div class="social">
+
+    <section id="about" class="home-page">
+  <div class="container home-container">
+    <div class="home-hero home-hero-upgraded fade-in-up">
+      <div class="hero-copy">
+        <p class="hero-kicker">Applied AI for knowledge-intensive domains</p>
+        <h1>Ngoc Luyen Le</h1>
+        <p class="hero-lede">
+          I build explainable NLP, knowledge graph, and recommender systems that connect
+          domain expertise with large language models.
+        </p>
+
+        <div class="hero-tags" aria-label="Research areas">
+          <span>AI Engineering</span>
+          <span>LLMs</span>
+          <span>Agentic AI</span>
+          <span>Knowledge Graphs</span>
+        </div>
+
+        <div class="hero-current">
+          <span>Current focus</span>
+          <strong>LLMs, agentic AI, grounded skill search, competency modeling, and personalized training recommendation.</strong>
+        </div>
+
+        <div class="cta-buttons">
+          <a href="/resume.html" class="btn-primary-custom">
+            <i class="fas fa-file-alt" aria-hidden="true"></i> View Resume
+          </a>
+          <a href="/publications.html" class="btn-outline-custom">
+            <i class="fas fa-book-open" aria-hidden="true"></i> Publications
+          </a>
+          <a href="/static/04_cv_main_en.pdf" class="btn-outline-custom" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-download" aria-hidden="true"></i> Download CV
+          </a>
+          <a href="mailto:luyenlengoc@gmail.com" class="btn-outline-custom">
+            <i class="fas fa-envelope" aria-hidden="true"></i> Contact
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-profile-panel" aria-label="Profile summary">
+        <figure class="hero-portrait">
+          <img
+            src="/static/img/profile.jpg"
+            width="350"
+            height="450"
+            alt="Ngoc Luyen Le"
+            decoding="async"
+            fetchpriority="high">
+        </figure>
+        <div class="hero-profile-note">
+          <span>Based in Compiègne, France</span>
+          <strong>R&amp;D Engineer working across NLP, ontologies, LLMs, and recommendation.</strong>
+        </div>
+      </aside>
+    </div>
+
+    <div class="home-highlights fade-in-up" aria-label="Profile highlights">
+      <div>
+        <strong>34</strong>
+        <span>listed publications</span>
+      </div>
+      <div>
+        <strong>10+</strong>
+        <span>years in research and engineering</span>
+      </div>
+      <div>
+        <strong>PhD</strong>
+        <span>Computer Science, IMT Atlantique</span>
+      </div>
+    </div>
+
+    <section class="home-overview fade-in-up" aria-labelledby="overview-title">
+      <div>
+        <h2 id="overview-title" class="home-section-heading">What I Work On</h2>
+        <p>
+          My recent work focuses on grounded AI systems for education, skill management,
+          vehicle recommendation, and semantic search. I am interested in systems that can
+          explain their recommendations, respect domain knowledge, and adapt to user context.
+        </p>
+      </div>
+      <div>
+        <h2 class="home-section-heading">Research Path</h2>
+        <p>
+          I previously held a postdoctoral position at Heudiasyc, Université de Technologie
+          de Compiègne. I earned my PhD at IMT Atlantique, where my doctoral research explored
+          semantic representation for French with CCG and DRT.
+        </p>
+      </div>
+    </section>
+
+    <div class="home-sections">
+      <section class="focus-section fade-in-up" aria-labelledby="focus-title">
+        <h2 id="focus-title" class="home-section-heading">Focus Areas</h2>
+        <div class="focus-list">
+          <article>
+            <i class="fas fa-diagram-project" aria-hidden="true"></i>
+            <h3>AI Engineering</h3>
+            <p>Applied AI systems that connect data pipelines, knowledge services, retrieval, evaluation, and user-facing workflows.</p>
+          </article>
+          <article>
+            <i class="fas fa-robot" aria-hidden="true"></i>
+            <h3>LLMs &amp; Agentic AI</h3>
+            <p>Grounded LLM workflows, tool-using agents, skill search, explanation, and human-in-the-loop decision support.</p>
+          </article>
+          <article>
+            <i class="fas fa-route" aria-hidden="true"></i>
+            <h3>Knowledge &amp; Recommendation</h3>
+            <p>Ontologies, RDF graphs, competency models, and context-aware recommender systems with transparent reasoning.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="selected-work fade-in-up" aria-labelledby="selected-work-title">
+        <h2 id="selected-work-title" class="home-section-heading">Selected Work</h2>
+        <a href="https://hal.science/hal-05610286" target="_blank" rel="noopener noreferrer">
+          <span>2026</span>
+          <strong>KG-First, LLM-Fallback: grounded skill search and explanation</strong>
+        </a>
+        <a href="https://link.springer.com/article/10.1007/s11280-025-01358-8" target="_blank" rel="noopener noreferrer">
+          <span>2025</span>
+          <strong>Multi-head attention for multi-criteria group recommender systems</strong>
+        </a>
+        <a href="https://onlinelibrary.wiley.com/doi/10.1002/mcda.70012" target="_blank" rel="noopener noreferrer">
+          <span>2025</span>
+          <strong>Deep feature interaction learning for context-aware recommendation</strong>
+        </a>
+      </section>
+    </div>
+
+    <section class="project-preview fade-in-up" aria-labelledby="project-preview-title">
+      <div class="project-preview-heading">
+        <h2 id="project-preview-title" class="home-section-heading">Featured Projects</h2>
+        <a href="/projects.html">View all projects</a>
+      </div>
+      <div class="project-preview-list">
+        <article>
+          <span>Skiller</span>
+          <h3>Skill management and grounded recommendation</h3>
+          <p>Ontology-backed competency modeling, skill gap analysis, and LLM-assisted explanation for training guidance.</p>
+        </article>
+        <article>
+          <span>Vehicle Recommender</span>
+          <h3>Context-aware recommendation with semantic graphs</h3>
+          <p>Knowledge representation, RDF similarity, user profiles, and personalized recommendation for vehicle search.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="home-social fade-in-up">
+      <div class="social" aria-label="Academic profiles">
 	<h5 class="icon-bar">
     
-	  <a href="https://cv.hal.science/luyen-le-ngoc"><i class="ai ai-hal-square ai-3x"></i></a>
+	  <a href="https://cv.hal.science/luyen-le-ngoc" aria-label="HAL profile" title="HAL" target="_blank" rel="noopener noreferrer"><i class="ai ai-hal-square ai-3x"></i></a>
     
 
     
-	  <a href="https://www.researchgate.net/profile/le-luyen"><i class="ai ai-researchgate-square ai-3x"></i></a>
+	  <a href="https://www.researchgate.net/profile/le-luyen" aria-label="ResearchGate profile" title="ResearchGate" target="_blank" rel="noopener noreferrer"><i class="ai ai-researchgate-square ai-3x"></i></a>
     
 
     
-	  <a href="https://scholar.google.fr/citations?user=tFnk5VIAAAAJ"><i class="ai ai-google-scholar-square ai-3x"></i></a>
+	  <a href="https://scholar.google.fr/citations?user=tFnk5VIAAAAJ" aria-label="Google Scholar profile" title="Google Scholar" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar-square ai-3x"></i></a>
     
 
     
-	  <a href="https://orcid.org/0000-0002-2043-0679"><i class="ai ai-orcid-square ai-3x"></i>
+	  <a href="https://orcid.org/0000-0002-2043-0679" aria-label="ORCID profile" title="ORCID" target="_blank" rel="noopener noreferrer"><i class="ai ai-orcid-square ai-3x"></i></a>
     
 	</h5>
 </div>
 
-
-			</div>
-		</div>
-	</div>
+    </div>
+  </div>
 </section>
 
 
   </div>
   <!-- Footer -->
-  <footer>
-    
-    <div id="footer">
-        <div class="container">
-            <hr/>
-            <div style="margin-top:20px;" class="footer-line">
-            <div class="left">
-                <p class="text-muted">© 2020-2025 All rights reserved</p>
-            </div>
-            <div class="right">
-                <div class="social">
-                    <h5 class="icon-bar">
-                      
-                      <a href="http://github.com/lengocluyen"><i class="fab fa-github"></i></a>
-                      
-                  
-                      
-                      <a href="http://twitter.com/lengocluyen"><i class="fab fa-twitter"></i></a>
-                      
-                      
-                      <a href="http://linkedin.com/in/lengocluyen"><i class="fab fa-linkedin"></i></a>
-                      
-              
-              <a href="http://instagram.com/lengocluyen"><i class="fab fa-instagram"></i></a>
-            
-              
-              </h5>
+  <footer class="footer-v11">
+  <div class="container">
+    <div class="footer-cols">
 
-            </div>
-            </div>
+      <!-- Col 1: About -->
+      <div>
+        <div class="footer-brand">Ngoc Luyen Le</div>
+        <p class="footer-tagline">
+          R&amp;D Engineer · NLP &amp; LLMs · Recommender Systems<br>
+          Based in Compiègne, France
+        </p>
+        <div class="footer-social">
+          
+          <a href="https://github.com/lengocluyen" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+          </a>
+          
+          
+          <a href="https://linkedin.com/in/lengocluyen" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+          
+          <a href="https://twitter.com/lengocluyen" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+          
+          <a href="https://scholar.google.fr/citations?user=tFnk5VIAAAAJ" aria-label="Google Scholar" title="Google Scholar" target="_blank" rel="noopener noreferrer">
+            <i class="ai ai-google-scholar"></i>
+          </a>
+          
+          
+          <a href="https://www.researchgate.net/profile/le-luyen" aria-label="ResearchGate" title="ResearchGate" target="_blank" rel="noopener noreferrer">
+            <i class="ai ai-researchgate"></i>
+          </a>
+          
         </div>
-            
-        </div>
+      </div>
+
+      <!-- Col 2: Contact -->
+      <div>
+        <h6>Contact</h6>
+        <a href="mailto:luyenlengoc@gmail.com"><i class="fas fa-envelope fa-fw" style="width:16px;margin-right:6px;"></i>luyenlengoc@gmail.com</a>
+        
+        <a href="tel:+33783759510"><i class="fas fa-phone fa-fw" style="width:16px;margin-right:6px;"></i>+33 7 83 75 95 10</a>
+        
+        <a href="https://github.com/lengocluyen" style="word-break:break-all;" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" style="width:16px;margin-right:6px;"></i>github.com/lengocluyen</a>
+      </div>
+
+    </div><!-- /.footer-cols -->
+
+    <div class="footer-bottom">
+      <span>© 2020–2026 Ngoc Luyen Le · All rights reserved</span>
+      <span class="footer-bottom-right">
+        <span>Personal portfolio</span>
+        <button class="btn-theme-toggle footer-theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </span>
     </div>
+  </div>
 </footer>
-<div class="footer"></div>
 
 
-   <!-- <a href="https://github.com/lengocluyen"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
--->
+  <!-- Back to top button -->
+  <a id="back-to-top" href="#" title="Back to top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
-    integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
-    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/static/js/docs.min.js"></script>
     <script src="/static/js/main.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

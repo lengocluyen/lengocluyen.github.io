@@ -1,19 +1,19 @@
-<div class="social">
+<div class="social" aria-label="Academic profiles">
 	<h5 class="icon-bar">
     {% if site.hal %}
-	  <a href="https://cv.hal.science/{{ site.hal }}"><i class="ai ai-hal-square ai-3x"></i></a>
+	  <a href="https://cv.hal.science/{{ site.hal }}" aria-label="HAL profile" title="HAL" target="_blank" rel="noopener noreferrer"><i class="ai ai-hal-square ai-3x"></i></a>
     {% endif %}
 
     {% if site.researchgate %}
-	  <a href="https://www.researchgate.net/profile/{{ site.researchgate }}"><i class="ai ai-researchgate-square ai-3x"></i></a>
+	  <a href="https://www.researchgate.net/profile/{{ site.researchgate }}" aria-label="ResearchGate profile" title="ResearchGate" target="_blank" rel="noopener noreferrer"><i class="ai ai-researchgate-square ai-3x"></i></a>
     {% endif %}
 
     {% if site.googlescholar %}
-	  <a href="https://scholar.google.fr/citations?user={{ site.googlescholar }}"><i class="ai ai-google-scholar-square ai-3x"></i></a>
+	  <a href="https://scholar.google.fr/citations?user={{ site.googlescholar }}" aria-label="Google Scholar profile" title="Google Scholar" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar-square ai-3x"></i></a>
     {% endif %}
 
     {% if site.orcid %}
-	  <a href="https://orcid.org/{{ site.orcid }}"><i class="ai ai-orcid-square ai-3x"></i>
+	  <a href="https://orcid.org/{{ site.orcid }}" aria-label="ORCID profile" title="ORCID" target="_blank" rel="noopener noreferrer"><i class="ai ai-orcid-square ai-3x"></i></a>
     {% endif %}
 	</h5>
 </div>

@@ -29,6 +29,46 @@ permalink: /conferences.html
   #conferences-app .conf-title { font-weight: 700; font-size: 18px; }
   #conferences-app .conf-meta { color: #777; font-size: 14px; }
   #conferences-app .list-group-item { text-align: left; }
+  #conferences-app .pagination-wrap {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    justify-content: space-between;
+    margin-top: 14px;
+  }
+  #conferences-app .pagination-summary {
+    color: #777;
+    font-size: 14px;
+  }
+  #conferences-app .pagination {
+    margin: 0;
+  }
+  #conferences-app .pagination > .active > button,
+  #conferences-app .pagination > .active > button:focus,
+  #conferences-app .pagination > .active > button:hover {
+    background: #01579B;
+    border-color: #01579B;
+    color: #fff;
+  }
+  #conferences-app .pagination > li > button {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #01579B;
+    float: left;
+    line-height: 1.42857143;
+    margin-left: -1px;
+    padding: 6px 12px;
+    position: relative;
+  }
+  #conferences-app .pagination > .disabled > button,
+  #conferences-app .pagination > .disabled > button:focus,
+  #conferences-app .pagination > .disabled > button:hover {
+    background: #fff;
+    border-color: #ddd;
+    color: #aaa;
+    cursor: not-allowed;
+  }
   #conferences-app .small-actions {
     margin-top: 10px;
     display: flex;
@@ -36,8 +76,70 @@ permalink: /conferences.html
     flex-wrap: wrap;
     justify-content: flex-end;
   }
+  html.dark-mode #conferences-app .stat,
+  html.dark-mode #conferences-app .list-group-item {
+    background: var(--surface-soft);
+    border-color: var(--border-soft);
+    color: var(--text-dark);
+  }
+  html.dark-mode #conferences-app .stat .value,
+  html.dark-mode #conferences-app .pagination > li > button {
+    color: var(--primary);
+  }
+  html.dark-mode #conferences-app .conf-title,
+  html.dark-mode #conferences-app label {
+    color: var(--text-dark);
+  }
+  html.dark-mode #conferences-app .conf-meta,
+  html.dark-mode #conferences-app .pagination-summary,
+  html.dark-mode #conferences-app .help-block {
+    color: var(--text-muted);
+  }
+  html.dark-mode #conferences-app .btn-default,
+  html.dark-mode #conferences-app .pagination > li > button {
+    background: var(--surface-soft);
+    border-color: var(--border-soft);
+    color: var(--text-dark);
+  }
+  html.dark-mode #conferences-app .btn-default:hover,
+  html.dark-mode #conferences-app .btn-default:focus,
+  html.dark-mode #conferences-app .pagination > li > button:hover,
+  html.dark-mode #conferences-app .pagination > li > button:focus {
+    background: #263549;
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  html.dark-mode #conferences-app .tabs .btn.active,
+  html.dark-mode #conferences-app .btn-primary,
+  html.dark-mode #conferences-app .pagination > .active > button,
+  html.dark-mode #conferences-app .pagination > .active > button:focus,
+  html.dark-mode #conferences-app .pagination > .active > button:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #0f1722;
+  }
+  html.dark-mode #conferences-app .pagination > .disabled > button,
+  html.dark-mode #conferences-app .pagination > .disabled > button:focus,
+  html.dark-mode #conferences-app .pagination > .disabled > button:hover {
+    background: var(--bg-white);
+    border-color: var(--border-soft);
+    color: #64788d;
+  }
+  html.dark-mode #conferences-app .form-control {
+    background: var(--surface-soft);
+    border-color: var(--border-soft);
+    color: var(--text-dark);
+  }
+  html.dark-mode #conferences-app .form-control::placeholder {
+    color: var(--text-muted);
+  }
+  html.dark-mode #conferences-app code {
+    background: var(--surface-soft);
+    color: var(--primary);
+  }
   @media (max-width: 768px) {
     #conferences-app .small-actions { justify-content: flex-start; }
+    #conferences-app .pagination-wrap { align-items: flex-start; flex-direction: column; }
   }
 </style>
 
@@ -94,6 +196,7 @@ permalink: /conferences.html
           </div>
 
           <div id="list" class="list-group"></div>
+          <div id="pagination" class="pagination-wrap" aria-label="Conference pagination"></div>
         </div>
 
         <div id="sectionAdd" style="display:none;">
@@ -174,11 +277,14 @@ permalink: /conferences.html
   <script>
     const STORAGE_KEY = 'conference-deadline-tracker-v1';
     const SERVER_WRITE_AT_KEY = `${STORAGE_KEY}-serverWriteAt`;
+    const PAGE_SIZE = 5;
     let conferences = [];
     let notifiedMap = {};
+    let currentPage = 1;
 
     const els = {
       list: document.getElementById('list'),
+      pagination: document.getElementById('pagination'),
       totalCount: document.getElementById('totalCount'),
       upcomingCount: document.getElementById('upcomingCount'),
       soonCount: document.getElementById('soonCount'),
@@ -293,8 +399,13 @@ permalink: /conferences.html
       return { label: 'Upcoming', cls: 'label-success' };
     }
 
+    function getDeadlineTime(conf) {
+      const time = new Date(conf.deadline).getTime();
+      return Number.isNaN(time) ? 0 : time;
+    }
+
     function render() {
-      const sorted = [...conferences].sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+      const sorted = [...conferences].sort((a, b) => getDeadlineTime(b) - getDeadlineTime(a));
       const upcoming = sorted.filter(c => daysRemaining(c.deadline) >= 0);
       const soon = sorted.filter(c => {
         const d = daysRemaining(c.deadline);
@@ -307,10 +418,16 @@ permalink: /conferences.html
 
       if (!sorted.length) {
         els.list.innerHTML = '<div class="alert alert-info" style="margin: 0;">No conferences yet. Click “Add new” to create one, or use “Import JSON”.</div>';
+        els.pagination.innerHTML = '';
         return;
       }
 
-      els.list.innerHTML = sorted.map(conf => {
+      const pageCount = Math.ceil(sorted.length / PAGE_SIZE);
+      currentPage = Math.min(Math.max(currentPage, 1), pageCount);
+      const pageStart = (currentPage - 1) * PAGE_SIZE;
+      const pageItems = sorted.slice(pageStart, pageStart + PAGE_SIZE);
+
+      els.list.innerHTML = pageItems.map(conf => {
         const status = getStatus(conf);
         const remaining = daysRemaining(conf.deadline);
         const humanRemaining = remaining < 0
@@ -346,6 +463,44 @@ permalink: /conferences.html
           </div>
         `;
       }).join('');
+
+      renderPagination(sorted.length, pageCount, pageStart, pageItems.length);
+    }
+
+    function renderPagination(totalItems, pageCount, pageStart, visibleCount) {
+      if (pageCount <= 1) {
+        els.pagination.innerHTML = `<div class="pagination-summary">Showing all ${totalItems} item(s)</div>`;
+        return;
+      }
+
+      const pageButtons = Array.from({ length: pageCount }, (_, index) => {
+        const page = index + 1;
+        const active = page === currentPage ? ' class="active"' : '';
+        return `<li${active}><button type="button" data-page="${page}" aria-label="Go to page ${page}">${page}</button></li>`;
+      }).join('');
+
+      const previousDisabled = currentPage === 1 ? ' class="disabled"' : '';
+      const nextDisabled = currentPage === pageCount ? ' class="disabled"' : '';
+      const firstShown = pageStart + 1;
+      const lastShown = pageStart + visibleCount;
+
+      els.pagination.innerHTML = `
+        <div class="pagination-summary">Showing ${firstShown}-${lastShown} of ${totalItems}, latest deadlines first</div>
+        <ul class="pagination pagination-sm">
+          <li${previousDisabled}><button type="button" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>Previous</button></li>
+          ${pageButtons}
+          <li${nextDisabled}><button type="button" data-page="${currentPage + 1}" ${currentPage === pageCount ? 'disabled' : ''}>Next</button></li>
+        </ul>
+      `;
+
+      els.pagination.querySelectorAll('button[data-page]').forEach(button => {
+        button.addEventListener('click', () => {
+          const page = Number(button.getAttribute('data-page'));
+          if (!page || page < 1 || page > pageCount || page === currentPage) return;
+          currentPage = page;
+          render();
+        });
+      });
     }
 
     function escapeHtml(value) {
@@ -436,6 +591,7 @@ permalink: /conferences.html
         clearForm();
       }
 
+      currentPage = 1;
       saveConferences();
       render();
       runReminderCheck();
@@ -480,6 +636,7 @@ permalink: /conferences.html
     async function deleteConference(id) {
       conferences = conferences.filter(c => c.id !== id);
       delete notifiedMap[id];
+      currentPage = 1;
       saveConferences();
       saveNotifiedMap();
       render();
@@ -577,6 +734,7 @@ permalink: /conferences.html
             });
 
           conferences = [...conferences, ...imported];
+          currentPage = 1;
           saveConferences();
           saveNotifiedMap();
           render();

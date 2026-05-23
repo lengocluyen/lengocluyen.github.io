@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -)",
+      "Bash(python3 /dev/stdin)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 _temp_patch.py)"
+    ]
+  }
+}

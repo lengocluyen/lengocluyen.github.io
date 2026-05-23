@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
+    
+    
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <meta name="author" content="Ngoc Luyen Le" />
-    <meta name="description" content="Personal blog and resume">
-    <link rel="favicon" href="/static/img/favicon.ico">
+	  <meta name="author" content="Ngoc Luyen Le">
+    <meta name="description" content="Research and development engineer working on NLP, large language models, knowledge graphs, semantic representation, and recommender systems.">
+    <meta name="theme-color" content="#01579B">
+    <link rel="canonical" href="http://localhost:3000/resume">
+    <meta property="og:site_name" content="Ngoc Luyen Le" />
+    <meta property="og:title" content="Resume" />
+    <meta property="og:description" content="Research and development engineer working on NLP, large language models, knowledge graphs, semantic representation, and recommender systems." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://localhost:3000/resume" />
+    
+    <meta property="og:image" content="http://localhost:3000/static/img/profile.jpg" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="http://localhost:3000/static/img/profile.jpg">
+    
+    <meta name="twitter:title" content="Resume">
+    <meta name="twitter:description" content="Research and development engineer working on NLP, large language models, knowledge graphs, semantic representation, and recommender systems.">
+    <link rel="icon" href="/static/img/lnl.ico" type="image/x-icon">
+
 
     
-      <title>Resume</title>
+      <title>Resume | Ngoc Luyen Le</title>
     
 	
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
-    crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,21 +42,18 @@
 	<!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
     <link rel="stylesheet" href="/static/css/academicons.css">
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="/static/css/syntax.css" />
 
     <!-- Google Analytics -->
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
 
-  ga('create', 'UA-69391421-1', 'auto');
-  ga('send', 'pageview');
 
-</script>
+    <!-- Anti-FOUC: apply saved/system theme before first paint -->
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark-mode');}else if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark-mode');}}catch(e){}})();</script>
   </head>
   <!-- Main Body-->
   <body>
@@ -49,31 +61,32 @@
   <div id="wrap">
     <!-- Navbar header -->
     
-<nav class="navbar navbar-default shadow-sm custom-navbar">
+<nav class="navbar navbar-default custom-navbar" id="main-navbar">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-        aria-expanded="false">
+        aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand custom-brand" href="//index.html">
-        <i class="fa fa-home"></i><span class="hidden-xs"> ABOUT ME</span>
+      <a class="navbar-brand custom-brand" href="/">
+        <img src="/static/img/lnl4.png" width="18" height="18" alt="LNL" decoding="async" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">
+        <span class="hidden-xs" style="font-weight:700;letter-spacing:0;">NGOC LUYEN LE</span>
       </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="http://localhost:3000blogs.html">BLOG</a></li>-->
-        <li><a href="//services.html">SERVICES</a></li>
-        <li><a href="//publications.html">PUBLICATIONS</a></li>
-        <li><a href="//projects.html">PROJECTS</a></li>
-        <li><a href="//resume.html">RESUME</a></li>
+        <li><a href="/services.html">SERVICES</a></li>
+        <li><a href="/publications.html">PUBLICATIONS</a></li>
+        <li><a href="/projects.html">PROJECTS</a></li>
+        <li><a href="/resume.html">RESUME</a></li>
       </ul>
     </div>
-    <hr/>
   </div>
 </nav>
+
 
     <section id="resumes">
 	<div class="container" style="margin-bottom:0px;">
@@ -83,33 +96,31 @@
   
 	  <!-- Profile Sidebar (Left) -->
 	  <aside class="cv-sidebar">
-		<img src="/static/img/profile.jpg" class="profile-pic img-thumbnail" alt="Profile">
-		<h1>Ngoc Luyen Le</h1>
+		<img src="static/img/profile.jpg" width="350" height="450" class="profile-pic img-thumbnail" alt="Ngoc Luyen Le" loading="lazy" decoding="async">
+		<p class="profile-name">Ngoc Luyen Le</p>
   
 		<div class="profile-links">
-		  <a class="link-block" href="tel:+33 7 83 75 95 10"><i class="fa fa-phone-square fa-lg"></i> +33 7 83 75 95 10</a>
-		  <a class="link-block" href="https://www.google.com/maps/place/13+Rue+Winston+Churchill,+60200+Compi%C3%A8gne/@49.4106871,2.8128797,17z/data=!3m1!4b1!4m6!3m5!1s0x47e7d42710caccc1:0xf38b75e779ba1187!8m2!3d49.4106871!4d2.8128797!16s%2Fg%2F11c0z4jzyq?entry=ttu"><i class="fa fa-map-marker fa-lg"></i> Compiègne, France</a>
+		  <a class="link-block" href="tel:+33783759510"><i class="fa fa-phone-square fa-lg"></i> +33 7 83 75 95 10</a>
+		  <a class="link-block" href="https://www.google.com/maps/place/13+Rue+Winston+Churchill,+60200+Compi%C3%A8gne/@49.4106871,2.8128797,17z/data=!3m1!4b1!4m6!3m5!1s0x47e7d42710caccc1:0xf38b75e779ba1187!8m2!3d49.4106871!4d2.8128797!16s%2Fg%2F11c0z4jzyq?entry=ttu" target="_blank" rel="noopener noreferrer"><i class="fa fa-map-marker fa-lg"></i> Compiègne, France</a>
 		  <a class="link-block" href="https://lengocluyen.github.io"><i class="fa fa-id-card fa-lg"></i> lengocluyen.github.io</a>
-		  <a class="link-block" href="mailto:luyenlengoc@gmail.com"><i class="fa fa-envelope-square fa-lg"></i> luyenlengoc</br>@gmail.com</a>
-		  <a class="link-block" href="https://github.com/lengocluyen"><i class="fab fa-github fa-lg"></i> Github</a>
-		  <a class="link-block" href="https://twitter.com/lengocluyen"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
-		  <a class="link-block" href="http://linkedin.com/in/lengocluyen"><i class="fab fa-linkedin fa-lg"></i> Linkedin</a>
-		  <a class="link-block" href="http://instagram.com/lengocluyen"><i class="fab fa-instagram fa-lg"></i> Instagram</a>
-		  <a class="link-block" href="/static/04_cv_main_en.pdf"><i class="fas fa-file-pdf fa-lg"></i> CV in English</a>
-		  <a class="link-block" href="/static/04_cv_main.pdf"><i class="fas fa-file-pdf fa-lg"></i> CV en français</a>
+		  <a class="link-block" href="mailto:luyenlengoc@gmail.com"><i class="fa fa-envelope-square fa-lg"></i> luyenlengoc<br>@gmail.com</a>
+		  <a class="link-block" href="https://github.com/lengocluyen" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-lg"></i> GitHub</a>
+		  <a class="link-block" href="https://twitter.com/lengocluyen" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
+		  <a class="link-block" href="https://linkedin.com/in/lengocluyen" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin fa-lg"></i> LinkedIn</a>
+		  <a class="link-block" href="static/04_cv_main_en.pdf"><i class="fas fa-file-pdf fa-lg"></i> CV in English</a>
+		  <a class="link-block" href="static/04_cv_main.pdf"><i class="fas fa-file-pdf fa-lg"></i> CV en français</a>
 		</div>
 	  </aside>
   
 	  <!-- CV Content (Right) -->
 	  <main class="cv-content">
   
-		<section class="thirteen columns">
-    <div class="section-header d-flex justify-content-between align-items-center mt-4">
-        <span>EXPERIENCE</span>
-      </div>
+		<section>
+    <div class="section-header">
+      <span class="section-header-title"><i class="fas fa-briefcase section-header-icon" aria-hidden="true"></i>EXPERIENCE</span>
+    </div>
 
-      <!-- Job Entry -->
-      <div class="experience-card"  style="margin-top:20px;">
+    <div class="experience-card" style="margin-top:20px;">
         <div class="experience-header">
           <h4>Research & Development Engineer</h4>
           <div class="experience-meta">
@@ -119,16 +130,14 @@
           </div>
         </div>
         <p>
-            <p>
-                Designed and developed <span class="tag">knowledge bases</span> for <span class="tag">skill management</span>,
-                incorporating <span class="tag">ontologies</span> to represent competencies and
-                <span class="tag">learner profiles</span>. Built a <span class="tag">recommender system</span> for
-                training programs and courses, tailored to individual
-                skill gaps, career objectives, and
-                <span class="tag">contextual constraints</span>. Contributed to the development of a
-                skill management portal, enhanced with
-                <span class="tag">LLMs</span> and <span class="tag">Generative AI</span>.
-              </p>      </div>
+          Designed and developed <span class="tag">knowledge bases</span> for <span class="tag">skill management</span>,
+          incorporating <span class="tag">ontologies</span> to represent competencies and
+          <span class="tag">learner profiles</span>. Built a <span class="tag">recommender system</span> for
+          training programs and courses, tailored to individual skill gaps, career objectives, and
+          <span class="tag">contextual constraints</span>. Contributed to the development of a
+          skill management portal, enhanced with <span class="tag">LLMs</span> and <span class="tag">Generative AI</span>.
+        </p>
+      </div>
   <div class="experience-card">
     <div class="experience-header">
       <h4>Post-doctoral Researcher</h4>
@@ -186,7 +195,7 @@
     </p>
   </div>
 
-  <div class="experience-card"   style="margin-bottom:0px">
+  <div class="experience-card" style="margin-bottom:0px">
     <div class="experience-header">
       <h4>Master Internship</h4>
       <div class="experience-meta">
@@ -199,50 +208,11 @@
       Studied and developed a <span class="tag">knowledge-based system</span> for <span class="tag">big data</span> (phenotyping data of rice - O. Sativa) using <span class="tag">Semantic Web</span> technologies, <span class="tag">RDF</span>, <span class="tag">ontologies</span>, and <span class="tag">big data</span> platforms like <span class="tag">MongoDB</span> and <span class="tag">Neo4j</span>.
     </p>
   </div>
-  <!--
-    <article>
-        <header>
-            <h1>Researcher</h1>
-            <span><address>Compiègne, France</address><time>05/2021 to 11/2023</time></span>
-        </header>
-        <p class="justify">Constructed a recommendation system for vehicle buying and selling. Developed ontology for vehicle models and transactions, proposed a user profile-based ontology, introduced a method for estimating semantic similarity of RDF data, and built a personalized recommendation system using Protégé, SPARQL, Allegrograph, and Python.</p>
-    </article>
-    <article>
-        <header>
-            <h1>Phd Researcher</h1>
-            <span><address>Brest, France</address><time>11/2016 to 09/2020</time></span>
-        </header>
-        <p class="justify">Proposed approaches for automatically constructing Combinatory Categorial Grammar (CCG) trees and ontologies to find missing information in appointment requests at Crédit Mutuel ARKÉA. Developed a novel method for analyzing grammatical dependency structure, created a new resource for French CCG trees, proposed a supervised sequence-to-sequence model for GCC super-labeling, and introduced a method for semantic representation of French discourse. </p>
-    </article>
-    <article>
-        <header>
-            <h1>Lecturer</h1>
-            <span><address>Dalat University, Viet Nam</address><time>06/2011 to 11/2019</time></span>
-        </header>
-        <p  class="justify">Teaching for the first year students with the course "Information Technology fundamentals" and the courses in the software engineering domain such as "Java Programming", "Web Development", "Algorithm and Data Structure".</p>
-    </article>
-    <article>
-        <header>
-            <h1>Software Engineer</h1>
-            <span><address>Freelance</address><time>2011 to 2013</time></span>
-        </header>
-        <p  class="justify"> Designed and implemented web and Windows applications based on the requirements of organizations and businesses in Da Lat, using .NET frameworks with C#, ASP.NET, and SQL. 
-        </p>
-    </article>
-    <article>
-        <header>
-            <h1>Master Intership</h1>
-            <span><address>Montpelier, France</address><time>04/2015 to 10/2015</time></span>
-        </header>
-        <p  class="justify"> Study and developpment of a knowledge system for big data: application to phenotyping data of rice (O.Sativa) based on semantic web technology with RDF data formats, ontologies in association with big data management systems such as MongoDB and Neo4j. 
-        </p>
-    </article>
-    -->
 </section>
 
-		<section class="thirteen columns">
-    <div class="section-header d-flex justify-content-between align-items-center mt-4">
-        <span>EDUCATION</span>
+		<section>
+    <div class="section-header">
+        <span class="section-header-title"><i class="fas fa-graduation-cap section-header-icon" aria-hidden="true"></i>EDUCATION</span>
       </div>
    <!-- PhD -->
   <div class="education-card" style="margin-top:20px;">
@@ -288,9 +258,9 @@
   </div>
 </section>
 
-		<section class="thirteen columns">
-    <div class="section-header d-flex justify-content-between align-items-center mt-4">
-        <span>SKILL</span>
+		<section>
+    <div class="section-header">
+        <span class="section-header-title"><i class="fas fa-screwdriver-wrench section-header-icon" aria-hidden="true"></i>SKILLS</span>
       </div>
       <div class="skills-grid">
 
@@ -364,9 +334,10 @@
     
       </div>
 </section>
-		<section class="thirteen columns">
-    <div class="section-header d-flex justify-content-between align-items-center mt-4">
-        <span>LANGUAGES</span>
+
+		<section>
+    <div class="section-header">
+        <span class="section-header-title"><i class="fas fa-comments section-header-icon" aria-hidden="true"></i>LANGUAGES</span>
       </div>
       <div class="language-grid">
 
@@ -385,95 +356,124 @@
     
       </div>
 </section>
-		<section class="thirteen columns">
-    <div class="section-header d-flex justify-content-between align-items-center mt-4">
-        <span>HONORS & AWARDS</span>
-      </div> 
+
+		<section>
+    <div class="section-header">
+        <span class="section-header-title"><i class="fas fa-trophy section-header-icon" aria-hidden="true"></i>HONORS &amp; AWARDS</span>
+      </div>
       <div class="awards-grid">
-        <article style="margin-bottom:0px">
+        <article>
           <header>2009</header>
           <p><em>Second prize in Microsoft's Imagine Cup competition in Vietnam</em></p>
         </article>
-        <article style="margin-bottom:0px">
+        <article>
           <header>2010</header>
           <p><em>Merit Certificate from Vietnam's Ministry of Education for top students</em></p>
         </article>
-        <article style="margin-bottom:0px">
+        <article>
           <header>2016</header>
           <p><em>Winning team of the first Agro Hackathon, Montpellier, France</em></p>
         </article>
       </div>
 </section>
-		<section class="thirteen columns">
-    <div class="section-header d-flex justify-content-between align-items-center mt-4">
-        <span>HOBBIES</span>
+
+		<section>
+    <div class="section-header">
+        <span class="section-header-title"><i class="fas fa-heart section-header-icon" aria-hidden="true"></i>HOBBIES</span>
       </div>
-      <div class="interest-tags">
-        <span class="tag">Music</span>
-        <span class="tag">Movies</span>
-        <span class="tag">Football</span>
-        <span class="tag">Travelling</span>
-        <span class="tag">Lecturing</span>
-      </div>
+      <p>
+        <span class="skill-tag">Music</span>
+        <span class="skill-tag">Movies</span>
+        <span class="skill-tag">Football</span>
+        <span class="skill-tag">Travelling</span>
+        <span class="skill-tag">Lecturing</span>
+      </p>
 </section>
+
 	  </main>
   
 	</div>
   </section>
 
 
+
   </div>
   <!-- Footer -->
-  <footer>
-    
-    <div id="footer">
-        <div class="container">
-            <hr/>
-            <div style="margin-top:20px;" class="footer-line">
-            <div class="left">
-                <p class="text-muted">© 2020-2025 All rights reserved</p>
-            </div>
-            <div class="right">
-                <div class="social">
-                    <h5 class="icon-bar">
-                      
-                      <a href="http://github.com/lengocluyen"><i class="fab fa-github"></i></a>
-                      
-                  
-                      
-                      <a href="http://twitter.com/lengocluyen"><i class="fab fa-twitter"></i></a>
-                      
-                      
-                      <a href="http://linkedin.com/in/lengocluyen"><i class="fab fa-linkedin"></i></a>
-                      
-              
-              <a href="http://instagram.com/lengocluyen"><i class="fab fa-instagram"></i></a>
-            
-              
-              </h5>
+  <footer class="footer-v11">
+  <div class="container">
+    <div class="footer-cols">
 
-            </div>
-            </div>
+      <!-- Col 1: About -->
+      <div>
+        <div class="footer-brand">Ngoc Luyen Le</div>
+        <p class="footer-tagline">
+          R&amp;D Engineer · NLP &amp; LLMs · Recommender Systems<br>
+          Based in Compiègne, France
+        </p>
+        <div class="footer-social">
+          
+          <a href="https://github.com/lengocluyen" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+          </a>
+          
+          
+          <a href="https://linkedin.com/in/lengocluyen" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+          
+          <a href="https://twitter.com/lengocluyen" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+          
+          <a href="https://scholar.google.fr/citations?user=tFnk5VIAAAAJ" aria-label="Google Scholar" title="Google Scholar" target="_blank" rel="noopener noreferrer">
+            <i class="ai ai-google-scholar"></i>
+          </a>
+          
+          
+          <a href="https://www.researchgate.net/profile/le-luyen" aria-label="ResearchGate" title="ResearchGate" target="_blank" rel="noopener noreferrer">
+            <i class="ai ai-researchgate"></i>
+          </a>
+          
         </div>
-            
-        </div>
+      </div>
+
+      <!-- Col 2: Contact -->
+      <div>
+        <h6>Contact</h6>
+        <a href="mailto:luyenlengoc@gmail.com"><i class="fas fa-envelope fa-fw" style="width:16px;margin-right:6px;"></i>luyenlengoc@gmail.com</a>
+        
+        <a href="tel:+33783759510"><i class="fas fa-phone fa-fw" style="width:16px;margin-right:6px;"></i>+33 7 83 75 95 10</a>
+        
+        <a href="https://github.com/lengocluyen" style="word-break:break-all;" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" style="width:16px;margin-right:6px;"></i>github.com/lengocluyen</a>
+      </div>
+
+    </div><!-- /.footer-cols -->
+
+    <div class="footer-bottom">
+      <span>© 2020–2026 Ngoc Luyen Le · All rights reserved</span>
+      <span class="footer-bottom-right">
+        <span>Personal portfolio</span>
+        <button class="btn-theme-toggle footer-theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </span>
     </div>
+  </div>
 </footer>
-<div class="footer"></div>
 
 
-   <!-- <a href="https://github.com/lengocluyen"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
--->
+  <!-- Back to top button -->
+  <a id="back-to-top" href="#" title="Back to top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
-    integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
-    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/static/js/docs.min.js"></script>
     <script src="/static/js/main.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% assign page_title = page.title | default: site.title %}
+    {% assign page_description = page.description | default: site.description %}
+    {% assign page_image = page.og_image | default: site.og_image %}
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <meta name="author" content="{{ site.author }}" />
-    <meta name="description" content="{{ site.description }}">
-    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-    <meta property="og:description" content="{{ site.description }}" />
+	  <meta name="author" content="{{ site.author }}">
+    <meta name="description" content="{{ page_description }}">
+    <meta name="theme-color" content="#01579B">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:site_name" content="{{ site.author }}" />
+    <meta property="og:title" content="{{ page_title }}" />
+    <meta property="og:description" content="{{ page_description }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    {% if page_image %}
+    <meta property="og:image" content="{{ page_image | absolute_url }}" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ page_image | absolute_url }}">
+    {% else %}
+    <meta name="twitter:card" content="summary">
+    {% endif %}
+    <meta name="twitter:title" content="{{ page_title }}">
+    <meta name="twitter:description" content="{{ page_description }}">
     <link rel="icon" href="{{ '/static/img/lnl.ico' | relative_url }}" type="image/x-icon">
 
 
     {% if page.title %}
-      <title>{{ page.title }}</title>
+      <title>{{ page.title }} | {{ site.author }}</title>
     {% else %}
       <title>{{ site.title }}</title>
     {% endif %}
 	
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
-    crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,12 +48,15 @@
     <link rel="stylesheet" href="{{ '/static/css/academicons.css' | relative_url }}">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@200;400&display=swap" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="{{ '/static/css/syntax.css' | relative_url }}" />
 
     <!-- Google Analytics -->
     {% include analytics.html %}
+
+    <!-- Anti-FOUC: apply saved/system theme before first paint -->
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark-mode');}else if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark-mode');}}catch(e){}})();</script>
   </head>
   <!-- Main Body-->
   <body>
@@ -61,18 +76,11 @@
     <i class="fas fa-chevron-up"></i>
   </a>
 
-   <!-- <a href="https://github.com/lengocluyen"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
--->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
-    integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
-    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="{{ '/static/js/docs.min.js' | relative_url }}"></script>
     <script src="{{ '/static/js/main.js' | relative_url }}"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{{ '/static/js/ie10-viewport-bug-workaround.js' | relative_url }}"></script>
   </body>
 </html>

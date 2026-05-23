@@ -11,61 +11,53 @@
         </p>
         <div class="footer-social">
           {% if site.github %}
-          <a href="http://github.com/{{ site.github }}" aria-label="GitHub" title="GitHub">
+          <a href="https://github.com/{{ site.github }}" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-github"></i>
           </a>
           {% endif %}
           {% if site.linkedin %}
-          <a href="http://linkedin.com/in/{{ site.linkedin }}" aria-label="LinkedIn" title="LinkedIn">
+          <a href="https://linkedin.com/in/{{ site.linkedin }}" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-linkedin-in"></i>
           </a>
           {% endif %}
           {% if site.twitter %}
-          <a href="http://twitter.com/{{ site.twitter }}" aria-label="Twitter" title="Twitter">
+          <a href="https://twitter.com/{{ site.twitter }}" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-twitter"></i>
           </a>
           {% endif %}
           {% if site.googlescholar %}
-          <a href="https://scholar.google.fr/citations?user={{ site.googlescholar }}" aria-label="Google Scholar" title="Google Scholar">
+          <a href="https://scholar.google.fr/citations?user={{ site.googlescholar }}" aria-label="Google Scholar" title="Google Scholar" target="_blank" rel="noopener noreferrer">
             <i class="ai ai-google-scholar"></i>
           </a>
           {% endif %}
           {% if site.researchgate %}
-          <a href="https://www.researchgate.net/profile/{{ site.researchgate }}" aria-label="ResearchGate" title="ResearchGate">
+          <a href="https://www.researchgate.net/profile/{{ site.researchgate }}" aria-label="ResearchGate" title="ResearchGate" target="_blank" rel="noopener noreferrer">
             <i class="ai ai-researchgate"></i>
           </a>
           {% endif %}
         </div>
       </div>
 
-      <!-- Col 2: Quick Links -->
-      <div>
-        <h6>Quick Links</h6>
-        <a href="{{ '/' | relative_url }}"><i class="fas fa-user fa-fw" style="width:16px;margin-right:6px;"></i>About</a>
-        <a href="{{ '/publications.html' | relative_url }}"><i class="fas fa-book fa-fw" style="width:16px;margin-right:6px;"></i>Publications</a>
-        <a href="{{ '/projects.html' | relative_url }}"><i class="fas fa-code fa-fw" style="width:16px;margin-right:6px;"></i>Projects</a>
-        <a href="{{ '/services.html' | relative_url }}"><i class="fas fa-chalkboard-teacher fa-fw" style="width:16px;margin-right:6px;"></i>Services</a>
-        <a href="{{ '/resume.html' | relative_url }}"><i class="fas fa-file-alt fa-fw" style="width:16px;margin-right:6px;"></i>Resume</a>
-      </div>
-
-      <!-- Col 3: Contact -->
+      <!-- Col 2: Contact -->
       <div>
         <h6>Contact</h6>
         <a href="mailto:{{ site.email }}"><i class="fas fa-envelope fa-fw" style="width:16px;margin-right:6px;"></i>{{ site.email }}</a>
         {% if site.tel %}
         <a href="{{ site.tel_full }}"><i class="fas fa-phone fa-fw" style="width:16px;margin-right:6px;"></i>{{ site.tel }}</a>
         {% endif %}
-        <a href="http://github.com/{{ site.github }}" style="word-break:break-all;"><i class="fab fa-github fa-fw" style="width:16px;margin-right:6px;"></i>github.com/{{ site.github }}</a>
-        {% if site.cvfullen %}
-        <a href="{{ '/static/' | relative_url }}{{ site.cvfullen }}" target="_blank"><i class="fas fa-download fa-fw" style="width:16px;margin-right:6px;"></i>Download CV (EN)</a>
-        {% endif %}
+        <a href="https://github.com/{{ site.github }}" style="word-break:break-all;" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" style="width:16px;margin-right:6px;"></i>github.com/{{ site.github }}</a>
       </div>
 
     </div><!-- /.footer-cols -->
 
     <div class="footer-bottom">
-      <span>© 2020–2025 Ngoc Luyen Le · All rights reserved</span>
-      <span>Built with Jekyll &amp; GitHub Pages</span>
+      <span>© 2020–2026 Ngoc Luyen Le · All rights reserved</span>
+      <span class="footer-bottom-right">
+        <span>Personal portfolio</span>
+        <button class="btn-theme-toggle footer-theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </span>
     </div>
   </div>
 </footer>

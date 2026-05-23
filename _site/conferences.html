@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="author" content="Ngoc Luyen Le">
+    <meta name="description" content="Research and development engineer working on NLP, large language models, knowledge graphs, semantic representation, and recommender systems.">
+    <meta name="theme-color" content="#01579B">
+    <link rel="canonical" href="http://localhost:3000/conferences.html">
+    <meta property="og:site_name" content="Ngoc Luyen Le" />
+    <meta property="og:title" content="Conferences" />
+    <meta property="og:description" content="Research and development engineer working on NLP, large language models, knowledge graphs, semantic representation, and recommender systems." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://localhost:3000/conferences.html" />
+    
+    <meta property="og:image" content="http://localhost:3000/static/img/profile.jpg" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="http://localhost:3000/static/img/profile.jpg">
+    
+    <meta name="twitter:title" content="Conferences">
+    <meta name="twitter:description" content="Research and development engineer working on NLP, large language models, knowledge graphs, semantic representation, and recommender systems.">
+    <link rel="icon" href="/static/img/lnl.ico" type="image/x-icon">
+
+
+    
+      <title>Conferences | Ngoc Luyen Le</title>
+    
+	
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/static/css/academicons.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/syntax.css" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- Anti-FOUC: apply saved/system theme before first paint -->
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark-mode');}else if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark-mode');}}catch(e){}})();</script>
+  </head>
+  <!-- Main Body-->
+  <body>
+  <!-- Wrap all page content here -->
+  <div id="wrap">
+    <!-- Navbar header -->
+    
+<nav class="navbar navbar-default custom-navbar" id="main-navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand custom-brand" href="/">
+        <img src="/static/img/lnl4.png" width="18" height="18" alt="LNL" decoding="async" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">
+        <span class="hidden-xs" style="font-weight:700;letter-spacing:0;">NGOC LUYEN LE</span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/services.html">SERVICES</a></li>
+        <li><a href="/publications.html">PUBLICATIONS</a></li>
+        <li><a href="/projects.html">PROJECTS</a></li>
+        <li><a href="/resume.html">RESUME</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <style>
+  /* Conference tracker: Bootstrap-friendly styling to match the rest of the site */
+  #conferences-app .tabs { margin: 15px 0 20px; }
+  #conferences-app .tabs .btn { margin-right: 6px; }
+  #conferences-app .tabs .btn.active {
+    background: #01579B;
+    border-color: #01579B;
+    color: #fff;
+  }
+  #conferences-app .stat {
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background: #fafafa;
+    text-align: center;
+  }
+  #conferences-app .stat .value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #01579B;
+  }
+  #conferences-app .conf-title { font-weight: 700; font-size: 18px; }
+  #conferences-app .conf-meta { color: #777; font-size: 14px; }
+  #conferences-app .list-group-item { text-align: left; }
+  #conferences-app .pagination-wrap {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    justify-content: space-between;
+    margin-top: 14px;
+  }
+  #conferences-app .pagination-summary {
+    color: #777;
+    font-size: 14px;
+  }
+  #conferences-app .pagination {
+    margin: 0;
+  }
+  #conferences-app .pagination > .active > button,
+  #conferences-app .pagination > .active > button:focus,
+  #conferences-app .pagination > .active > button:hover {
+    background: #01579B;
+    border-color: #01579B;
+    color: #fff;
+  }
+  #conferences-app .pagination > li > button {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #01579B;
+    float: left;
+    line-height: 1.42857143;
+    margin-left: -1px;
+    padding: 6px 12px;
+    position: relative;
+  }
+  #conferences-app .pagination > .disabled > button,
+  #conferences-app .pagination > .disabled > button:focus,
+  #conferences-app .pagination > .disabled > button:hover {
+    background: #fff;
+    border-color: #ddd;
+    color: #aaa;
+    cursor: not-allowed;
+  }
+  #conferences-app .small-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  html.dark-mode #conferences-app .stat,
+  html.dark-mode #conferences-app .list-group-item {
+    background: var(--surface-soft);
+    border-color: var(--border-soft);
+    color: var(--text-dark);
+  }
+  html.dark-mode #conferences-app .stat .value,
+  html.dark-mode #conferences-app .pagination > li > button {
+    color: var(--primary);
+  }
+  html.dark-mode #conferences-app .conf-title,
+  html.dark-mode #conferences-app label {
+    color: var(--text-dark);
+  }
+  html.dark-mode #conferences-app .conf-meta,
+  html.dark-mode #conferences-app .pagination-summary,
+  html.dark-mode #conferences-app .help-block {
+    color: var(--text-muted);
+  }
+  html.dark-mode #conferences-app .btn-default,
+  html.dark-mode #conferences-app .pagination > li > button {
+    background: var(--surface-soft);
+    border-color: var(--border-soft);
+    color: var(--text-dark);
+  }
+  html.dark-mode #conferences-app .btn-default:hover,
+  html.dark-mode #conferences-app .btn-default:focus,
+  html.dark-mode #conferences-app .pagination > li > button:hover,
+  html.dark-mode #conferences-app .pagination > li > button:focus {
+    background: #263549;
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  html.dark-mode #conferences-app .tabs .btn.active,
+  html.dark-mode #conferences-app .btn-primary,
+  html.dark-mode #conferences-app .pagination > .active > button,
+  html.dark-mode #conferences-app .pagination > .active > button:focus,
+  html.dark-mode #conferences-app .pagination > .active > button:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #0f1722;
+  }
+  html.dark-mode #conferences-app .pagination > .disabled > button,
+  html.dark-mode #conferences-app .pagination > .disabled > button:focus,
+  html.dark-mode #conferences-app .pagination > .disabled > button:hover {
+    background: var(--bg-white);
+    border-color: var(--border-soft);
+    color: #64788d;
+  }
+  html.dark-mode #conferences-app .form-control {
+    background: var(--surface-soft);
+    border-color: var(--border-soft);
+    color: var(--text-dark);
+  }
+  html.dark-mode #conferences-app .form-control::placeholder {
+    color: var(--text-muted);
+  }
+  html.dark-mode #conferences-app code {
+    background: var(--surface-soft);
+    color: var(--primary);
+  }
+  @media (max-width: 768px) {
+    #conferences-app .small-actions { justify-content: flex-start; }
+    #conferences-app .pagination-wrap { align-items: flex-start; flex-direction: column; }
+  }
+</style>
+
+<section id="conferences-app">
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4 style="margin-top: 0;">Conference Deadline Tracker</h4>
+        <p class="text-muted">
+          Track important conference dates, get browser notifications, and save updates to <code>conferences.json</code> via your Vercel API.
+        </p>
+
+        <div class="tabs" role="tablist" aria-label="Conferences tabs">
+          <button id="tabList" type="button" class="btn btn-default active">All conferences / journals</button>
+          <button id="tabAdd" type="button" class="btn btn-default">Add new</button>
+        </div>
+
+        <div id="sectionList">
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-sm-4">
+              <div class="stat">
+                <div class="value" id="totalCount">0</div>
+                <div class="conf-meta">Tracked conferences</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="stat">
+                <div class="value" id="upcomingCount">0</div>
+                <div class="conf-meta">Upcoming</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="stat">
+                <div class="value" id="soonCount">0</div>
+                <div class="conf-meta">Due within 14 days</div>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12">
+              <div class="btn-toolbar" role="toolbar" aria-label="Conferences actions">
+                <div class="btn-group btn-group-sm" role="group">
+                  <button id="enableNotifBtn" type="button" class="btn btn-primary">Enable notifications</button>
+                  <button id="checkNowBtn" type="button" class="btn btn-default">Check now</button>
+                  <button id="exportBtn" type="button" class="btn btn-default">Export JSON</button>
+                  <button id="importBtn" type="button" class="btn btn-default">Import JSON</button>
+                </div>
+              </div>
+              <p class="help-block" id="notifStatus" style="margin-top: 8px;"></p>
+            </div>
+          </div>
+
+          <div id="list" class="list-group"></div>
+          <div id="pagination" class="pagination-wrap" aria-label="Conference pagination"></div>
+        </div>
+
+        <div id="sectionAdd" style="display:none;">
+          <h4 id="formTitle">Add a conference</h4>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="nameInput">Name</label>
+                <input id="nameInput" class="form-control" type="text" placeholder="Conference name (e.g., ISWC 2027)" />
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="rankInput">Rank</label>
+                <input id="rankInput" class="form-control" type="text" placeholder="A, A*, B..." />
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="categoryInput">Category</label>
+                <select id="categoryInput" class="form-control">
+                  <option value="AI">AI</option>
+                  <option value="NLP">NLP</option>
+                  <option value="Semantic Web">Semantic Web</option>
+                  <option value="EdTech">EdTech</option>
+                  <option value="Data Mining">Data Mining</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="locationInput">Location / notes</label>
+                <input id="locationInput" class="form-control" type="text" placeholder="Location / notes" />
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="urlInput">CFP URL (optional)</label>
+                <input id="urlInput" class="form-control" type="url" placeholder="https://..." />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="deadlineInput">Deadline</label>
+                <input id="deadlineInput" class="form-control" type="datetime-local" />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="notifyDaysInput">Notify days before</label>
+                <input id="notifyDaysInput" class="form-control" type="number" min="0" value="14" />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="sourceInput">Source note</label>
+                <input id="sourceInput" class="form-control" type="text" placeholder="manual, WikiCFP..." />
+              </div>
+            </div>
+          </div>
+
+          <button id="addBtn" type="button" class="btn btn-primary btn-block">Add conference</button>
+          <button id="cancelEditBtn" type="button" class="btn btn-default btn-block" style="display:none;">Cancel edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <script>
+    const STORAGE_KEY = 'conference-deadline-tracker-v1';
+    const SERVER_WRITE_AT_KEY = `${STORAGE_KEY}-serverWriteAt`;
+    const PAGE_SIZE = 5;
+    let conferences = [];
+    let notifiedMap = {};
+    let currentPage = 1;
+
+    const els = {
+      list: document.getElementById('list'),
+      pagination: document.getElementById('pagination'),
+      totalCount: document.getElementById('totalCount'),
+      upcomingCount: document.getElementById('upcomingCount'),
+      soonCount: document.getElementById('soonCount'),
+      notifStatus: document.getElementById('notifStatus'),
+      formTitle: document.getElementById('formTitle'),
+      nameInput: document.getElementById('nameInput'),
+      rankInput: document.getElementById('rankInput'),
+      locationInput: document.getElementById('locationInput'),
+      urlInput: document.getElementById('urlInput'),
+      deadlineInput: document.getElementById('deadlineInput'),
+      notifyDaysInput: document.getElementById('notifyDaysInput'),
+      categoryInput: document.getElementById('categoryInput'),
+      sourceInput: document.getElementById('sourceInput'),
+      addBtn: document.getElementById('addBtn'),
+      cancelEditBtn: document.getElementById('cancelEditBtn')
+    };
+
+    let editingId = null;
+
+    function uid() {
+      return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    }
+
+    async function loadConferences() {
+      const local = (() => {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch {
+          return [];
+        }
+      })();
+
+      // Best source of truth (immediate after saves): ask the Vercel API, which reads from GitHub directly.
+      try {
+        const apiBase = getServerBaseUrl();
+        const url = `${apiBase}/api/conferences?ts=${Date.now()}`;
+        const resp = await fetch(url, { cache: 'no-store' });
+        if (resp.ok) {
+          const data = await resp.json();
+          if (Array.isArray(data)) {
+            // If we recently wrote to the server, GitHub Pages may still serve an older version.
+            // Prefer local data for a short window to avoid deleted items "coming back" on refresh.
+            const lastWriteAt = Number(localStorage.getItem(SERVER_WRITE_AT_KEY) || 0);
+            const recentWriteWindowMs = 10 * 60 * 1000;
+            const wroteRecently = lastWriteAt && Date.now() - lastWriteAt < recentWriteWindowMs;
+            if (Array.isArray(local) && local.length && wroteRecently) {
+              return local;
+            }
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            return data;
+          }
+        }
+      } catch (e) {
+        // ignore, try the GitHub Pages JSON next
+      }
+
+      // Fallback: try to fetch a JSON file from the GitHub Pages site (can lag due to Pages caching/build).
+      try {
+        const url = `/conferences.json?ts=${Date.now()}`;
+        const resp = await fetch(url, { cache: 'no-store' });
+        if (resp.ok) {
+          const data = await resp.json();
+          if (Array.isArray(data)) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            return data;
+          }
+        }
+      } catch (e) {
+        // ignore, fall back to storage
+      }
+
+      // fallback to localStorage if fetch failed or returned non-array
+      return Array.isArray(local) ? local : [];
+    }
+
+    function saveConferences() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(conferences));
+    }
+
+    function loadNotifiedMap() {
+      try {
+        const raw = localStorage.getItem(`${STORAGE_KEY}-notified`);
+        return raw ? JSON.parse(raw) : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveNotifiedMap() {
+      localStorage.setItem(`${STORAGE_KEY}-notified`, JSON.stringify(notifiedMap));
+    }
+
+    function formatDate(dt) {
+      const d = new Date(dt);
+      return d.toLocaleString([], {
+        year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit'
+      });
+    }
+
+    function daysRemaining(deadline) {
+      const now = new Date();
+      const diffMs = new Date(deadline).getTime() - now.getTime();
+      return diffMs / (1000 * 60 * 60 * 24);
+    }
+
+    function getStatus(conf) {
+      const days = daysRemaining(conf.deadline);
+      if (days < 0) return { label: 'Passed', cls: 'label-danger' };
+      if (days <= 14) return { label: 'Soon', cls: 'label-warning' };
+      return { label: 'Upcoming', cls: 'label-success' };
+    }
+
+    function getDeadlineTime(conf) {
+      const time = new Date(conf.deadline).getTime();
+      return Number.isNaN(time) ? 0 : time;
+    }
+
+    function render() {
+      const sorted = [...conferences].sort((a, b) => getDeadlineTime(b) - getDeadlineTime(a));
+      const upcoming = sorted.filter(c => daysRemaining(c.deadline) >= 0);
+      const soon = sorted.filter(c => {
+        const d = daysRemaining(c.deadline);
+        return d >= 0 && d <= 14;
+      });
+
+      els.totalCount.textContent = sorted.length;
+      els.upcomingCount.textContent = upcoming.length;
+      els.soonCount.textContent = soon.length;
+
+      if (!sorted.length) {
+        els.list.innerHTML = '<div class="alert alert-info" style="margin: 0;">No conferences yet. Click “Add new” to create one, or use “Import JSON”.</div>';
+        els.pagination.innerHTML = '';
+        return;
+      }
+
+      const pageCount = Math.ceil(sorted.length / PAGE_SIZE);
+      currentPage = Math.min(Math.max(currentPage, 1), pageCount);
+      const pageStart = (currentPage - 1) * PAGE_SIZE;
+      const pageItems = sorted.slice(pageStart, pageStart + PAGE_SIZE);
+
+      els.list.innerHTML = pageItems.map(conf => {
+        const status = getStatus(conf);
+        const remaining = daysRemaining(conf.deadline);
+        const humanRemaining = remaining < 0
+          ? `${Math.abs(Math.ceil(remaining))} day(s) ago`
+          : `${Math.ceil(remaining)} day(s) left`;
+
+        const safeUrl = conf.url
+          ? `<a href="${escapeHtml(conf.url)}" target="_blank" rel="noopener">CFP</a>`
+          : '—';
+
+        return `
+          <div class="list-group-item">
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="conf-title">${escapeHtml(conf.name)}</div>
+                <div class="conf-meta">${escapeHtml(conf.category || 'Other')} • ${escapeHtml(conf.rank || '—')} • ${escapeHtml(conf.location || 'No location')}</div>
+                <div class="conf-meta" style="margin-top: 6px;">Source: ${escapeHtml(conf.source || 'manual')} • Link: ${safeUrl}</div>
+              </div>
+              <div class="col-sm-3" style="margin-top: 6px;">
+                <div><strong>Deadline</strong></div>
+                <div class="conf-meta">${formatDate(conf.deadline)}</div>
+              </div>
+              <div class="col-sm-2" style="margin-top: 6px;">
+                <div style="margin-bottom: 6px;"><span class="label ${status.cls}">${status.label}</span></div>
+                <div class="conf-meta">${humanRemaining}</div>
+                <div class="conf-meta">Reminder: ${Number(conf.notifyDays || 14)} day(s) before</div>
+              </div>
+            </div>
+            <div class="small-actions">
+              <button class="btn btn-xs btn-default" type="button" onclick="startEditConference('${conf.id}')">Edit</button>
+              <button class="btn btn-xs btn-danger" type="button" onclick="deleteConference('${conf.id}')">Delete</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      renderPagination(sorted.length, pageCount, pageStart, pageItems.length);
+    }
+
+    function renderPagination(totalItems, pageCount, pageStart, visibleCount) {
+      if (pageCount <= 1) {
+        els.pagination.innerHTML = `<div class="pagination-summary">Showing all ${totalItems} item(s)</div>`;
+        return;
+      }
+
+      const pageButtons = Array.from({ length: pageCount }, (_, index) => {
+        const page = index + 1;
+        const active = page === currentPage ? ' class="active"' : '';
+        return `<li${active}><button type="button" data-page="${page}" aria-label="Go to page ${page}">${page}</button></li>`;
+      }).join('');
+
+      const previousDisabled = currentPage === 1 ? ' class="disabled"' : '';
+      const nextDisabled = currentPage === pageCount ? ' class="disabled"' : '';
+      const firstShown = pageStart + 1;
+      const lastShown = pageStart + visibleCount;
+
+      els.pagination.innerHTML = `
+        <div class="pagination-summary">Showing ${firstShown}-${lastShown} of ${totalItems}, latest deadlines first</div>
+        <ul class="pagination pagination-sm">
+          <li${previousDisabled}><button type="button" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>Previous</button></li>
+          ${pageButtons}
+          <li${nextDisabled}><button type="button" data-page="${currentPage + 1}" ${currentPage === pageCount ? 'disabled' : ''}>Next</button></li>
+        </ul>
+      `;
+
+      els.pagination.querySelectorAll('button[data-page]').forEach(button => {
+        button.addEventListener('click', () => {
+          const page = Number(button.getAttribute('data-page'));
+          if (!page || page < 1 || page > pageCount || page === currentPage) return;
+          currentPage = page;
+          render();
+        });
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function getServerBaseUrl() {
+      // If this page is hosted on GitHub Pages, the API is hosted on Vercel.
+      // If hosted on Vercel, same-origin API calls are fine.
+      const host = window.location.host;
+      if (host.endsWith('.vercel.app')) return '';
+      return 'https://lengocluyen.vercel.app';
+    }
+
+    async function saveToServer() {
+      // attempt to persist conferences to Vercel API; failures are non-fatal
+      try {
+        els.notifStatus.textContent = 'Saving to server...';
+        const apiBase = getServerBaseUrl();
+        const resp = await fetch(`${apiBase}/api/save-conferences`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ conferences }),
+        });
+
+        if (!resp.ok) {
+          const body = await resp.json().catch(() => ({}));
+          console.error('server save failed', resp.status, body);
+          els.notifStatus.textContent = `Server save failed (${resp.status}).`;
+          setTimeout(() => {
+            if (els.notifStatus.textContent.startsWith('Server save failed')) {
+              els.notifStatus.textContent = '';
+            }
+          }, 4000);
+          return false;
+        }
+
+        localStorage.setItem(SERVER_WRITE_AT_KEY, String(Date.now()));
+        els.notifStatus.textContent = 'Saved to server.';
+        setTimeout(() => {
+          if (els.notifStatus.textContent === 'Saved to server.') {
+            els.notifStatus.textContent = '';
+          }
+        }, 2500);
+        return true;
+      } catch (e) {
+        console.error('server save failed', e);
+        els.notifStatus.textContent = 'Server save failed (network/CORS).';
+        setTimeout(() => {
+          if (els.notifStatus.textContent.startsWith('Server save failed')) {
+            els.notifStatus.textContent = '';
+          }
+        }, 4000);
+        return false;
+      }
+    }
+
+    function addConference() {
+      const name = els.nameInput.value.trim();
+      const deadline = els.deadlineInput.value;
+      if (!name || !deadline) {
+        alert('Please provide at least a conference name and deadline.');
+        return;
+      }
+
+      const updated = {
+        name,
+        rank: els.rankInput.value.trim(),
+        location: els.locationInput.value.trim(),
+        url: els.urlInput.value.trim(),
+        deadline,
+        notifyDays: Number(els.notifyDaysInput.value || 14),
+        category: els.categoryInput.value,
+        source: els.sourceInput.value.trim()
+      };
+
+      if (editingId) {
+        conferences = conferences.map(c => (c.id === editingId ? { ...c, ...updated } : c));
+        exitEditMode();
+        showTab('list');
+      } else {
+        conferences.push({ id: uid(), ...updated });
+        clearForm();
+      }
+
+      currentPage = 1;
+      saveConferences();
+      render();
+      runReminderCheck();
+      saveToServer();
+    }
+
+    function clearForm() {
+      els.nameInput.value = '';
+      els.rankInput.value = '';
+      els.locationInput.value = '';
+      els.urlInput.value = '';
+      els.deadlineInput.value = '';
+      els.notifyDaysInput.value = 14;
+      els.categoryInput.value = 'AI';
+      els.sourceInput.value = '';
+    }
+
+    function enterEditMode(conf) {
+      editingId = conf.id;
+      els.formTitle.textContent = 'Edit a conference';
+      els.addBtn.textContent = 'Save changes';
+      els.cancelEditBtn.style.display = '';
+
+      els.nameInput.value = conf.name || '';
+      els.rankInput.value = conf.rank || '';
+      els.locationInput.value = conf.location || '';
+      els.urlInput.value = conf.url || '';
+      els.deadlineInput.value = conf.deadline ? String(conf.deadline).slice(0, 16) : '';
+      els.notifyDaysInput.value = Number(conf.notifyDays ?? 14);
+      els.categoryInput.value = conf.category || 'AI';
+      els.sourceInput.value = conf.source || '';
+    }
+
+    function exitEditMode() {
+      editingId = null;
+      els.formTitle.textContent = 'Add a conference';
+      els.addBtn.textContent = 'Add conference';
+      els.cancelEditBtn.style.display = 'none';
+      clearForm();
+    }
+
+    async function deleteConference(id) {
+      conferences = conferences.filter(c => c.id !== id);
+      delete notifiedMap[id];
+      currentPage = 1;
+      saveConferences();
+      saveNotifiedMap();
+      render();
+      await saveToServer();
+    }
+
+    function startEditConference(id) {
+      const conf = conferences.find(c => c.id === id);
+      if (!conf) return;
+      enterEditMode(conf);
+      showTab('add');
+    }
+
+    window.deleteConference = deleteConference;
+    window.startEditConference = startEditConference;
+
+
+    async function requestNotificationPermission() {
+      if (!('Notification' in window)) {
+        els.notifStatus.textContent = 'Notifications are not supported in this browser.';
+        return;
+      }
+      const permission = await Notification.requestPermission();
+      updateNotifStatus(permission);
+    }
+
+    function updateNotifStatus(permission = Notification.permission) {
+      els.notifStatus.textContent = `Notification permission: ${permission}`;
+    }
+
+    function maybeNotify(conf, remainingDays) {
+      if (!('Notification' in window) || Notification.permission !== 'granted') return;
+      const key = `${conf.id}-${new Date(conf.deadline).toDateString()}`;
+      if (notifiedMap[key]) return;
+
+      new Notification(`Conference reminder: ${conf.name}`, {
+        body: `Deadline in ${Math.ceil(remainingDays)} day(s): ${formatDate(conf.deadline)}`,
+        tag: key
+      });
+
+      notifiedMap[key] = true;
+      saveNotifiedMap();
+    }
+
+    function runReminderCheck() {
+      let foundCount = 0;
+      conferences.forEach(conf => {
+        const remaining = daysRemaining(conf.deadline);
+        const notifyDays = Number(conf.notifyDays || 14);
+        if (remaining >= 0 && remaining <= notifyDays) {
+          maybeNotify(conf, remaining);
+          foundCount++;
+        }
+      });
+
+      // show feedback to user
+      const msg = `Reminder check complete. Found ${foundCount} conference(s) due soon.`;
+      els.notifStatus.textContent = msg;
+      setTimeout(() => {
+        els.notifStatus.textContent = '';
+      }, 3000);
+    }
+
+    function exportJson() {
+      const blob = new Blob([JSON.stringify(conferences, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'conferences.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importJson() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'application/json';
+      input.onchange = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          if (!Array.isArray(data)) throw new Error('Invalid format');
+
+          const existingIds = new Set(conferences.map(c => c.id));
+          const imported = data
+            .filter(item => item && typeof item === 'object')
+            .map(item => {
+              const base = { ...item };
+              let id = base.id || uid();
+              if (existingIds.has(id)) id = uid();
+              existingIds.add(id);
+              return { ...base, id };
+            });
+
+          conferences = [...conferences, ...imported];
+          currentPage = 1;
+          saveConferences();
+          saveNotifiedMap();
+          render();
+          runReminderCheck();
+          saveToServer();
+        } catch {
+          alert('Invalid JSON file.');
+        }
+      };
+      input.click();
+    }
+
+    document.getElementById('addBtn').addEventListener('click', addConference);
+    document.getElementById('cancelEditBtn').addEventListener('click', () => {
+      exitEditMode();
+      showTab('list');
+    });
+    document.getElementById('exportBtn').addEventListener('click', exportJson);
+    document.getElementById('importBtn').addEventListener('click', importJson);
+    document.getElementById('enableNotifBtn').addEventListener('click', requestNotificationPermission);
+    document.getElementById('checkNowBtn').addEventListener('click', runReminderCheck);
+
+    // tab logic
+    function showTab(tab) {
+      document.getElementById('tabList').classList.toggle('active', tab === 'list');
+      document.getElementById('tabAdd').classList.toggle('active', tab === 'add');
+      document.getElementById('sectionList').style.display = tab === 'list' ? 'block' : 'none';
+      document.getElementById('sectionAdd').style.display = tab === 'add' ? 'block' : 'none';
+    }
+
+    document.getElementById('tabList').addEventListener('click', () => showTab('list'));
+    document.getElementById('tabAdd').addEventListener('click', () => showTab('add'));
+
+    // initial state
+    showTab('list');
+
+    // after functions defined we initialize
+    (async () => {
+      conferences = await loadConferences();
+      notifiedMap = loadNotifiedMap();
+
+      updateNotifStatus(typeof Notification !== 'undefined' ? Notification.permission : 'unsupported');
+      render();
+      runReminderCheck();
+      setInterval(runReminderCheck, 60 * 1000);
+    })();
+  </script>
+
+
+  </div>
+  <!-- Footer -->
+  <footer class="footer-v11">
+  <div class="container">
+    <div class="footer-cols">
+
+      <!-- Col 1: About -->
+      <div>
+        <div class="footer-brand">Ngoc Luyen Le</div>
+        <p class="footer-tagline">
+          R&amp;D Engineer · NLP &amp; LLMs · Recommender Systems<br>
+          Based in Compiègne, France
+        </p>
+        <div class="footer-social">
+          
+          <a href="https://github.com/lengocluyen" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+          </a>
+          
+          
+          <a href="https://linkedin.com/in/lengocluyen" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+          
+          <a href="https://twitter.com/lengocluyen" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+          
+          <a href="https://scholar.google.fr/citations?user=tFnk5VIAAAAJ" aria-label="Google Scholar" title="Google Scholar" target="_blank" rel="noopener noreferrer">
+            <i class="ai ai-google-scholar"></i>
+          </a>
+          
+          
+          <a href="https://www.researchgate.net/profile/le-luyen" aria-label="ResearchGate" title="ResearchGate" target="_blank" rel="noopener noreferrer">
+            <i class="ai ai-researchgate"></i>
+          </a>
+          
+        </div>
+      </div>
+
+      <!-- Col 2: Contact -->
+      <div>
+        <h6>Contact</h6>
+        <a href="mailto:luyenlengoc@gmail.com"><i class="fas fa-envelope fa-fw" style="width:16px;margin-right:6px;"></i>luyenlengoc@gmail.com</a>
+        
+        <a href="tel:+33783759510"><i class="fas fa-phone fa-fw" style="width:16px;margin-right:6px;"></i>+33 7 83 75 95 10</a>
+        
+        <a href="https://github.com/lengocluyen" style="word-break:break-all;" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" style="width:16px;margin-right:6px;"></i>github.com/lengocluyen</a>
+      </div>
+
+    </div><!-- /.footer-cols -->
+
+    <div class="footer-bottom">
+      <span>© 2020–2026 Ngoc Luyen Le · All rights reserved</span>
+      <span class="footer-bottom-right">
+        <span>Personal portfolio</span>
+        <button class="btn-theme-toggle footer-theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </span>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Back to top button -->
+  <a id="back-to-top" href="#" title="Back to top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>
