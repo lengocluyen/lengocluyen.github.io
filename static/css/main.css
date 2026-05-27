@@ -1939,6 +1939,10 @@ label:focus-visible {
   gap: 14px;
 }
 
+.agenda-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .focus-list article {
   background: var(--bg-white);
   border: 1px solid var(--border-soft);
@@ -2032,6 +2036,10 @@ label:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+}
+
+.case-study-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .project-preview-list article {
