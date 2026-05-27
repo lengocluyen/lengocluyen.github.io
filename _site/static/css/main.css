@@ -1606,6 +1606,60 @@ label:focus-visible {
   width: 1.15em;
 }
 
+.collaboration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 28px;
+}
+
+.collaboration-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+}
+
+.collaboration-meta {
+  color: var(--secondary);
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+}
+
+.collaboration-card h3 {
+  color: #20394d;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 9px;
+}
+
+.collaboration-card p {
+  color: #4d6375;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 13px;
+}
+
+.collaboration-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.collaboration-tags span {
+  background: #e7f1ee;
+  border-radius: var(--border-radius-sm);
+  color: #245d4e;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 8px;
+}
+
 .card-supervision,
 .education-card,
 .experience-card,
@@ -2011,6 +2065,7 @@ label:focus-visible {
   .home-sections,
   .focus-list,
   .home-overview,
+  .collaboration-grid,
   .project-preview-list {
     grid-template-columns: 1fr;
   }
@@ -2186,6 +2241,10 @@ html.dark-mode .focus-list p                              { color: var(--text-mu
 html.dark-mode .selected-work a                           { color: var(--text-dark); border-color: var(--border-soft); }
 html.dark-mode .selected-work a:hover,
 html.dark-mode .selected-work a:focus                    { color: var(--primary); }
+html.dark-mode .collaboration-card                       { background: var(--bg-white); border-color: var(--border-soft); }
+html.dark-mode .collaboration-card h3                    { color: var(--text-dark); }
+html.dark-mode .collaboration-card p                     { color: var(--text-muted); }
+html.dark-mode .collaboration-tags span                  { background: #1a2d3e; color: var(--primary); }
 html.dark-mode .project-preview-heading a                 { color: var(--primary); }
 html.dark-mode .project-preview-list article              { background: var(--bg-white); border-color: var(--border-soft); }
 html.dark-mode .project-preview-list article h3           { color: var(--text-dark); }
