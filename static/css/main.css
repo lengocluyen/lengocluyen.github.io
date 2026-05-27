@@ -686,12 +686,36 @@ input:checked + .slide-container .nav label { display: block; }
     padding: 16px;
   }
 
+  .teaching-card-header {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .teaching-icon {
+    align-items: center;
+    background: #e8f3fb;
+    border: 1px solid #cfe5f4;
+    border-radius: 8px;
+    color: #01579B;
+    display: inline-flex;
+    height: 42px;
+    justify-content: center;
+    width: 42px;
+  }
+
+  .teaching-icon i {
+    font-size: 18px;
+  }
+
   .teaching-card h3 {
     color: #20394d;
     font-size: 18px;
     font-weight: 700;
     line-height: 1.25;
-    margin: 0 0 8px;
+    margin: 0;
   }
 
   .teaching-card p {
@@ -1918,11 +1942,7 @@ label:focus-visible {
 }
 
 .home-sections {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-  gap: 34px;
-  align-items: start;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .home-section-heading {
@@ -1973,39 +1993,8 @@ label:focus-visible {
   margin: 0;
 }
 
-.selected-work a {
-  display: grid;
-  grid-template-columns: 54px 1fr;
-  gap: 12px;
-  padding: 14px 0;
-  color: #20394d;
-  text-decoration: none;
-  border-bottom: 1px solid var(--border-soft);
-}
-
-.selected-work a:first-of-type {
-  border-top: 1px solid var(--border-soft);
-}
-
-.selected-work a:hover,
-.selected-work a:focus {
-  color: var(--primary);
-  text-decoration: none;
-}
-
-.selected-work span {
-  color: var(--secondary);
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.selected-work strong {
-  font-size: 15px;
-  line-height: 1.45;
-}
-
 .project-preview {
-  margin: 42px 0 18px;
+  margin: 34px 0 18px;
 }
 
 .project-preview-heading {
@@ -2106,12 +2095,15 @@ label:focus-visible {
     max-width: 300px;
   }
 
-  .home-sections,
   .focus-list,
   .home-overview,
   .collaboration-grid,
   .project-preview-list {
     grid-template-columns: 1fr;
+  }
+
+  .case-study-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .focus-list article {
@@ -2145,16 +2137,14 @@ label:focus-visible {
     flex-direction: column;
   }
 
+  .case-study-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
   .home-highlights {
     grid-template-columns: 1fr;
-  }
-
-  .selected-work a {
-    grid-template-columns: 1fr;
-    gap: 4px;
   }
 }
 
@@ -2282,9 +2272,6 @@ html.dark-mode .home-section-heading                      { color: var(--text-da
 html.dark-mode .focus-list article                        { background: var(--bg-white); border-color: var(--border-soft); }
 html.dark-mode .focus-list h3                             { color: var(--text-dark); }
 html.dark-mode .focus-list p                              { color: var(--text-muted); }
-html.dark-mode .selected-work a                           { color: var(--text-dark); border-color: var(--border-soft); }
-html.dark-mode .selected-work a:hover,
-html.dark-mode .selected-work a:focus                    { color: var(--primary); }
 html.dark-mode .collaboration-card                       { background: var(--bg-white); border-color: var(--border-soft); }
 html.dark-mode .collaboration-card h3                    { color: var(--text-dark); }
 html.dark-mode .collaboration-card p                     { color: var(--text-muted); }
@@ -2302,6 +2289,7 @@ html.dark-mode .language-item,
 html.dark-mode .teaching-card,
 html.dark-mode .supervision-entry,
 html.dark-mode .awards-grid article                      { background: var(--bg-white); border-color: var(--border-soft); color: var(--text-dark); }
+html.dark-mode .teaching-icon                            { background: #1a2d3e; border-color: var(--border-soft); color: var(--primary); }
 html.dark-mode .teaching-card h3                         { color: var(--text-dark); }
 html.dark-mode .teaching-card p                          { color: var(--text-muted); }
 html.dark-mode .education-card em,
