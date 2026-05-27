@@ -671,6 +671,42 @@ input:checked + .slide-container .nav label { display: block; }
     text-align: justify;
   }
 
+  .teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .teaching-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    padding: 16px;
+  }
+
+  .teaching-card h3 {
+    color: #20394d;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 8px;
+  }
+
+  .teaching-card p {
+    color: #4d6375;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .teaching-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
 
   .section-title {
     font-size: 22px;
@@ -2255,8 +2291,11 @@ html.dark-mode .education-card,
 html.dark-mode .experience-card,
 html.dark-mode .skill-block,
 html.dark-mode .language-item,
+html.dark-mode .teaching-card,
 html.dark-mode .supervision-entry,
 html.dark-mode .awards-grid article                      { background: var(--bg-white); border-color: var(--border-soft); color: var(--text-dark); }
+html.dark-mode .teaching-card h3                         { color: var(--text-dark); }
+html.dark-mode .teaching-card p                          { color: var(--text-muted); }
 html.dark-mode .education-card em,
 html.dark-mode .edu-note                                 { color: var(--text-muted); }
 html.dark-mode .edu-meta                                 { color: var(--text-muted); }
