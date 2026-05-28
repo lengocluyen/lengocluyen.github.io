@@ -1776,12 +1776,15 @@ label:focus-visible {
   left: 0;
   line-height: 1;
   position: absolute;
-  top: 19px;
+  text-align: center;
+  top: 29px;
+  transform: translateY(-50%);
+  width: 28px;
   white-space: nowrap;
 }
 
 #publications .div-justify-pub:first-child::before {
-  top: 5px;
+  top: 15px;
 }
 
 #publications .div-justify-pub > i.fa-caret-right {
