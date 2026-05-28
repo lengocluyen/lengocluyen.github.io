@@ -1744,21 +1744,18 @@ label:focus-visible {
 }
 
 #publications .div-justify-pub {
-  align-items: start;
   border-top: 1px solid var(--border-soft);
-  column-gap: 10px;
-  counter-increment: publication-entry;
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
+  counter-increment: publication-entry -1;
   line-height: 1.72;
   margin: 0;
-  padding: 14px 0 16px;
+  padding: 14px 0 16px 50px;
+  position: relative;
   text-align: justify;
   text-justify: inter-word;
 }
 
 #publications .panel-body {
-  counter-reset: publication-entry;
+  counter-reset: publication-entry var(--publication-start, 1);
 }
 
 #publications .div-justify-pub:first-child {
@@ -1776,9 +1773,15 @@ label:focus-visible {
   display: block;
   font-size: 13px;
   font-weight: 700;
+  left: 0;
   line-height: 1;
-  margin-top: 7px;
+  position: absolute;
+  top: 21px;
   white-space: nowrap;
+}
+
+#publications .div-justify-pub:first-child::before {
+  top: 7px;
 }
 
 #publications .div-justify-pub > i.fa-caret-right {
