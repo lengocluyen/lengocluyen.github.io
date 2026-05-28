@@ -1748,7 +1748,7 @@ label:focus-visible {
   counter-increment: publication-entry -1;
   line-height: 1.72;
   margin: 0;
-  padding: 14px 0 16px 32px;
+  padding: 14px 0 16px 45px;
   position: relative;
   text-align: justify;
   text-justify: inter-word;
@@ -1769,7 +1769,7 @@ label:focus-visible {
 
 #publications .div-justify-pub::before {
   color: #01579B;
-  content: "[" counter(publication-entry) "]";
+  content: "[" counter(publication-entry, decimal-leading-zero) "]";
   display: block;
   font-size: 16px;
   font-weight: 700;
@@ -1777,14 +1777,10 @@ label:focus-visible {
   line-height: 1;
   position: absolute;
   text-align: center;
-  top: 29px;
+  top: 50%;
   transform: translateY(-50%);
-  width: 28px;
+  width: 38px;
   white-space: nowrap;
-}
-
-#publications .div-justify-pub:first-child::before {
-  top: 15px;
 }
 
 #publications .div-justify-pub > i.fa-caret-right {
