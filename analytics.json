@@ -1,15 +1,15 @@
 {
   "version": 1,
   "totals": {
-    "visits": 1,
+    "visits": 2,
     "visitors": 1,
-    "pageVisitors": 1
+    "pageVisitors": 2
   },
   "days": {
     "2026-05-29": {
-      "visits": 1,
+      "visits": 2,
       "visitors": 1,
-      "pageVisitors": 1
+      "pageVisitors": 2
     }
   },
   "pages": {
@@ -18,8 +18,14 @@
       "visits": 1,
       "visitors": 1,
       "updatedAt": "2026-05-29T20:16:56.786Z"
+    },
+    "/": {
+      "title": "Ngoc Luyen Le | NLP, LLMs, Knowledge Graphs",
+      "visits": 1,
+      "visitors": 1,
+      "updatedAt": "2026-05-29T20:16:58.723Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-29T20:16:56.786Z"
+  "updatedAt": "2026-05-29T20:16:58.723Z"
 }
