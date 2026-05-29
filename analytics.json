@@ -1,15 +1,15 @@
 {
   "version": 1,
   "totals": {
-    "visits": 2,
+    "visits": 3,
     "visitors": 0,
-    "pageVisitors": 2
+    "pageVisitors": 3
   },
   "days": {
     "2026-05-29": {
-      "visits": 2,
+      "visits": 3,
       "visitors": 0,
-      "pageVisitors": 2
+      "pageVisitors": 3
     }
   },
   "pages": {
@@ -24,16 +24,22 @@
       "visits": 1,
       "visitors": 1,
       "updatedAt": "2026-05-29T20:37:04.559Z"
+    },
+    "/projects.html": {
+      "title": "Projects | Ngoc Luyen Le",
+      "visits": 1,
+      "visitors": 1,
+      "updatedAt": "2026-05-29T20:38:00.694Z"
     }
   },
   "hosts": {
     "lengocluyen.github.io": {
-      "visits": 2,
+      "visits": 3,
       "visitors": 0,
-      "pageVisitors": 2,
-      "updatedAt": "2026-05-29T20:37:04.559Z"
+      "pageVisitors": 3,
+      "updatedAt": "2026-05-29T20:38:00.694Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-29T20:37:04.559Z"
+  "updatedAt": "2026-05-29T20:38:00.694Z"
 }
