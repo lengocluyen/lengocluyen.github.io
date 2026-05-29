@@ -1,11 +1,30 @@
 // api/save-conferences.js
 // Vercel serverless function to update conferences.json in the repo.
 
+import crypto from 'node:crypto';
+
+function getProvidedPassword(req) {
+  const auth = req.headers.authorization || '';
+  if (auth.toLowerCase().startsWith('bearer ')) {
+    return auth.slice(7).trim();
+  }
+  return req.headers['x-admin-password'] || req.body?.adminPassword || '';
+}
+
+function safeEqual(a, b) {
+  const left = Buffer.from(String(a));
+  const right = Buffer.from(String(b));
+  if (left.length !== right.length) return false;
+  return crypto.timingSafeEqual(left, right);
+}
+
 export default async function handler(req, res) {
   const origin = req.headers.origin;
   const allowedOrigins = new Set([
     'https://lengocluyen.github.io',
     'https://lengocluyen.vercel.app',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
     'http://localhost:4000',
     'http://127.0.0.1:4000',
   ]);
@@ -15,15 +34,30 @@ export default async function handler(req, res) {
     res.setHeader('Vary', 'Origin');
   }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, X-Admin-Password, Authorization'
+  );
 
   if (req.method === 'OPTIONS') {
     return res.status(204).end();
   }
 
   if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
+    res.setHeader('Allow', 'POST, OPTIONS');
     return res.status(405).end('Method Not Allowed');
+  }
+
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  if (!adminPassword) {
+    return res
+      .status(500)
+      .json({ error: 'Missing ADMIN_PASSWORD environment variable' });
+  }
+
+  const providedPassword = getProvidedPassword(req);
+  if (!providedPassword || !safeEqual(providedPassword, adminPassword)) {
+    return res.status(401).json({ error: 'Invalid admin password' });
   }
 
   const { conferences } = req.body;

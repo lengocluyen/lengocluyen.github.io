@@ -1,0 +1,792 @@
+---
+layout: page
+title: Admin Dashboard
+permalink: /admin.html
+description: Private admin dashboard for portfolio maintenance.
+noindex: true
+---
+
+<style>
+  #admin-app {
+    padding: 28px 0 10px;
+  }
+
+  #admin-app .admin-shell {
+    max-width: 1100px;
+  }
+
+  #admin-app .admin-hero {
+    align-items: center;
+    display: flex;
+    gap: 18px;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  #admin-app .admin-hero h2 {
+    color: #20394d;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #admin-app .admin-hero p {
+    color: #4d6375;
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 6px 0 0;
+    max-width: 680px;
+  }
+
+  #admin-app .admin-panel {
+    background: var(--bg-white);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    padding: 18px;
+  }
+
+  #admin-app .login-panel {
+    max-width: 520px;
+  }
+
+  #admin-app .login-panel h3,
+  #admin-app .admin-panel h3 {
+    color: #20394d;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 14px;
+  }
+
+  #admin-app .admin-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  }
+
+  #admin-app .admin-stats {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 16px;
+  }
+
+  #admin-app .admin-stat {
+    background: var(--surface-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--border-radius-sm);
+    padding: 13px;
+  }
+
+  #admin-app .admin-stat strong {
+    color: #20394d;
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  #admin-app .admin-stat span {
+    color: #4d6375;
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+
+  #admin-app .admin-toolbar {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  #admin-app .admin-status {
+    color: #4d6375;
+    font-size: 14px;
+    line-height: 1.45;
+    min-height: 20px;
+  }
+
+  #admin-app .admin-status.error {
+    color: #a94442;
+    font-weight: 700;
+  }
+
+  #admin-app .admin-status.success {
+    color: #2f6f4f;
+    font-weight: 700;
+  }
+
+  #admin-app .conference-admin-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  #admin-app .conference-admin-item {
+    border: 1px solid var(--border-soft);
+    border-radius: var(--border-radius-sm);
+    padding: 13px;
+  }
+
+  #admin-app .conference-admin-title {
+    color: #20394d;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 5px;
+  }
+
+  #admin-app .conference-admin-meta {
+    color: #4d6375;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  #admin-app .conference-admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  #admin-app .quick-links {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 14px;
+  }
+
+  #admin-app .quick-links a {
+    align-items: center;
+    background: var(--surface-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--border-radius-sm);
+    color: #20394d;
+    display: flex;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 12px;
+    text-decoration: none;
+  }
+
+  #admin-app .quick-links a:hover,
+  #admin-app .quick-links a:focus {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  html.dark-mode #admin-app .admin-hero h2,
+  html.dark-mode #admin-app .login-panel h3,
+  html.dark-mode #admin-app .admin-panel h3,
+  html.dark-mode #admin-app .admin-stat strong,
+  html.dark-mode #admin-app .conference-admin-title,
+  html.dark-mode #admin-app .quick-links a {
+    color: var(--text-dark);
+  }
+
+  html.dark-mode #admin-app .admin-hero p,
+  html.dark-mode #admin-app .admin-status,
+  html.dark-mode #admin-app .admin-stat span,
+  html.dark-mode #admin-app .conference-admin-meta {
+    color: var(--text-muted);
+  }
+
+  html.dark-mode #admin-app .admin-panel,
+  html.dark-mode #admin-app .conference-admin-item {
+    background: var(--bg-white);
+    border-color: var(--border-soft);
+  }
+
+  html.dark-mode #admin-app .admin-stat,
+  html.dark-mode #admin-app .quick-links a {
+    background: var(--surface-soft);
+    border-color: var(--border-soft);
+  }
+
+  html.dark-mode #admin-app .form-control {
+    background: var(--surface-soft);
+    border-color: var(--border-soft);
+    color: var(--text-dark);
+  }
+
+  @media (max-width: 991px) {
+    #admin-app .admin-grid,
+    #admin-app .admin-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    #admin-app {
+      padding-top: 18px;
+    }
+
+    #admin-app .admin-hero {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    #admin-app .quick-links {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section id="admin-app">
+  <div class="container admin-shell">
+    <div class="admin-hero">
+      <div>
+        <h2>Admin Dashboard</h2>
+        <p>Maintain conference deadlines and check key portfolio counters from one private workspace.</p>
+      </div>
+      <button id="adminLogoutBtn" type="button" class="btn btn-default" hidden>
+        <i class="fas fa-right-from-bracket" aria-hidden="true"></i> Logout
+      </button>
+    </div>
+
+    <div id="adminLoginPanel" class="admin-panel login-panel">
+      <h3>Login</h3>
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="adminUserInput">User</label>
+          <input id="adminUserInput" class="form-control" type="text" value="admin" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <label for="adminPasswordInput">Password</label>
+          <input id="adminPasswordInput" class="form-control" type="password" autocomplete="current-password" required>
+        </div>
+        <button id="adminLoginBtn" type="submit" class="btn btn-primary btn-block">
+          <i class="fas fa-lock" aria-hidden="true"></i> Login
+        </button>
+      </form>
+      <p id="adminLoginStatus" class="admin-status" style="margin-top:12px;"></p>
+    </div>
+
+    <div id="adminDashboard" hidden>
+      <div class="admin-stats">
+        <div class="admin-stat">
+          <strong id="adminConferenceTotal">0</strong>
+          <span>Tracked deadlines</span>
+        </div>
+        <div class="admin-stat">
+          <strong id="adminUpcomingTotal">0</strong>
+          <span>Upcoming</span>
+        </div>
+        <div class="admin-stat">
+          <strong id="adminSoonTotal">0</strong>
+          <span>Due soon</span>
+        </div>
+        <div class="admin-stat">
+          <strong>37</strong>
+          <span>Publications</span>
+        </div>
+      </div>
+
+      <div class="admin-toolbar">
+        <div id="adminStatus" class="admin-status"></div>
+        <div class="btn-group btn-group-sm" role="group" aria-label="Admin actions">
+          <button id="adminRefreshBtn" type="button" class="btn btn-default">
+            <i class="fas fa-rotate" aria-hidden="true"></i> Refresh
+          </button>
+          <button id="adminExportBtn" type="button" class="btn btn-default">
+            <i class="fas fa-download" aria-hidden="true"></i> Export
+          </button>
+          <button id="adminImportBtn" type="button" class="btn btn-default">
+            <i class="fas fa-upload" aria-hidden="true"></i> Import
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-grid">
+        <div class="admin-panel">
+          <h3>Conference Deadlines</h3>
+          <div id="adminConferenceList" class="conference-admin-list"></div>
+        </div>
+
+        <div class="admin-panel">
+          <h3 id="adminFormTitle">Add Deadline</h3>
+          <form id="adminConferenceForm">
+            <div class="form-group">
+              <label for="adminNameInput">Name</label>
+              <input id="adminNameInput" class="form-control" type="text" required>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="adminRankInput">Rank</label>
+                  <input id="adminRankInput" class="form-control" type="text">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="adminCategoryInput">Category</label>
+                  <select id="adminCategoryInput" class="form-control">
+                    <option value="AI">AI</option>
+                    <option value="NLP">NLP</option>
+                    <option value="Semantic Web">Semantic Web</option>
+                    <option value="EdTech">EdTech</option>
+                    <option value="Data Mining">Data Mining</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="adminLocationInput">Location / notes</label>
+              <input id="adminLocationInput" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label for="adminUrlInput">CFP URL</label>
+              <input id="adminUrlInput" class="form-control" type="url" placeholder="https://">
+            </div>
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="form-group">
+                  <label for="adminDeadlineInput">Deadline</label>
+                  <input id="adminDeadlineInput" class="form-control" type="datetime-local" required>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <label for="adminNotifyInput">Notify days</label>
+                  <input id="adminNotifyInput" class="form-control" type="number" min="0" value="14">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="adminSourceInput">Source note</label>
+              <input id="adminSourceInput" class="form-control" type="text">
+            </div>
+            <button id="adminSaveBtn" type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-floppy-disk" aria-hidden="true"></i> Save deadline
+            </button>
+            <button id="adminCancelBtn" type="button" class="btn btn-default btn-block" hidden>Cancel edit</button>
+          </form>
+
+          <div class="quick-links" aria-label="Portfolio quick links">
+            <a href="{{ '/publications.html' | relative_url }}"><i class="fas fa-book-open" aria-hidden="true"></i> Publications</a>
+            <a href="{{ '/projects.html' | relative_url }}"><i class="fas fa-diagram-project" aria-hidden="true"></i> Projects</a>
+            <a href="{{ '/conferences.html' | relative_url }}"><i class="fas fa-calendar-days" aria-hidden="true"></i> Public tracker</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const STORAGE_KEY = 'portfolio-admin-session-v1';
+    const CONFERENCES_KEY = 'conference-deadline-tracker-v1';
+    const API_BASE = getApiBase();
+    const PAGE_JSON = '{{ "/conferences.json" | relative_url }}';
+
+    let adminSession = getStoredSession();
+    let adminUsername = adminSession.username;
+    let adminPassword = adminSession.password;
+    let conferences = [];
+    let editingId = null;
+
+    const els = {
+      loginPanel: document.getElementById('adminLoginPanel'),
+      dashboard: document.getElementById('adminDashboard'),
+      logoutBtn: document.getElementById('adminLogoutBtn'),
+      loginForm: document.getElementById('adminLoginForm'),
+      loginBtn: document.getElementById('adminLoginBtn'),
+      loginStatus: document.getElementById('adminLoginStatus'),
+      userInput: document.getElementById('adminUserInput'),
+      passwordInput: document.getElementById('adminPasswordInput'),
+      status: document.getElementById('adminStatus'),
+      refreshBtn: document.getElementById('adminRefreshBtn'),
+      exportBtn: document.getElementById('adminExportBtn'),
+      importBtn: document.getElementById('adminImportBtn'),
+      list: document.getElementById('adminConferenceList'),
+      total: document.getElementById('adminConferenceTotal'),
+      upcoming: document.getElementById('adminUpcomingTotal'),
+      soon: document.getElementById('adminSoonTotal'),
+      form: document.getElementById('adminConferenceForm'),
+      formTitle: document.getElementById('adminFormTitle'),
+      saveBtn: document.getElementById('adminSaveBtn'),
+      cancelBtn: document.getElementById('adminCancelBtn'),
+      nameInput: document.getElementById('adminNameInput'),
+      rankInput: document.getElementById('adminRankInput'),
+      categoryInput: document.getElementById('adminCategoryInput'),
+      locationInput: document.getElementById('adminLocationInput'),
+      urlInput: document.getElementById('adminUrlInput'),
+      deadlineInput: document.getElementById('adminDeadlineInput'),
+      notifyInput: document.getElementById('adminNotifyInput'),
+      sourceInput: document.getElementById('adminSourceInput')
+    };
+
+    function getApiBase() {
+      const host = window.location.host;
+      if (host.endsWith('.vercel.app')) return '';
+      return 'https://lengocluyen.vercel.app';
+    }
+
+    function getStoredSession() {
+      const raw = sessionStorage.getItem(STORAGE_KEY);
+      if (!raw) return { username: 'admin', password: '' };
+      try {
+        const value = JSON.parse(raw);
+        return {
+          username: value.username || 'admin',
+          password: value.password || ''
+        };
+      } catch (error) {
+        return { username: 'admin', password: raw };
+      }
+    }
+
+    function storeSession(username, password) {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ username, password }));
+    }
+
+    function setStatus(message, type) {
+      els.status.textContent = message || '';
+      els.status.classList.toggle('error', type === 'error');
+      els.status.classList.toggle('success', type === 'success');
+    }
+
+    function setLoginStatus(message, type) {
+      els.loginStatus.textContent = message || '';
+      els.loginStatus.classList.toggle('error', type === 'error');
+      els.loginStatus.classList.toggle('success', type === 'success');
+    }
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function uid() {
+      return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    }
+
+    function daysRemaining(deadline) {
+      const time = new Date(deadline).getTime();
+      if (Number.isNaN(time)) return -Infinity;
+      return (time - Date.now()) / (1000 * 60 * 60 * 24);
+    }
+
+    function formatDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return 'No deadline';
+      return date.toLocaleString([], {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    function sortByDeadlineDesc(items) {
+      return [...items].sort((a, b) => {
+        const left = new Date(a.deadline).getTime() || 0;
+        const right = new Date(b.deadline).getTime() || 0;
+        return right - left;
+      });
+    }
+
+    async function authenticate(username, password) {
+      const response = await fetch(`${API_BASE}/api/admin-auth`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.error || `Login failed (${response.status})`);
+      }
+
+      return true;
+    }
+
+    async function unlock(username, password) {
+      els.loginBtn.disabled = true;
+      setLoginStatus('Checking credentials...', '');
+      try {
+        await authenticate(username, password);
+        adminUsername = username;
+        adminPassword = password;
+        storeSession(username, password);
+        els.loginPanel.hidden = true;
+        els.dashboard.hidden = false;
+        els.logoutBtn.hidden = false;
+        setLoginStatus('', '');
+        await loadConferences();
+      } catch (error) {
+        setLoginStatus(error.message, 'error');
+      } finally {
+        els.loginBtn.disabled = false;
+      }
+    }
+
+    function logout() {
+      adminPassword = '';
+      adminUsername = 'admin';
+      sessionStorage.removeItem(STORAGE_KEY);
+      els.dashboard.hidden = true;
+      els.logoutBtn.hidden = true;
+      els.loginPanel.hidden = false;
+      els.userInput.value = 'admin';
+      els.passwordInput.value = '';
+      setStatus('', '');
+      setLoginStatus('', '');
+    }
+
+    async function loadConferences() {
+      setStatus('Loading conference data...', '');
+      try {
+        const response = await fetch(`${API_BASE}/api/conferences?ts=${Date.now()}`, { cache: 'no-store' });
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data)) {
+            conferences = data;
+            localStorage.setItem(CONFERENCES_KEY, JSON.stringify(conferences));
+            render();
+            setStatus('Loaded from API.', 'success');
+            return;
+          }
+        }
+      } catch (error) {
+        // Fall back to static JSON below.
+      }
+
+      try {
+        const response = await fetch(`${PAGE_JSON}?ts=${Date.now()}`, { cache: 'no-store' });
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data)) {
+            conferences = data;
+            localStorage.setItem(CONFERENCES_KEY, JSON.stringify(conferences));
+            render();
+            setStatus('Loaded from static JSON fallback.', '');
+            return;
+          }
+        }
+      } catch (error) {
+        // Fall back to local storage below.
+      }
+
+      try {
+        conferences = JSON.parse(localStorage.getItem(CONFERENCES_KEY) || '[]');
+      } catch (error) {
+        conferences = [];
+      }
+      render();
+      setStatus('Loaded from browser storage.', '');
+    }
+
+    async function saveConferences() {
+      localStorage.setItem(CONFERENCES_KEY, JSON.stringify(conferences));
+      setStatus('Saving to server...', '');
+      const response = await fetch(`${API_BASE}/api/save-conferences`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Admin-Password': adminPassword
+        },
+        body: JSON.stringify({ conferences })
+      });
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.error || `Save failed (${response.status})`);
+      }
+
+      setStatus('Saved to server.', 'success');
+    }
+
+    function render() {
+      const sorted = sortByDeadlineDesc(conferences);
+      const upcoming = sorted.filter(item => daysRemaining(item.deadline) >= 0);
+      const soon = upcoming.filter(item => daysRemaining(item.deadline) <= Number(item.notifyDays || 14));
+
+      els.total.textContent = sorted.length;
+      els.upcoming.textContent = upcoming.length;
+      els.soon.textContent = soon.length;
+
+      if (!sorted.length) {
+        els.list.innerHTML = '<div class="alert alert-info" style="margin:0;">No deadlines yet.</div>';
+        return;
+      }
+
+      els.list.innerHTML = sorted.map(item => {
+        const remaining = daysRemaining(item.deadline);
+        const status = remaining < 0 ? 'Passed' : remaining <= 14 ? 'Soon' : 'Upcoming';
+        const link = item.url
+          ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">CFP</a>`
+          : 'No link';
+
+        return `
+          <article class="conference-admin-item">
+            <h4 class="conference-admin-title">${escapeHtml(item.name)}</h4>
+            <div class="conference-admin-meta">
+              ${escapeHtml(item.category || 'Other')} &middot; ${escapeHtml(item.rank || 'No rank')} &middot; ${escapeHtml(item.location || 'No location')}
+            </div>
+            <div class="conference-admin-meta">
+              ${formatDate(item.deadline)} &middot; ${status} &middot; Reminder ${Number(item.notifyDays || 14)} day(s) &middot; ${link}
+            </div>
+            <div class="conference-admin-actions">
+              <button class="btn btn-xs btn-default" type="button" data-edit="${escapeHtml(item.id)}">
+                <i class="fas fa-pen" aria-hidden="true"></i> Edit
+              </button>
+              <button class="btn btn-xs btn-danger" type="button" data-delete="${escapeHtml(item.id)}">
+                <i class="fas fa-trash" aria-hidden="true"></i> Delete
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      els.list.querySelectorAll('[data-edit]').forEach(button => {
+        button.addEventListener('click', () => startEdit(button.getAttribute('data-edit')));
+      });
+
+      els.list.querySelectorAll('[data-delete]').forEach(button => {
+        button.addEventListener('click', () => deleteConference(button.getAttribute('data-delete')));
+      });
+    }
+
+    function getFormData() {
+      return {
+        name: els.nameInput.value.trim(),
+        rank: els.rankInput.value.trim(),
+        category: els.categoryInput.value,
+        location: els.locationInput.value.trim(),
+        url: els.urlInput.value.trim(),
+        deadline: els.deadlineInput.value,
+        notifyDays: Number(els.notifyInput.value || 14),
+        source: els.sourceInput.value.trim()
+      };
+    }
+
+    function clearForm() {
+      editingId = null;
+      els.formTitle.textContent = 'Add Deadline';
+      els.saveBtn.innerHTML = '<i class="fas fa-floppy-disk" aria-hidden="true"></i> Save deadline';
+      els.cancelBtn.hidden = true;
+      els.form.reset();
+      els.categoryInput.value = 'AI';
+      els.notifyInput.value = 14;
+    }
+
+    function fillForm(item) {
+      editingId = item.id;
+      els.formTitle.textContent = 'Edit Deadline';
+      els.saveBtn.innerHTML = '<i class="fas fa-floppy-disk" aria-hidden="true"></i> Save changes';
+      els.cancelBtn.hidden = false;
+      els.nameInput.value = item.name || '';
+      els.rankInput.value = item.rank || '';
+      els.categoryInput.value = item.category || 'AI';
+      els.locationInput.value = item.location || '';
+      els.urlInput.value = item.url || '';
+      els.deadlineInput.value = item.deadline ? String(item.deadline).slice(0, 16) : '';
+      els.notifyInput.value = Number(item.notifyDays || 14);
+      els.sourceInput.value = item.source || '';
+    }
+
+    async function upsertConference(event) {
+      event.preventDefault();
+      const data = getFormData();
+      if (!data.name || !data.deadline) {
+        setStatus('Name and deadline are required.', 'error');
+        return;
+      }
+
+      if (editingId) {
+        conferences = conferences.map(item => item.id === editingId ? { ...item, ...data } : item);
+      } else {
+        conferences.push({ id: uid(), ...data });
+      }
+
+      render();
+      try {
+        await saveConferences();
+        clearForm();
+      } catch (error) {
+        setStatus(error.message, 'error');
+      }
+    }
+
+    function startEdit(id) {
+      const item = conferences.find(conf => conf.id === id);
+      if (!item) return;
+      fillForm(item);
+      window.scrollTo({ top: els.form.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
+    }
+
+    async function deleteConference(id) {
+      const item = conferences.find(conf => conf.id === id);
+      if (!item) return;
+      if (!window.confirm(`Delete "${item.name}"?`)) return;
+      conferences = conferences.filter(conf => conf.id !== id);
+      render();
+      try {
+        await saveConferences();
+      } catch (error) {
+        setStatus(error.message, 'error');
+      }
+    }
+
+    function exportJson() {
+      const blob = new Blob([JSON.stringify(sortByDeadlineDesc(conferences), null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = 'conferences.json';
+      anchor.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importJson() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'application/json';
+      input.onchange = async event => {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        try {
+          const data = JSON.parse(await file.text());
+          if (!Array.isArray(data)) throw new Error('Invalid JSON format');
+          conferences = data.map(item => ({ id: item.id || uid(), ...item }));
+          render();
+          await saveConferences();
+        } catch (error) {
+          setStatus(error.message || 'Import failed.', 'error');
+        }
+      };
+      input.click();
+    }
+
+    els.loginForm.addEventListener('submit', event => {
+      event.preventDefault();
+      unlock(els.userInput.value.trim(), els.passwordInput.value);
+    });
+    els.logoutBtn.addEventListener('click', logout);
+    els.refreshBtn.addEventListener('click', loadConferences);
+    els.exportBtn.addEventListener('click', exportJson);
+    els.importBtn.addEventListener('click', importJson);
+    els.form.addEventListener('submit', upsertConference);
+    els.cancelBtn.addEventListener('click', clearForm);
+
+    if (adminPassword) {
+      els.userInput.value = adminUsername;
+      unlock(adminUsername, adminPassword);
+    }
+  })();
+</script>

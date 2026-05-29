@@ -6,6 +6,8 @@ export default async function handler(req, res) {
   const allowedOrigins = new Set([
     'https://lengocluyen.github.io',
     'https://lengocluyen.vercel.app',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
     'http://localhost:4000',
     'http://127.0.0.1:4000',
   ]);
@@ -68,4 +70,3 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: err.message });
   }
 }
-
