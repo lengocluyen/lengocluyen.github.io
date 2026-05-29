@@ -1,18 +1,24 @@
 {
   "version": 1,
   "totals": {
-    "visits": 3,
+    "visits": 4,
     "visitors": 2,
-    "pageVisitors": 3
+    "pageVisitors": 4
   },
   "days": {
     "2026-05-29": {
-      "visits": 3,
+      "visits": 4,
       "visitors": 2,
-      "pageVisitors": 3
+      "pageVisitors": 4
     }
   },
   "pages": {
+    "/publications.html": {
+      "title": "Research Publications | Ngoc Luyen Le",
+      "visits": 2,
+      "visitors": 2,
+      "updatedAt": "2026-05-29T20:17:46.751Z"
+    },
     "/services.html": {
       "title": "Academic Service | Ngoc Luyen Le",
       "visits": 1,
@@ -24,14 +30,8 @@
       "visits": 1,
       "visitors": 1,
       "updatedAt": "2026-05-29T20:16:58.723Z"
-    },
-    "/publications.html": {
-      "title": "Research Publications | Ngoc Luyen Le",
-      "visits": 1,
-      "visitors": 1,
-      "updatedAt": "2026-05-29T20:17:40.897Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-29T20:17:40.897Z"
+  "updatedAt": "2026-05-29T20:17:46.751Z"
 }
