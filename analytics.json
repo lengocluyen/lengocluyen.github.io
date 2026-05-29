@@ -1,15 +1,15 @@
 {
   "version": 1,
   "totals": {
-    "visits": 5,
+    "visits": 6,
     "visitors": 2,
-    "pageVisitors": 5
+    "pageVisitors": 6
   },
   "days": {
     "2026-05-29": {
-      "visits": 5,
+      "visits": 6,
       "visitors": 2,
-      "pageVisitors": 5
+      "pageVisitors": 6
     }
   },
   "pages": {
@@ -36,8 +36,14 @@
       "visits": 1,
       "visitors": 1,
       "updatedAt": "2026-05-29T20:17:48.179Z"
+    },
+    "/resume.html": {
+      "title": "Resume | Ngoc Luyen Le",
+      "visits": 1,
+      "visitors": 1,
+      "updatedAt": "2026-05-29T20:17:50.205Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-29T20:17:48.179Z"
+  "updatedAt": "2026-05-29T20:17:50.205Z"
 }
