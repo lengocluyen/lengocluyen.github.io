@@ -1,13 +1,33 @@
 {
   "version": 1,
   "totals": {
-    "visits": 0,
+    "visits": 1,
     "visitors": 0,
-    "pageVisitors": 0
+    "pageVisitors": 1
   },
-  "days": {},
-  "pages": {},
-  "hosts": {},
+  "days": {
+    "2026-05-29": {
+      "visits": 1,
+      "visitors": 0,
+      "pageVisitors": 1
+    }
+  },
+  "pages": {
+    "/": {
+      "title": "Ngoc Luyen Le | NLP, LLMs, Knowledge Graphs",
+      "visits": 1,
+      "visitors": 1,
+      "updatedAt": "2026-05-29T20:35:45.309Z"
+    }
+  },
+  "hosts": {
+    "lengocluyen.github.io": {
+      "visits": 1,
+      "visitors": 0,
+      "pageVisitors": 1,
+      "updatedAt": "2026-05-29T20:35:45.309Z"
+    }
+  },
   "referrers": {},
-  "updatedAt": null
+  "updatedAt": "2026-05-29T20:35:45.309Z"
 }
