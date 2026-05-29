@@ -91,80 +91,256 @@
 
     <style>
   #admin-app {
-    padding: 28px 0 10px;
+    --admin-page: oklch(0.975 0.008 245);
+    --admin-panel: oklch(0.995 0.004 245);
+    --admin-soft: oklch(0.955 0.017 245);
+    --admin-line: oklch(0.875 0.026 245);
+    --admin-text: oklch(0.285 0.045 245);
+    --admin-muted: oklch(0.49 0.038 245);
+    --admin-accent: oklch(0.44 0.135 245);
+    --admin-accent-soft: oklch(0.93 0.045 245);
+    --admin-danger: oklch(0.45 0.145 25);
+    --admin-success: oklch(0.42 0.115 155);
+    background: var(--admin-page);
+    border: 1px solid var(--admin-line);
+    border-radius: 10px;
+    margin: 4px auto 18px;
+    min-height: calc(100vh - 260px);
+    padding: 34px 18px;
+    width: min(1180px, calc(100% - 30px));
   }
 
   #admin-app .admin-shell {
-    max-width: 1100px;
+    max-width: 1120px;
+  }
+
+  #admin-app [hidden] {
+    display: none !important;
   }
 
   #admin-app .admin-hero {
     align-items: center;
     display: flex;
-    gap: 18px;
+    gap: 16px;
     justify-content: space-between;
-    margin-bottom: 18px;
+    margin: 0 auto 22px;
+    max-width: 760px;
+    text-align: center;
+  }
+
+  #admin-app .admin-hero-main {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  #admin-app .admin-mark {
+    align-items: center;
+    background: var(--admin-accent-soft);
+    border: 1px solid color-mix(in oklch, var(--admin-accent) 24%, var(--admin-line));
+    border-radius: 8px;
+    color: var(--admin-accent);
+    display: inline-flex;
+    height: 46px;
+    justify-content: center;
+    margin-bottom: 12px;
+    width: 46px;
+  }
+
+  #admin-app .admin-eyebrow {
+    color: var(--admin-muted);
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    text-transform: uppercase;
   }
 
   #admin-app .admin-hero h2 {
-    color: #20394d;
-    font-size: 30px;
+    color: var(--admin-text);
+    font-size: 31px;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.15;
     margin: 0;
   }
 
   #admin-app .admin-hero p {
-    color: #4d6375;
-    font-size: 16px;
+    color: var(--admin-muted);
+    font-size: 15px;
     line-height: 1.55;
-    margin: 6px 0 0;
-    max-width: 680px;
+    margin: 8px auto 0;
+    max-width: 560px;
+  }
+
+  #admin-app .admin-login-stage {
+    display: grid;
+    min-height: 430px;
+    place-items: center;
   }
 
   #admin-app .admin-panel {
-    background: var(--bg-white);
-    border: 1px solid var(--border-soft);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
-    padding: 18px;
+    background: var(--admin-panel);
+    border: 1px solid var(--admin-line);
+    border-radius: 8px;
+    box-shadow: 0 14px 36px oklch(0.32 0.035 245 / 0.09);
+    padding: 20px;
   }
 
   #admin-app .login-panel {
-    max-width: 520px;
+    max-width: 440px;
+    padding: 26px;
+    width: 100%;
+  }
+
+  #admin-app .login-heading {
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  #admin-app .login-icon {
+    align-items: center;
+    background: var(--admin-accent);
+    border-radius: 8px;
+    color: oklch(0.985 0.004 245);
+    display: inline-flex;
+    height: 42px;
+    justify-content: center;
+    margin-bottom: 12px;
+    width: 42px;
   }
 
   #admin-app .login-panel h3,
   #admin-app .admin-panel h3 {
-    color: #20394d;
-    font-size: 20px;
+    color: var(--admin-text);
+    font-size: 19px;
     font-weight: 700;
     line-height: 1.25;
-    margin: 0 0 14px;
+    margin: 0;
+  }
+
+  #admin-app .login-heading p {
+    color: var(--admin-muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 7px 0 0;
+  }
+
+  #admin-app label {
+    color: var(--admin-text);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 7px;
+  }
+
+  #admin-app .form-control {
+    background: oklch(0.985 0.004 245);
+    border: 1px solid var(--admin-line);
+    border-radius: 6px;
+    box-shadow: none;
+    color: var(--admin-text);
+    min-height: 42px;
+  }
+
+  #admin-app .form-control:focus {
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 3px oklch(0.75 0.09 245 / 0.22);
+  }
+
+  #admin-app .btn {
+    border-radius: 6px;
+    font-weight: 700;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  }
+
+  #admin-app .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px oklch(0.75 0.09 245 / 0.24);
+  }
+
+  #admin-app .btn-primary {
+    background: var(--admin-accent);
+    border-color: var(--admin-accent);
+    color: oklch(0.985 0.004 245);
+  }
+
+  #admin-app .btn-primary:hover,
+  #admin-app .btn-primary:focus {
+    background: color-mix(in oklch, var(--admin-accent) 86%, oklch(0.22 0.04 245));
+    border-color: color-mix(in oklch, var(--admin-accent) 86%, oklch(0.22 0.04 245));
+  }
+
+  #admin-app .btn-default {
+    background: var(--admin-panel);
+    border-color: var(--admin-line);
+    color: var(--admin-text);
+  }
+
+  #admin-app .btn-default:hover,
+  #admin-app .btn-default:focus {
+    background: var(--admin-soft);
+    border-color: color-mix(in oklch, var(--admin-accent) 30%, var(--admin-line));
+    color: var(--admin-accent);
+  }
+
+  #admin-app .btn-danger {
+    background: oklch(0.96 0.028 25);
+    border-color: oklch(0.82 0.055 25);
+    color: var(--admin-danger);
+  }
+
+  #admin-app .btn-danger:hover,
+  #admin-app .btn-danger:focus {
+    background: oklch(0.92 0.045 25);
+    border-color: oklch(0.72 0.085 25);
+    color: var(--admin-danger);
+  }
+
+  #admin-app .admin-login-button {
+    min-height: 44px;
+  }
+
+  #admin-app .admin-dashboard {
+    margin: 0 auto;
+    max-width: 1120px;
   }
 
   #admin-app .admin-grid {
     display: grid;
-    gap: 16px;
-    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 18px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(330px, 0.8fr);
   }
 
   #admin-app .admin-stats {
     display: grid;
     gap: 12px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
     margin-bottom: 16px;
   }
 
   #admin-app .admin-stat {
-    background: var(--surface-soft);
-    border: 1px solid var(--border-soft);
-    border-radius: var(--border-radius-sm);
-    padding: 13px;
+    background: var(--admin-panel);
+    border: 1px solid var(--admin-line);
+    border-radius: 8px;
+    padding: 14px;
+  }
+
+  #admin-app .admin-stat-icon {
+    align-items: center;
+    background: var(--admin-accent-soft);
+    border-radius: 6px;
+    color: var(--admin-accent);
+    display: inline-flex;
+    height: 30px;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 30px;
   }
 
   #admin-app .admin-stat strong {
-    color: #20394d;
+    color: var(--admin-text);
     display: block;
     font-size: 26px;
     font-weight: 700;
@@ -172,7 +348,7 @@
   }
 
   #admin-app .admin-stat span {
-    color: #4d6375;
+    color: var(--admin-muted);
     display: block;
     font-size: 13px;
     font-weight: 700;
@@ -191,45 +367,141 @@
   }
 
   #admin-app .admin-status {
-    color: #4d6375;
+    color: var(--admin-muted);
     font-size: 14px;
     line-height: 1.45;
     min-height: 20px;
   }
 
   #admin-app .admin-status.error {
-    color: #a94442;
+    color: var(--admin-danger);
     font-weight: 700;
   }
 
   #admin-app .admin-status.success {
-    color: #2f6f4f;
+    color: var(--admin-success);
     font-weight: 700;
+  }
+
+  #admin-app .admin-panel-heading {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  #admin-app .admin-panel-icon {
+    align-items: center;
+    background: var(--admin-soft);
+    border: 1px solid var(--admin-line);
+    border-radius: 6px;
+    color: var(--admin-accent);
+    display: inline-flex;
+    height: 34px;
+    justify-content: center;
+    width: 34px;
+  }
+
+  #admin-app .analytics-panel {
+    margin-bottom: 18px;
+  }
+
+  #admin-app .analytics-grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    margin-bottom: 14px;
+  }
+
+  #admin-app .analytics-metric {
+    background: var(--admin-soft);
+    border: 1px solid var(--admin-line);
+    border-radius: 8px;
+    padding: 13px;
+  }
+
+  #admin-app .analytics-metric span {
+    color: var(--admin-muted);
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  #admin-app .analytics-metric strong {
+    color: var(--admin-text);
+    display: block;
+    font-size: 22px;
+    line-height: 1.15;
+    margin-top: 5px;
+  }
+
+  #admin-app .analytics-list {
+    display: grid;
+    gap: 8px;
+  }
+
+  #admin-app .analytics-row {
+    align-items: center;
+    background: oklch(0.985 0.004 245);
+    border: 1px solid var(--admin-line);
+    border-radius: 8px;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 11px 12px;
+  }
+
+  #admin-app .analytics-row strong {
+    color: var(--admin-text);
+    display: block;
+    font-size: 14px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  #admin-app .analytics-row span {
+    color: var(--admin-muted);
+    display: block;
+    font-size: 13px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  #admin-app .analytics-count {
+    color: var(--admin-accent);
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
   }
 
   #admin-app .conference-admin-list {
     display: grid;
-    gap: 10px;
+    gap: 12px;
   }
 
   #admin-app .conference-admin-item {
-    border: 1px solid var(--border-soft);
-    border-radius: var(--border-radius-sm);
-    padding: 13px;
+    background: oklch(0.985 0.004 245);
+    border: 1px solid var(--admin-line);
+    border-radius: 8px;
+    padding: 14px;
   }
 
   #admin-app .conference-admin-title {
-    color: #20394d;
+    color: var(--admin-text);
     font-size: 17px;
     font-weight: 700;
     line-height: 1.35;
     margin: 0 0 5px;
+    overflow-wrap: anywhere;
   }
 
   #admin-app .conference-admin-meta {
-    color: #4d6375;
+    color: var(--admin-muted);
     font-size: 14px;
     line-height: 1.45;
+    overflow-wrap: anywhere;
   }
 
   #admin-app .conference-admin-actions {
@@ -248,10 +520,10 @@
 
   #admin-app .quick-links a {
     align-items: center;
-    background: var(--surface-soft);
-    border: 1px solid var(--border-soft);
-    border-radius: var(--border-radius-sm);
-    color: #20394d;
+    background: var(--admin-soft);
+    border: 1px solid var(--admin-line);
+    border-radius: 6px;
+    color: var(--admin-text);
     display: flex;
     gap: 8px;
     min-height: 42px;
@@ -274,6 +546,18 @@
     color: var(--text-dark);
   }
 
+  html.dark-mode #admin-app {
+    --admin-page: #111a2a;
+    --admin-panel: #19243a;
+    --admin-soft: #1e2b40;
+    --admin-line: #2a3b52;
+    --admin-text: var(--text-dark);
+    --admin-muted: var(--text-muted);
+    --admin-accent: var(--primary);
+    --admin-accent-soft: #1a2d3e;
+    background: var(--admin-page);
+  }
+
   html.dark-mode #admin-app .admin-hero p,
   html.dark-mode #admin-app .admin-status,
   html.dark-mode #admin-app .admin-stat span,
@@ -282,21 +566,32 @@
   }
 
   html.dark-mode #admin-app .admin-panel,
-  html.dark-mode #admin-app .conference-admin-item {
-    background: var(--bg-white);
-    border-color: var(--border-soft);
-  }
-
+  html.dark-mode #admin-app .conference-admin-item,
+  html.dark-mode #admin-app .analytics-row,
   html.dark-mode #admin-app .admin-stat,
+  html.dark-mode #admin-app .admin-panel-icon,
   html.dark-mode #admin-app .quick-links a {
-    background: var(--surface-soft);
-    border-color: var(--border-soft);
+    background: var(--admin-panel);
+    border-color: var(--admin-line);
   }
 
   html.dark-mode #admin-app .form-control {
-    background: var(--surface-soft);
-    border-color: var(--border-soft);
+    background: var(--admin-soft);
+    border-color: var(--admin-line);
     color: var(--text-dark);
+  }
+
+  html.dark-mode #admin-app .admin-mark,
+  html.dark-mode #admin-app .login-icon,
+  html.dark-mode #admin-app .admin-stat-icon {
+    background: var(--admin-accent-soft);
+    border-color: var(--admin-line);
+    color: var(--primary);
+  }
+
+  html.dark-mode #admin-app .analytics-metric {
+    background: var(--admin-soft);
+    border-color: var(--admin-line);
   }
 
   @media (max-width: 991px) {
@@ -308,16 +603,55 @@
 
   @media (max-width: 767px) {
     #admin-app {
-      padding-top: 18px;
+      border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+      margin-left: -15px;
+      margin-right: -15px;
+      min-height: calc(100vh - 210px);
+      padding: 22px 12px;
+      width: auto;
     }
 
     #admin-app .admin-hero {
-      align-items: flex-start;
+      align-items: center;
       flex-direction: column;
+      margin-bottom: 16px;
+    }
+
+    #admin-app .admin-hero h2 {
+      font-size: 26px;
+    }
+
+    #admin-app .admin-login-stage {
+      min-height: 360px;
+    }
+
+    #admin-app .login-panel {
+      padding: 20px;
     }
 
     #admin-app .quick-links {
       grid-template-columns: 1fr;
+    }
+
+    #admin-app .admin-toolbar {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    #admin-app .admin-toolbar .btn-group {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    #admin-app .admin-toolbar .btn-group > .btn {
+      border-radius: 6px !important;
+      float: none;
+      margin-left: 0;
+      width: 100%;
     }
   }
 </style>
@@ -325,51 +659,103 @@
 <section id="admin-app">
   <div class="container admin-shell">
     <div class="admin-hero">
-      <div>
+      <div class="admin-hero-main">
+        <span class="admin-mark"><i class="fas fa-shield-halved" aria-hidden="true"></i></span>
+        <span class="admin-eyebrow">Portfolio Admin</span>
         <h2>Admin Dashboard</h2>
-        <p>Maintain conference deadlines and check key portfolio counters from one private workspace.</p>
+        <p>Manage conference deadlines and portfolio counters from a private workspace.</p>
       </div>
       <button id="adminLogoutBtn" type="button" class="btn btn-default" hidden>
         <i class="fas fa-right-from-bracket" aria-hidden="true"></i> Logout
       </button>
     </div>
 
-    <div id="adminLoginPanel" class="admin-panel login-panel">
-      <h3>Login</h3>
-      <form id="adminLoginForm">
-        <div class="form-group">
-          <label for="adminUserInput">User</label>
-          <input id="adminUserInput" class="form-control" type="text" value="admin" autocomplete="username" required>
+    <div id="adminLoginPanel" class="admin-login-stage">
+      <div class="admin-panel login-panel">
+        <div class="login-heading">
+          <span class="login-icon"><i class="fas fa-lock" aria-hidden="true"></i></span>
+          <h3>Sign In</h3>
+          <p>Use your admin credentials to continue.</p>
         </div>
-        <div class="form-group">
-          <label for="adminPasswordInput">Password</label>
-          <input id="adminPasswordInput" class="form-control" type="password" autocomplete="current-password" required>
-        </div>
-        <button id="adminLoginBtn" type="submit" class="btn btn-primary btn-block">
-          <i class="fas fa-lock" aria-hidden="true"></i> Login
-        </button>
-      </form>
-      <p id="adminLoginStatus" class="admin-status" style="margin-top:12px;"></p>
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label for="adminUserInput">User</label>
+            <input id="adminUserInput" class="form-control" type="text" value="lengocluyen" autocomplete="username" required>
+          </div>
+          <div class="form-group">
+            <label for="adminPasswordInput">Password</label>
+            <input id="adminPasswordInput" class="form-control" type="password" autocomplete="current-password" required>
+          </div>
+          <button id="adminLoginBtn" type="submit" class="btn btn-primary btn-block admin-login-button">
+            <i class="fas fa-arrow-right-to-bracket" aria-hidden="true"></i> Login
+          </button>
+        </form>
+        <p id="adminLoginStatus" class="admin-status" style="margin-top:12px;"></p>
+      </div>
     </div>
 
-    <div id="adminDashboard" hidden>
+    <div id="adminDashboard" class="admin-dashboard" hidden>
       <div class="admin-stats">
         <div class="admin-stat">
+          <span class="admin-stat-icon"><i class="fas fa-eye" aria-hidden="true"></i></span>
+          <strong id="adminTotalVisits">0</strong>
+          <span>Total visits</span>
+        </div>
+        <div class="admin-stat">
+          <span class="admin-stat-icon"><i class="fas fa-calendar-day" aria-hidden="true"></i></span>
+          <strong id="adminTodayVisits">0</strong>
+          <span>Today</span>
+        </div>
+        <div class="admin-stat">
+          <span class="admin-stat-icon"><i class="fas fa-user-group" aria-hidden="true"></i></span>
+          <strong id="adminVisitorTotal">0</strong>
+          <span>Est. visitors</span>
+        </div>
+        <div class="admin-stat">
+          <span class="admin-stat-icon"><i class="fas fa-calendar-check" aria-hidden="true"></i></span>
           <strong id="adminConferenceTotal">0</strong>
           <span>Tracked deadlines</span>
         </div>
         <div class="admin-stat">
+          <span class="admin-stat-icon"><i class="fas fa-arrow-trend-up" aria-hidden="true"></i></span>
           <strong id="adminUpcomingTotal">0</strong>
           <span>Upcoming</span>
         </div>
         <div class="admin-stat">
+          <span class="admin-stat-icon"><i class="fas fa-clock" aria-hidden="true"></i></span>
           <strong id="adminSoonTotal">0</strong>
           <span>Due soon</span>
         </div>
         <div class="admin-stat">
+          <span class="admin-stat-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
           <strong>37</strong>
           <span>Publications</span>
         </div>
+      </div>
+
+      <div class="admin-panel analytics-panel">
+        <div class="admin-panel-heading">
+          <span class="admin-panel-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+          <div>
+            <h3>Site Access</h3>
+            <div id="adminAnalyticsStatus" class="admin-status"></div>
+          </div>
+        </div>
+        <div class="analytics-grid">
+          <div class="analytics-metric">
+            <span>Last 7 days</span>
+            <strong id="adminLast7Visits">0</strong>
+          </div>
+          <div class="analytics-metric">
+            <span>Today visitors</span>
+            <strong id="adminTodayVisitors">0</strong>
+          </div>
+          <div class="analytics-metric">
+            <span>Updated</span>
+            <strong id="adminAnalyticsUpdated">Never</strong>
+          </div>
+        </div>
+        <div id="adminTopPages" class="analytics-list"></div>
       </div>
 
       <div class="admin-toolbar">
@@ -389,12 +775,18 @@
 
       <div class="admin-grid">
         <div class="admin-panel">
-          <h3>Conference Deadlines</h3>
+          <div class="admin-panel-heading">
+            <span class="admin-panel-icon"><i class="fas fa-calendar-days" aria-hidden="true"></i></span>
+            <h3>Conference Deadlines</h3>
+          </div>
           <div id="adminConferenceList" class="conference-admin-list"></div>
         </div>
 
         <div class="admin-panel">
-          <h3 id="adminFormTitle">Add Deadline</h3>
+          <div class="admin-panel-heading">
+            <span class="admin-panel-icon"><i class="fas fa-pen-to-square" aria-hidden="true"></i></span>
+            <h3 id="adminFormTitle">Add Deadline</h3>
+          </div>
           <form id="adminConferenceForm">
             <div class="form-group">
               <label for="adminNameInput">Name</label>
@@ -487,10 +879,18 @@
       userInput: document.getElementById('adminUserInput'),
       passwordInput: document.getElementById('adminPasswordInput'),
       status: document.getElementById('adminStatus'),
+      analyticsStatus: document.getElementById('adminAnalyticsStatus'),
       refreshBtn: document.getElementById('adminRefreshBtn'),
       exportBtn: document.getElementById('adminExportBtn'),
       importBtn: document.getElementById('adminImportBtn'),
       list: document.getElementById('adminConferenceList'),
+      totalVisits: document.getElementById('adminTotalVisits'),
+      todayVisits: document.getElementById('adminTodayVisits'),
+      visitorTotal: document.getElementById('adminVisitorTotal'),
+      last7Visits: document.getElementById('adminLast7Visits'),
+      todayVisitors: document.getElementById('adminTodayVisitors'),
+      analyticsUpdated: document.getElementById('adminAnalyticsUpdated'),
+      topPages: document.getElementById('adminTopPages'),
       total: document.getElementById('adminConferenceTotal'),
       upcoming: document.getElementById('adminUpcomingTotal'),
       soon: document.getElementById('adminSoonTotal'),
@@ -516,15 +916,15 @@
 
     function getStoredSession() {
       const raw = sessionStorage.getItem(STORAGE_KEY);
-      if (!raw) return { username: 'admin', password: '' };
+      if (!raw) return { username: 'lengocluyen', password: '' };
       try {
         const value = JSON.parse(raw);
         return {
-          username: value.username || 'admin',
+          username: value.username || 'lengocluyen',
           password: value.password || ''
         };
       } catch (error) {
-        return { username: 'admin', password: raw };
+        return { username: 'lengocluyen', password: raw };
       }
     }
 
@@ -536,6 +936,12 @@
       els.status.textContent = message || '';
       els.status.classList.toggle('error', type === 'error');
       els.status.classList.toggle('success', type === 'success');
+    }
+
+    function setAnalyticsStatus(message, type) {
+      els.analyticsStatus.textContent = message || '';
+      els.analyticsStatus.classList.toggle('error', type === 'error');
+      els.analyticsStatus.classList.toggle('success', type === 'success');
     }
 
     function setLoginStatus(message, type) {
@@ -555,6 +961,10 @@
 
     function uid() {
       return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    }
+
+    function formatNumber(value) {
+      return Number(value || 0).toLocaleString();
     }
 
     function daysRemaining(deadline) {
@@ -583,6 +993,16 @@
       });
     }
 
+    function normalizeLoginError(message, status) {
+      if (message && message.includes('ADMIN_PASSWORD')) {
+        return 'Admin password is not configured on Vercel. Add ADMIN_PASSWORD in Vercel environment variables and redeploy.';
+      }
+      if (status === 401) {
+        return 'Invalid username or password.';
+      }
+      return message || `Login failed (${status})`;
+    }
+
     async function authenticate(username, password) {
       const response = await fetch(`${API_BASE}/api/admin-auth`, {
         method: 'POST',
@@ -592,7 +1012,7 @@
 
       if (!response.ok) {
         const body = await response.json().catch(() => ({}));
-        throw new Error(body.error || `Login failed (${response.status})`);
+        throw new Error(normalizeLoginError(body.error, response.status));
       }
 
       return true;
@@ -610,7 +1030,7 @@
         els.dashboard.hidden = false;
         els.logoutBtn.hidden = false;
         setLoginStatus('', '');
-        await loadConferences();
+        await refreshDashboard();
       } catch (error) {
         setLoginStatus(error.message, 'error');
       } finally {
@@ -620,14 +1040,15 @@
 
     function logout() {
       adminPassword = '';
-      adminUsername = 'admin';
+      adminUsername = 'lengocluyen';
       sessionStorage.removeItem(STORAGE_KEY);
       els.dashboard.hidden = true;
       els.logoutBtn.hidden = true;
       els.loginPanel.hidden = false;
-      els.userInput.value = 'admin';
+      els.userInput.value = 'lengocluyen';
       els.passwordInput.value = '';
       setStatus('', '');
+      setAnalyticsStatus('', '');
       setLoginStatus('', '');
     }
 
@@ -672,6 +1093,70 @@
       }
       render();
       setStatus('Loaded from browser storage.', '');
+    }
+
+    async function loadAnalytics() {
+      setAnalyticsStatus('Loading site access data...', '');
+      try {
+        const response = await fetch(`${API_BASE}/api/site-analytics?ts=${Date.now()}`, {
+          cache: 'no-store',
+          headers: {
+            'X-Admin-Password': adminPassword
+          }
+        });
+
+        if (!response.ok) {
+          const body = await response.json().catch(() => ({}));
+          throw new Error(body.error || `Analytics failed (${response.status})`);
+        }
+
+        const data = await response.json();
+        renderAnalytics(data);
+      } catch (error) {
+        setAnalyticsStatus(error.message, 'error');
+        els.topPages.innerHTML = '<div class="alert alert-warning" style="margin:0;">Site access data is not available yet.</div>';
+      }
+    }
+
+    function renderAnalytics(data) {
+      const totals = data.totals || {};
+      const today = data.today || {};
+      const storage = data.storage || {};
+
+      els.totalVisits.textContent = formatNumber(totals.visits);
+      els.todayVisits.textContent = formatNumber(today.visits);
+      els.visitorTotal.textContent = formatNumber(totals.visitors);
+      els.last7Visits.textContent = formatNumber(data.last7Visits);
+      els.todayVisitors.textContent = formatNumber(today.visitors);
+      els.analyticsUpdated.textContent = data.updatedAt ? formatDate(data.updatedAt) : 'Never';
+
+      if (!storage.configured) {
+        setAnalyticsStatus('Set GITHUB_TOKEN on Vercel to store access counts.', 'error');
+      } else if (!storage.exists) {
+        setAnalyticsStatus('Waiting for the first tracked visit.', '');
+      } else {
+        setAnalyticsStatus('Loaded access counters.', 'success');
+      }
+
+      const pages = Array.isArray(data.pages) ? data.pages : [];
+      if (!pages.length) {
+        els.topPages.innerHTML = '<div class="alert alert-info" style="margin:0;">No tracked pages yet.</div>';
+        return;
+      }
+
+      els.topPages.innerHTML = pages.map(page => `
+        <div class="analytics-row">
+          <div>
+            <strong>${escapeHtml(page.title || page.path)}</strong>
+            <span>${escapeHtml(page.path)} &middot; ${formatNumber(page.visitors)} estimated visitor(s)</span>
+          </div>
+          <div class="analytics-count">${formatNumber(page.visits)}</div>
+        </div>
+      `).join('');
+    }
+
+    async function refreshDashboard() {
+      await Promise.allSettled([loadConferences(), loadAnalytics()]);
     }
 
     async function saveConferences() {
@@ -861,7 +1346,7 @@
       unlock(els.userInput.value.trim(), els.passwordInput.value);
     });
     els.logoutBtn.addEventListener('click', logout);
-    els.refreshBtn.addEventListener('click', loadConferences);
+    els.refreshBtn.addEventListener('click', refreshDashboard);
     els.exportBtn.addEventListener('click', exportJson);
     els.importBtn.addEventListener('click', importJson);
     els.form.addEventListener('submit', upsertConference);
@@ -873,6 +1358,9 @@
     }
   })();
 </script>
+
+
+
 
   </div>
   <!-- Footer -->
@@ -952,5 +1440,62 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/main.js"></script>
+  <script>
+  (function () {
+    var trackedHosts = ['lengocluyen.github.io', 'lengocluyen.vercel.app'];
+    if (trackedHosts.indexOf(window.location.hostname) === -1) return;
+    if (window.location.pathname === '/admin.html') return;
+    if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+
+    var path = window.location.pathname || '/';
+    var day = new Date().toISOString().slice(0, 10);
+    var siteKey = 'portfolio-analytics-site:' + day;
+    var pageKey = 'portfolio-analytics-page:' + day + ':' + path;
+
+    try {
+      if (localStorage.getItem(pageKey)) return;
+    } catch (error) {
+      return;
+    }
+
+    var dailyUnique = false;
+    var pageDailyUnique = false;
+
+    try {
+      dailyUnique = !localStorage.getItem(siteKey);
+      pageDailyUnique = !localStorage.getItem(pageKey);
+    } catch (error) {
+      return;
+    }
+
+    var apiBase = window.location.hostname === 'lengocluyen.vercel.app'
+      ? ''
+      : 'https://lengocluyen.vercel.app';
+
+    fetch(apiBase + '/api/site-analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        path: path,
+        title: document.title,
+        referrer: document.referrer,
+        dailyUnique: dailyUnique,
+        pageDailyUnique: pageDailyUnique
+      }),
+      keepalive: true
+    }).then(function (response) {
+      if (response.status === 202) return;
+      if (!response.ok && response.status !== 204) return;
+      try {
+        if (dailyUnique) localStorage.setItem(siteKey, '1');
+        if (pageDailyUnique) localStorage.setItem(pageKey, '1');
+      } catch (error) {
+        // Ignore storage failures.
+      }
+    }).catch(function () {
+      // Analytics must never block the portfolio.
+    });
+  })();
+</script>
   </body>
 </html>

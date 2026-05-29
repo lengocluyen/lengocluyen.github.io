@@ -359,5 +359,62 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/main.js"></script>
+  <script>
+  (function () {
+    var trackedHosts = ['lengocluyen.github.io', 'lengocluyen.vercel.app'];
+    if (trackedHosts.indexOf(window.location.hostname) === -1) return;
+    if (window.location.pathname === '/admin.html') return;
+    if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+
+    var path = window.location.pathname || '/';
+    var day = new Date().toISOString().slice(0, 10);
+    var siteKey = 'portfolio-analytics-site:' + day;
+    var pageKey = 'portfolio-analytics-page:' + day + ':' + path;
+
+    try {
+      if (localStorage.getItem(pageKey)) return;
+    } catch (error) {
+      return;
+    }
+
+    var dailyUnique = false;
+    var pageDailyUnique = false;
+
+    try {
+      dailyUnique = !localStorage.getItem(siteKey);
+      pageDailyUnique = !localStorage.getItem(pageKey);
+    } catch (error) {
+      return;
+    }
+
+    var apiBase = window.location.hostname === 'lengocluyen.vercel.app'
+      ? ''
+      : 'https://lengocluyen.vercel.app';
+
+    fetch(apiBase + '/api/site-analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        path: path,
+        title: document.title,
+        referrer: document.referrer,
+        dailyUnique: dailyUnique,
+        pageDailyUnique: pageDailyUnique
+      }),
+      keepalive: true
+    }).then(function (response) {
+      if (response.status === 202) return;
+      if (!response.ok && response.status !== 204) return;
+      try {
+        if (dailyUnique) localStorage.setItem(siteKey, '1');
+        if (pageDailyUnique) localStorage.setItem(pageKey, '1');
+      } catch (error) {
+        // Ignore storage failures.
+      }
+    }).catch(function () {
+      // Analytics must never block the portfolio.
+    });
+  })();
+</script>
   </body>
 </html>

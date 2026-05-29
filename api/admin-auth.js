@@ -57,7 +57,7 @@ export default async function handler(req, res) {
   }
 
   const adminPassword = process.env.ADMIN_PASSWORD;
-  const adminUsername = process.env.ADMIN_USERNAME || 'admin';
+  const adminUsername = process.env.ADMIN_USERNAME || 'lengocluyen';
   if (!adminPassword) {
     return res
       .status(500)
