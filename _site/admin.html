@@ -101,13 +101,9 @@
     --admin-accent-soft: oklch(0.93 0.045 245);
     --admin-danger: oklch(0.45 0.145 25);
     --admin-success: oklch(0.42 0.115 155);
-    background: var(--admin-page);
-    border: 1px solid var(--admin-line);
-    border-radius: 10px;
-    margin: 4px auto 18px;
-    min-height: calc(100vh - 260px);
-    padding: 34px 18px;
-    width: min(1180px, calc(100% - 30px));
+    background: transparent;
+    margin: 0 auto 18px;
+    padding: 28px 0 10px;
   }
 
   #admin-app .admin-shell {
@@ -442,6 +438,15 @@
     gap: 8px;
   }
 
+  #admin-app .analytics-subhead {
+    color: var(--admin-text);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 12px 0 8px;
+    text-transform: uppercase;
+  }
+
   #admin-app .analytics-row {
     align-items: center;
     background: oklch(0.985 0.004 245);
@@ -514,7 +519,7 @@
   #admin-app .quick-links {
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
     margin-top: 14px;
   }
 
@@ -555,7 +560,7 @@
     --admin-muted: var(--text-muted);
     --admin-accent: var(--primary);
     --admin-accent-soft: #1a2d3e;
-    background: var(--admin-page);
+    background: transparent;
   }
 
   html.dark-mode #admin-app .admin-hero p,
@@ -603,14 +608,7 @@
 
   @media (max-width: 767px) {
     #admin-app {
-      border-left: 0;
-      border-right: 0;
-      border-radius: 0;
-      margin-left: -15px;
-      margin-right: -15px;
-      min-height: calc(100vh - 210px);
-      padding: 22px 12px;
-      width: auto;
+      padding: 18px 0 10px;
     }
 
     #admin-app .admin-hero {
@@ -755,10 +753,27 @@
             <strong id="adminAnalyticsUpdated">Never</strong>
           </div>
         </div>
+        <div class="analytics-subhead">By Domain</div>
+        <div id="adminDomainBreakdown" class="analytics-list"></div>
+        <div class="analytics-subhead">Top Pages</div>
         <div id="adminTopPages" class="analytics-list"></div>
       </div>
 
-      <div class="admin-toolbar">
+      <div class="admin-panel analytics-panel">
+        <div class="admin-panel-heading">
+          <span class="admin-panel-icon"><i class="fas fa-calendar-days" aria-hidden="true"></i></span>
+          <div>
+            <h3>Conference Tools</h3>
+            <div class="admin-status">Use the private manager for add, edit, import, export, and save actions.</div>
+          </div>
+        </div>
+        <div class="quick-links" aria-label="Conference admin links">
+          <a href="/admin-conferences.html"><i class="fas fa-pen-to-square" aria-hidden="true"></i> Manage deadlines</a>
+          <a href="/conferences.html"><i class="fas fa-eye" aria-hidden="true"></i> Public conferences</a>
+        </div>
+      </div>
+
+      <div class="admin-toolbar" hidden>
         <div id="adminStatus" class="admin-status"></div>
         <div class="btn-group btn-group-sm" role="group" aria-label="Admin actions">
           <button id="adminRefreshBtn" type="button" class="btn btn-default">
@@ -773,7 +788,7 @@
         </div>
       </div>
 
-      <div class="admin-grid">
+      <div class="admin-grid" hidden>
         <div class="admin-panel">
           <div class="admin-panel-heading">
             <span class="admin-panel-icon"><i class="fas fa-calendar-days" aria-hidden="true"></i></span>
@@ -846,9 +861,10 @@
           </form>
 
           <div class="quick-links" aria-label="Portfolio quick links">
+            <a href="/admin-conferences.html"><i class="fas fa-pen-to-square" aria-hidden="true"></i> Manage deadlines</a>
+            <a href="/conferences.html"><i class="fas fa-calendar-days" aria-hidden="true"></i> Conferences page</a>
             <a href="/publications.html"><i class="fas fa-book-open" aria-hidden="true"></i> Publications</a>
             <a href="/projects.html"><i class="fas fa-diagram-project" aria-hidden="true"></i> Projects</a>
-            <a href="/conferences.html"><i class="fas fa-calendar-days" aria-hidden="true"></i> Public tracker</a>
           </div>
         </div>
       </div>
@@ -890,6 +906,7 @@
       last7Visits: document.getElementById('adminLast7Visits'),
       todayVisitors: document.getElementById('adminTodayVisitors'),
       analyticsUpdated: document.getElementById('adminAnalyticsUpdated'),
+      domainBreakdown: document.getElementById('adminDomainBreakdown'),
       topPages: document.getElementById('adminTopPages'),
       total: document.getElementById('adminConferenceTotal'),
       upcoming: document.getElementById('adminUpcomingTotal'),
@@ -1114,6 +1131,7 @@
         renderAnalytics(data);
       } catch (error) {
         setAnalyticsStatus(error.message, 'error');
+        els.domainBreakdown.innerHTML = '';
         els.topPages.innerHTML = '<div class="alert alert-warning" style="margin:0;">Site access data is not available yet.</div>';
       }
     }
@@ -1136,6 +1154,21 @@
         setAnalyticsStatus('Waiting for the first tracked visit.', '');
       } else {
         setAnalyticsStatus('Loaded access counters.', 'success');
+      }
+
+      const hosts = Array.isArray(data.hosts) ? data.hosts : [];
+      if (!hosts.length) {
+        els.domainBreakdown.innerHTML = '<div class="alert alert-info" style="margin:0;">No domain data yet.</div>';
+      } else {
+        els.domainBreakdown.innerHTML = hosts.map(host => `
+          <div class="analytics-row">
+            <div>
+              <strong>${escapeHtml(host.host)}</strong>
+              <span>${formatNumber(host.visitors)} estimated visitor(s)</span>
+            </div>
+            <div class="analytics-count">${formatNumber(host.visits)}</div>
+          </div>
+        `).join('');
       }
 
       const pages = Array.isArray(data.pages) ? data.pages : [];
@@ -1362,6 +1395,10 @@
 
 
 
+
+
+
+
   </div>
   <!-- Footer -->
   <footer class="footer-v11">
@@ -1444,7 +1481,7 @@
   (function () {
     var trackedHosts = ['lengocluyen.github.io', 'lengocluyen.vercel.app'];
     if (trackedHosts.indexOf(window.location.hostname) === -1) return;
-    if (window.location.pathname === '/admin.html') return;
+    if (window.location.pathname.indexOf('/admin') === 0) return;
     if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
 
     var path = window.location.pathname || '/';
@@ -1477,6 +1514,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         path: path,
+        host: window.location.hostname,
         title: document.title,
         referrer: document.referrer,
         dailyUnique: dailyUnique,

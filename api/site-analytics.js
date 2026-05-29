@@ -72,6 +72,7 @@ function createEmptyAnalytics() {
     },
     days: {},
     pages: {},
+    hosts: {},
     referrers: {},
     updatedAt: null,
   };
@@ -86,6 +87,7 @@ function normalizeAnalytics(value) {
   analytics.totals.pageVisitors = Number(analytics.totals.pageVisitors || 0);
   analytics.days = analytics.days || {};
   analytics.pages = analytics.pages || {};
+  analytics.hosts = analytics.hosts || {};
   analytics.referrers = analytics.referrers || {};
   analytics.updatedAt = analytics.updatedAt || null;
   return analytics;
@@ -169,6 +171,14 @@ function cleanReferrer(value) {
   }
 }
 
+function cleanHost(value) {
+  const host = cleanText(value, 100).toLowerCase();
+  if (host === 'lengocluyen.github.io' || host === 'lengocluyen.vercel.app') {
+    return host;
+  }
+  return host || 'unknown';
+}
+
 function pruneAnalytics(analytics) {
   const days = Object.keys(analytics.days).sort();
   while (days.length > 90) {
@@ -191,6 +201,7 @@ function applyVisit(analytics, visit) {
   const now = new Date();
   const dayKey = now.toISOString().slice(0, 10);
   const path = cleanPath(visit.path);
+  const host = cleanHost(visit.host);
   const title = cleanText(visit.title, 120);
   const referrer = cleanReferrer(visit.referrer);
   const dailyUnique = Boolean(visit.dailyUnique);
@@ -207,24 +218,34 @@ function applyVisit(analytics, visit) {
     visitors: 0,
     updatedAt: null,
   };
+  analytics.hosts[host] = analytics.hosts[host] || {
+    visits: 0,
+    visitors: 0,
+    pageVisitors: 0,
+    updatedAt: null,
+  };
 
   analytics.totals.visits += 1;
   analytics.days[dayKey].visits += 1;
   analytics.pages[path].visits += 1;
+  analytics.hosts[host].visits += 1;
 
   if (dailyUnique) {
     analytics.totals.visitors += 1;
     analytics.days[dayKey].visitors += 1;
+    analytics.hosts[host].visitors += 1;
   }
 
   if (pageDailyUnique) {
     analytics.totals.pageVisitors += 1;
     analytics.days[dayKey].pageVisitors += 1;
     analytics.pages[path].visitors += 1;
+    analytics.hosts[host].pageVisitors += 1;
   }
 
   if (title) analytics.pages[path].title = title;
   analytics.pages[path].updatedAt = now.toISOString();
+  analytics.hosts[host].updatedAt = now.toISOString();
 
   if (referrer && !referrer.includes('lengocluyen.github.io') && !referrer.includes('lengocluyen.vercel.app')) {
     analytics.referrers[referrer] = Number(analytics.referrers[referrer] || 0) + 1;
@@ -259,11 +280,22 @@ function summarize(analytics, storage) {
       visitors: Number(values.visitors || 0),
     }));
 
+  const hosts = Object.entries(normalized.hosts)
+    .sort((a, b) => Number(b[1].visits || 0) - Number(a[1].visits || 0))
+    .map(([host, values]) => ({
+      host,
+      visits: Number(values.visits || 0),
+      visitors: Number(values.visitors || 0),
+      pageVisitors: Number(values.pageVisitors || 0),
+      updatedAt: values.updatedAt || null,
+    }));
+
   return {
     totals: normalized.totals,
     today: normalized.days[todayKey] || { visits: 0, visitors: 0, pageVisitors: 0 },
     last7Visits: last7,
     days: days.slice(0, 14),
+    hosts,
     pages,
     updatedAt: normalized.updatedAt,
     storage,
@@ -295,14 +327,15 @@ async function recordVisit(req, res) {
   }
 
   const path = cleanPath(req.body?.path);
-  if (path === '/admin.html' || path.startsWith('/api/')) {
+  if (path.startsWith('/admin') || path.startsWith('/api/')) {
     return res.status(204).end();
   }
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
     try {
       const current = await readAnalytics(token);
-      applyVisit(current.analytics, { ...req.body, path });
+      const host = cleanHost(new URL(origin).hostname);
+      applyVisit(current.analytics, { ...req.body, path, host });
       await writeAnalytics(token, current.analytics, current.sha);
       return res.status(200).json({ ok: true, stored: true });
     } catch (error) {

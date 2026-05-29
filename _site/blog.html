@@ -270,7 +270,7 @@
   (function () {
     var trackedHosts = ['lengocluyen.github.io', 'lengocluyen.vercel.app'];
     if (trackedHosts.indexOf(window.location.hostname) === -1) return;
-    if (window.location.pathname === '/admin.html') return;
+    if (window.location.pathname.indexOf('/admin') === 0) return;
     if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
 
     var path = window.location.pathname || '/';
@@ -303,6 +303,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         path: path,
+        host: window.location.hostname,
         title: document.title,
         referrer: document.referrer,
         dailyUnique: dailyUnique,

@@ -7,26 +7,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <meta name="author" content="Ngoc Luyen Le">
-    <meta name="description" content="Research and development engineer working on AI engineering, LLMs, agentic AI, knowledge graphs, skill intelligence, and explainable recommender systems.">
+    <meta name="description" content="Private admin dashboard for portfolio maintenance.">
     <meta name="theme-color" content="#01579B">
-    <link rel="canonical" href="http://localhost:3000/conferences.html">
+    <link rel="canonical" href="http://localhost:3000/admin">
     <meta property="og:site_name" content="Ngoc Luyen Le" />
-    <meta property="og:title" content="Conferences" />
-    <meta property="og:description" content="Research and development engineer working on AI engineering, LLMs, agentic AI, knowledge graphs, skill intelligence, and explainable recommender systems." />
+    <meta property="og:title" content="Conference Manager" />
+    <meta property="og:description" content="Private admin dashboard for portfolio maintenance." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://localhost:3000/conferences.html" />
+    <meta property="og:url" content="http://localhost:3000/admin" />
     
     <meta property="og:image" content="http://localhost:3000/static/img/profile.jpg" />
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="http://localhost:3000/static/img/profile.jpg">
     
-    <meta name="twitter:title" content="Conferences">
-    <meta name="twitter:description" content="Research and development engineer working on AI engineering, LLMs, agentic AI, knowledge graphs, skill intelligence, and explainable recommender systems.">
+    <meta name="twitter:title" content="Conference Manager">
+    <meta name="twitter:description" content="Private admin dashboard for portfolio maintenance.">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="/static/img/lnl.ico" type="image/x-icon">
 
 
     
-      <title>Conferences | Ngoc Luyen Le</title>
+      <title>Conference Manager | Ngoc Luyen Le</title>
     
 	
     <!-- Bootstrap -->
@@ -90,6 +91,13 @@
 
     <style>
   /* Conference tracker: Bootstrap-friendly styling to match the rest of the site */
+  #conferences-app .tabs { margin: 15px 0 20px; }
+  #conferences-app .tabs .btn { margin-right: 6px; }
+  #conferences-app .tabs .btn.active {
+    background: #01579B;
+    border-color: #01579B;
+    color: #fff;
+  }
   #conferences-app .stat {
     padding: 12px;
     border: 1px solid #eee;
@@ -146,6 +154,13 @@
     color: #aaa;
     cursor: not-allowed;
   }
+  #conferences-app .small-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
   html.dark-mode #conferences-app .stat,
   html.dark-mode #conferences-app .list-group-item {
     background: var(--surface-soft);
@@ -179,6 +194,7 @@
     border-color: var(--primary);
     color: var(--primary);
   }
+  html.dark-mode #conferences-app .tabs .btn.active,
   html.dark-mode #conferences-app .btn-primary,
   html.dark-mode #conferences-app .pagination > .active > button,
   html.dark-mode #conferences-app .pagination > .active > button:focus,
@@ -207,18 +223,138 @@
     color: var(--primary);
   }
   @media (max-width: 768px) {
+    #conferences-app .small-actions { justify-content: flex-start; }
     #conferences-app .pagination-wrap { align-items: flex-start; flex-direction: column; }
+  }
+
+  #conference-auth[hidden],
+  #conferences-app[hidden] {
+    display: none !important;
+  }
+
+  #conference-auth {
+    padding: 28px 0 10px;
+  }
+
+  #conference-auth .login-panel {
+    border-color: var(--border-soft);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    margin: 34px auto;
+    max-width: 460px;
+  }
+
+  #conference-auth .login-heading {
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  #conference-auth .login-icon {
+    align-items: center;
+    background: var(--primary);
+    border-radius: 8px;
+    color: #f7fbff;
+    display: inline-flex;
+    height: 42px;
+    justify-content: center;
+    margin-bottom: 12px;
+    width: 42px;
+  }
+
+  #conference-auth .login-heading h3 {
+    color: var(--text-dark);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  #conference-auth .login-heading p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 7px 0 0;
+  }
+
+  #conference-auth .admin-status {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.45;
+    min-height: 20px;
+  }
+
+  #conference-auth .admin-status.error {
+    color: #a94442;
+    font-weight: 700;
+  }
+
+  #conferences-app .manager-heading {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+  }
+
+  #conferences-app .manager-heading h4 {
+    margin-top: 0;
+  }
+
+  #conferences-app .manager-heading-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 </style>
 
-<section id="conferences-app">
+<section id="conference-auth">
+  <div class="container">
+    <div class="panel panel-default login-panel">
+      <div class="panel-body">
+        <div class="login-heading">
+          <span class="login-icon"><i class="fas fa-lock" aria-hidden="true"></i></span>
+          <h3>Conference Manager</h3>
+          <p>Login to add, import, export, edit, and save conference deadlines.</p>
+        </div>
+        <form id="conferenceLoginForm">
+          <div class="form-group">
+            <label for="conferenceUserInput">User</label>
+            <input id="conferenceUserInput" class="form-control" type="text" value="lengocluyen" autocomplete="username" required>
+          </div>
+          <div class="form-group">
+            <label for="conferencePasswordInput">Password</label>
+            <input id="conferencePasswordInput" class="form-control" type="password" autocomplete="current-password" required>
+          </div>
+          <button id="conferenceLoginBtn" type="submit" class="btn btn-primary btn-block">
+            <i class="fas fa-arrow-right-to-bracket" aria-hidden="true"></i> Login
+          </button>
+        </form>
+        <p id="conferenceLoginStatus" class="admin-status" style="margin-top:12px;"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="conferences-app" hidden>
   <div class="container">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h4 style="margin-top: 0;">Conference Deadline Tracker</h4>
+                <div class="manager-heading">
+          <div>
+            <h4>Conference Deadline Manager</h4>
+          </div>
+          <div class="manager-heading-actions">
+            <a href="/admin.html" class="btn btn-default btn-sm"><i class="fas fa-gauge" aria-hidden="true"></i> Admin</a>
+            <a href="/conferences.html" class="btn btn-default btn-sm"><i class="fas fa-eye" aria-hidden="true"></i> Public view</a>
+            <button id="conferenceLogoutBtn" type="button" class="btn btn-default btn-sm"><i class="fas fa-right-from-bracket" aria-hidden="true"></i> Logout</button>
+          </div>
+        </div>
         <p class="text-muted">
-          Browse important conference dates and enable local browser reminders for upcoming deadlines.
+          Manage conference dates, local reminders, imports, exports, and authenticated saves to <code>conferences.json</code>.
         </p>
+
+        <div class="tabs" role="tablist" aria-label="Conferences tabs">
+          <button id="tabList" type="button" class="btn btn-default active">All conferences / journals</button>
+          <button id="tabAdd" type="button" class="btn btn-default">Add new</button>
+        </div>
 
         <div id="sectionList">
           <div class="row" style="margin-top: 10px;">
@@ -251,6 +387,7 @@
                   <button id="enableNotifBtn" type="button" class="btn btn-primary">Enable notifications</button>
                   <button id="checkNowBtn" type="button" class="btn btn-default">Check now</button>
                   <button id="exportBtn" type="button" class="btn btn-default">Export JSON</button>
+                  <button id="importBtn" type="button" class="btn btn-default">Import JSON</button>
                 </div>
               </div>
               <p class="help-block" id="notifStatus" style="margin-top: 8px;"></p>
@@ -260,13 +397,176 @@
           <div id="list" class="list-group"></div>
           <div id="pagination" class="pagination-wrap" aria-label="Conference pagination"></div>
         </div>
+
+        <div id="sectionAdd" style="display:none;">
+          <h4 id="formTitle">Add a conference</h4>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="nameInput">Name</label>
+                <input id="nameInput" class="form-control" type="text" placeholder="Conference name (e.g., ISWC 2027)" />
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="rankInput">Rank</label>
+                <input id="rankInput" class="form-control" type="text" placeholder="A, A*, B..." />
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="categoryInput">Category</label>
+                <select id="categoryInput" class="form-control">
+                  <option value="AI">AI</option>
+                  <option value="NLP">NLP</option>
+                  <option value="Semantic Web">Semantic Web</option>
+                  <option value="EdTech">EdTech</option>
+                  <option value="Data Mining">Data Mining</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="locationInput">Location / notes</label>
+                <input id="locationInput" class="form-control" type="text" placeholder="Location / notes" />
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="urlInput">CFP URL (optional)</label>
+                <input id="urlInput" class="form-control" type="url" placeholder="https://..." />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="deadlineInput">Deadline</label>
+                <input id="deadlineInput" class="form-control" type="datetime-local" />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="notifyDaysInput">Notify days before</label>
+                <input id="notifyDaysInput" class="form-control" type="number" min="0" value="14" />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="sourceInput">Source note</label>
+                <input id="sourceInput" class="form-control" type="text" placeholder="manual, WikiCFP..." />
+              </div>
+            </div>
+          </div>
+
+          <button id="addBtn" type="button" class="btn btn-primary btn-block">Add conference</button>
+          <button id="cancelEditBtn" type="button" class="btn btn-default btn-block" style="display:none;">Cancel edit</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-  <script>
+    <script>
+    const ADMIN_SESSION_KEY = 'portfolio-admin-session-v1';
+    let adminPassword = '';
+    let managerInitialized = false;
+    let reminderInterval = null;
+
+    const authEls = {
+      authPanel: document.getElementById('conference-auth'),
+      manager: document.getElementById('conferences-app'),
+      form: document.getElementById('conferenceLoginForm'),
+      userInput: document.getElementById('conferenceUserInput'),
+      passwordInput: document.getElementById('conferencePasswordInput'),
+      loginBtn: document.getElementById('conferenceLoginBtn'),
+      status: document.getElementById('conferenceLoginStatus'),
+      logoutBtn: document.getElementById('conferenceLogoutBtn')
+    };
+
+    function getStoredAdminSession() {
+      const raw = sessionStorage.getItem(ADMIN_SESSION_KEY);
+      if (!raw) return { username: 'lengocluyen', password: '' };
+      try {
+        const value = JSON.parse(raw);
+        return {
+          username: value.username || 'lengocluyen',
+          password: value.password || ''
+        };
+      } catch (error) {
+        return { username: 'lengocluyen', password: raw };
+      }
+    }
+
+    function storeAdminSession(username, password) {
+      sessionStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify({ username, password }));
+    }
+
+    function setConferenceLoginStatus(message, type) {
+      authEls.status.textContent = message || '';
+      authEls.status.classList.toggle('error', type === 'error');
+    }
+
+    function normalizeLoginError(message, status) {
+      if (message && message.includes('ADMIN_PASSWORD')) {
+        return 'Admin password is not configured on Vercel. Add ADMIN_PASSWORD in Vercel environment variables and redeploy.';
+      }
+      if (status === 401) return 'Invalid username or password.';
+      return message || `Login failed (${status})`;
+    }
+
+    async function authenticateAdmin(username, password) {
+      const response = await fetch(`${getServerBaseUrl()}/api/admin-auth`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(normalizeLoginError(body.error, response.status));
+      }
+    }
+
+    async function unlockConferenceManager(username, password) {
+      authEls.loginBtn.disabled = true;
+      setConferenceLoginStatus('Checking credentials...', '');
+      try {
+        await authenticateAdmin(username, password);
+        adminPassword = password;
+        storeAdminSession(username, password);
+        authEls.authPanel.hidden = true;
+        authEls.manager.hidden = false;
+        setConferenceLoginStatus('', '');
+        await initializeManager();
+      } catch (error) {
+        setConferenceLoginStatus(error.message, 'error');
+      } finally {
+        authEls.loginBtn.disabled = false;
+      }
+    }
+
+    function logoutConferenceManager() {
+      adminPassword = '';
+      sessionStorage.removeItem(ADMIN_SESSION_KEY);
+      authEls.manager.hidden = true;
+      authEls.authPanel.hidden = false;
+      authEls.userInput.value = 'lengocluyen';
+      authEls.passwordInput.value = '';
+      if (reminderInterval) {
+        clearInterval(reminderInterval);
+        reminderInterval = null;
+      }
+      setConferenceLoginStatus('', '');
+    }
     const STORAGE_KEY = 'conference-deadline-tracker-v1';
+    const SERVER_WRITE_AT_KEY = `${STORAGE_KEY}-serverWriteAt`;
     const PAGE_SIZE = 5;
     let conferences = [];
     let notifiedMap = {};
@@ -278,8 +578,25 @@
       totalCount: document.getElementById('totalCount'),
       upcomingCount: document.getElementById('upcomingCount'),
       soonCount: document.getElementById('soonCount'),
-      notifStatus: document.getElementById('notifStatus')
+      notifStatus: document.getElementById('notifStatus'),
+      formTitle: document.getElementById('formTitle'),
+      nameInput: document.getElementById('nameInput'),
+      rankInput: document.getElementById('rankInput'),
+      locationInput: document.getElementById('locationInput'),
+      urlInput: document.getElementById('urlInput'),
+      deadlineInput: document.getElementById('deadlineInput'),
+      notifyDaysInput: document.getElementById('notifyDaysInput'),
+      categoryInput: document.getElementById('categoryInput'),
+      sourceInput: document.getElementById('sourceInput'),
+      addBtn: document.getElementById('addBtn'),
+      cancelEditBtn: document.getElementById('cancelEditBtn')
     };
+
+    let editingId = null;
+
+    function uid() {
+      return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    }
 
     async function loadConferences() {
       const local = (() => {
@@ -299,6 +616,15 @@
         if (resp.ok) {
           const data = await resp.json();
           if (Array.isArray(data)) {
+            // If we recently wrote to the server, GitHub Pages may still serve an older version.
+            // Prefer local data for a short window to avoid deleted items "coming back" on refresh.
+            const lastWriteAt = Number(localStorage.getItem(SERVER_WRITE_AT_KEY) || 0);
+            const recentWriteWindowMs = 10 * 60 * 1000;
+            const wroteRecently = lastWriteAt && Date.now() - lastWriteAt < recentWriteWindowMs;
+            if (Array.isArray(local) && local.length && wroteRecently) {
+              return local;
+            }
+
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
             return data;
           }
@@ -324,6 +650,10 @@
 
       // fallback to localStorage if fetch failed or returned non-array
       return Array.isArray(local) ? local : [];
+    }
+
+    function saveConferences() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(conferences));
     }
 
     function loadNotifiedMap() {
@@ -377,7 +707,7 @@
       els.soonCount.textContent = soon.length;
 
       if (!sorted.length) {
-        els.list.innerHTML = '<div class="alert alert-info" style="margin: 0;">No conferences are available yet.</div>';
+        els.list.innerHTML = '<div class="alert alert-info" style="margin: 0;">No conferences yet. Click “Add new” to create one, or use “Import JSON”.</div>';
         els.pagination.innerHTML = '';
         return;
       }
@@ -415,6 +745,10 @@
                 <div class="conf-meta">${humanRemaining}</div>
                 <div class="conf-meta">Reminder: ${Number(conf.notifyDays || 14)} day(s) before</div>
               </div>
+            </div>
+            <div class="small-actions">
+              <button class="btn btn-xs btn-default" type="button" onclick="startEditConference('${conf.id}')">Edit</button>
+              <button class="btn btn-xs btn-danger" type="button" onclick="deleteConference('${conf.id}')">Delete</button>
             </div>
           </div>
         `;
@@ -476,6 +810,140 @@
       return 'https://lengocluyen.vercel.app';
     }
 
+    async function saveToServer() {
+      // attempt to persist conferences to Vercel API; failures are non-fatal
+      try {
+        els.notifStatus.textContent = 'Saving to server...';
+        const apiBase = getServerBaseUrl();
+        const resp = await fetch(`${apiBase}/api/save-conferences`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Admin-Password': adminPassword },
+          body: JSON.stringify({ conferences }),
+        });
+
+        if (!resp.ok) {
+          const body = await resp.json().catch(() => ({}));
+          console.error('server save failed', resp.status, body);
+          els.notifStatus.textContent = `Server save failed (${resp.status}).`;
+          setTimeout(() => {
+            if (els.notifStatus.textContent.startsWith('Server save failed')) {
+              els.notifStatus.textContent = '';
+            }
+          }, 4000);
+          return false;
+        }
+
+        localStorage.setItem(SERVER_WRITE_AT_KEY, String(Date.now()));
+        els.notifStatus.textContent = 'Saved to server.';
+        setTimeout(() => {
+          if (els.notifStatus.textContent === 'Saved to server.') {
+            els.notifStatus.textContent = '';
+          }
+        }, 2500);
+        return true;
+      } catch (e) {
+        console.error('server save failed', e);
+        els.notifStatus.textContent = 'Server save failed (network/CORS).';
+        setTimeout(() => {
+          if (els.notifStatus.textContent.startsWith('Server save failed')) {
+            els.notifStatus.textContent = '';
+          }
+        }, 4000);
+        return false;
+      }
+    }
+
+    function addConference() {
+      const name = els.nameInput.value.trim();
+      const deadline = els.deadlineInput.value;
+      if (!name || !deadline) {
+        alert('Please provide at least a conference name and deadline.');
+        return;
+      }
+
+      const updated = {
+        name,
+        rank: els.rankInput.value.trim(),
+        location: els.locationInput.value.trim(),
+        url: els.urlInput.value.trim(),
+        deadline,
+        notifyDays: Number(els.notifyDaysInput.value || 14),
+        category: els.categoryInput.value,
+        source: els.sourceInput.value.trim()
+      };
+
+      if (editingId) {
+        conferences = conferences.map(c => (c.id === editingId ? { ...c, ...updated } : c));
+        exitEditMode();
+        showTab('list');
+      } else {
+        conferences.push({ id: uid(), ...updated });
+        clearForm();
+      }
+
+      currentPage = 1;
+      saveConferences();
+      render();
+      runReminderCheck();
+      saveToServer();
+    }
+
+    function clearForm() {
+      els.nameInput.value = '';
+      els.rankInput.value = '';
+      els.locationInput.value = '';
+      els.urlInput.value = '';
+      els.deadlineInput.value = '';
+      els.notifyDaysInput.value = 14;
+      els.categoryInput.value = 'AI';
+      els.sourceInput.value = '';
+    }
+
+    function enterEditMode(conf) {
+      editingId = conf.id;
+      els.formTitle.textContent = 'Edit a conference';
+      els.addBtn.textContent = 'Save changes';
+      els.cancelEditBtn.style.display = '';
+
+      els.nameInput.value = conf.name || '';
+      els.rankInput.value = conf.rank || '';
+      els.locationInput.value = conf.location || '';
+      els.urlInput.value = conf.url || '';
+      els.deadlineInput.value = conf.deadline ? String(conf.deadline).slice(0, 16) : '';
+      els.notifyDaysInput.value = Number(conf.notifyDays ?? 14);
+      els.categoryInput.value = conf.category || 'AI';
+      els.sourceInput.value = conf.source || '';
+    }
+
+    function exitEditMode() {
+      editingId = null;
+      els.formTitle.textContent = 'Add a conference';
+      els.addBtn.textContent = 'Add conference';
+      els.cancelEditBtn.style.display = 'none';
+      clearForm();
+    }
+
+    async function deleteConference(id) {
+      conferences = conferences.filter(c => c.id !== id);
+      delete notifiedMap[id];
+      currentPage = 1;
+      saveConferences();
+      saveNotifiedMap();
+      render();
+      await saveToServer();
+    }
+
+    function startEditConference(id) {
+      const conf = conferences.find(c => c.id === id);
+      if (!conf) return;
+      enterEditMode(conf);
+      showTab('add');
+    }
+
+    window.deleteConference = deleteConference;
+    window.startEditConference = startEditConference;
+
+
     async function requestNotificationPermission() {
       if (!('Notification' in window)) {
         els.notifStatus.textContent = 'Notifications are not supported in this browser.';
@@ -532,21 +1000,97 @@
       URL.revokeObjectURL(url);
     }
 
-    document.getElementById('exportBtn').addEventListener('click', exportJson);
-    document.getElementById('enableNotifBtn').addEventListener('click', requestNotificationPermission);
-    document.getElementById('checkNowBtn').addEventListener('click', runReminderCheck);
+    function importJson() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'application/json';
+      input.onchange = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          if (!Array.isArray(data)) throw new Error('Invalid format');
 
-    // after functions defined we initialize
-    (async () => {
+          const existingIds = new Set(conferences.map(c => c.id));
+          const imported = data
+            .filter(item => item && typeof item === 'object')
+            .map(item => {
+              const base = { ...item };
+              let id = base.id || uid();
+              if (existingIds.has(id)) id = uid();
+              existingIds.add(id);
+              return { ...base, id };
+            });
+
+          conferences = [...conferences, ...imported];
+          currentPage = 1;
+          saveConferences();
+          saveNotifiedMap();
+          render();
+          runReminderCheck();
+          saveToServer();
+        } catch {
+          alert('Invalid JSON file.');
+        }
+      };
+      input.click();
+    }
+
+    function bindManagerEvents() {
+      document.getElementById('addBtn').addEventListener('click', addConference);
+      document.getElementById('cancelEditBtn').addEventListener('click', () => {
+        exitEditMode();
+        showTab('list');
+      });
+      document.getElementById('exportBtn').addEventListener('click', exportJson);
+      document.getElementById('importBtn').addEventListener('click', importJson);
+      document.getElementById('enableNotifBtn').addEventListener('click', requestNotificationPermission);
+      document.getElementById('checkNowBtn').addEventListener('click', runReminderCheck);
+      document.getElementById('tabList').addEventListener('click', () => showTab('list'));
+      document.getElementById('tabAdd').addEventListener('click', () => showTab('add'));
+      authEls.logoutBtn.addEventListener('click', logoutConferenceManager);
+    }
+
+    // tab logic
+    function showTab(tab) {
+      document.getElementById('tabList').classList.toggle('active', tab === 'list');
+      document.getElementById('tabAdd').classList.toggle('active', tab === 'add');
+      document.getElementById('sectionList').style.display = tab === 'list' ? 'block' : 'none';
+      document.getElementById('sectionAdd').style.display = tab === 'add' ? 'block' : 'none';
+    }
+
+    async function initializeManager() {
+      if (!managerInitialized) {
+        bindManagerEvents();
+        managerInitialized = true;
+      }
+
+      showTab('list');
       conferences = await loadConferences();
       notifiedMap = loadNotifiedMap();
-
       updateNotifStatus(typeof Notification !== 'undefined' ? Notification.permission : 'unsupported');
       render();
       runReminderCheck();
-      setInterval(runReminderCheck, 60 * 1000);
-    })();
+      if (reminderInterval) clearInterval(reminderInterval);
+      reminderInterval = setInterval(runReminderCheck, 60 * 1000);
+    }
+
+    authEls.form.addEventListener('submit', event => {
+      event.preventDefault();
+      unlockConferenceManager(authEls.userInput.value.trim(), authEls.passwordInput.value);
+    });
+
+    const storedSession = getStoredAdminSession();
+    if (storedSession.password) {
+      authEls.userInput.value = storedSession.username;
+      unlockConferenceManager(storedSession.username, storedSession.password);
+    }
   </script>
+
+
+
+
 
 
 
