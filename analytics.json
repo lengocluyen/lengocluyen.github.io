@@ -1,15 +1,15 @@
 {
   "version": 1,
   "totals": {
-    "visits": 6,
+    "visits": 7,
     "visitors": 2,
-    "pageVisitors": 6
+    "pageVisitors": 7
   },
   "days": {
     "2026-05-29": {
-      "visits": 6,
+      "visits": 7,
       "visitors": 2,
-      "pageVisitors": 6
+      "pageVisitors": 7
     }
   },
   "pages": {
@@ -21,9 +21,9 @@
     },
     "/services.html": {
       "title": "Academic Service | Ngoc Luyen Le",
-      "visits": 1,
-      "visitors": 1,
-      "updatedAt": "2026-05-29T20:16:56.786Z"
+      "visits": 2,
+      "visitors": 2,
+      "updatedAt": "2026-05-29T20:19:15.837Z"
     },
     "/": {
       "title": "Ngoc Luyen Le | NLP, LLMs, Knowledge Graphs",
@@ -45,5 +45,5 @@
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-29T20:17:50.205Z"
+  "updatedAt": "2026-05-29T20:19:15.837Z"
 }
