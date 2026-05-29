@@ -1,15 +1,15 @@
 {
   "version": 1,
   "totals": {
-    "visits": 4,
+    "visits": 5,
     "visitors": 2,
-    "pageVisitors": 4
+    "pageVisitors": 5
   },
   "days": {
     "2026-05-29": {
-      "visits": 4,
+      "visits": 5,
       "visitors": 2,
-      "pageVisitors": 4
+      "pageVisitors": 5
     }
   },
   "pages": {
@@ -30,8 +30,14 @@
       "visits": 1,
       "visitors": 1,
       "updatedAt": "2026-05-29T20:16:58.723Z"
+    },
+    "/projects.html": {
+      "title": "Projects | Ngoc Luyen Le",
+      "visits": 1,
+      "visitors": 1,
+      "updatedAt": "2026-05-29T20:17:48.179Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-29T20:17:46.751Z"
+  "updatedAt": "2026-05-29T20:17:48.179Z"
 }
