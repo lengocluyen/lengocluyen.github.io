@@ -856,6 +856,16 @@ input:checked + .slide-container .nav label { display: block; }
       line-height: 1.35;
     }
 
+    .meta-left,
+    .meta-right {
+      display: block;
+      flex: none;
+      flex-basis: auto;
+      line-height: 1.35;
+      min-height: 0;
+      width: 100%;
+    }
+
     .meta-right {
       justify-self: start;
       text-align: left;
