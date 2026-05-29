@@ -1,15 +1,15 @@
 {
   "version": 1,
   "totals": {
-    "visits": 3,
+    "visits": 4,
     "visitors": 0,
-    "pageVisitors": 3
+    "pageVisitors": 4
   },
   "days": {
     "2026-05-29": {
-      "visits": 3,
+      "visits": 4,
       "visitors": 0,
-      "pageVisitors": 3
+      "pageVisitors": 4
     }
   },
   "pages": {
@@ -30,16 +30,22 @@
       "visits": 1,
       "visitors": 1,
       "updatedAt": "2026-05-29T20:38:00.694Z"
+    },
+    "/resume.html": {
+      "title": "Resume | Ngoc Luyen Le",
+      "visits": 1,
+      "visitors": 1,
+      "updatedAt": "2026-05-29T20:38:18.707Z"
     }
   },
   "hosts": {
     "lengocluyen.github.io": {
-      "visits": 3,
+      "visits": 4,
       "visitors": 0,
-      "pageVisitors": 3,
-      "updatedAt": "2026-05-29T20:38:00.694Z"
+      "pageVisitors": 4,
+      "updatedAt": "2026-05-29T20:38:18.707Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-29T20:38:00.694Z"
+  "updatedAt": "2026-05-29T20:38:18.707Z"
 }
