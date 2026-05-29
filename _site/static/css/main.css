@@ -455,6 +455,10 @@ input:checked + .slide-container .nav label { display: block; }
     gap: 5px;
   }
 
+  .navbar-brand.custom-brand .brand-name {
+    white-space: nowrap;
+  }
+
   .navbar-brand.custom-brand i {
     font-size: 14px; /* match icon size to text */
   }
@@ -759,10 +763,18 @@ input:checked + .slide-container .nav label { display: block; }
   .supervision-meta {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px 16px;
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 5px;
+  }
+
+  .meta-left {
+    flex: 1 1 220px;
+    min-width: 0;
+    overflow-wrap: break-word;
   }
   
   .meta-left i {
@@ -771,9 +783,14 @@ input:checked + .slide-container .nav label { display: block; }
   }
   
   .meta-right {
+    flex: 0 1 auto;
     font-style: italic;
     color: #555;
-    white-space: nowrap;
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: break-word;
+    text-align: right;
+    white-space: normal;
   }
 
   .email-icon {
@@ -827,6 +844,16 @@ input:checked + .slide-container .nav label { display: block; }
   }
 
   @media (max-width: 576px) {
+    .supervision-meta {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .meta-right {
+      text-align: left;
+    }
+
     .supervision-topic {
       grid-template-columns: 1fr;
       row-gap: 2px;
@@ -834,7 +861,7 @@ input:checked + .slide-container .nav label { display: block; }
 
     .supervision-label,
     .supervision-value {
-      grid-column: 2;
+      grid-column: 1;
     }
   }
 
@@ -1654,6 +1681,7 @@ label:focus-visible {
 .section-header-title {
   display: inline-flex;
   align-items: center;
+  flex: 1 1 240px;
   gap: 9px;
   line-height: 1.35;
   min-width: 0;
@@ -2234,8 +2262,41 @@ label:focus-visible {
     border-top-width: 2px;
   }
 
+  .navbar-brand.custom-brand {
+    max-width: calc(100vw - 92px);
+    padding-right: 0;
+  }
+
+  .navbar-brand.custom-brand .brand-name {
+    display: inline-block;
+    font-size: 13px;
+    max-width: calc(100vw - 150px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+  }
+
   .home-page {
     padding-top: 18px;
+  }
+
+  .section-header {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .badge-primary {
+    margin-left: 0;
+  }
+
+  .hero-profile-panel {
+    justify-self: center;
+    max-width: 300px;
+  }
+
+  .hero-portrait {
+    justify-self: center;
+    margin: 0 auto;
   }
 
   .hero-copy h1 {
