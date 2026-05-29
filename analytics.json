@@ -1,12 +1,25 @@
 {
   "version": 1,
   "totals": {
-    "visits": 0,
-    "visitors": 0,
-    "pageVisitors": 0
+    "visits": 1,
+    "visitors": 1,
+    "pageVisitors": 1
   },
-  "days": {},
-  "pages": {},
+  "days": {
+    "2026-05-29": {
+      "visits": 1,
+      "visitors": 1,
+      "pageVisitors": 1
+    }
+  },
+  "pages": {
+    "/services.html": {
+      "title": "Academic Service | Ngoc Luyen Le",
+      "visits": 1,
+      "visitors": 1,
+      "updatedAt": "2026-05-29T20:16:56.786Z"
+    }
+  },
   "referrers": {},
-  "updatedAt": null
+  "updatedAt": "2026-05-29T20:16:56.786Z"
 }
