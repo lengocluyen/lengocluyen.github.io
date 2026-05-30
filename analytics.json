@@ -1,23 +1,28 @@
 {
   "version": 1,
   "totals": {
-    "visits": 8,
-    "visitors": 2,
-    "pageVisitors": 8
+    "visits": 9,
+    "visitors": 3,
+    "pageVisitors": 9
   },
   "days": {
     "2026-05-29": {
       "visits": 8,
       "visitors": 2,
       "pageVisitors": 8
+    },
+    "2026-05-30": {
+      "visits": 1,
+      "visitors": 1,
+      "pageVisitors": 1
     }
   },
   "pages": {
     "/": {
       "title": "Ngoc Luyen Le | NLP, LLMs, Knowledge Graphs",
-      "visits": 3,
-      "visitors": 3,
-      "updatedAt": "2026-05-29T21:26:38.628Z"
+      "visits": 4,
+      "visitors": 4,
+      "updatedAt": "2026-05-30T04:31:04.173Z"
     },
     "/conferences.html": {
       "title": "Conferences | Ngoc Luyen Le",
@@ -52,12 +57,12 @@
   },
   "hosts": {
     "lengocluyen.github.io": {
-      "visits": 8,
-      "visitors": 2,
-      "pageVisitors": 8,
-      "updatedAt": "2026-05-29T21:26:38.628Z"
+      "visits": 9,
+      "visitors": 3,
+      "pageVisitors": 9,
+      "updatedAt": "2026-05-30T04:31:04.173Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-29T21:26:38.628Z"
+  "updatedAt": "2026-05-30T04:31:04.173Z"
 }
