@@ -21,6 +21,13 @@
   --shadow:     0 4px 14px rgba(0,0,0,0.10);
   --shadow-lg:  0 8px 28px rgba(0,0,0,0.13);
   --transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  --font-size-content: 17px;
+  --font-size-card: 15px;
+  --font-size-compact: 15px;
+  --font-size-meta: 14px;
+  --line-height-content: 1.65;
+  --line-height-card: 1.58;
+  --line-height-meta: 1.45;
 }
 
 /* =============================================
@@ -2408,6 +2415,90 @@ label:focus-visible {
   .btn-theme-toggle {
     margin: 0;
   }
+}
+
+/* =============================================
+   v1.4 - Cross-page typography scale
+   ============================================= */
+#publications .panel-body,
+#services .panel-body,
+#projects .panel-body {
+  font-size: var(--font-size-content);
+  line-height: var(--line-height-content);
+}
+
+#publications .div-justify-pub,
+#services .div-justify-pub,
+#projects .div-justify-pub,
+#services .service-list li,
+#services .supervision-entry p,
+#services .supervision-topic {
+  font-size: var(--font-size-content);
+  line-height: var(--line-height-content);
+}
+
+#publications .div-justify-pub::before {
+  font-size: var(--font-size-content);
+}
+
+#services .supervision-meta {
+  font-size: var(--font-size-compact);
+  line-height: var(--line-height-card);
+}
+
+#services .teaching-card h3,
+#projects .collaboration-card h3,
+#projects .project-preview-list article h3 {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+#services .teaching-card p,
+#projects .collaboration-card p,
+#projects .project-preview-list article p {
+  font-size: var(--font-size-card);
+  line-height: var(--line-height-card);
+}
+
+#resumes .education-card,
+#resumes .experience-card,
+#resumes .awards-grid article {
+  line-height: var(--line-height-card);
+}
+
+#resumes .edu-header h4,
+#resumes .experience-header h4,
+#resumes .skill-block h5,
+#resumes .language-item h5 {
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+#resumes .education-card p,
+#resumes .education-card em,
+#resumes .experience-card p,
+#resumes .awards-grid p {
+  font-size: var(--font-size-compact);
+  line-height: var(--line-height-card);
+}
+
+#resumes .edu-note,
+#resumes .skill-tag,
+#resumes .tag,
+#resumes .badge,
+#resumes .badge-fluent,
+#resumes .badge-native {
+  font-size: var(--font-size-compact);
+  line-height: var(--line-height-meta);
+}
+
+#resumes .edu-meta,
+#resumes .experience-meta,
+#resumes .profile-contact,
+#resumes .profile-social,
+#resumes a.link-block {
+  font-size: var(--font-size-meta);
+  line-height: var(--line-height-meta);
 }
 
 /* =============================================
