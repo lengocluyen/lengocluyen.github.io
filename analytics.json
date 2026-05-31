@@ -1,9 +1,9 @@
 {
   "version": 1,
   "totals": {
-    "visits": 25,
-    "visitors": 6,
-    "pageVisitors": 25
+    "visits": 26,
+    "visitors": 7,
+    "pageVisitors": 26
   },
   "days": {
     "2026-05-29": {
@@ -17,9 +17,9 @@
       "pageVisitors": 11
     },
     "2026-05-31": {
-      "visits": 6,
-      "visitors": 2,
-      "pageVisitors": 6
+      "visits": 7,
+      "visitors": 3,
+      "pageVisitors": 7
     }
   },
   "pages": {
@@ -31,9 +31,9 @@
     },
     "/services.html": {
       "title": "Academic Service | Ngoc Luyen Le",
-      "visits": 5,
-      "visitors": 5,
-      "updatedAt": "2026-05-31T06:18:09.654Z"
+      "visits": 6,
+      "visitors": 6,
+      "updatedAt": "2026-05-31T06:18:10.451Z"
     },
     "/publications.html": {
       "title": "Research Publications | Ngoc Luyen Le",
@@ -62,12 +62,12 @@
   },
   "hosts": {
     "lengocluyen.github.io": {
-      "visits": 25,
-      "visitors": 6,
-      "pageVisitors": 25,
-      "updatedAt": "2026-05-31T06:18:09.654Z"
+      "visits": 26,
+      "visitors": 7,
+      "pageVisitors": 26,
+      "updatedAt": "2026-05-31T06:18:10.451Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-31T06:18:09.654Z"
+  "updatedAt": "2026-05-31T06:18:10.451Z"
 }
