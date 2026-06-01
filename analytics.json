@@ -1,9 +1,9 @@
 {
   "version": 1,
   "totals": {
-    "visits": 30,
-    "visitors": 7,
-    "pageVisitors": 30
+    "visits": 31,
+    "visitors": 8,
+    "pageVisitors": 31
   },
   "days": {
     "2026-05-29": {
@@ -20,6 +20,11 @@
       "visits": 11,
       "visitors": 3,
       "pageVisitors": 11
+    },
+    "2026-06-01": {
+      "visits": 1,
+      "visitors": 1,
+      "pageVisitors": 1
     }
   },
   "pages": {
@@ -55,19 +60,19 @@
     },
     "/conferences.html": {
       "title": "Conferences | Ngoc Luyen Le",
-      "visits": 2,
-      "visitors": 2,
-      "updatedAt": "2026-05-30T09:44:21.129Z"
+      "visits": 3,
+      "visitors": 3,
+      "updatedAt": "2026-06-01T06:37:04.215Z"
     }
   },
   "hosts": {
     "lengocluyen.github.io": {
-      "visits": 30,
-      "visitors": 7,
-      "pageVisitors": 30,
-      "updatedAt": "2026-05-31T06:19:17.146Z"
+      "visits": 31,
+      "visitors": 8,
+      "pageVisitors": 31,
+      "updatedAt": "2026-06-01T06:37:04.215Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-05-31T06:19:17.146Z"
+  "updatedAt": "2026-06-01T06:37:04.215Z"
 }
