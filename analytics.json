@@ -1,9 +1,9 @@
 {
   "version": 1,
   "totals": {
-    "visits": 35,
+    "visits": 36,
     "visitors": 9,
-    "pageVisitors": 35
+    "pageVisitors": 36
   },
   "days": {
     "2026-05-29": {
@@ -27,9 +27,9 @@
       "pageVisitors": 1
     },
     "2026-06-04": {
-      "visits": 4,
+      "visits": 5,
       "visitors": 1,
-      "pageVisitors": 4
+      "pageVisitors": 5
     }
   },
   "pages": {
@@ -59,9 +59,9 @@
     },
     "/resume.html": {
       "title": "Resume | Ngoc Luyen Le",
-      "visits": 5,
-      "visitors": 5,
-      "updatedAt": "2026-05-31T06:19:03.261Z"
+      "visits": 6,
+      "visitors": 6,
+      "updatedAt": "2026-06-04T03:42:45.231Z"
     },
     "/conferences.html": {
       "title": "Conferences | Ngoc Luyen Le",
@@ -72,12 +72,12 @@
   },
   "hosts": {
     "lengocluyen.github.io": {
-      "visits": 35,
+      "visits": 36,
       "visitors": 9,
-      "pageVisitors": 35,
-      "updatedAt": "2026-06-04T03:42:43.586Z"
+      "pageVisitors": 36,
+      "updatedAt": "2026-06-04T03:42:45.231Z"
     }
   },
   "referrers": {},
-  "updatedAt": "2026-06-04T03:42:43.586Z"
+  "updatedAt": "2026-06-04T03:42:45.231Z"
 }
