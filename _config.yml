@@ -15,9 +15,9 @@ safe: true
 # baseurl: ""
 url: https://lengocluyen.github.io
 baseurl: ""
-title: Ngoc Luyen Le | NLP, LLMs, Knowledge Graphs
+title: Ngoc Luyen Le (Le Ngoc Luyen) | NLP, LLMs, Knowledge Graphs
 author: Ngoc Luyen Le
-description: Research and development engineer working on AI engineering, LLMs, agentic AI, knowledge graphs, skill intelligence, and explainable recommender systems.
+description: Ngoc Luyen Le, also searchable as Le Ngoc Luyen, is a research and development engineer working on AI engineering, LLMs, agentic AI, knowledge graphs, skill intelligence, and explainable recommender systems.
 og_image: /static/img/profile.jpg
 avatar: profile.jpg
 photoavatar: photocuzco.jpg

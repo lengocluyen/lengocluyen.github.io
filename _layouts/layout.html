@@ -27,6 +27,25 @@
     {% if page.noindex %}
     <meta name="robots" content="noindex, nofollow">
     {% endif %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ngoc Luyen Le",
+      "alternateName": ["Le Ngoc Luyen", "Luyen Le Ngoc"],
+      "url": "{{ site.website_full }}",
+      "image": "{{ site.og_image | absolute_url }}",
+      "jobTitle": "Research and development engineer",
+      "sameAs": [
+        "https://github.com/{{ site.github }}",
+        "https://linkedin.com/in/{{ site.linkedin }}",
+        "https://orcid.org/{{ site.orcid }}",
+        "https://cv.hal.science/{{ site.hal }}",
+        "https://www.researchgate.net/profile/{{ site.researchgate }}",
+        "https://scholar.google.fr/citations?user={{ site.googlescholar }}"
+      ]
+    }
+    </script>
     <link rel="icon" href="{{ '/static/img/lnl.ico' | relative_url }}" type="image/x-icon">
 
 
