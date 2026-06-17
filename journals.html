@@ -1,0 +1,882 @@
+---
+layout: page
+title: Journal Dashboard
+permalink: /journals.html
+description: Private academic journal dashboard for portfolio planning.
+noindex: true
+---
+
+<section id="journal-dashboard" class="journal-dashboard">
+  <div class="journal-shell">
+    <header class="journal-header">
+      <div>
+        <p class="journal-kicker">Admin academic path</p>
+        <h1>Journal Portfolio Dashboard</h1>
+        <p class="journal-subtitle">CNU 27/61 -> MCF/CDI recherche -> HDR -> PR</p>
+      </div>
+      <div class="journal-summary" aria-label="Journal dashboard summary">
+        <div><strong>4</strong><span>Tiers</span></div>
+        <div><strong>25</strong><span>Journals</span></div>
+        <div><strong>HDR</strong><span>Priority</span></div>
+      </div>
+    </header>
+
+    <div class="journal-toolbar" role="search">
+      <label for="journalSearch">Search journal</label>
+      <input id="journalSearch" type="search" placeholder="Search by title, domain, tier..." autocomplete="off">
+      <div class="tier-tabs" aria-label="Tier filter">
+        <button type="button" class="active" data-tier="all">All</button>
+        <button type="button" data-tier="A+">A+</button>
+        <button type="button" data-tier="A">A</button>
+        <button type="button" data-tier="A-">A-</button>
+        <button type="button" data-tier="B+">B+</button>
+      </div>
+    </div>
+
+    <div class="journal-grid">
+      <aside class="journal-list-panel" aria-label="Journal list">
+        <div id="journalList" class="journal-list"></div>
+      </aside>
+
+      <main class="journal-detail-panel" aria-live="polite">
+        <div class="detail-topline">
+          <span id="detailTier" class="tier-pill">A+</span>
+          <span id="detailDomain" class="domain-pill">AI and information systems</span>
+        </div>
+        <h2 id="detailTitle">Information Fusion</h2>
+        <p id="detailValue" class="detail-value">Very high value for HDR and PR files.</p>
+
+        <div class="detail-actions">
+          <a id="publisherIssues" href="#" target="_blank" rel="noopener">Publisher issues</a>
+          <a id="crossrefSearch" href="#" target="_blank" rel="noopener">Crossref</a>
+          <a id="scholarSearch" href="#" target="_blank" rel="noopener">Scholar</a>
+        </div>
+
+        <section class="fit-box">
+          <h3>Why it matters</h3>
+          <p id="detailFit"></p>
+        </section>
+
+        <section class="latest-box">
+          <div class="latest-heading">
+            <h3>Latest indexed articles</h3>
+            <button id="refreshLatest" type="button">Refresh</button>
+          </div>
+          <div id="latestStatus" class="latest-status">Select a journal to load recent publications.</div>
+          <div id="latestArticles" class="latest-articles"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+</section>
+
+<style>
+  .journal-dashboard {
+    min-height: calc(100vh - 130px);
+    padding: 28px 16px 46px;
+    background:
+      linear-gradient(135deg, rgba(1, 87, 155, 0.08), rgba(0, 150, 136, 0.07) 46%, rgba(245, 158, 11, 0.08)),
+      #f7fafc;
+  }
+
+  .journal-shell {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .journal-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 22px;
+    margin-bottom: 18px;
+  }
+
+  .journal-kicker {
+    margin: 0 0 5px;
+    color: #00796b;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .journal-header h1 {
+    margin: 0;
+    color: #17324d;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .journal-subtitle {
+    margin: 8px 0 0;
+    color: #50677b;
+    font-weight: 600;
+  }
+
+  .journal-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(78px, 1fr));
+    gap: 9px;
+  }
+
+  .journal-summary div {
+    min-height: 64px;
+    padding: 11px 13px;
+    border: 1px solid #d7e1e8;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(23, 50, 77, 0.06);
+  }
+
+  .journal-summary strong,
+  .journal-summary span {
+    display: block;
+  }
+
+  .journal-summary strong {
+    color: #17324d;
+    font-size: 1.45rem;
+    line-height: 1;
+  }
+
+  .journal-summary span {
+    margin-top: 6px;
+    color: #5b6f82;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .journal-toolbar {
+    display: grid;
+    grid-template-columns: auto minmax(220px, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 14px;
+    border: 1px solid #d7e1e8;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .journal-toolbar label {
+    margin: 0;
+    color: #17324d;
+    font-weight: 700;
+  }
+
+  .journal-toolbar input {
+    height: 42px;
+    min-width: 0;
+    padding: 0 13px;
+    border: 1px solid #b8c9d6;
+    border-radius: 6px;
+    color: #17324d;
+    font-weight: 600;
+  }
+
+  .tier-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+
+  .tier-tabs button,
+  .detail-actions a,
+  #refreshLatest {
+    min-height: 38px;
+    padding: 0 12px;
+    border: 1px solid #01579b;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #01579b;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .tier-tabs button.active,
+  .tier-tabs button:hover,
+  .detail-actions a:hover,
+  #refreshLatest:hover {
+    background: #01579b;
+    color: #ffffff;
+  }
+
+  .journal-grid {
+    display: grid;
+    grid-template-columns: minmax(290px, 390px) minmax(360px, 1fr);
+    gap: 18px;
+    align-items: start;
+  }
+
+  .journal-list-panel,
+  .journal-detail-panel {
+    border: 1px solid #d7e1e8;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(23, 50, 77, 0.08);
+  }
+
+  .journal-list-panel {
+    max-height: 780px;
+    overflow: auto;
+    padding: 10px;
+  }
+
+  .tier-section + .tier-section {
+    margin-top: 10px;
+  }
+
+  .tier-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 4px 0 8px;
+    padding: 8px 9px;
+    border-radius: 6px;
+    background: #edf4f7;
+    color: #17324d;
+    font-weight: 700;
+  }
+
+  .tier-title span:last-child {
+    color: #5b6f82;
+    font-size: 0.82rem;
+  }
+
+  .journal-item {
+    display: block;
+    width: 100%;
+    min-height: 72px;
+    margin-bottom: 7px;
+    padding: 10px 11px;
+    border: 1px solid #e1e9ef;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #17324d;
+    text-align: left;
+  }
+
+  .journal-item:hover,
+  .journal-item.active {
+    border-color: #009688;
+    background: #eef9f7;
+  }
+
+  .journal-item strong,
+  .journal-item span {
+    display: block;
+  }
+
+  .journal-item strong {
+    font-size: 0.98rem;
+    line-height: 1.25;
+  }
+
+  .journal-item span {
+    margin-top: 6px;
+    color: #5b6f82;
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+
+  .journal-detail-panel {
+    min-height: 640px;
+    padding: 22px;
+  }
+
+  .detail-topline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .tier-pill,
+  .domain-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .tier-pill {
+    background: #fff3cd;
+    color: #7a4b00;
+  }
+
+  .domain-pill {
+    background: #e8f2fb;
+    color: #01579b;
+  }
+
+  .journal-detail-panel h2 {
+    margin: 0;
+    color: #17324d;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .detail-value {
+    margin: 9px 0 14px;
+    color: #50677b;
+    font-size: 1.03rem;
+    font-weight: 600;
+  }
+
+  .detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .detail-actions a {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .fit-box,
+  .latest-box {
+    border-top: 1px solid #e1e9ef;
+    padding-top: 16px;
+  }
+
+  .fit-box h3,
+  .latest-box h3 {
+    margin: 0 0 8px;
+    color: #17324d;
+    font-size: 1.08rem;
+    font-weight: 700;
+  }
+
+  .fit-box p {
+    margin: 0 0 18px;
+    color: #31475a;
+    line-height: 1.55;
+  }
+
+  .latest-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  #refreshLatest {
+    min-width: 88px;
+  }
+
+  .latest-status {
+    min-height: 42px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    border-left: 4px solid #009688;
+    border-radius: 6px;
+    background: #eef9f7;
+    color: #17324d;
+    font-weight: 600;
+  }
+
+  .latest-article {
+    padding: 13px 0;
+    border-bottom: 1px solid #e1e9ef;
+  }
+
+  .latest-article:last-child {
+    border-bottom: 0;
+  }
+
+  .latest-article a {
+    color: #01579b;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .latest-article a:hover {
+    text-decoration: underline;
+  }
+
+  .article-meta {
+    margin-top: 6px;
+    color: #5b6f82;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .empty-result {
+    padding: 16px;
+    border: 1px dashed #b8c9d6;
+    border-radius: 8px;
+    color: #50677b;
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .journal-header,
+    .journal-toolbar,
+    .journal-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .tier-tabs {
+      justify-content: flex-start;
+    }
+
+    .journal-list-panel {
+      max-height: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .journal-dashboard {
+      padding: 20px 10px 38px;
+    }
+
+    .journal-header h1 {
+      font-size: 2rem;
+    }
+
+    .journal-summary {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .journal-summary div {
+      padding: 10px 8px;
+    }
+
+    .journal-detail-panel {
+      padding: 16px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var journals = [
+      {
+        tier: "A+",
+        title: "Information Fusion",
+        domain: "AI, data fusion, decision intelligence",
+        value: "Very high value for HDR and PR files.",
+        fit: "Excellent target for work connecting knowledge graphs, explainable recommendation, decision support, and robust AI pipelines.",
+        issues: "https://www.sciencedirect.com/journal/information-fusion/issues"
+      },
+      {
+        tier: "A+",
+        title: "Computers & Education",
+        queryTitle: "Computers and Education",
+        domain: "AI for education",
+        value: "Flagship educational technology journal.",
+        fit: "Strong choice when your contribution is not only technical but also validated through learning design, learner analytics, or educational impact.",
+        issues: "https://www.sciencedirect.com/journal/computers-and-education/issues"
+      },
+      {
+        tier: "A+",
+        title: "International Journal of Artificial Intelligence in Education",
+        domain: "AIED, tutoring systems, learning analytics",
+        value: "Top venue for AI and education research.",
+        fit: "Highly aligned with LLM tutors, AI-assisted learning activities, mixed reality learning, and intelligent educational systems.",
+        issues: "https://link.springer.com/journal/40593/volumes-and-issues"
+      },
+      {
+        tier: "A+",
+        title: "IEEE Transactions on Knowledge and Data Engineering",
+        domain: "Data engineering, knowledge systems",
+        value: "Major computer science transaction for senior academic files.",
+        fit: "Best for technically deep work on knowledge graphs, semantic similarity, data management, and scalable AI/data systems.",
+        issues: "https://ieeexplore.ieee.org/xpl/issues?punumber=69"
+      },
+      {
+        tier: "A+",
+        title: "ACM Transactions on Information Systems",
+        domain: "Information retrieval, recommender systems",
+        value: "Prestigious ACM transaction.",
+        fit: "Excellent for mature work on information access, recommender systems, user modeling, and evaluation methodology.",
+        issues: "https://dl.acm.org/loi/tois"
+      },
+      {
+        tier: "A",
+        title: "IEEE Transactions on Learning Technologies",
+        domain: "Learning technologies",
+        value: "Strong portfolio target for AI learning systems.",
+        fit: "Well suited to AI tutors, educational agents, learning analytics, and technology-supported teaching experiments.",
+        issues: "https://ieeexplore.ieee.org/xpl/issues?punumber=4620076"
+      },
+      {
+        tier: "A",
+        title: "Information Systems Frontiers",
+        domain: "Information systems, digital transformation",
+        value: "Good strategic journal for IS and applied AI.",
+        fit: "Useful for research that frames AI, knowledge graphs, and decision support as organizational or socio-technical systems.",
+        issues: "https://link.springer.com/journal/10796/volumes-and-issues"
+      },
+      {
+        tier: "A",
+        title: "Journal of Knowledge Management",
+        domain: "Knowledge management",
+        value: "Strong outlet for knowledge-centered research.",
+        fit: "Relevant for knowledge graph governance, organizational knowledge, explainability, and AI-supported expertise workflows.",
+        issues: "https://www.emerald.com/insight/publication/issn/1367-3270"
+      },
+      {
+        tier: "A",
+        title: "Knowledge-Based Systems",
+        domain: "Knowledge-based AI",
+        value: "High-output Q1 venue aligned with AI methods.",
+        fit: "A natural target for ontology/KG reasoning, hybrid recommender systems, and explainable decision support.",
+        issues: "https://www.sciencedirect.com/journal/knowledge-based-systems/issues"
+      },
+      {
+        tier: "A",
+        title: "Expert Systems with Applications",
+        domain: "Applied AI, expert systems",
+        value: "Highly visible applied AI journal.",
+        fit: "Appropriate for validated AI systems, recommender models, intelligent decision tools, and comparative experiments.",
+        issues: "https://www.sciencedirect.com/journal/expert-systems-with-applications/issues"
+      },
+      {
+        tier: "A",
+        title: "Information Sciences",
+        domain: "Information processing, AI",
+        value: "Broad and respected AI/information journal.",
+        fit: "Good for algorithmic contributions with rigorous evaluation in KG, recommendation, NLP, or intelligent systems.",
+        issues: "https://www.sciencedirect.com/journal/information-sciences/issues"
+      },
+      {
+        tier: "A",
+        title: "Decision Support Systems",
+        domain: "Decision support, analytics",
+        value: "Strong target for decision-oriented AI.",
+        fit: "Excellent when the paper emphasizes decision quality, user support, explainability, and applied organizational value.",
+        issues: "https://www.sciencedirect.com/journal/decision-support-systems/issues"
+      },
+      {
+        tier: "A-",
+        title: "Semantic Web",
+        domain: "Semantic web, linked data",
+        value: "Very relevant to ontology and KG identity.",
+        fit: "Core target for ontology engineering, semantic similarity, RDF, linked data quality, and KG-based systems.",
+        issues: "https://www.semantic-web-journal.net/content/volumes-and-issues"
+      },
+      {
+        tier: "A-",
+        title: "Journal of Web Semantics",
+        domain: "Web semantics, knowledge graphs",
+        value: "Excellent thematic fit for KG research.",
+        fit: "Good venue for semantic technologies, knowledge graphs, ontology reuse, and web-scale knowledge representation.",
+        issues: "https://www.sciencedirect.com/journal/journal-of-web-semantics/issues"
+      },
+      {
+        tier: "A-",
+        title: "World Wide Web",
+        domain: "Web systems, data, AI",
+        value: "Strong web and data systems journal.",
+        fit: "Useful for web data, recommender systems, semantic systems, and AI services at web scale.",
+        issues: "https://link.springer.com/journal/11280/volumes-and-issues"
+      },
+      {
+        tier: "A-",
+        title: "Data & Knowledge Engineering",
+        queryTitle: "Data and Knowledge Engineering",
+        domain: "Data and knowledge engineering",
+        value: "Solid fit for data/KG engineering work.",
+        fit: "Good target for semantic data management, graph methods, knowledge modeling, and applied data engineering.",
+        issues: "https://www.sciencedirect.com/journal/data-and-knowledge-engineering/issues"
+      },
+      {
+        tier: "A-",
+        title: "User Modeling and User-Adapted Interaction",
+        domain: "User modeling, personalization",
+        value: "High fit for recommender and personalization research.",
+        fit: "Best for user-adaptive AI, learner modeling, personalization, and explanations centered on user behavior.",
+        issues: "https://link.springer.com/journal/11257/volumes-and-issues"
+      },
+      {
+        tier: "A-",
+        title: "IEEE Transactions on Artificial Intelligence",
+        domain: "Artificial intelligence",
+        value: "Strategic AI transaction for technical credibility.",
+        fit: "A good target for generalizable AI contributions with strong experiments and clear novelty beyond one application.",
+        issues: "https://ieeexplore.ieee.org/xpl/issues?punumber=9078688"
+      },
+      {
+        tier: "B+",
+        title: "Computers & Education: Artificial Intelligence",
+        queryTitle: "Computers and Education: Artificial Intelligence",
+        domain: "AI for education",
+        value: "Good quality-growth journal for AI education papers.",
+        fit: "Practical fit for LLM-assisted activities, educational AI workflows, and early but solid AIED contributions.",
+        issues: "https://www.sciencedirect.com/journal/computers-and-education-artificial-intelligence/issues"
+      },
+      {
+        tier: "B+",
+        title: "Internet and Higher Education",
+        domain: "Higher education technology",
+        value: "Good for educational technology and higher education impact.",
+        fit: "Relevant when the paper focuses on adoption, learning outcomes, teaching practice, or higher education systems.",
+        issues: "https://www.sciencedirect.com/journal/the-internet-and-higher-education/issues"
+      },
+      {
+        tier: "B+",
+        title: "British Journal of Educational Technology",
+        domain: "Educational technology",
+        value: "Recognized educational technology venue.",
+        fit: "Useful for technology-enhanced learning, AI in teaching, design-based studies, and learning experience evaluation.",
+        issues: "https://bera-journals.onlinelibrary.wiley.com/loi/14678535"
+      },
+      {
+        tier: "B+",
+        title: "Educational Technology Research and Development",
+        domain: "Educational design and technology",
+        value: "Solid venue for design and evaluation.",
+        fit: "Good for methodical studies of instructional design, serious games, mixed reality learning, and AI-supported pedagogy.",
+        issues: "https://link.springer.com/journal/11423/volumes-and-issues"
+      },
+      {
+        tier: "B+",
+        title: "Education and Information Technologies",
+        domain: "Education, information technologies",
+        value: "Good publication volume and domain relevance.",
+        fit: "Practical outlet for educational technology systems, implementation studies, and AI-supported learning tools.",
+        issues: "https://link.springer.com/journal/10639/volumes-and-issues"
+      },
+      {
+        tier: "B+",
+        title: "Applied Intelligence",
+        domain: "Applied AI",
+        value: "Good for applied AI method papers.",
+        fit: "Appropriate for AI models, recommender systems, NLP, and knowledge-based applications with strong empirical results.",
+        issues: "https://link.springer.com/journal/10489/volumes-and-issues"
+      },
+      {
+        tier: "B+",
+        title: "Neural Computing and Applications",
+        domain: "Neural computing, applied ML",
+        value: "Useful for increasing quality publication volume.",
+        fit: "Relevant for ML-heavy contributions, neural models, optimization, and applied intelligent systems.",
+        issues: "https://link.springer.com/journal/521/volumes-and-issues"
+      }
+    ];
+
+    var tiers = ["A+", "A", "A-", "B+"];
+    var activeTier = "all";
+    var activeJournal = journals[0];
+    var latestCache = {};
+    var listEl = document.getElementById("journalList");
+    var searchEl = document.getElementById("journalSearch");
+    var detailTierEl = document.getElementById("detailTier");
+    var detailDomainEl = document.getElementById("detailDomain");
+    var detailTitleEl = document.getElementById("detailTitle");
+    var detailValueEl = document.getElementById("detailValue");
+    var detailFitEl = document.getElementById("detailFit");
+    var publisherIssuesEl = document.getElementById("publisherIssues");
+    var crossrefSearchEl = document.getElementById("crossrefSearch");
+    var scholarSearchEl = document.getElementById("scholarSearch");
+    var latestStatusEl = document.getElementById("latestStatus");
+    var latestArticlesEl = document.getElementById("latestArticles");
+
+    function normalized(text) {
+      return String(text || "").toLowerCase();
+    }
+
+    function journalQueryTitle(journal) {
+      return journal.queryTitle || journal.title;
+    }
+
+    function matchesJournal(journal, query) {
+      var haystack = [
+        journal.tier,
+        journal.title,
+        journal.domain,
+        journal.value,
+        journal.fit
+      ].join(" ");
+      return normalized(haystack).indexOf(normalized(query)) > -1;
+    }
+
+    function filteredJournals() {
+      var query = searchEl.value.trim();
+      return journals.filter(function (journal) {
+        var tierMatch = activeTier === "all" || journal.tier === activeTier;
+        return tierMatch && (!query || matchesJournal(journal, query));
+      });
+    }
+
+    function renderList() {
+      var visible = filteredJournals();
+      listEl.innerHTML = "";
+      if (!visible.length) {
+        var empty = document.createElement("div");
+        empty.className = "empty-result";
+        empty.textContent = "No journal matches this filter.";
+        listEl.appendChild(empty);
+        return;
+      }
+
+      tiers.forEach(function (tier) {
+        var tierItems = visible.filter(function (journal) { return journal.tier === tier; });
+        if (!tierItems.length) {
+          return;
+        }
+
+        var section = document.createElement("section");
+        section.className = "tier-section";
+
+        var title = document.createElement("div");
+        title.className = "tier-title";
+        title.innerHTML = "<span>Tier " + tier + "</span><span>" + tierItems.length + " journal(s)</span>";
+        section.appendChild(title);
+
+        tierItems.forEach(function (journal) {
+          var button = document.createElement("button");
+          button.type = "button";
+          button.className = "journal-item" + (journal === activeJournal ? " active" : "");
+          button.innerHTML = "<strong>" + journal.title + "</strong><span>" + journal.domain + "</span>";
+          button.addEventListener("click", function () {
+            selectJournal(journal);
+          });
+          section.appendChild(button);
+        });
+
+        listEl.appendChild(section);
+      });
+    }
+
+    function setExternalLinks(journal) {
+      var encoded = encodeURIComponent(journalQueryTitle(journal));
+      publisherIssuesEl.href = journal.issues;
+      crossrefSearchEl.href = "https://search.crossref.org/?q=" + encoded;
+      scholarSearchEl.href = "https://scholar.google.com/scholar?q=" + encoded;
+    }
+
+    function selectJournal(journal) {
+      activeJournal = journal;
+      detailTierEl.textContent = "Tier " + journal.tier;
+      detailDomainEl.textContent = journal.domain;
+      detailTitleEl.textContent = journal.title;
+      detailValueEl.textContent = journal.value;
+      detailFitEl.textContent = journal.fit;
+      setExternalLinks(journal);
+      renderList();
+      loadLatest(journal, false);
+    }
+
+    function getPublishedDate(item) {
+      var dateParts = item["published-print"] && item["published-print"]["date-parts"] ||
+        item["published-online"] && item["published-online"]["date-parts"] ||
+        item.issued && item.issued["date-parts"];
+      if (!dateParts || !dateParts[0]) {
+        return "Date unavailable";
+      }
+      return dateParts[0].filter(Boolean).join("-");
+    }
+
+    function cleanTitle(item) {
+      if (!item.title || !item.title.length) {
+        return "Untitled article";
+      }
+      return item.title[0].replace(/\s+/g, " ").trim();
+    }
+
+    function renderArticles(items) {
+      latestArticlesEl.innerHTML = "";
+      if (!items.length) {
+        latestArticlesEl.innerHTML = "<div class=\"empty-result\">No recent Crossref records found. Use the publisher issues link above.</div>";
+        return;
+      }
+
+      items.forEach(function (item) {
+        var article = document.createElement("article");
+        article.className = "latest-article";
+        var url = item.URL || (item.DOI ? "https://doi.org/" + item.DOI : "#");
+        var metaParts = [getPublishedDate(item)];
+        if (item.volume) {
+          metaParts.push("Vol. " + item.volume);
+        }
+        if (item.issue) {
+          metaParts.push("Issue " + item.issue);
+        }
+        if (item.DOI) {
+          metaParts.push("DOI " + item.DOI);
+        }
+        var link = document.createElement("a");
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = cleanTitle(item);
+        var meta = document.createElement("div");
+        meta.className = "article-meta";
+        meta.textContent = metaParts.join(" | ");
+        article.appendChild(link);
+        article.appendChild(meta);
+        latestArticlesEl.appendChild(article);
+      });
+    }
+
+    function loadLatest(journal, forceRefresh) {
+      var key = journal.title;
+      if (latestCache[key] && !forceRefresh) {
+        latestStatusEl.textContent = "Showing cached recent records from Crossref.";
+        renderArticles(latestCache[key]);
+        return;
+      }
+
+      latestArticlesEl.innerHTML = "";
+      latestStatusEl.textContent = "Loading recent publications from Crossref...";
+      var title = encodeURIComponent(journalQueryTitle(journal));
+      var mailto = encodeURIComponent("{{ site.email }}");
+      var url = "https://api.crossref.org/works?query.container-title=" + title +
+        "&filter=type:journal-article&select=title,published-print,published-online,issued,volume,issue,DOI,URL" +
+        "&sort=published&order=desc&rows=8&mailto=" + mailto;
+
+      fetch(url)
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Crossref request failed");
+          }
+          return response.json();
+        })
+        .then(function (data) {
+          var items = data && data.message && data.message.items ? data.message.items : [];
+          latestCache[key] = items;
+          latestStatusEl.textContent = items.length ?
+            "Recent Crossref records for " + journal.title + "." :
+            "No recent Crossref records found for this journal title.";
+          renderArticles(items);
+        })
+        .catch(function () {
+          latestStatusEl.textContent = "Could not load live records now. Use the publisher issues link above.";
+          latestArticlesEl.innerHTML = "<div class=\"empty-result\">Live metadata is unavailable from this browser session.</div>";
+        });
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll(".tier-tabs button"), function (button) {
+      button.addEventListener("click", function () {
+        activeTier = button.dataset.tier;
+        Array.prototype.forEach.call(document.querySelectorAll(".tier-tabs button"), function (item) {
+          item.classList.toggle("active", item === button);
+        });
+        renderList();
+      });
+    });
+
+    searchEl.addEventListener("input", renderList);
+    document.getElementById("refreshLatest").addEventListener("click", function () {
+      loadLatest(activeJournal, true);
+    });
+
+    renderList();
+    selectJournal(activeJournal);
+  })();
+</script>
