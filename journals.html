@@ -45,6 +45,7 @@ noindex: true
         </div>
         <h2 id="detailTitle">Information Fusion</h2>
         <p id="detailValue" class="detail-value">Very high value for HDR and PR files.</p>
+        <div id="detailMetrics" class="metric-row" aria-label="Journal metrics"></div>
 
         <div class="detail-actions">
           <a id="publisherIssues" href="#" target="_blank" rel="noopener">Publisher issues</a>
@@ -206,7 +207,7 @@ noindex: true
 
   .journal-grid {
     display: grid;
-    grid-template-columns: minmax(290px, 390px) minmax(360px, 1fr);
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
     gap: 18px;
     align-items: start;
   }
@@ -220,13 +221,16 @@ noindex: true
   }
 
   .journal-list-panel {
-    max-height: 780px;
-    overflow: auto;
-    padding: 10px;
+    padding: 14px;
+  }
+
+  .journal-list {
+    display: grid;
+    gap: 14px;
   }
 
   .tier-section + .tier-section {
-    margin-top: 10px;
+    margin-top: 4px;
   }
 
   .tier-title {
@@ -234,7 +238,7 @@ noindex: true
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    margin: 4px 0 8px;
+    margin: 0 0 10px;
     padding: 8px 9px;
     border-radius: 6px;
     background: #edf4f7;
@@ -247,12 +251,19 @@ noindex: true
     font-size: 0.82rem;
   }
 
+  .tier-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
   .journal-item {
-    display: block;
+    display: grid;
+    align-content: start;
+    gap: 9px;
     width: 100%;
-    min-height: 72px;
-    margin-bottom: 7px;
-    padding: 10px 11px;
+    min-height: 148px;
+    padding: 12px;
     border: 1px solid #e1e9ef;
     border-radius: 8px;
     background: #ffffff;
@@ -267,7 +278,7 @@ noindex: true
   }
 
   .journal-item strong,
-  .journal-item span {
+  .journal-item .journal-domain {
     display: block;
   }
 
@@ -276,16 +287,52 @@ noindex: true
     line-height: 1.25;
   }
 
-  .journal-item span {
-    margin-top: 6px;
+  .journal-item .journal-domain {
     color: #5b6f82;
     font-size: 0.84rem;
     font-weight: 600;
   }
 
+  .metric-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0 0 16px;
+  }
+
+  .journal-item .metric-row {
+    margin: 0;
+  }
+
+  .metric-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    max-width: 100%;
+    padding: 0 9px;
+    border: 1px solid #d7e1e8;
+    border-radius: 999px;
+    background: #f7fafc;
+    color: #31475a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .metric-chip strong {
+    display: inline;
+    margin-right: 4px;
+    color: #01579b;
+    font-size: inherit;
+    line-height: 1;
+  }
+
   .journal-detail-panel {
     min-height: 640px;
     padding: 22px;
+    position: sticky;
+    top: 78px;
   }
 
   .detail-topline {
@@ -432,8 +479,12 @@ noindex: true
       justify-content: flex-start;
     }
 
-    .journal-list-panel {
-      max-height: none;
+    .journal-detail-panel {
+      position: static;
+    }
+
+    .tier-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
@@ -457,6 +508,10 @@ noindex: true
 
     .journal-detail-panel {
       padding: 16px;
+    }
+
+    .tier-cards {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -679,6 +734,7 @@ noindex: true
     var detailDomainEl = document.getElementById("detailDomain");
     var detailTitleEl = document.getElementById("detailTitle");
     var detailValueEl = document.getElementById("detailValue");
+    var detailMetricsEl = document.getElementById("detailMetrics");
     var detailFitEl = document.getElementById("detailFit");
     var publisherIssuesEl = document.getElementById("publisherIssues");
     var crossrefSearchEl = document.getElementById("crossrefSearch");
@@ -694,13 +750,64 @@ noindex: true
       return journal.queryTitle || journal.title;
     }
 
+    function metricsFor(journal) {
+      return journal.metrics || {
+        hIndex: "TBD",
+        impactFactor: "TBD",
+        sjr: "TBD",
+        quartile: "TBD"
+      };
+    }
+
+    function metricItems(journal) {
+      var metrics = metricsFor(journal);
+      return [
+        { label: "H-index", value: metrics.hIndex },
+        { label: "IF", value: metrics.impactFactor },
+        { label: "SJR", value: metrics.sjr },
+        { label: "Quartile", value: metrics.quartile }
+      ];
+    }
+
+    function createMetricRow(journal) {
+      var row = document.createElement("div");
+      row.className = "metric-row";
+      metricItems(journal).forEach(function (metric) {
+        var chip = document.createElement("span");
+        chip.className = "metric-chip";
+        var label = document.createElement("strong");
+        label.textContent = metric.label;
+        chip.appendChild(label);
+        chip.appendChild(document.createTextNode(metric.value || "TBD"));
+        row.appendChild(chip);
+      });
+      return row;
+    }
+
+    function renderDetailMetrics(journal) {
+      detailMetricsEl.innerHTML = "";
+      metricItems(journal).forEach(function (metric) {
+        var chip = document.createElement("span");
+        chip.className = "metric-chip";
+        var label = document.createElement("strong");
+        label.textContent = metric.label;
+        chip.appendChild(label);
+        chip.appendChild(document.createTextNode(metric.value || "TBD"));
+        detailMetricsEl.appendChild(chip);
+      });
+    }
+
     function matchesJournal(journal, query) {
+      var metrics = metricItems(journal).map(function (metric) {
+        return metric.label + " " + metric.value;
+      }).join(" ");
       var haystack = [
         journal.tier,
         journal.title,
         journal.domain,
         journal.value,
-        journal.fit
+        journal.fit,
+        metrics
       ].join(" ");
       return normalized(haystack).indexOf(normalized(query)) > -1;
     }
@@ -738,17 +845,28 @@ noindex: true
         title.innerHTML = "<span>Tier " + tier + "</span><span>" + tierItems.length + " journal(s)</span>";
         section.appendChild(title);
 
+        var cards = document.createElement("div");
+        cards.className = "tier-cards";
+
         tierItems.forEach(function (journal) {
           var button = document.createElement("button");
           button.type = "button";
           button.className = "journal-item" + (journal === activeJournal ? " active" : "");
-          button.innerHTML = "<strong>" + journal.title + "</strong><span>" + journal.domain + "</span>";
+          var name = document.createElement("strong");
+          name.textContent = journal.title;
+          var domain = document.createElement("span");
+          domain.className = "journal-domain";
+          domain.textContent = journal.domain;
+          button.appendChild(name);
+          button.appendChild(domain);
+          button.appendChild(createMetricRow(journal));
           button.addEventListener("click", function () {
             selectJournal(journal);
           });
-          section.appendChild(button);
+          cards.appendChild(button);
         });
 
+        section.appendChild(cards);
         listEl.appendChild(section);
       });
     }
@@ -767,6 +885,7 @@ noindex: true
       detailTitleEl.textContent = journal.title;
       detailValueEl.textContent = journal.value;
       detailFitEl.textContent = journal.fit;
+      renderDetailMetrics(journal);
       setExternalLinks(journal);
       renderList();
       loadLatest(journal, false);
