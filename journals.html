@@ -39,9 +39,7 @@ noindex: true
       </aside>
 
       <main class="journal-detail-panel" aria-live="polite">
-        <div class="journal-detail-cover">
-          <img id="detailCover" src="" alt="" loading="lazy">
-        </div>
+        <div id="detailCover" class="journal-detail-cover" aria-hidden="true"></div>
         <div class="detail-topline">
           <span id="detailTier" class="tier-pill">A+</span>
           <span id="detailDomain" class="domain-pill">AI and information systems</span>
@@ -251,12 +249,13 @@ noindex: true
     border-radius: 6px;
     background: #edf4f7;
     color: #17324d;
+    font-size: 1.02rem;
     font-weight: 700;
   }
 
   .tier-title span:last-child {
     color: #5b6f82;
-    font-size: 0.82rem;
+    font-size: 0.95rem;
   }
 
   .tier-cards {
@@ -268,10 +267,10 @@ noindex: true
   .journal-item {
     display: grid;
     align-content: start;
-    gap: 9px;
+    gap: 11px;
     width: 100%;
-    min-height: 148px;
-    padding: 12px;
+    min-height: 220px;
+    padding: 15px;
     border: 1px solid #e1e9ef;
     border-radius: 8px;
     background: #ffffff;
@@ -281,23 +280,35 @@ noindex: true
 
   .journal-avatar {
     display: grid;
-    place-items: center;
-    width: 58px;
-    height: 58px;
+    align-content: space-between;
+    width: 96px;
+    height: 128px;
     overflow: hidden;
     border: 1px solid #d7e1e8;
     border-radius: 8px;
-    background: linear-gradient(135deg, #e8f2fb, #eef9f7);
-    color: #01579b;
-    font-size: 1.2rem;
+    background:
+      linear-gradient(135deg, rgba(1, 87, 155, 0.92), rgba(0, 150, 136, 0.86)),
+      #01579b;
+    box-shadow: inset 0 -18px 0 rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    font-size: 1rem;
     font-weight: 700;
+    padding: 9px;
   }
 
-  .journal-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: #ffffff;
+  .journal-avatar-title {
+    display: block;
+    font-size: 0.9rem;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+
+  .journal-avatar-initials {
+    display: block;
+    justify-self: end;
+    font-size: 1.3rem;
+    line-height: 1;
+    opacity: 0.92;
   }
 
   .journal-item:hover,
@@ -312,14 +323,15 @@ noindex: true
   }
 
   .journal-item strong {
-    font-size: 0.98rem;
-    line-height: 1.25;
+    font-size: 1.18rem;
+    line-height: 1.28;
   }
 
   .journal-item .journal-domain {
     color: #5b6f82;
-    font-size: 0.84rem;
+    font-size: 1rem;
     font-weight: 600;
+    line-height: 1.35;
   }
 
   .metric-row {
@@ -336,14 +348,14 @@ noindex: true
   .metric-chip {
     display: inline-flex;
     align-items: center;
-    min-height: 28px;
+    min-height: 32px;
     max-width: 100%;
-    padding: 0 9px;
+    padding: 0 11px;
     border: 1px solid #d7e1e8;
     border-radius: 999px;
     background: #f7fafc;
     color: #31475a;
-    font-size: 0.78rem;
+    font-size: 0.92rem;
     font-weight: 700;
     line-height: 1;
     white-space: nowrap;
@@ -366,21 +378,34 @@ noindex: true
 
   .journal-detail-cover {
     display: grid;
-    place-items: center;
-    width: 112px;
-    height: 112px;
+    align-content: space-between;
+    width: 154px;
+    height: 204px;
     margin-bottom: 14px;
     overflow: hidden;
     border: 1px solid #d7e1e8;
     border-radius: 8px;
-    background: linear-gradient(135deg, #e8f2fb, #eef9f7);
+    background:
+      linear-gradient(135deg, rgba(1, 87, 155, 0.94), rgba(0, 150, 136, 0.88)),
+      #01579b;
+    box-shadow: inset 0 -30px 0 rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    padding: 14px;
   }
 
-  .journal-detail-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: #ffffff;
+  .journal-detail-cover .cover-title {
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.13;
+    overflow-wrap: anywhere;
+  }
+
+  .journal-detail-cover .cover-initials {
+    justify-self: end;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.92;
   }
 
   .detail-topline {
@@ -875,10 +900,6 @@ noindex: true
       return "https://www.scimagojr.com/journalsearch.php?q=" + encodeURIComponent(journalQueryTitle(journal));
     }
 
-    function scimagoImageUrl(journal) {
-      return journal.scimagoId ? "https://www.scimagojr.com/journal_img.php?id=" + journal.scimagoId : "";
-    }
-
     function publisherMetricUrl(journal) {
       if (journal.impactFactorUrl) {
         return journal.impactFactorUrl;
@@ -901,20 +922,14 @@ noindex: true
     function createAvatar(journal) {
       var avatar = document.createElement("span");
       avatar.className = "journal-avatar";
-      var imageUrl = scimagoImageUrl(journal);
-      if (!imageUrl) {
-        avatar.textContent = initials(journal.title);
-        return avatar;
-      }
-      var image = document.createElement("img");
-      image.src = imageUrl;
-      image.alt = "";
-      image.loading = "lazy";
-      image.onerror = function () {
-        avatar.textContent = initials(journal.title);
-        image.remove();
-      };
-      avatar.appendChild(image);
+      var title = document.createElement("span");
+      title.className = "journal-avatar-title";
+      title.textContent = journal.title;
+      var mark = document.createElement("span");
+      mark.className = "journal-avatar-initials";
+      mark.textContent = initials(journal.title);
+      avatar.appendChild(title);
+      avatar.appendChild(mark);
       return avatar;
     }
 
@@ -1031,16 +1046,15 @@ noindex: true
     }
 
     function updateDetailCover(journal) {
-      var imageUrl = scimagoImageUrl(journal);
-      detailCoverEl.alt = "";
-      if (!imageUrl) {
-        detailCoverEl.removeAttribute("src");
-        return;
-      }
-      detailCoverEl.src = imageUrl;
-      detailCoverEl.onerror = function () {
-        detailCoverEl.removeAttribute("src");
-      };
+      detailCoverEl.innerHTML = "";
+      var title = document.createElement("span");
+      title.className = "cover-title";
+      title.textContent = journal.title;
+      var mark = document.createElement("span");
+      mark.className = "cover-initials";
+      mark.textContent = initials(journal.title);
+      detailCoverEl.appendChild(title);
+      detailCoverEl.appendChild(mark);
     }
 
     function parseScimagoMetrics(html, journal) {
