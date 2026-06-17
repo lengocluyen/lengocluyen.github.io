@@ -39,6 +39,9 @@ noindex: true
       </aside>
 
       <main class="journal-detail-panel" aria-live="polite">
+        <div class="journal-detail-cover">
+          <img id="detailCover" src="" alt="" loading="lazy">
+        </div>
         <div class="detail-topline">
           <span id="detailTier" class="tier-pill">A+</span>
           <span id="detailDomain" class="domain-pill">AI and information systems</span>
@@ -48,9 +51,12 @@ noindex: true
         <div id="detailMetrics" class="metric-row" aria-label="Journal metrics"></div>
 
         <div class="detail-actions">
+          <a id="scimagoProfile" href="#" target="_blank" rel="noopener">SCImago</a>
+          <a id="impactSource" href="#" target="_blank" rel="noopener">IF source</a>
           <a id="publisherIssues" href="#" target="_blank" rel="noopener">Publisher issues</a>
           <a id="crossrefSearch" href="#" target="_blank" rel="noopener">Crossref</a>
           <a id="scholarSearch" href="#" target="_blank" rel="noopener">Scholar</a>
+          <button id="refreshScimago" type="button">Update metrics</button>
         </div>
 
         <section class="fit-box">
@@ -186,6 +192,7 @@ noindex: true
 
   .tier-tabs button,
   .detail-actions a,
+  .detail-actions button,
   #refreshLatest {
     min-height: 38px;
     padding: 0 12px;
@@ -200,6 +207,7 @@ noindex: true
   .tier-tabs button.active,
   .tier-tabs button:hover,
   .detail-actions a:hover,
+  .detail-actions button:hover,
   #refreshLatest:hover {
     background: #01579b;
     color: #ffffff;
@@ -271,6 +279,27 @@ noindex: true
     text-align: left;
   }
 
+  .journal-avatar {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    overflow: hidden;
+    border: 1px solid #d7e1e8;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #e8f2fb, #eef9f7);
+    color: #01579b;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .journal-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #ffffff;
+  }
+
   .journal-item:hover,
   .journal-item.active {
     border-color: #009688;
@@ -335,6 +364,25 @@ noindex: true
     top: 78px;
   }
 
+  .journal-detail-cover {
+    display: grid;
+    place-items: center;
+    width: 112px;
+    height: 112px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 1px solid #d7e1e8;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #e8f2fb, #eef9f7);
+  }
+
+  .journal-detail-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #ffffff;
+  }
+
   .detail-topline {
     display: flex;
     flex-wrap: wrap;
@@ -386,6 +434,11 @@ noindex: true
   }
 
   .detail-actions a {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .detail-actions button {
     display: inline-flex;
     align-items: center;
   }
@@ -522,6 +575,7 @@ noindex: true
       {
         tier: "A+",
         title: "Information Fusion",
+        scimagoId: "26099",
         domain: "AI, data fusion, decision intelligence",
         value: "Very high value for HDR and PR files.",
         fit: "Excellent target for work connecting knowledge graphs, explainable recommendation, decision support, and robust AI pipelines.",
@@ -530,6 +584,7 @@ noindex: true
       {
         tier: "A+",
         title: "Computers & Education",
+        scimagoId: "17645",
         queryTitle: "Computers and Education",
         domain: "AI for education",
         value: "Flagship educational technology journal.",
@@ -539,6 +594,7 @@ noindex: true
       {
         tier: "A+",
         title: "International Journal of Artificial Intelligence in Education",
+        scimagoId: "19600156811",
         domain: "AIED, tutoring systems, learning analytics",
         value: "Top venue for AI and education research.",
         fit: "Highly aligned with LLM tutors, AI-assisted learning activities, mixed reality learning, and intelligent educational systems.",
@@ -547,6 +603,7 @@ noindex: true
       {
         tier: "A+",
         title: "IEEE Transactions on Knowledge and Data Engineering",
+        scimagoId: "17362",
         domain: "Data engineering, knowledge systems",
         value: "Major computer science transaction for senior academic files.",
         fit: "Best for technically deep work on knowledge graphs, semantic similarity, data management, and scalable AI/data systems.",
@@ -555,6 +612,7 @@ noindex: true
       {
         tier: "A+",
         title: "ACM Transactions on Information Systems",
+        scimagoId: "18997",
         domain: "Information retrieval, recommender systems",
         value: "Prestigious ACM transaction.",
         fit: "Excellent for mature work on information access, recommender systems, user modeling, and evaluation methodology.",
@@ -563,6 +621,7 @@ noindex: true
       {
         tier: "A",
         title: "IEEE Transactions on Learning Technologies",
+        scimagoId: "19700167026",
         domain: "Learning technologies",
         value: "Strong portfolio target for AI learning systems.",
         fit: "Well suited to AI tutors, educational agents, learning analytics, and technology-supported teaching experiments.",
@@ -571,6 +630,7 @@ noindex: true
       {
         tier: "A",
         title: "Information Systems Frontiers",
+        scimagoId: "15572",
         domain: "Information systems, digital transformation",
         value: "Good strategic journal for IS and applied AI.",
         fit: "Useful for research that frames AI, knowledge graphs, and decision support as organizational or socio-technical systems.",
@@ -579,6 +639,7 @@ noindex: true
       {
         tier: "A",
         title: "Journal of Knowledge Management",
+        scimagoId: "144668",
         domain: "Knowledge management",
         value: "Strong outlet for knowledge-centered research.",
         fit: "Relevant for knowledge graph governance, organizational knowledge, explainability, and AI-supported expertise workflows.",
@@ -587,6 +648,7 @@ noindex: true
       {
         tier: "A",
         title: "Knowledge-Based Systems",
+        scimagoId: "24772",
         domain: "Knowledge-based AI",
         value: "High-output Q1 venue aligned with AI methods.",
         fit: "A natural target for ontology/KG reasoning, hybrid recommender systems, and explainable decision support.",
@@ -595,6 +657,7 @@ noindex: true
       {
         tier: "A",
         title: "Expert Systems with Applications",
+        scimagoId: "24201",
         domain: "Applied AI, expert systems",
         value: "Highly visible applied AI journal.",
         fit: "Appropriate for validated AI systems, recommender models, intelligent decision tools, and comparative experiments.",
@@ -603,6 +666,7 @@ noindex: true
       {
         tier: "A",
         title: "Information Sciences",
+        scimagoId: "15134",
         domain: "Information processing, AI",
         value: "Broad and respected AI/information journal.",
         fit: "Good for algorithmic contributions with rigorous evaluation in KG, recommendation, NLP, or intelligent systems.",
@@ -611,6 +675,7 @@ noindex: true
       {
         tier: "A",
         title: "Decision Support Systems",
+        scimagoId: "21933",
         domain: "Decision support, analytics",
         value: "Strong target for decision-oriented AI.",
         fit: "Excellent when the paper emphasizes decision quality, user support, explainability, and applied organizational value.",
@@ -619,6 +684,7 @@ noindex: true
       {
         tier: "A-",
         title: "Semantic Web",
+        scimagoId: "21100269620",
         domain: "Semantic web, linked data",
         value: "Very relevant to ontology and KG identity.",
         fit: "Core target for ontology engineering, semantic similarity, RDF, linked data quality, and KG-based systems.",
@@ -627,6 +693,7 @@ noindex: true
       {
         tier: "A-",
         title: "Journal of Web Semantics",
+        scimagoId: "14879",
         domain: "Web semantics, knowledge graphs",
         value: "Excellent thematic fit for KG research.",
         fit: "Good venue for semantic technologies, knowledge graphs, ontology reuse, and web-scale knowledge representation.",
@@ -635,6 +702,7 @@ noindex: true
       {
         tier: "A-",
         title: "World Wide Web",
+        scimagoId: "14965",
         domain: "Web systems, data, AI",
         value: "Strong web and data systems journal.",
         fit: "Useful for web data, recommender systems, semantic systems, and AI services at web scale.",
@@ -643,6 +711,7 @@ noindex: true
       {
         tier: "A-",
         title: "Data & Knowledge Engineering",
+        scimagoId: "24437",
         queryTitle: "Data and Knowledge Engineering",
         domain: "Data and knowledge engineering",
         value: "Solid fit for data/KG engineering work.",
@@ -652,6 +721,7 @@ noindex: true
       {
         tier: "A-",
         title: "User Modeling and User-Adapted Interaction",
+        scimagoId: "18947",
         domain: "User modeling, personalization",
         value: "High fit for recommender and personalization research.",
         fit: "Best for user-adaptive AI, learner modeling, personalization, and explanations centered on user behavior.",
@@ -660,6 +730,7 @@ noindex: true
       {
         tier: "A-",
         title: "IEEE Transactions on Artificial Intelligence",
+        scimagoId: "21101093601",
         domain: "Artificial intelligence",
         value: "Strategic AI transaction for technical credibility.",
         fit: "A good target for generalizable AI contributions with strong experiments and clear novelty beyond one application.",
@@ -668,6 +739,7 @@ noindex: true
       {
         tier: "B+",
         title: "Computers & Education: Artificial Intelligence",
+        scimagoId: "21101074919",
         queryTitle: "Computers and Education: Artificial Intelligence",
         domain: "AI for education",
         value: "Good quality-growth journal for AI education papers.",
@@ -677,6 +749,7 @@ noindex: true
       {
         tier: "B+",
         title: "Internet and Higher Education",
+        scimagoId: "16965",
         domain: "Higher education technology",
         value: "Good for educational technology and higher education impact.",
         fit: "Relevant when the paper focuses on adoption, learning outcomes, teaching practice, or higher education systems.",
@@ -685,6 +758,7 @@ noindex: true
       {
         tier: "B+",
         title: "British Journal of Educational Technology",
+        scimagoId: "23988",
         domain: "Educational technology",
         value: "Recognized educational technology venue.",
         fit: "Useful for technology-enhanced learning, AI in teaching, design-based studies, and learning experience evaluation.",
@@ -693,6 +767,7 @@ noindex: true
       {
         tier: "B+",
         title: "Educational Technology Research and Development",
+        scimagoId: "20764",
         domain: "Educational design and technology",
         value: "Solid venue for design and evaluation.",
         fit: "Good for methodical studies of instructional design, serious games, mixed reality learning, and AI-supported pedagogy.",
@@ -701,6 +776,7 @@ noindex: true
       {
         tier: "B+",
         title: "Education and Information Technologies",
+        scimagoId: "144955",
         domain: "Education, information technologies",
         value: "Good publication volume and domain relevance.",
         fit: "Practical outlet for educational technology systems, implementation studies, and AI-supported learning tools.",
@@ -709,6 +785,7 @@ noindex: true
       {
         tier: "B+",
         title: "Applied Intelligence",
+        scimagoId: "23674",
         domain: "Applied AI",
         value: "Good for applied AI method papers.",
         fit: "Appropriate for AI models, recommender systems, NLP, and knowledge-based applications with strong empirical results.",
@@ -717,6 +794,7 @@ noindex: true
       {
         tier: "B+",
         title: "Neural Computing and Applications",
+        scimagoId: "24800",
         domain: "Neural computing, applied ML",
         value: "Useful for increasing quality publication volume.",
         fit: "Relevant for ML-heavy contributions, neural models, optimization, and applied intelligent systems.",
@@ -725,6 +803,23 @@ noindex: true
     ];
 
     var tiers = ["A+", "A", "A-", "B+"];
+    var scimagoMetricCache = {
+      "26099": { hIndex: "201", impactFactor: "TBD", sjr: "4.197", quartile: "Q1", year: "2025" },
+      "17645": { hIndex: "267", impactFactor: "TBD", sjr: "4.434", quartile: "Q1", year: "2025" },
+      "19600156811": { hIndex: "77", impactFactor: "TBD", sjr: "3.207", quartile: "Q1", year: "2025" },
+      "17362": { hIndex: "233", impactFactor: "TBD", sjr: "3.025", quartile: "Q1", year: "2025" },
+      "19700167026": { hIndex: "74", impactFactor: "TBD", sjr: "1.893", quartile: "Q1", year: "2025" },
+      "24772": { hIndex: "206", impactFactor: "TBD", sjr: "1.753", quartile: "Q1", year: "2025" },
+      "15134": { hIndex: "255", impactFactor: "TBD", sjr: "1.507", quartile: "Q1", year: "2025" },
+      "21100269620": { hIndex: "63", impactFactor: "TBD", sjr: "0.701", quartile: "Q2", year: "2025" },
+      "14879": { hIndex: "94", impactFactor: "TBD", sjr: "1.006", quartile: "Q1", year: "2025" },
+      "14965": { hIndex: "68", impactFactor: "TBD", sjr: "0.980", quartile: "Q1", year: "2025" },
+      "24437": { hIndex: "99", impactFactor: "TBD", sjr: "0.780", quartile: "Q1", year: "2025" },
+      "21101074919": { hIndex: "86", impactFactor: "TBD", sjr: "7.083", quartile: "Q1", year: "2025" },
+      "20764": { hIndex: "128", impactFactor: "TBD", sjr: "1.836", quartile: "Q1", year: "2025" },
+      "144955": { hIndex: "121", impactFactor: "TBD", sjr: "2.131", quartile: "Q1", year: "2025" },
+      "23674": { hIndex: "119", impactFactor: "TBD", sjr: "0.889", quartile: "Q2", year: "2025" }
+    };
     var activeTier = "all";
     var activeJournal = journals[0];
     var latestCache = {};
@@ -735,6 +830,9 @@ noindex: true
     var detailTitleEl = document.getElementById("detailTitle");
     var detailValueEl = document.getElementById("detailValue");
     var detailMetricsEl = document.getElementById("detailMetrics");
+    var detailCoverEl = document.getElementById("detailCover");
+    var scimagoProfileEl = document.getElementById("scimagoProfile");
+    var impactSourceEl = document.getElementById("impactSource");
     var detailFitEl = document.getElementById("detailFit");
     var publisherIssuesEl = document.getElementById("publisherIssues");
     var crossrefSearchEl = document.getElementById("crossrefSearch");
@@ -751,11 +849,12 @@ noindex: true
     }
 
     function metricsFor(journal) {
-      return journal.metrics || {
+      return journal.metrics || scimagoMetricCache[journal.scimagoId] || {
         hIndex: "TBD",
         impactFactor: "TBD",
         sjr: "TBD",
-        quartile: "TBD"
+        quartile: "TBD",
+        year: ""
       };
     }
 
@@ -764,9 +863,59 @@ noindex: true
       return [
         { label: "H-index", value: metrics.hIndex },
         { label: "IF", value: metrics.impactFactor },
-        { label: "SJR", value: metrics.sjr },
+        { label: "SJR" + (metrics.year ? " " + metrics.year : ""), value: metrics.sjr },
         { label: "Quartile", value: metrics.quartile }
       ];
+    }
+
+    function scimagoUrl(journal) {
+      if (journal.scimagoId) {
+        return "https://www.scimagojr.com/journalsearch.php?q=" + journal.scimagoId + "&tip=sid";
+      }
+      return "https://www.scimagojr.com/journalsearch.php?q=" + encodeURIComponent(journalQueryTitle(journal));
+    }
+
+    function scimagoImageUrl(journal) {
+      return journal.scimagoId ? "https://www.scimagojr.com/journal_img.php?id=" + journal.scimagoId : "";
+    }
+
+    function publisherMetricUrl(journal) {
+      if (journal.impactFactorUrl) {
+        return journal.impactFactorUrl;
+      }
+      if (!journal.issues) {
+        return scimagoUrl(journal);
+      }
+      return journal.issues
+        .replace(/\/issues\/?$/, "")
+        .replace(/\/volumes-and-issues\/?$/, "")
+        .replace(/\/loi\/([^/]+)\/?$/, "/journal/$1");
+    }
+
+    function initials(title) {
+      return title.split(/\s+/).filter(Boolean).slice(0, 3).map(function (word) {
+        return word.charAt(0).toUpperCase();
+      }).join("");
+    }
+
+    function createAvatar(journal) {
+      var avatar = document.createElement("span");
+      avatar.className = "journal-avatar";
+      var imageUrl = scimagoImageUrl(journal);
+      if (!imageUrl) {
+        avatar.textContent = initials(journal.title);
+        return avatar;
+      }
+      var image = document.createElement("img");
+      image.src = imageUrl;
+      image.alt = "";
+      image.loading = "lazy";
+      image.onerror = function () {
+        avatar.textContent = initials(journal.title);
+        image.remove();
+      };
+      avatar.appendChild(image);
+      return avatar;
     }
 
     function createMetricRow(journal) {
@@ -857,6 +1006,7 @@ noindex: true
           var domain = document.createElement("span");
           domain.className = "journal-domain";
           domain.textContent = journal.domain;
+          button.appendChild(createAvatar(journal));
           button.appendChild(name);
           button.appendChild(domain);
           button.appendChild(createMetricRow(journal));
@@ -873,9 +1023,173 @@ noindex: true
 
     function setExternalLinks(journal) {
       var encoded = encodeURIComponent(journalQueryTitle(journal));
+      scimagoProfileEl.href = scimagoUrl(journal);
+      impactSourceEl.href = publisherMetricUrl(journal);
       publisherIssuesEl.href = journal.issues;
       crossrefSearchEl.href = "https://search.crossref.org/?q=" + encoded;
       scholarSearchEl.href = "https://scholar.google.com/scholar?q=" + encoded;
+    }
+
+    function updateDetailCover(journal) {
+      var imageUrl = scimagoImageUrl(journal);
+      detailCoverEl.alt = "";
+      if (!imageUrl) {
+        detailCoverEl.removeAttribute("src");
+        return;
+      }
+      detailCoverEl.src = imageUrl;
+      detailCoverEl.onerror = function () {
+        detailCoverEl.removeAttribute("src");
+      };
+    }
+
+    function parseScimagoMetrics(html, journal) {
+      var text = html.replace(/<script[\s\S]*?<\/script>/gi, " ")
+        .replace(/<style[\s\S]*?<\/style>/gi, " ")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ");
+      var sjrMatch = text.match(/SJR\s+(\d{4})\s+([\d.]+)\s+(Q[1-4])/i);
+      var hIndexMatch = text.match(/H-Index\s+(\d+)/i);
+      var citeMatches = [];
+      var citeRegex = /Cites\s*\/\s*Doc\.\s*\(2 years\)\s*(\d{4})\s*([\d.]+)/gi;
+      var match;
+      while ((match = citeRegex.exec(text)) !== null) {
+        citeMatches.push({ year: match[1], value: match[2] });
+      }
+      var latestCites = citeMatches.sort(function (a, b) {
+        return Number(b.year) - Number(a.year);
+      })[0];
+
+      return {
+        hIndex: hIndexMatch ? hIndexMatch[1] : "TBD",
+        impactFactor: metricsFor(journal).impactFactor || "TBD",
+        sjr: sjrMatch ? sjrMatch[2] : "TBD",
+        quartile: sjrMatch ? sjrMatch[3] : "TBD",
+        year: sjrMatch ? sjrMatch[1] : ""
+      };
+    }
+
+    function fetchTextWithFallback(url) {
+      var proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(url);
+      return fetch(url)
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Direct request failed");
+          }
+          return response.text();
+        })
+        .catch(function () {
+          return fetch(proxyUrl).then(function (response) {
+            if (!response.ok) {
+              throw new Error("Proxy request failed");
+            }
+            return response.text();
+          });
+        });
+    }
+
+    function parseImpactFactor(html) {
+      var text = html.replace(/<script[\s\S]*?<\/script>/gi, " ")
+        .replace(/<style[\s\S]*?<\/style>/gi, " ")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&nbsp;/g, " ")
+        .replace(/\s+/g, " ");
+      var patterns = [
+        /Journal\s+Impact\s+Factor(?:\s*\(JIF\))?\s*:?\s*([\d.]+)/i,
+        /Impact\s+Factor(?:\s*\(JIF\))?\s*:?\s*([\d.]+)/i,
+        /Impact\s+factor\s+of\s+([\d.]+)/i,
+        /([\d.]+)\s+Impact\s+Factor/i
+      ];
+      for (var i = 0; i < patterns.length; i += 1) {
+        var match = text.match(patterns[i]);
+        if (match && match[1]) {
+          return match[1];
+        }
+      }
+      return "";
+    }
+
+    function refreshImpactFactor(journal, quiet) {
+      var url = publisherMetricUrl(journal);
+      if (!quiet) {
+        latestStatusEl.textContent = "Looking for publisher Impact Factor...";
+      }
+      return fetchTextWithFallback(url)
+        .then(function (html) {
+          var impactFactor = parseImpactFactor(html);
+          if (!impactFactor) {
+            throw new Error("Impact Factor not found");
+          }
+          var current = metricsFor(journal);
+          journal.metrics = {
+            hIndex: current.hIndex,
+            impactFactor: impactFactor,
+            sjr: current.sjr,
+            quartile: current.quartile,
+            year: current.year
+          };
+          if (journal.scimagoId) {
+            scimagoMetricCache[journal.scimagoId] = journal.metrics;
+          }
+          renderDetailMetrics(journal);
+          renderList();
+          if (!quiet) {
+            latestStatusEl.textContent = "Publisher Impact Factor updated from the journal page.";
+          }
+        })
+        .catch(function () {
+          if (!quiet) {
+            latestStatusEl.textContent = "Impact Factor was not found automatically. Open IF source and enter it in the cache if needed.";
+          }
+        });
+    }
+
+    function fetchScimagoPage(journal) {
+      var profileUrl = scimagoUrl(journal);
+      var proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(profileUrl);
+      return fetch(profileUrl)
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("SCImago direct request failed");
+          }
+          return response.text();
+        })
+        .catch(function () {
+          return fetch(proxyUrl).then(function (response) {
+            if (!response.ok) {
+              throw new Error("SCImago proxy request failed");
+            }
+            return response.text();
+          });
+        });
+    }
+
+    function refreshScimagoMetrics(journal, quiet) {
+      if (!journal.scimagoId) {
+        if (!quiet) {
+          latestStatusEl.textContent = "No SCImago profile ID is configured for this journal.";
+        }
+        return;
+      }
+      if (!quiet) {
+        latestStatusEl.textContent = "Updating metrics from SCImago...";
+      }
+      fetchScimagoPage(journal)
+        .then(function (html) {
+          var metrics = parseScimagoMetrics(html, journal);
+          journal.metrics = metrics;
+          scimagoMetricCache[journal.scimagoId] = metrics;
+          renderDetailMetrics(journal);
+          renderList();
+          if (!quiet) {
+            latestStatusEl.textContent = "SCImago metrics updated" + (metrics.year ? " for " + metrics.year : "") + ".";
+          }
+        })
+        .catch(function () {
+          if (!quiet) {
+            latestStatusEl.textContent = "Live SCImago update was blocked. The dashboard kept cached values and the SCImago link is available.";
+          }
+        });
     }
 
     function selectJournal(journal) {
@@ -886,9 +1200,16 @@ noindex: true
       detailValueEl.textContent = journal.value;
       detailFitEl.textContent = journal.fit;
       renderDetailMetrics(journal);
+      updateDetailCover(journal);
       setExternalLinks(journal);
       renderList();
       loadLatest(journal, false);
+      if (metricsFor(journal).sjr === "TBD" || metricsFor(journal).hIndex === "TBD") {
+        refreshScimagoMetrics(journal, true);
+      }
+      if (metricsFor(journal).impactFactor === "TBD") {
+        refreshImpactFactor(journal, true);
+      }
     }
 
     function getPublishedDate(item) {
@@ -991,6 +1312,10 @@ noindex: true
     });
 
     searchEl.addEventListener("input", renderList);
+    document.getElementById("refreshScimago").addEventListener("click", function () {
+      refreshScimagoMetrics(activeJournal, false);
+      refreshImpactFactor(activeJournal, false);
+    });
     document.getElementById("refreshLatest").addEventListener("click", function () {
       loadLatest(activeJournal, true);
     });
