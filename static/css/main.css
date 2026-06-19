@@ -1544,6 +1544,13 @@ a.link-block:focus i {
   font-size: 18px;
   font-weight: 700;
   color: #fff;
+  margin-bottom: 4px;
+}
+
+.footer-v11 .footer-brand-vi {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 8px;
 }
 
