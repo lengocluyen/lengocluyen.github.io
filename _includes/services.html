@@ -1,186 +1,246 @@
+{%- comment -%}
+  Academic service.
+
+  Peer review and committee rows come from _data/reviews.yml and
+  _data/committees.yml. Every count on this page — stat tiles, section
+  badges, filter-pill counts, per-year tallies — is derived from the
+  `reviews` lists in that data, so the numbers cannot drift out of sync
+  with the list the way a hand-typed badge does.
+{%- endcomment -%}
+
+{%- assign reviews = site.data.reviews -%}
+
+{%- capture rounds_raw -%}
+  {%- for r in reviews -%}{%- for y in r.reviews -%}{{ y }},{%- endfor -%}{%- endfor -%}
+{%- endcapture -%}
+{%- assign round_years = rounds_raw | strip | split: "," -%}
+{%- assign total_rounds = round_years | size -%}
+{%- assign review_years = round_years | uniq | sort | reverse -%}
+
+{%- capture journal_raw -%}
+  {%- for r in reviews -%}{%- if r.kind == "journal" -%}{%- for y in r.reviews -%}x,{%- endfor -%}{%- endif -%}{%- endfor -%}
+{%- endcapture -%}
+{%- assign journal_rounds = journal_raw | strip | split: "," | size -%}
+{%- assign conference_rounds = total_rounds | minus: journal_rounds -%}
+
+{%- assign venue_count = reviews | map: "venue" | uniq | size -%}
+{%- assign journal_venues = reviews | where: "kind", "journal" | map: "venue" | uniq | size -%}
+{%- assign conference_venues = venue_count | minus: journal_venues -%}
+
 <section id="services">
   <div class="container">
 
     <h2 class="section-title mb-4"><i class="fas fa-building-columns fa-xs"></i>&nbsp;ACADEMIC SERVICE</h2>
 
-    <!-- Doctoral Supervision Section -->
-    <div class="section-header">
-      <span class="section-header-title"><i class="fas fa-user-graduate section-header-icon" aria-hidden="true"></i>Doctoral Supervision: Scientific Mentoring</span>
+    <div class="stat-row">
+      <div class="stat-tile">
+        <span class="stat-value">2</span>
+        <span class="stat-label">PhD candidates</span>
+        <span class="stat-note">Scientific tutor, 2025&ndash;2028</span>
+      </div>
+      <div class="stat-tile">
+        <span class="stat-value">4</span>
+        <span class="stat-label">Student projects</span>
+        <span class="stat-note">12 students supervised</span>
+      </div>
+      <div class="stat-tile">
+        <span class="stat-value">{{ total_rounds }}</span>
+        <span class="stat-label">Review rounds</span>
+        <span class="stat-note">Across {{ venue_count }} venues</span>
+      </div>
+      <div class="stat-tile">
+        <span class="stat-value">4</span>
+        <span class="stat-label">Courses taught</span>
+        <span class="stat-note">Programming &amp; systems</span>
+      </div>
+    </div>
+
+    <nav class="page-subnav" id="service-subnav" aria-label="Sections on this page">
+      <a href="#supervision">Supervision</a>
+      <a href="#review">Peer review</a>
+      <a href="#committees">Committees</a>
+      <a href="#teaching">Teaching</a>
+    </nav>
+
+    <!-- Doctoral Supervision -->
+    <div class="section-header" id="supervision">
+      <h2 class="section-header-title"><i class="fas fa-user-graduate section-header-icon" aria-hidden="true"></i>Doctoral Supervision: Scientific Mentoring</h2>
       <span class="badge badge-primary">2 PhD candidates</span>
     </div>
 
-    <div class="supervision-entry">
-      <p class="supervision-meta">
-        <span class="meta-left"><i class="fa fa-university"></i> Gamaizer - LIRCES, Université Côte d'Azur</span>
-        <span class="meta-right">PhD candidate (2025-2028)</span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Candidate</span>
-        <span class="supervision-value"><span class="student-name">Rachel Pirault</span></span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Topic</span>
-        <span class="supervision-value"><em>AI-assisted narrative design for educational video games.</em></span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Role</span>
-        <span class="supervision-value">Scientific tutor on generative AI, narrative structure modeling for serious games, and integration of AI tools into edugame design workflows.</span>
-      </p>
-    </div>
+    <article class="supervision-entry">
+      <div class="supervision-mono" aria-hidden="true">RP</div>
+      <div class="supervision-body">
+        <div class="supervision-head">
+          <span class="supervision-name">Rachel Pirault</span>
+          <span class="supervision-when">PhD candidate &middot; 2025&ndash;2028</span>
+          <span class="supervision-role">Scientific tutor</span>
+        </div>
+        <p class="supervision-topic">AI-assisted narrative design for educational video games</p>
+        <p class="supervision-note">Generative AI, narrative-structure modelling for serious games, and the integration of AI tools into edugame design workflows.</p>
+        <div class="supervision-tags">
+          <span class="tag">Gamaizer</span>
+          <span class="tag">LIRCES</span>
+          <span class="tag">Universit&eacute; C&ocirc;te d'Azur</span>
+        </div>
+      </div>
+    </article>
 
-    <div class="supervision-entry">
-      <p class="supervision-meta">
-        <span class="meta-left"><i class="fa fa-university"></i> Gamaizer - LIUM, Le Mans Université</span>
-        <span class="meta-right">PhD candidate (2025-2028)</span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Candidate</span>
-        <span class="supervision-value"><span class="student-name">Oussama Seddini</span></span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Topic</span>
-        <span class="supervision-value"><em>Generative AI assistance for creating educational activities in Mixed Reality (MIXAP / MIXAP-EU, MRKitGen, IA-Tutor).</em></span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Role</span>
-        <span class="supervision-value">Scientific tutor on LLMs, multi-agent systems, xAPI, AI architecture design, trace analysis, systematic review of AI + MR for education, and scientific dissemination.</span>
-      </p>
-    </div>
+    <article class="supervision-entry">
+      <div class="supervision-mono" aria-hidden="true">OS</div>
+      <div class="supervision-body">
+        <div class="supervision-head">
+          <span class="supervision-name">Oussama Seddini</span>
+          <span class="supervision-when">PhD candidate &middot; 2025&ndash;2028</span>
+          <span class="supervision-role">Scientific tutor</span>
+        </div>
+        <p class="supervision-topic">Generative AI assistance for authoring educational activities in mixed reality</p>
+        <p class="supervision-note">LLMs and multi-agent systems, xAPI trace analysis, AI architecture design, a systematic review of AI and MR for education, and scientific dissemination.</p>
+        <div class="supervision-tags">
+          <span class="tag">Gamaizer</span>
+          <span class="tag">LIUM</span>
+          <span class="tag">Le Mans Universit&eacute;</span>
+          <span class="tag">MIXAP</span>
+          <span class="tag">MRKitGen</span>
+        </div>
+      </div>
+    </article>
 
-    <!-- Master and Engineering Supervision Section -->
-    <div class="section-header" style="margin-top:40px;">
-      <span class="section-header-title"><i class="fas fa-chalkboard-user section-header-icon" aria-hidden="true"></i>Master's / Engineering Project Supervision</span>
+    <!-- Master's and Engineering Supervision -->
+    <div class="section-header" style="margin-top: 40px;">
+      <h2 class="section-header-title"><i class="fas fa-chalkboard-user section-header-icon" aria-hidden="true"></i>Master's / Engineering Project Supervision</h2>
       <span class="badge badge-primary">4 Projects</span>
     </div>
 
-    <div class="supervision-entry">
-      <p class="supervision-meta">
-        <span class="meta-left"><i class="fa fa-university"></i> UTC (Heudiasyc Lab)</span>
-        <span class="meta-right">Engineering Program (2024–2025)</span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Topic</span>
-        <span class="supervision-value"><em>Comparison and Evaluation of Methods for Calculating Semantic Similarity on RDF Data</em></span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Student</span>
-        <span class="supervision-value"><a href="mailto:soudarsane.tillai@etu.utc.fr" class="student-name">Soudarsane Tillai</a></span>
-      </p>
+    <div class="supervision-grid">
+      <article class="supervision-card">
+        <div class="supervision-card-head">
+          <span class="card-eyebrow">Engineering</span>
+          <span class="card-when">2024&ndash;2025</span>
+        </div>
+        <h3>Comparison and Evaluation of Methods for Calculating Semantic Similarity on RDF Data</h3>
+        <div class="supervision-tags">
+          <a class="tag" href="mailto:soudarsane.tillai@etu.utc.fr">Soudarsane Tillai</a>
+        </div>
+        <p class="card-note">UTC &middot; Heudiasyc Lab</p>
+      </article>
+
+      <article class="supervision-card">
+        <div class="supervision-card-head">
+          <span class="card-eyebrow">Master's &middot; Semester II</span>
+          <span class="card-when">2023&ndash;2024</span>
+        </div>
+        <h3>Improvement and Optimization of a Vehicle Recommender System via a Mobile Application</h3>
+        <div class="supervision-tags">
+          <a class="tag" href="mailto:adam-hafiz.bin-ahmad@etu.utc.fr">Adam Hafiz Bin Ahmad</a>
+          <a class="tag" href="mailto:xinghua.shao@etu.utc.fr">Xinghua Shao</a>
+          <a class="tag" href="mailto:edouard.le@etu.utc.fr">Edouard Le</a>
+        </div>
+        <p class="card-note">UTC &middot; Heudiasyc Lab</p>
+      </article>
+
+      <article class="supervision-card">
+        <div class="supervision-card-head">
+          <span class="card-eyebrow">Master's &middot; Semester I</span>
+          <span class="card-when">2023&ndash;2024</span>
+        </div>
+        <h3>Used Vehicle Search Application Using a Recommender System</h3>
+        <div class="supervision-tags">
+          <a class="tag" href="mailto:adam-hafiz.bin-ahmad@etu.utc.fr">Adam Hafiz Bin Ahmad</a>
+          <a class="tag" href="mailto:xinghua.shao@etu.utc.fr">Xinghua Shao</a>
+          <a class="tag" href="mailto:cheng.xu@etu.utc.fr">Cheng Xu</a>
+        </div>
+        <p class="card-note">UTC &middot; Heudiasyc Lab</p>
+      </article>
+
+      <article class="supervision-card">
+        <div class="supervision-card-head">
+          <span class="card-eyebrow">Master's</span>
+          <span class="card-when">2022&ndash;2023</span>
+        </div>
+        <h3>Learning User-Item Relationships from Knowledge Graphs</h3>
+        <div class="supervision-tags">
+          <a class="tag" href="mailto:mohamed-ibrahim.attala@etu.utc.fr">Mohamed Ibrahim Attala</a>
+          <a class="tag" href="mailto:ambra.zajsi@etu.utc.fr">Ambra Zajsi</a>
+          <a class="tag" href="mailto:ermal.belul@etu.utc.fr">Ermal Belul</a>
+          <a class="tag" href="mailto:hedil.maatoug@etu.utc.fr">Hedil Maatoug</a>
+          <a class="tag" href="mailto:el-hadj.mohamedou@etu.utc.fr">El Hadj Mohamedou</a>
+        </div>
+        <p class="card-note">UTC &middot; Heudiasyc Lab &middot; 20 h tutorials &middot; Grade 24.5/30 (UTP)</p>
+      </article>
     </div>
 
-    <div class="supervision-entry">
-      <p class="supervision-meta">
-        <span class="meta-left"><i class="fa fa-university"></i> UTC (Heudiasyc Lab)</span>
-        <span class="meta-right">Master's Program (2023–2024, Semester II)</span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Topic</span>
-        <span class="supervision-value"><em>Improvement and Optimization of a Vehicle Recommender System via a Mobile Application</em></span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Students</span>
-        <span class="supervision-value">
-          <a href="mailto:adam-hafiz.bin-ahmad@etu.utc.fr" class="student-name">Adam Hafiz Bin Ahmad</a>,
-          <a href="mailto:xinghua.shao@etu.utc.fr" class="student-name">Xinghua Shao</a>,
-          <a href="mailto:edouard.le@etu.utc.fr" class="student-name">Edouard Le</a>
-        </span>
-      </p>
+    <!-- Peer Review -->
+    <div class="section-header" id="review" style="margin-top: 40px;">
+      <h2 class="section-header-title"><i class="fas fa-clipboard-check section-header-icon" aria-hidden="true"></i>Peer Review</h2>
+      <span class="badge badge-primary">{{ total_rounds }} rounds</span>
     </div>
 
-    <div class="supervision-entry">
-      <p class="supervision-meta">
-        <span class="meta-left"><i class="fa fa-university"></i> UTC (Heudiasyc Lab)</span>
-        <span class="meta-right">Master's Program (2023–2024, Semester I)</span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Topic</span>
-        <span class="supervision-value"><em>Used Vehicle Search Application Using a Recommender System</em></span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Students</span>
-        <span class="supervision-value">
-          <a href="mailto:adam-hafiz.bin-ahmad@etu.utc.fr" class="student-name">Adam Hafiz Bin Ahmad</a>,
-          <a href="mailto:xinghua.shao@etu.utc.fr" class="student-name">Xinghua Shao</a>,
-          <a href="mailto:cheng.xu@etu.utc.fr" class="student-name">Cheng Xu</a>
-        </span>
-      </p>
+    <div class="filter-bar" id="review-filter" data-total="{{ total_rounds }}" hidden>
+      <button type="button" class="filter-pill is-active" data-filter="all" aria-pressed="true">All venues <span class="filter-count">{{ total_rounds }}</span></button>
+      <button type="button" class="filter-pill" data-filter="journal" aria-pressed="false">Journals <span class="filter-count">{{ journal_rounds }}</span></button>
+      <button type="button" class="filter-pill" data-filter="conference" aria-pressed="false">Conferences <span class="filter-count">{{ conference_rounds }}</span></button>
+      <span class="filter-summary" id="review-summary" role="status">{{ venue_count }} venues &middot; {{ journal_venues }} journals, {{ conference_venues }} conference series</span>
     </div>
 
-    <div class="supervision-entry">
-      <p class="supervision-meta">
-        <span class="meta-left"><i class="fa fa-university"></i> UTC (Heudiasyc Lab)</span>
-        <span class="meta-right">Master's Program (2022–2023) <small class="text-muted">(20h tutorials, Grade: <strong>24.5/30 UTP</strong>)</small></span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Topic</span>
-        <span class="supervision-value"><em>Learning User-Item Relationships from Knowledge Graphs</em></span>
-      </p>
-      <p class="supervision-topic">
-        <span class="supervision-label">Students</span>
-        <span class="supervision-value">
-          <a href="mailto:mohamed-ibrahim.attala@etu.utc.fr" class="student-name">Mohamed Ibrahim Attala</a>,
-          <a href="mailto:ambra.zajsi@etu.utc.fr" class="student-name">Ambra Zajsi</a>,
-          <a href="mailto:ermal.belul@etu.utc.fr" class="student-name">Ermal Belul</a>,
-          <a href="mailto:hedil.maatoug@etu.utc.fr" class="student-name">Hedil Maatoug</a>,
-          <a href="mailto:el-hadj.mohamedou@etu.utc.fr" class="student-name">El Hadj Mohamedou</a>
-        </span>
-      </p>
+    <div id="review-list">
+      {%- for y in review_years -%}
+        {%- assign y_num = y | plus: 0 -%}
+
+        {%- assign year_total = 0 -%}
+        {%- for r in reviews -%}
+          {%- for ry in r.reviews -%}
+            {%- if ry == y_num -%}{%- assign year_total = year_total | plus: 1 -%}{%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+
+        <div class="year-group" data-year="{{ y }}">
+          <div class="year-rail">
+            <b>{{ y }}</b>
+            <span class="year-tally" data-total="{{ year_total }}">{{ year_total }} round{% if year_total != 1 %}s{% endif %}</span>
+          </div>
+          <div class="entry-list">
+            {%- for r in reviews -%}
+              {%- assign n = 0 -%}
+              {%- for ry in r.reviews -%}
+                {%- if ry == y_num -%}{%- assign n = n | plus: 1 -%}{%- endif -%}
+              {%- endfor -%}
+              {%- if n > 0 -%}
+                <div class="entry-row" data-kind="{{ r.kind }}" data-rounds="{{ n }}">
+                  <span class="entry-kind entry-kind--{{ r.kind }}">{% if r.kind == "journal" %}Journal{% else %}Conf.{% endif %}</span>
+                  <a class="entry-title" href="{{ r.url }}"{% if r.short != r.venue %} title="{{ r.venue }}"{% endif %}>{{ r.short }}</a>
+                  {%- if n > 1 %}<span class="entry-repeat" title="{{ n }} review rounds in {{ y }}">&times;{{ n }}</span>{% endif -%}
+                  <span class="entry-meta">{{ r.detail }}</span>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endfor -%}
     </div>
 
-    <!-- Scientific Community Service -->
-    <div class="section-header" style="margin-top:40px;">
-      <span class="section-header-title"><i class="fas fa-flask section-header-icon" aria-hidden="true"></i>Scientific Community Service</span>
-      <span class="badge badge-primary">26 Activities</span>
+    <!-- Programme Committees -->
+    <div class="section-header" id="committees" style="margin-top: 40px;">
+      <h2 class="section-header-title"><i class="fas fa-sitemap section-header-icon" aria-hidden="true"></i>Programme Committees</h2>
+      <span class="badge badge-primary">{{ site.data.committees | size }} roles</span>
     </div>
 
-    <h5 class="service-subtitle"><i class="fas fa-clipboard-check" aria-hidden="true"></i>&nbsp;Reviewer</h5>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://www.nature.com/srep/">Scientific Reports</a>, 2026.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://link.springer.com/journal/10462">Artificial Intelligence Review</a>, 2026.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://link.springer.com/journal/44217">Discover Education</a>, 2026.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://link.springer.com/journal/12877">BMC Geriatrics</a>, 2026.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://link.springer.com/journal/44163">Discover Artificial Intelligence</a>, 2026.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://www.iceccme.com/2026/">6th International Conference on Electrical, Computer, Communications and Mechatronics Engineering (ICECCME)</a>, October 2026, Bali, Indonesia.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://onlinelibrary.wiley.com/journal/4795">Applied Computational Intelligence and Soft Computing</a>, 2026.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://www.ieeesmc2026.org/">IEEE Conference on Systems, Man, and Cybernetics (SMC)</a>, October 2026, Bellevue, WA, USA.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://www.frontiersin.org/journals/computer-science">Frontiers in Computer Science</a>, 2026.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://ijece.iaescore.com/index.php/IJECE/index">International Journal of Electrical and Computer Engineering (IJECE)</a>, 2025–2026.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://onlinelibrary.wiley.com/journal/14685973">Journal of Contingencies and Crisis Management</a>, 2025.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://onlinelibrary.wiley.com/journal/25778196">Engineering Reports</a>, 2025.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://www.icecet.com/">6th International Conference on Electrical, Computer and Energy Technologies (ICECET)</a>, July 2026, Rome, Italy.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://www.icecer.com/">International Conference on Electrical and Computer Engineering Researches (ICECER)</a>, December 2025, Madagascar.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://www.iceccme.com/2025/">5th International Conference on Electrical, Computer, Communications and Mechatronics Engineering (ICECCME)</a>, October 2025, Zanzibar, Tanzania.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://peerj.com/journals/computer-science/">PeerJ Computer Science Journal</a>, 2025.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://www.ieeesmc2025.org/">IEEE Conference on Systems, Man, and Cybernetics (SMC)</a>, October 2025, Vienna, Austria.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://acdsa.org/2025/">International Conference on Artificial Intelligence, Computer, Data Sciences and Applications (ACDSA)</a>, August 2025, Antalya, Türkiye.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://cscwd2025.hds.utc.fr/">26th International Conference on Computer Supported Cooperative Work in Design (CSCWD)</a>, May 2025, Compiègne, France.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://onlinelibrary.wiley.com/journal/10991360">Journal of Multi-Criteria Decision Analysis (JMCDA)</a>, 2024.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://www.ieeesmc.org/conference-2023/">IEEE Conference on Systems, Man, and Cybernetics (SMC)</a>, October 2023, Hawaii, USA.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://icits.me/2023/">International Conference on Information Technology &amp; Systems (ICITS)</a>, April 2023, Cusco, Pérou.</div>
-      </div>
+    <div class="committee-grid">
+      {%- for c in site.data.committees %}
+      <article class="committee-card">
+        <span class="card-eyebrow card-eyebrow--{{ c.tone }}">{{ c.role }}</span>
+        <a href="{{ c.url }}">{{ c.short }} &mdash; {{ c.venue }}</a>
+        <p class="card-note">{{ c.detail }}</p>
+      </article>
+      {%- endfor %}
     </div>
 
-    <h5 class="service-subtitle"><i class="fas fa-users" aria-hidden="true"></i>&nbsp;Program Committee Member</h5>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://ufe.edu.eg/wp-content/uploads/2025/08/IEEE-3SCEA2026-19-21-April-2026-CFP-Flyer.pdf">1st International Workshop on Sustainable Governance and Social Responsibility based on Artificial Intelligence Approaches</a>, 19–21 April 2026, Cairo, Egypt.</div>
-      </div>
-    </div>
-
-    <h5 class="service-subtitle"><i class="fas fa-sitemap" aria-hidden="true"></i>&nbsp;Technical Program Committee Member</h5>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://conferences.sigappfr.org/wise2026/">27th International Conference on Web Information Systems and Engineering (WISE 2026)</a>, November 2026, Venice, Italy.</div>
-        <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;<a href="https://cscwd2025.hds.utc.fr/">26th International Conference on Computer Supported Cooperative Work in Design (CSCWD 2026)</a>, May 2025, Compiègne, France.</div>
-      </div>
-    </div>
-
-    <!-- Teaching Section -->
-    <div class="section-header" style="margin-top:40px;">
-      <span class="section-header-title"><i class="fas fa-chalkboard-teacher section-header-icon" aria-hidden="true"></i>Teaching</span>
+    <!-- Teaching -->
+    <div class="section-header" id="teaching" style="margin-top: 40px;">
+      <h2 class="section-header-title"><i class="fas fa-chalkboard-teacher section-header-icon" aria-hidden="true"></i>Teaching</h2>
       <span class="badge badge-primary">4 areas</span>
     </div>
+
     <div class="teaching-grid">
       <article class="teaching-card">
         <div class="teaching-card-header">
