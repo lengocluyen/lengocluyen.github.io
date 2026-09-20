@@ -1,26 +1,54 @@
 ---
-layout: layout
-title: Blog
+layout: page
+title: Writing
+description: Essays on AI research, LLMs, knowledge graphs and the direction of the field, by Ngoc Luyen Le.
 ---
 
-<div class="container">
-<h3>Archive</h3>
-  <div class="panel panel-default">
-    <div class="panel-body">
-		{% for post in site.posts %}
-			<div class="row">
-				 <div class="col-sm-4 col-md-4 col-lg-4">
-					 <h5 style="text-align: right">
-					 	{{ post.date | date: "%B %e, %Y" }}
-					 </h5>
-				 </div>
-				 <div class="col-sm-8 col-md-8 col-lg-8">
-					 <h5 style="text-align: left">
-					 	<strong><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></strong>
-					 </h5>
-				 </div>
-			</div>
-	    {% endfor %}
-	</div>
+<section id="blog">
+  <div class="container">
+
+    <h2 class="section-title mb-4"><i class="fa fa-pen-nib fa-xs"></i>&nbsp;WRITING</h2>
+
+    {%- if site.posts.size > 0 %}
+    {%- assign first_post = site.posts | last -%}
+    <div class="stat-row">
+      <div class="stat-tile">
+        <span class="stat-value">{{ site.posts.size }}</span>
+        <span class="stat-label">{% if site.posts.size == 1 %}Essay{% else %}Essays{% endif %}</span>
+        <span class="stat-note">Since {{ first_post.date | date: "%Y" }}</span>
+      </div>
+      <div class="stat-tile">
+        <span class="stat-value">{{ site.posts.first.date | date: "%Y" }}</span>
+        <span class="stat-label">Most recent</span>
+        <span class="stat-note">{{ site.posts.first.date | date: "%B %Y" }}</span>
+      </div>
+    </div>
+    {%- endif %}
+
+    <div class="section-header">
+      <h2 class="section-header-title"><i class="fas fa-newspaper section-header-icon" aria-hidden="true"></i>All Posts</h2>
+      <span class="badge badge-primary">{{ site.posts.size }} {% if site.posts.size == 1 %}post{% else %}posts{% endif %}</span>
+    </div>
+
+    {%- if site.posts.size == 0 %}
+    <div class="entry-list">
+      <div class="entry-row entry-row--note">No posts yet.</div>
+    </div>
+    {%- else %}
+    {%- for post in site.posts %}
+    <a class="post-card" href="{{ post.url | relative_url }}">
+      <span class="post-card-date">{{ post.date | date: "%B %-d, %Y" }}</span>
+      <h2>{{ post.title }}</h2>
+      {%- if post.description %}
+      <p>{{ post.description | truncate: 190 }}</p>
+      {%- endif %}
+      {%- assign s = site.data.analytics.pages[post.url] %}
+      {%- if s.visitors and s.visitors > 0 %}
+      <span class="post-reads"><i class="fas fa-eye" aria-hidden="true"></i> {{ s.visitors }} {% if s.visitors == 1 %}reader{% else %}readers{% endif %}</span>
+      {%- endif %}
+    </a>
+    {%- endfor %}
+    {%- endif %}
+
   </div>
-</div>
+</section>

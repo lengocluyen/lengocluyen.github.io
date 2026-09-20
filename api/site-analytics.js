@@ -5,7 +5,11 @@ import crypto from 'node:crypto';
 
 const OWNER = 'lengocluyen';
 const REPO = 'lengocluyen.github.io';
-const PATH = 'analytics.json';
+// Lives under _data/ so Jekyll exposes it as site.data.analytics and the
+// per-page counts can be rendered into the pages themselves. Jekyll does
+// not publish _data/, so moving it here also stops the raw counts being
+// served at /analytics.json.
+const PATH = '_data/analytics.json';
 const DEFAULT_FLUSH_VISITS = 100;
 
 function getPositiveInteger(value, fallback) {

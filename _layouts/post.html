@@ -2,45 +2,64 @@
 layout: layout
 ---
 
-<div class="container">
-	<div class="blog-post">
-		<h3>
-		  <strong><a href="{{ page.url }}">{{ page.title }}</a></strong>
-		</h3>
-	</div>
-	<div class="blog-title">
-		<h4>
-		{{ page.date | date: "%B %e, %Y" }}
-			&nbsp;&nbsp;
-			{% for tag in page.tags %}
-			 <span class="label label-success">{{ tag }}</span>
-			{% endfor %}
-		</h4>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<div class="blogpost">
-			  {{ content }}
-			   <hr>
-			   <div class="related-posts">
-				   <h5>Related Posts</h5>
-				   {% for post in site.related_posts limit:3 %}
-						<div class="row">
-							 <div class="col-sm-4 col-md-4 col-lg-4">
-								 <h6 style="text-align: right">
-								 	{{ post.date | date: "%B %e, %Y" }}
-								 </h6>
-							 </div>
-							 <div class="col-sm-8 col-md-8 col-lg-8">
-								 <h6 style="text-align: left">
-								 	<strong><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></strong>
-								 </h6>
-							 </div>
-						</div>
-					{% endfor %}
-			   </div>
-			</div>
-		</div>
-	</div>
-	{% include disqus.html %}
-</div>
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | plus: 1 -%}
+
+{%- comment -%}
+  Reader count comes from _data/analytics.json, which the collector in
+  api/site-analytics.js commits after each flush; that commit triggers a
+  rebuild, so the number refreshes on its own.
+
+  The beacon returns early if it has already seen this path today, so
+  `visitors` counts daily-unique readers, not page loads — hence the
+  "readers" label. Nothing is rendered when a page has no entry yet, so
+  a fresh post shows no counter rather than a demoralising zero.
+{%- endcomment -%}
+{%- assign stats = site.data.analytics.pages[page.url] -%}
+
+<section id="post">
+  <div class="container">
+    <article class="post-shell">
+
+      <header class="post-header">
+        <span class="post-kicker">{% if page.kicker %}{{ page.kicker }}{% else %}Essay{% endif %}</span>
+        <h1>{{ page.title }}</h1>
+        <div class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{{ minutes }} min read</span>
+          {%- if stats.visitors and stats.visitors > 0 %}
+          <span aria-hidden="true">&middot;</span>
+          <span class="post-reads" title="Daily-unique readers, counted without cookies">
+            <i class="fas fa-eye" aria-hidden="true"></i>
+            {{ stats.visitors }} {% if stats.visitors == 1 %}reader{% else %}readers{% endif %}
+          </span>
+          {%- endif %}
+          {%- for tag in page.tags %}
+          <span class="tag">{{ tag }}</span>
+          {%- endfor %}
+        </div>
+      </header>
+
+      {%- if page.description %}
+      <p class="post-lede">{{ page.description }}</p>
+      {%- endif %}
+
+      <div class="post-body">
+        {{ content }}
+      </div>
+
+      <nav class="post-footer-nav" aria-label="Post navigation">
+        <a href="{{ '/blog.html' | relative_url }}">&larr; All posts</a>
+        {%- if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">Previous: {{ page.previous.title | truncate: 46 }}</a>
+        {%- endif %}
+      </nav>
+
+      {%- if site.disqus %}
+      {% include disqus.html %}
+      {%- endif %}
+
+    </article>
+  </div>
+</section>

@@ -3053,3 +3053,370 @@ html.dark-mode .div-justify-pub a                        { color: var(--primary)
 html.dark-mode .pub-entry a:hover,
 html.dark-mode .div-justify-pub a:hover                  { color: var(--primary-light); }
 html.dark-mode #publications .div-justify-pub::before    { color: var(--primary); }
+
+/* =============================================
+   v1.5 — Blog: article layout and post figures
+
+   Chart colours below were chosen with the palette
+   validator, not by eye. Light #01579B/#9a5a2f and
+   dark #1f8fc4/#c07f28 each pass the lightness band,
+   chroma floor, CVD separation (ΔE 18.9 / 21.0
+   protan) and 3:1 contrast against their surface.
+   The site's own dark tokens (#4fc3f7/#ffb74d) fail
+   the dark lightness band (L .77/.83 vs .48–.67),
+   which is why marks get their own values.
+   ============================================= */
+:root {
+  --fig-a: #01579B;
+  --fig-b: #9a5a2f;
+  --fig-a-soft: #e6f0f8;
+  --fig-b-soft: #f4ebe3;
+}
+
+html.dark-mode {
+  --fig-a: #1f8fc4;
+  --fig-b: #c07f28;
+  --fig-a-soft: #16293c;
+  --fig-b-soft: #2e2418;
+}
+
+/* --- Article shell -------------------------------------------- */
+.post-shell {
+  margin: 0 auto;
+  max-width: 760px;
+}
+
+.post-header {
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: 30px;
+  padding-bottom: 22px;
+}
+
+.post-header h1 {
+  color: var(--text-dark);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.16;
+  margin: 10px 0 14px;
+}
+
+.post-kicker {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.post-meta {
+  align-items: center;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.post-meta .tag {
+  font-size: 12.5px;
+  margin: 0;
+  padding: 3px 9px;
+}
+
+.post-body {
+  color: var(--text-dark);
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.post-body > p {
+  margin: 0 0 20px;
+}
+
+.post-body h2 {
+  border-top: 1px solid var(--border-soft);
+  color: var(--text-dark);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 46px 0 16px;
+  padding-top: 30px;
+}
+
+.post-body h3 {
+  color: var(--text-dark);
+  font-size: 19px;
+  font-weight: 700;
+  margin: 30px 0 10px;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 20px;
+  padding-left: 22px;
+}
+
+.post-body li {
+  margin-bottom: 8px;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--primary);
+  color: var(--text-muted);
+  font-size: 18px;
+  margin: 0 0 22px;
+  padding: 4px 0 4px 20px;
+}
+
+.post-body strong {
+  color: var(--text-dark);
+}
+
+.post-lede {
+  color: var(--text-muted);
+  font-size: 21px;
+  line-height: 1.55;
+  margin: 0 0 26px;
+}
+
+/* --- Figures --------------------------------------------------- */
+.fig {
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  margin: 32px 0;
+  padding: 24px;
+}
+
+.fig-title {
+  color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.fig-sub {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+
+.fig figcaption,
+.fig-note {
+  border-top: 1px solid var(--border-soft);
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.55;
+  margin-top: 20px;
+  padding-top: 12px;
+}
+
+/* --- Timeline (sequence of dated events) ----------------------- */
+.timeline {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.timeline::before {
+  background: var(--border-soft);
+  content: "";
+  height: 2px;
+  left: 6%;
+  position: absolute;
+  right: 6%;
+  top: 33px;
+}
+
+.timeline li {
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+}
+
+.timeline-date {
+  color: var(--text-dark);
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.timeline-dot {
+  background: var(--bg-white);
+  border: 3px solid var(--fig-a);
+  border-radius: 50%;
+  display: block;
+  height: 16px;
+  margin: 0 auto 14px;
+  position: relative;
+  width: 16px;
+  z-index: 1;
+}
+
+.timeline li.is-counterpoint .timeline-dot {
+  border-color: var(--fig-b);
+}
+
+.timeline-text {
+  color: var(--text-muted);
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.timeline-text b {
+  color: var(--text-dark);
+  display: block;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+/* --- Two-sided comparison -------------------------------------- */
+.compare {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.compare-col {
+  border-radius: var(--border-radius);
+  padding: 18px 20px;
+}
+
+.compare-col--a {
+  background: var(--fig-a-soft);
+  border: 1px solid var(--fig-a);
+}
+
+.compare-col--b {
+  background: var(--fig-b-soft);
+  border: 1px solid var(--fig-b);
+}
+
+.compare-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
+.compare-col--a h4 { color: var(--fig-a); }
+.compare-col--b h4 { color: var(--fig-b); }
+
+.compare-col ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.compare-col li {
+  color: var(--text-dark);
+  font-size: 15px;
+  line-height: 1.55;
+  margin-bottom: 7px;
+}
+
+/* --- Post listing ---------------------------------------------- */
+.post-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  display: block;
+  margin-bottom: 14px;
+  padding: 20px 22px;
+  transition: var(--transition);
+}
+
+.post-card:hover,
+.post-card:focus {
+  border-color: var(--primary);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  color: var(--text-dark);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 6px 0 8px;
+}
+
+.post-card p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.post-card-date {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.post-footer-nav {
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .post-header h1 { font-size: 29px; }
+  .post-body { font-size: 17px; }
+  .post-lede { font-size: 18px; }
+  .fig { padding: 18px 16px; }
+  .compare { grid-template-columns: 1fr; }
+
+  .timeline {
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  .timeline::before {
+    bottom: 10px;
+    height: auto;
+    left: 7px;
+    right: auto;
+    top: 10px;
+    width: 2px;
+  }
+  .timeline li {
+    display: grid;
+    gap: 0 14px;
+    grid-template-columns: 16px minmax(0, 1fr);
+    padding: 0;
+    text-align: left;
+  }
+  .timeline-dot { grid-row: 1 / 3; margin: 3px 0 0; }
+  .timeline-date { margin-bottom: 4px; }
+}
+
+/* Reader count, rendered from _data/analytics.json at build time. */
+.post-reads {
+  align-items: center;
+  color: var(--text-muted);
+  display: inline-flex;
+  font-size: 13.5px;
+  gap: 6px;
+}
+
+.post-card .post-reads {
+  margin-top: 10px;
+}
+
+.post-reads i {
+  font-size: 12px;
+  opacity: 0.8;
+}
