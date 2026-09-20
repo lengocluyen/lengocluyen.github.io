@@ -22,6 +22,22 @@
   --chip-journal-fg: #235c4c;
   --chip-conf-bg:   #f4ebe3;
   --chip-conf-fg:   #7a4726;
+  /* Footer is dark in both themes by design; these let it follow the
+     theme instead of being frozen. --footer-dim replaces #546e7a,
+     which scored 2.86:1 on the footer background. */
+  --footer-bg:      #1a2535;
+  --footer-heading: #ffffff;
+  --footer-text:    #90a4ae;
+  --footer-muted:   #78909c;
+  --footer-dim:     #8296a5;
+  --footer-rule:    rgba(255, 255, 255, 0.08);
+  --footer-chip:    rgba(255, 255, 255, 0.07);
+  /* Text placed ON a --primary fill. --primary is dark in light mode
+     and light in dark mode, so this has to flip with it. */
+  --on-primary:     #ffffff;
+  /* Overlay for a chip sitting on a --primary fill: lighten the dark
+     fill, darken the light one. */
+  --on-primary-veil: rgba(255, 255, 255, 0.16);
   --border-radius-sm: 4px;
   --border-radius:    8px;
   --border-radius-lg: 14px;
@@ -1316,8 +1332,8 @@ a.link-block:focus i {
    v1.1 — Modern dark footer
    ============================================= */
 .footer-v11 {
-  background: #1a2535;
-  color: #b0bec5;
+  background: var(--footer-bg);
+  color: var(--footer-text);
   padding: 48px 0 0;
   margin-top: 40px;
   font-size: 15px;
@@ -1326,26 +1342,26 @@ a.link-block:focus i {
 .footer-v11 .footer-brand {
   font-size: 18px;
   font-weight: 700;
-  color: #fff;
+  color: var(--footer-heading);
   margin-bottom: 4px;
 }
 
 .footer-v11 .footer-brand-vi {
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--footer-text);
   margin-bottom: 8px;
 }
 
 .footer-v11 .footer-tagline {
   font-size: 13px;
-  color: #78909c;
+  color: var(--footer-muted);
   margin-bottom: 20px;
   line-height: 1.6;
 }
 
 .footer-v11 h6 {
-  color: #fff;
+  color: var(--footer-heading);
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0;
@@ -1354,7 +1370,7 @@ a.link-block:focus i {
 }
 
 .footer-v11 a {
-  color: #90a4ae;
+  color: var(--footer-text);
   text-decoration: none;
   transition: color 0.2s ease;
   display: block;
@@ -1362,7 +1378,7 @@ a.link-block:focus i {
 }
 
 .footer-v11 a:hover {
-  color: #fff;
+  color: var(--footer-heading);
 }
 
 .footer-v11 .footer-social {
@@ -1378,8 +1394,8 @@ a.link-block:focus i {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.07);
-  color: #90a4ae;
+  background: var(--footer-chip);
+  color: var(--footer-text);
   font-size: 16px;
   margin-bottom: 0;
   transition: background 0.2s ease, color 0.2s ease;
@@ -1387,15 +1403,15 @@ a.link-block:focus i {
 
 .footer-v11 .footer-social a:hover {
   background: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
 }
 
 .footer-v11 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid var(--footer-rule);
   margin-top: 32px;
   padding: 16px 0;
   font-size: 13px;
-  color: #546e7a;
+  color: var(--footer-dim);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1412,14 +1428,14 @@ a.link-block:focus i {
 .footer-v11 .footer-theme-toggle {
   width: 32px;
   height: 32px;
-  border-color: rgba(255,255,255,0.18);
-  color: #90a4ae;
+  border-color: var(--footer-rule);
+  color: var(--footer-text);
 }
 
 .footer-v11 .footer-theme-toggle:hover {
-  background: rgba(255,255,255,0.08);
-  color: #fff;
-  border-color: rgba(255,255,255,0.36);
+  background: var(--footer-chip);
+  color: var(--footer-heading);
+  border-color: var(--footer-text);
 }
 
 .footer-cols {
@@ -1477,11 +1493,33 @@ a.link-block:focus i {
 /* =============================================
    v1.2 - Readability, homepage, and responsive polish
    ============================================= */
+/* Bootstrap 3 predates :focus-visible, so its `a:focus` /`.btn:focus`
+   rule rings every MOUSE click with -webkit-focus-ring-color. Cancel it
+   for pointer input only. Written as :not(:focus-visible) on purpose:
+   a browser without :focus-visible drops the whole rule and keeps its
+   native ring, rather than losing the indicator altogether. */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+.btn:focus:not(:focus-visible),
+label:focus:not(:focus-visible),
+.navbar-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Keyboard focus. --primary clears WCAG 2.2's 3:1 for focus indicators
+   in both themes (6.95:1 light, 8.42:1 dark); the previous #d79235
+   managed only 2.45:1. Outline follows each element's own radius, so
+   pills and cards stay hugged. */
 a:focus-visible,
 button:focus-visible,
-label:focus-visible {
-  outline: 3px solid #d79235;
-  outline-offset: 3px;
+.btn:focus-visible,
+label:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .section-title {
@@ -2375,7 +2413,7 @@ h3.section-header-title {
 
 .page-subnav a.is-current {
   background: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
 }
 
 /* --- Filter bar ----------------------------------------------- */
@@ -2416,7 +2454,7 @@ h3.section-header-title {
 .filter-pill.is-active {
   background: var(--primary);
   border-color: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
 }
 
 .filter-count {
@@ -2429,8 +2467,8 @@ h3.section-header-title {
 }
 
 .filter-pill.is-active .filter-count {
-  background: rgba(255, 255, 255, 0.24);
-  color: #fff;
+  background: var(--on-primary-veil);
+  color: var(--on-primary);
 }
 
 .filter-summary {
@@ -2800,6 +2838,17 @@ html.dark-mode {
   --chip-journal-fg: #7fd4bd;
   --chip-conf-bg:  #33241a;
   --chip-conf-fg:  #e0a97a;
+  /* Darker than the page (#0f1722) so the footer grounds the layout
+     instead of floating lighter than the content above it. */
+  --footer-bg:      #0a111b;
+  --footer-heading: #eaf2f8;
+  --footer-text:    #9fb3c8;
+  --footer-muted:   #8ba8c0;
+  --footer-dim:     #8296a5;
+  --footer-rule:    rgba(255, 255, 255, 0.10);
+  --footer-chip:    rgba(255, 255, 255, 0.06);
+  --on-primary:     #0f1722;
+  --on-primary-veil: rgba(0, 0, 0, 0.20);
   --shadow-sm:     0 2px 6px rgba(0,0,0,0.4);
   --shadow:        0 4px 14px rgba(0,0,0,0.5);
   --shadow-lg:     0 8px 28px rgba(0,0,0,0.6);
@@ -2837,6 +2886,22 @@ html.dark-mode .panel-default h5 a                       { color: var(--primary)
 /* Links */
 html.dark-mode .container a                               { color: var(--primary); }
 html.dark-mode .container a:hover                         { color: var(--primary-light); }
+
+/* The footer wraps its content in .container, so the rule above used to
+   leak in and recolour footer links to --primary in dark mode only —
+   the footer's own palette stayed frozen. Same specificity, declared
+   later, so the footer keeps its own tokens in both themes. */
+html.dark-mode .footer-v11 a                              { color: var(--footer-text); }
+html.dark-mode .footer-v11 a:hover                        { color: var(--footer-heading); }
+
+/* Same leak, same cause: the in-page subnav is a set of <a> inside
+   .container, so the rule above repainted them --primary — including
+   the current one, whose fill is ALSO --primary, making its label
+   invisible in dark mode. */
+html.dark-mode .page-subnav a                             { color: var(--text-dark); }
+html.dark-mode .page-subnav a:hover,
+html.dark-mode .page-subnav a:focus                       { color: var(--primary); }
+html.dark-mode .page-subnav a.is-current                  { color: var(--on-primary); }
 
 /* Hero */
 html.dark-mode .hero-copy h1                              { color: var(--text-dark); }
