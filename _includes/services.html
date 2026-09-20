@@ -194,27 +194,25 @@
           {%- endfor -%}
         {%- endfor -%}
 
-        <div class="year-group" data-year="{{ y }}">
-          <div class="year-rail">
+        <div class="entry-list" data-year="{{ y }}">
+          <div class="year-head">
             <b>{{ y }}</b>
             <span class="year-tally" data-total="{{ year_total }}">{{ year_total }} round{% if year_total != 1 %}s{% endif %}</span>
           </div>
-          <div class="entry-list">
-            {%- for r in reviews -%}
-              {%- assign n = 0 -%}
-              {%- for ry in r.reviews -%}
-                {%- if ry == y_num -%}{%- assign n = n | plus: 1 -%}{%- endif -%}
-              {%- endfor -%}
-              {%- if n > 0 -%}
-                <div class="entry-row" data-kind="{{ r.kind }}" data-rounds="{{ n }}">
-                  <span class="entry-kind entry-kind--{{ r.kind }}">{% if r.kind == "journal" %}Journal{% else %}Conf.{% endif %}</span>
-                  <a class="entry-title" href="{{ r.url }}"{% if r.short != r.venue %} title="{{ r.venue }}"{% endif %}>{{ r.short }}</a>
-                  {%- if n > 1 %}<span class="entry-repeat" title="{{ n }} review rounds in {{ y }}">&times;{{ n }}</span>{% endif -%}
-                  <span class="entry-meta">{{ r.detail }}</span>
-                </div>
-              {%- endif -%}
+          {%- for r in reviews -%}
+            {%- assign n = 0 -%}
+            {%- for ry in r.reviews -%}
+              {%- if ry == y_num -%}{%- assign n = n | plus: 1 -%}{%- endif -%}
             {%- endfor -%}
-          </div>
+            {%- if n > 0 -%}
+              <div class="entry-row" data-kind="{{ r.kind }}" data-rounds="{{ n }}">
+                <span class="entry-kind entry-kind--{{ r.kind }}">{% if r.kind == "journal" %}Journal{% else %}Conf.{% endif %}</span>
+                <a class="entry-title" href="{{ r.url }}"{% if r.short != r.venue %} title="{{ r.venue }}"{% endif %}>{{ r.short }}</a>
+                {%- if n > 1 %}<span class="entry-repeat" title="{{ n }} review rounds in {{ y }}">&times;{{ n }}</span>{% endif -%}
+                <span class="entry-meta">{{ r.detail }}</span>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
         </div>
       {%- endfor -%}
     </div>

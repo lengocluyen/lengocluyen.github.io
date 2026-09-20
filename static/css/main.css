@@ -585,28 +585,6 @@ input:checked + .slide-container .nav label { display: block; }
     padding: 14px 16px;
   }
   
-  .supervision-entry p {
-    font-size: 18px;
-    line-height: 1.6;
-  }
-  
-  .supervision-topic {
-    padding-top: 0;
-    margin-top: 0;
-  }
-  .supervision-topic em {
-    color: #333;
-  }
-  
-  .supervision-students a {
-    color: #01579B;
-    text-decoration: none;
-  }
-  
-  .supervision-students a:hover {
-    text-decoration: underline;
-  }
-  
   hr {
     border-top: 1px solid #ccc;
     margin: 20px 0;
@@ -704,24 +682,6 @@ input:checked + .slide-container .nav label { display: block; }
   .email-icon:hover {
     color: #01579B;
   }
-
-  .supervision-topic {
-    display: grid;
-    grid-template-columns: 84px minmax(0, 1fr);
-    column-gap: 12px;
-    align-items: baseline;
-    color: #4d6375;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 5px;
-  }
-  @media (max-width: 768px) {  }
-
-  @media (max-width: 576px) {
-    .supervision-topic {
-      grid-template-columns: 1fr;
-      row-gap: 2px;
-    }  }
 
   .awards-grid {
     display: grid;
@@ -1528,7 +1488,10 @@ label:focus-visible {
   display: block;
   width: max-content;
   max-width: 100%;
-  margin: 0 auto 40px;
+  /* The sticky navbar only contributes Bootstrap's 20px bottom margin,
+     which left the page title sitting right under it. 30px here matches
+     the breathing room .home-page gives itself, so every page agrees. */
+  margin: 30px auto 40px;
 }
 
 .section-header {
@@ -2477,40 +2440,40 @@ h3.section-header-title {
 }
 
 /* --- Year-railed entry list ----------------------------------- */
-.year-group {
-  align-items: start;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 84px minmax(0, 1fr);
-  margin: 0 0 18px;
+.entry-list {
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  margin: 0 0 16px;
+  overflow: hidden;
 }
 
-.year-group[hidden] {
+.entry-list[hidden] {
   display: none;
 }
 
-.year-rail {
-  padding-top: 13px;
-  text-align: right;
+/* The year belongs inside the card, not floating on the page
+   background beside it — every other block on the page is boxed. */
+.year-head {
+  align-items: baseline;
+  background: var(--surface-soft);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  gap: 10px;
+  padding: 9px 18px;
 }
 
-.year-rail b {
+.year-head b {
   color: var(--primary);
-  display: block;
   font-size: 15px;
   font-weight: 700;
 }
 
 .year-tally {
   color: var(--text-muted);
-  display: block;
-  font-size: 12.5px;
-}
-
-.entry-list {
-  background: var(--bg-white);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--border-radius);
+  font-size: 13px;
+  margin-left: auto;
 }
 
 .entry-row {
@@ -2710,8 +2673,10 @@ h3.section-header-title {
   text-transform: uppercase;
 }
 
+/* Never --primary here: the card title below is a link, which already
+   owns that colour, so a primary eyebrow reads as part of the title. */
 .card-eyebrow--primary {
-  color: var(--primary);
+  color: var(--chip-conf-fg);
 }
 
 .card-eyebrow--secondary {
@@ -2758,19 +2723,6 @@ h3.section-header-title {
     grid-template-columns: 1fr;
   }
 
-  .year-group {
-    gap: 8px;
-    grid-template-columns: 1fr;
-  }
-
-  .year-rail {
-    align-items: baseline;
-    display: flex;
-    gap: 8px;
-    padding-top: 0;
-    text-align: left;
-  }
-
   .entry-row {
     align-items: flex-start;
     flex-wrap: wrap;
@@ -2805,6 +2757,10 @@ h3.section-header-title {
 }
 
 @media (max-width: 576px) {
+  .section-title {
+    margin-top: 20px;
+  }
+
   .stat-row {
     gap: 10px;
   }
@@ -2933,8 +2889,9 @@ html.dark-mode .teaching-card p                          { color: var(--text-mut
 html.dark-mode .education-card em,
 html.dark-mode .edu-note                                 { color: var(--text-muted); }
 html.dark-mode .edu-meta                                 { color: var(--text-muted); }html.dark-mode .experience-card p                        { color: var(--text-muted); }
-html.dark-mode .supervision-entry p                      { color: var(--text-muted); }
-html.dark-mode .supervision-topic                        { color: var(--text-muted); }html.dark-mode .email-icon                               { color: var(--primary); }
+/* .supervision-* and the v1.4 components resolve through the custom
+   properties, which already flip, so they need no patch here. */
+html.dark-mode .email-icon                               { color: var(--primary); }
 html.dark-mode .email-icon:hover                         { color: var(--primary-light); }
 html.dark-mode .awards-grid p                            { color: var(--text-muted); }
 html.dark-mode .awards-grid h1                           { color: var(--primary); }

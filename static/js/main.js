@@ -104,7 +104,7 @@ $(document).ready(function () {
     function applyReviewFilter(kind) {
       var shownRounds = 0;
 
-      $reviewList.find('.year-group').each(function () {
+      $reviewList.find('.entry-list').each(function () {
         var $group = $(this);
         var groupRounds = 0;
         var $visible = $();
@@ -140,7 +140,7 @@ $(document).ready(function () {
       applyReviewFilter($pill.attr('data-filter'));
     });
 
-    $reviewList.find('.year-group').each(function () {
+    $reviewList.find('.entry-list').each(function () {
       $(this).find('.entry-row').first().addClass('is-first');
     });
     $filterBar.prop('hidden', false);
