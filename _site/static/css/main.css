@@ -14,6 +14,14 @@
   --bg-white:       #fbfcfe;
   --surface-soft:   #eef4f8;
   --border-soft:    #d9e4ee;
+  /* v1.4 — tinted surfaces for typed chips, stat tiles and list dividers */
+  --primary-soft:   #e6f0f8;
+  --primary-soft-border: #cfe1f0;
+  --row-divider:    #edf2f7;
+  --chip-journal-bg: #e3efea;
+  --chip-journal-fg: #235c4c;
+  --chip-conf-bg:   #f4ebe3;
+  --chip-conf-fg:   #7a4726;
   --border-radius-sm: 4px;
   --border-radius:    8px;
   --border-radius-lg: 14px;
@@ -258,7 +266,6 @@ div.footer{
   
 }*/
 
-
 .carousel {
   margin-left: 0;
   margin-right: 0;
@@ -444,7 +451,6 @@ input#img-6:checked ~ .carousel-dots label#img-dot-6 {
 opacity: 1;
 }
 
-
 input:checked + .slide-container .nav label { display: block; }
 
 .navbar-default .navbar-nav > li > a,
@@ -470,7 +476,6 @@ input:checked + .slide-container .nav label { display: block; }
     font-size: 14px; /* match icon size to text */
   }
 
-
     .navbar-nav > li.active > a {
     background-color: #01579B;
     color: #2c3e50 !important;
@@ -489,32 +494,7 @@ input:checked + .slide-container .nav label { display: block; }
     margin-top: 30px;
     margin-bottom: 15px;
     color: #2c3e50;
-  }
-  
-  .card-supervision {
-    background: #f9f9f9;
-    border-left: 4px solid #007bff;
-    padding: 15px 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
-  }
-  
-  .card-supervision h5 {
-    margin-bottom: 8px;
-    color: #007bff;
-    font-weight: 600;
-  }
-  
-  .card-supervision ul {
-    padding-left: 20px;
-    margin-bottom: 0;
-  }
-  
-  .card-supervision li {
-    margin-bottom: 6px;
-  }
-  
+  }  
   .list-decorated li {
     margin-bottom: 6px;
     padding-left: 1rem;
@@ -605,83 +585,11 @@ input:checked + .slide-container .nav label { display: block; }
     padding: 14px 16px;
   }
   
-  .supervision-entry p {
-    font-size: 18px;
-    line-height: 1.6;
-  }
-  
-  .supervision-topic {
-    padding-top: 0;
-    margin-top: 0;
-  }
-  .supervision-topic em {
-    color: #333;
-  }
-  
-  .supervision-students a {
-    color: #01579B;
-    text-decoration: none;
-  }
-  
-  .supervision-students a:hover {
-    text-decoration: underline;
-  }
-  
   hr {
     border-top: 1px solid #ccc;
     margin: 20px 0;
-  }
-  
-  .service-subtitle {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 8px;
-    text-align: left;
-  }
-  
-  .service-subtitle {
-    position: relative;
-    font-size: 18px;
-    font-weight: 600;
-    color: #2c3e50;
-    padding-left: 28px;
-    margin-top: 30px;
-    margin-bottom: 12px;
-  }
-  
-  .service-subtitle i {
-    position: absolute;
-    left: 0;
-    top: 1px;
-    font-size: 16px;
-    color: #01579B;
-  }
-  
-  @media (max-width: 576px) {
-    .service-subtitle {
-      font-size: 16px;
-      padding-left: 24px;
-    }
-  
-    .service-subtitle i {
-      font-size: 14px;
-    }
-  }
-
-  .service-list {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .service-list li {
-    font-size: 18px;
-    line-height: 30px;
-    margin-bottom: 6px;
-    text-align: justify;
-  }
-
+  }  
+  @media (max-width: 576px) {  }
   .teaching-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -742,7 +650,6 @@ input:checked + .slide-container .nav label { display: block; }
     }
   }
 
-
   .section-title {
     font-size: 22px;
     font-weight: 550;
@@ -766,45 +673,6 @@ input:checked + .slide-container .nav label { display: block; }
     margin: 5px auto 0;
     border-radius: 4px;
   }
-
-  .supervision-meta {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
-    align-items: flex-start;
-    gap: 4px 16px;
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 5px;
-  }
-
-  .meta-left {
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-  
-  .meta-left i {
-    margin-right: 8px;
-    color: #01579B;
-  }
-  
-  .meta-right {
-    font-style: italic;
-    color: #555;
-    max-width: 100%;
-    min-width: 0;
-    overflow-wrap: anywhere;
-    justify-self: end;
-    text-align: right;
-    white-space: normal;
-  }
-
-  .meta-right small {
-    display: inline-block;
-    max-width: 100%;
-    overflow-wrap: anywhere;
-    white-space: normal;
-  }
-
   .email-icon {
     margin-left: 8px;
     color: #01579B;
@@ -813,87 +681,6 @@ input:checked + .slide-container .nav label { display: block; }
   
   .email-icon:hover {
     color: #01579B;
-  }
-
-  .supervision-topic {
-    display: grid;
-    grid-template-columns: 84px minmax(0, 1fr);
-    column-gap: 12px;
-    align-items: baseline;
-    color: #4d6375;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 5px;
-  }
-  
-  .supervision-label {
-    color: #20394d;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .supervision-label::after {
-    content: ":";
-  }
-
-  .supervision-value {
-    color: #344b5e;
-    min-width: 0;
-  }
-
-  .supervision-value em,
-  .supervision-value .student-name {
-    color: #20394d;
-    font-style: normal;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .supervision-value a.student-name:hover,
-  .supervision-value a.student-name:focus {
-    color: var(--primary);
-    text-decoration: underline;
-  }
-
-  @media (max-width: 768px) {
-    .supervision-meta {
-      align-items: flex-start;
-      grid-template-columns: 1fr;
-      gap: 0;
-      line-height: 1.35;
-    }
-
-    .meta-left,
-    .meta-right {
-      display: block;
-      flex: none;
-      flex-basis: auto;
-      line-height: 1.35;
-      min-height: 0;
-      width: 100%;
-    }
-
-    .meta-right {
-      justify-self: start;
-      text-align: left;
-    }
-
-    .meta-right small {
-      display: block;
-      margin-top: 2px;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .supervision-topic {
-      grid-template-columns: 1fr;
-      row-gap: 2px;
-    }
-
-    .supervision-label,
-    .supervision-value {
-      grid-column: 1;
-    }
   }
 
   .awards-grid {
@@ -1003,8 +790,6 @@ input:checked + .slide-container .nav label { display: block; }
     background-color: #bbffc3;
   }
 
-
-
 .skills-grid {
     margin-top:20px;
     display: grid;
@@ -1043,7 +828,6 @@ input:checked + .slide-container .nav label { display: block; }
   .skill-tag:hover {
     background-color: #d0e6ff;
   }
-
 
   .education-card {
     background: #f9f9f9;
@@ -1159,7 +943,6 @@ input:checked + .slide-container .nav label { display: block; }
     margin: 1px 2px;
     border-radius: 2px;
   }
-
 
   .profile-left {
     background: #fff;
@@ -1544,6 +1327,13 @@ a.link-block:focus i {
   font-size: 18px;
   font-weight: 700;
   color: #fff;
+  margin-bottom: 4px;
+}
+
+.footer-v11 .footer-brand-vi {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 8px;
 }
 
@@ -1698,7 +1488,10 @@ label:focus-visible {
   display: block;
   width: max-content;
   max-width: 100%;
-  margin: 0 auto 40px;
+  /* The sticky navbar only contributes Bootstrap's 20px bottom margin,
+     which left the page title sitting right under it. 30px here matches
+     the breathing room .home-page gives itself, so every page agrees. */
+  margin: 30px auto 40px;
 }
 
 .section-header {
@@ -1778,8 +1571,6 @@ label:focus-visible {
   font-weight: 700;
   padding: 5px 8px;
 }
-
-.card-supervision,
 .education-card,
 .experience-card,
 .skill-block,
@@ -1789,15 +1580,9 @@ label:focus-visible {
   border: 1px solid var(--border-soft);
   box-shadow: var(--shadow-sm);
 }
-
-.card-supervision {
-  border-left: 1px solid var(--border-soft);
-}
-
 .div-justify,
 .div-justify-pub,
 .publication-entry,
-.service-list li,
 .experience-card p {
   text-align: left;
 }
@@ -2010,7 +1795,7 @@ label:focus-visible {
 
 .home-highlights {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin: 28px 0 46px;
 }
@@ -2421,31 +2206,29 @@ label:focus-visible {
    v1.4 - Cross-page typography scale
    ============================================= */
 #publications .panel-body,
-#services .panel-body,
 #projects .panel-body {
   font-size: var(--font-size-content);
   line-height: var(--line-height-content);
 }
 
 #publications .div-justify-pub,
-#services .div-justify-pub,
 #projects .div-justify-pub,
-#services .service-list li,
-#services .supervision-entry p,
 #services .supervision-topic {
   font-size: var(--font-size-content);
   line-height: var(--line-height-content);
 }
 
-#publications .div-justify-pub::before {
-  font-size: var(--font-size-content);
-}
-
-#services .supervision-meta {
-  font-size: var(--font-size-compact);
+/* The role sentence sits a step below the topic it explains, so it
+   takes the card scale rather than the content scale above. */
+#services .supervision-note,
+#services .card-note {
+  font-size: var(--font-size-card);
   line-height: var(--line-height-card);
 }
 
+#publications .div-justify-pub::before {
+  font-size: var(--font-size-content);
+}
 #services .teaching-card h3,
 #projects .collaboration-card h3,
 #projects .project-preview-list article h3 {
@@ -2502,6 +2285,497 @@ label:focus-visible {
 }
 
 /* =============================================
+   v1.4 — Shared page components
+
+   Deliberately generic names: publications and
+   projects can adopt these without a rename.
+   Everything below resolves through the custom
+   properties above, so dark mode needs no patch.
+   ============================================= */
+
+/* Let .section-header carry a real heading element without
+   changing how it looks. Other pages still pass a <span>. */
+h2.section-header-title,
+h3.section-header-title {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* --- Summary tiles ------------------------------------------- */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 28px;
+}
+
+.stat-tile {
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px;
+}
+
+.stat-value {
+  color: var(--primary);
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  color: var(--text-dark);
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 7px;
+}
+
+.stat-note {
+  color: var(--text-muted);
+  display: block;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+/* --- In-page section nav -------------------------------------- */
+.page-subnav {
+  align-items: center;
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 0 28px;
+  padding: 5px;
+}
+
+.page-subnav a {
+  border-radius: 999px;
+  color: var(--text-dark);
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 11px 20px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.page-subnav a:hover,
+.page-subnav a:focus {
+  background: var(--surface-soft);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.page-subnav a.is-current {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* --- Filter bar ----------------------------------------------- */
+.filter-bar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+/* An author `display` beats the UA rule for [hidden], so the
+   progressive-enhancement fallback needs saying explicitly. */
+.filter-bar[hidden] {
+  display: none;
+}
+
+.filter-pill {
+  align-items: center;
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 14.5px;
+  font-weight: 600;
+  gap: 8px;
+  padding: 10px 16px;
+  transition: var(--transition);
+}
+
+.filter-pill:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.filter-pill.is-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.filter-count {
+  background: var(--surface-soft);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+}
+
+.filter-pill.is-active .filter-count {
+  background: rgba(255, 255, 255, 0.24);
+  color: #fff;
+}
+
+.filter-summary {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-left: auto;
+}
+
+/* --- Year-railed entry list ----------------------------------- */
+.entry-list {
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  margin: 0 0 16px;
+  overflow: hidden;
+}
+
+.entry-list[hidden] {
+  display: none;
+}
+
+/* The year belongs inside the card, not floating on the page
+   background beside it — every other block on the page is boxed. */
+.year-head {
+  align-items: baseline;
+  background: var(--surface-soft);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  gap: 10px;
+  padding: 9px 18px;
+}
+
+.year-head b {
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.year-tally {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-left: auto;
+}
+
+.entry-row {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  padding: 12px 18px;
+}
+
+.entry-row[hidden] {
+  display: none;
+}
+
+.entry-row + .entry-row {
+  border-top: 1px solid var(--row-divider);
+}
+
+/* JS marks the first row still visible after filtering, so the
+   divider never lands at the top of the card. */
+.entry-row.is-first {
+  border-top: 0;
+}
+
+.entry-kind {
+  border-radius: var(--border-radius-sm);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  width: 86px;
+}
+
+.entry-kind--journal {
+  background: var(--chip-journal-bg);
+  color: var(--chip-journal-fg);
+}
+
+.entry-kind--conference {
+  background: var(--chip-conf-bg);
+  color: var(--chip-conf-fg);
+}
+
+.entry-title {
+  font-size: 15.5px;
+  font-weight: 600;
+}
+
+.entry-repeat {
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-soft-border);
+  border-radius: var(--border-radius-sm);
+  color: var(--primary);
+  flex-shrink: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+}
+
+.entry-meta {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  font-size: 14px;
+  margin-left: auto;
+  text-align: right;
+}
+
+/* --- Services: supervision ------------------------------------ */
+.supervision-entry {
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 56px minmax(0, 1fr);
+  margin: 0 0 16px;
+  padding: 20px 22px;
+  text-align: left;
+}
+
+.supervision-mono {
+  align-items: center;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-soft-border);
+  border-radius: var(--border-radius);
+  color: var(--primary);
+  display: flex;
+  font-size: 17px;
+  font-weight: 700;
+  height: 56px;
+  justify-content: center;
+  width: 56px;
+}
+
+.supervision-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.supervision-head {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.supervision-name {
+  color: var(--text-dark);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.supervision-when {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.supervision-role {
+  background: var(--chip-journal-bg);
+  border-radius: var(--border-radius-sm);
+  color: var(--chip-journal-fg);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-left: auto;
+  padding: 5px 9px;
+  text-transform: uppercase;
+}
+
+.supervision-entry .supervision-topic {
+  color: var(--text-dark);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.supervision-entry .supervision-note {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.62;
+  margin: 0;
+}
+
+.supervision-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+/* Reuse the site-wide .tag pill, one step down in scale. */
+.supervision-tags .tag,
+.supervision-card .tag {
+  font-size: 13px;
+  margin: 0;
+  padding: 4px 9px;
+}
+
+.supervision-grid,
+.committee-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 0 20px;
+}
+
+.supervision-card,
+.committee-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px;
+  text-align: left;
+}
+
+.supervision-card-head {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.card-eyebrow {
+  color: var(--warm);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Never --primary here: the card title below is a link, which already
+   owns that colour, so a primary eyebrow reads as part of the title. */
+.card-eyebrow--primary {
+  color: var(--chip-conf-fg);
+}
+
+.card-eyebrow--secondary {
+  color: var(--chip-journal-fg);
+}
+
+.card-when {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-left: auto;
+}
+
+.supervision-card h3,
+.committee-card h3 {
+  color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.42;
+  margin: 0;
+}
+
+.committee-card a {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.card-note {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+/* --- Responsive ------------------------------------------------ */
+@media (max-width: 991px) {
+  .stat-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .supervision-grid,
+  .committee-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .entry-title {
+    flex-basis: 100%;
+    order: -1;
+  }
+
+  .entry-meta {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .supervision-entry {
+    gap: 14px;
+    grid-template-columns: 44px minmax(0, 1fr);
+    padding: 16px;
+  }
+
+  .supervision-mono {
+    font-size: 14px;
+    height: 44px;
+    width: 44px;
+  }
+
+  .supervision-role {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    margin-top: 20px;
+  }
+
+  .stat-row {
+    gap: 10px;
+  }
+
+  .stat-value {
+    font-size: 26px;
+  }
+
+  .page-subnav a {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}
+
+/* =============================================
    v1.3 — Dark mode (JS class: html.dark-mode)
    System preference detected in anti-FOUC
    inline script; manual toggle via JS.
@@ -2519,6 +2793,13 @@ html.dark-mode {
   --bg-white:      #19243a;
   --surface-soft:  #1e2b40;
   --border-soft:   #2a3b52;
+  --primary-soft:  #1a2d3e;
+  --primary-soft-border: #2a3b52;
+  --row-divider:   #24334a;
+  --chip-journal-bg: #12302a;
+  --chip-journal-fg: #7fd4bd;
+  --chip-conf-bg:  #33241a;
+  --chip-conf-fg:  #e0a97a;
   --shadow-sm:     0 2px 6px rgba(0,0,0,0.4);
   --shadow:        0 4px 14px rgba(0,0,0,0.5);
   --shadow-lg:     0 8px 28px rgba(0,0,0,0.6);
@@ -2607,17 +2888,9 @@ html.dark-mode .teaching-card h3                         { color: var(--text-dar
 html.dark-mode .teaching-card p                          { color: var(--text-muted); }
 html.dark-mode .education-card em,
 html.dark-mode .edu-note                                 { color: var(--text-muted); }
-html.dark-mode .edu-meta                                 { color: var(--text-muted); }
-html.dark-mode .meta-right                               { color: var(--text-muted); }
-html.dark-mode .experience-card p                        { color: var(--text-muted); }
-html.dark-mode .supervision-entry p                      { color: var(--text-muted); }
-html.dark-mode .supervision-topic                        { color: var(--text-muted); }
-html.dark-mode .supervision-label                        { color: var(--text-dark); }
-html.dark-mode .supervision-value                        { color: #b0c4d8; }
-html.dark-mode .supervision-value em,
-html.dark-mode .supervision-value .student-name          { color: var(--text-dark); }
-html.dark-mode .supervision-value a.student-name:hover,
-html.dark-mode .supervision-value a.student-name:focus   { color: var(--primary); }
+html.dark-mode .edu-meta                                 { color: var(--text-muted); }html.dark-mode .experience-card p                        { color: var(--text-muted); }
+/* .supervision-* and the v1.4 components resolve through the custom
+   properties, which already flip, so they need no patch here. */
 html.dark-mode .email-icon                               { color: var(--primary); }
 html.dark-mode .email-icon:hover                         { color: var(--primary-light); }
 html.dark-mode .awards-grid p                            { color: var(--text-muted); }
@@ -2626,8 +2899,6 @@ html.dark-mode .awards-grid h1                           { color: var(--primary)
 /* Section headers */
 html.dark-mode .section-header                           { background-color: var(--surface-soft); border-color: var(--border-soft); color: var(--text-dark); }
 html.dark-mode .section-subtitle                         { color: var(--text-dark); }
-html.dark-mode .service-subtitle                         { color: var(--text-dark); }
-
 /* Badges */
 html.dark-mode .badge-fluent                             { background: #1a2d3e; color: var(--primary); }
 html.dark-mode .badge-native                             { background: #0f2a1e; color: #4caf50; }
@@ -2636,7 +2907,8 @@ html.dark-mode .badge-primary                            { background-color: var
 /* Tags */
 html.dark-mode .tag,
 html.dark-mode .skill-tag                                { background: #1a2d3e; color: var(--primary); }
-html.dark-mode .interest-tags .tag:hover                 { background: #1f3550; }
+html.dark-mode .tag:hover,
+html.dark-mode .skill-tag:hover                          { background: #1f3550; }
 
 /* CV/resume */
 html.dark-mode .profile-left                             { background: var(--bg-white); box-shadow: var(--shadow-sm); }

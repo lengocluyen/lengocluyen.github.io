@@ -90,6 +90,89 @@ $(document).ready(function () {
     }
   });
 
+  /* ── Peer-review filter (services page) ──
+     Progressive enhancement: the bar ships with [hidden] so a
+     no-JS visitor gets the full list and no dead controls. */
+  var $filterBar = $('#review-filter');
+
+  if ($filterBar.length && $('#review-list .entry-row').length) {
+    var $reviewList = $('#review-list');
+    var $summary = $('#review-summary');
+    var baseSummary = $summary.text();
+    var totalRounds = parseInt($filterBar.attr('data-total'), 10) || 0;
+
+    function applyReviewFilter(kind) {
+      var shownRounds = 0;
+
+      $reviewList.find('.entry-list').each(function () {
+        var $group = $(this);
+        var groupRounds = 0;
+        var $visible = $();
+
+        $group.find('.entry-row').each(function () {
+          var $row = $(this);
+          var match = kind === 'all' || $row.attr('data-kind') === kind;
+          $row.prop('hidden', !match).removeClass('is-first');
+          if (match) {
+            groupRounds += parseInt($row.attr('data-rounds'), 10) || 1;
+            $visible = $visible.add($row);
+          }
+        });
+
+        $visible.first().addClass('is-first');
+        shownRounds += groupRounds;
+
+        $group.find('.year-tally').text(groupRounds + (groupRounds === 1 ? ' round' : ' rounds'));
+        $group.prop('hidden', groupRounds === 0);
+      });
+
+      if (kind === 'all') {
+        $summary.text(baseSummary);
+      } else {
+        $summary.text('Showing ' + shownRounds + ' of ' + totalRounds + ' rounds');
+      }
+    }
+
+    $filterBar.on('click', '.filter-pill', function () {
+      var $pill = $(this);
+      $filterBar.find('.filter-pill').removeClass('is-active').attr('aria-pressed', 'false');
+      $pill.addClass('is-active').attr('aria-pressed', 'true');
+      applyReviewFilter($pill.attr('data-filter'));
+    });
+
+    $reviewList.find('.entry-list').each(function () {
+      $(this).find('.entry-row').first().addClass('is-first');
+    });
+    $filterBar.prop('hidden', false);
+  }
+
+  /* ── Scrollspy for the in-page section nav ── */
+  var $subnav = $('#service-subnav');
+
+  if ($subnav.length) {
+    var $subnavLinks = $subnav.find('a');
+    var sections = $subnavLinks.map(function () {
+      var $target = $(this.hash);
+      return $target.length ? { hash: this.hash, $el: $target } : null;
+    }).get();
+
+    var syncSubnav = function () {
+      var line = $(window).scrollTop() + 120;
+      var current = sections.length ? sections[0].hash : null;
+
+      sections.forEach(function (s) {
+        if (s.$el.offset().top <= line) current = s.hash;
+      });
+
+      $subnavLinks.removeClass('is-current').filter('[href="' + current + '"]').addClass('is-current');
+    };
+
+    if (sections.length) {
+      $(window).on('scroll.subnav resize.subnav', syncSubnav);
+      syncSubnav();
+    }
+  }
+
   /* ── Smooth scroll for anchor links ── */
   $('a.scroll, a[href^="#"]').not('[href="#"]').on('click', function (e) {
     var target = $(this.hash);

@@ -6,6 +6,21 @@ import crypto from 'node:crypto';
 const OWNER = 'lengocluyen';
 const REPO = 'lengocluyen.github.io';
 const PATH = 'analytics.json';
+const DEFAULT_FLUSH_VISITS = 100;
+
+function getPositiveInteger(value, fallback) {
+  const parsed = Number.parseInt(value, 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+const ANALYTICS_FLUSH_VISITS = getPositiveInteger(
+  process.env.ANALYTICS_FLUSH_VISITS,
+  DEFAULT_FLUSH_VISITS
+);
+// Reduces GitHub commit noise. Serverless cold starts can drop unflushed visits;
+// use durable storage if exact analytics become important.
+const pendingVisits = [];
+let analyticsQueue = Promise.resolve();
 
 function setCors(req, res) {
   const origin = req.headers.origin;
@@ -123,9 +138,11 @@ async function readAnalytics(token) {
   return { analytics: normalizeAnalytics(parsed), sha: body.sha, exists: true };
 }
 
-async function writeAnalytics(token, analytics, sha) {
+async function writeAnalytics(token, analytics, sha, visitCount = 0) {
   const payload = {
-    message: 'Update site analytics',
+    message: visitCount > 0
+      ? `Update site analytics (${visitCount} visits)`
+      : 'Update site analytics',
     content: Buffer.from(JSON.stringify(analytics, null, 2)).toString('base64'),
   };
   if (sha) payload.sha = sha;
@@ -198,7 +215,7 @@ function pruneAnalytics(analytics) {
 }
 
 function applyVisit(analytics, visit) {
-  const now = new Date();
+  const now = visit.timestamp ? new Date(visit.timestamp) : new Date();
   const dayKey = now.toISOString().slice(0, 10);
   const path = cleanPath(visit.path);
   const host = cleanHost(visit.host);
@@ -253,6 +270,45 @@ function applyVisit(analytics, visit) {
 
   analytics.updatedAt = now.toISOString();
   pruneAnalytics(analytics);
+}
+
+function cloneAnalytics(analytics) {
+  return normalizeAnalytics(JSON.parse(JSON.stringify(analytics || createEmptyAnalytics())));
+}
+
+function withPendingVisits(analytics) {
+  const merged = cloneAnalytics(analytics);
+  pendingVisits.forEach((visit) => applyVisit(merged, visit));
+  return merged;
+}
+
+async function flushPendingVisits(token) {
+  const visitsToFlush = pendingVisits.slice();
+  if (visitsToFlush.length === 0) {
+    return { flushed: false, flushedVisits: 0 };
+  }
+
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      const current = await readAnalytics(token);
+      const analytics = normalizeAnalytics(current.analytics);
+      visitsToFlush.forEach((visit) => applyVisit(analytics, visit));
+      await writeAnalytics(token, analytics, current.sha, visitsToFlush.length);
+      pendingVisits.splice(0, visitsToFlush.length);
+      return { flushed: true, flushedVisits: visitsToFlush.length };
+    } catch (error) {
+      if (error.status === 409 && attempt === 0) continue;
+      throw error;
+    }
+  }
+
+  return { flushed: false, flushedVisits: 0 };
+}
+
+function enqueueAnalyticsTask(task) {
+  const run = analyticsQueue.then(task, task);
+  analyticsQueue = run.catch(() => {});
+  return run;
 }
 
 function summarize(analytics, storage) {
@@ -331,21 +387,44 @@ async function recordVisit(req, res) {
     return res.status(204).end();
   }
 
-  for (let attempt = 0; attempt < 2; attempt += 1) {
-    try {
-      const current = await readAnalytics(token);
-      const host = cleanHost(new URL(origin).hostname);
-      applyVisit(current.analytics, { ...req.body, path, host });
-      await writeAnalytics(token, current.analytics, current.sha);
-      return res.status(200).json({ ok: true, stored: true });
-    } catch (error) {
-      if (error.status === 409 && attempt === 0) continue;
-      console.error(error);
-      return res.status(500).json({ error: error.message });
-    }
-  }
+  try {
+    const result = await enqueueAnalyticsTask(async () => {
+      const visit = {
+        path,
+        host: cleanHost(new URL(origin).hostname),
+        title: cleanText(req.body?.title, 120),
+        referrer: cleanText(req.body?.referrer, 180),
+        dailyUnique: Boolean(req.body?.dailyUnique),
+        pageDailyUnique: Boolean(req.body?.pageDailyUnique),
+        timestamp: new Date().toISOString(),
+      };
 
-  return res.status(500).json({ error: 'Analytics update failed' });
+      pendingVisits.push(visit);
+
+      if (pendingVisits.length >= ANALYTICS_FLUSH_VISITS) {
+        return flushPendingVisits(token);
+      }
+
+      return {
+        flushed: false,
+        flushedVisits: 0,
+        pendingVisits: pendingVisits.length,
+      };
+    });
+
+    return res.status(200).json({
+      ok: true,
+      accepted: true,
+      stored: Boolean(result.flushed),
+      buffered: !result.flushed,
+      flushedVisits: Number(result.flushedVisits || 0),
+      pendingVisits: pendingVisits.length,
+      flushThreshold: ANALYTICS_FLUSH_VISITS,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: error.message });
+  }
 }
 
 async function getAnalytics(req, res) {
@@ -354,10 +433,12 @@ async function getAnalytics(req, res) {
   const token = process.env.GITHUB_TOKEN;
   try {
     const current = await readAnalytics(token);
-    const summary = summarize(current.analytics, {
+    const summary = summarize(withPendingVisits(current.analytics), {
       configured: Boolean(token),
       exists: current.exists,
       path: PATH,
+      pendingVisits: pendingVisits.length,
+      flushThreshold: ANALYTICS_FLUSH_VISITS,
     });
     res.setHeader('Cache-Control', 'no-store, max-age=0');
     return res.status(200).json(summary);
