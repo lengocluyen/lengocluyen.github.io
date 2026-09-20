@@ -15,9 +15,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -60,23 +60,26 @@ jobs:
                  "#{projs["work"].length} detailed"
           '
 
+      # No --swap-urls here: internal links are built with `relative_url`
+      # against an empty baseurl, so they are already root-relative.
+      # (Careful if you ever add it — html-proofer splits the value on the
+      # FIRST colon, so "^https://host:" parses as pattern "^https" and
+      # rewrites every absolute URL on the site. Escape as "^https\://".)
       - name: Check internal links and markup
         run: |
           gem install html-proofer -v "~> 5.0" --no-document
           htmlproofer ./_site \
             --disable-external \
-            --ignore-status-codes "0" \
-            --no-enforce-https \
-            --swap-urls "^https://lengocluyen.github.io:"
+            --no-enforce-https
 
   external-links:
     # External URLs rot on their own schedule, so this is advisory:
     # it reports but never blocks a push.
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -92,5 +95,4 @@ jobs:
             --no-check-internal-hash \
             --ignore-status-codes "0,403,429,503" \
             --no-enforce-https \
-            --hydra '{"max_concurrency": 4}' \
-            --swap-urls "^https://lengocluyen.github.io:"
+            --hydra '{"max_concurrency": 4}'
