@@ -1215,52 +1215,6 @@ a.link-block:focus i {
 }
 
 /* =============================================
-   v1.1 — Homepage: Stats bar
-   ============================================= */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin: 28px 0 20px;
-}
-
-.stat-card {
-  background: var(--bg-light);
-  border-radius: var(--border-radius);
-  padding: 16px 28px;
-  text-align: center;
-  min-width: 120px;
-  flex: 1 1 120px;
-  max-width: 160px;
-  border-top: 3px solid var(--primary);
-  transition: var(--transition);
-  box-shadow: var(--shadow-sm);
-}
-
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-}
-
-.stat-number {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--primary);
-  line-height: 1.1;
-}
-
-.stat-label {
-  display: block;
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 4px;
-  font-weight: 500;
-  letter-spacing: 0;
-}
-
-/* =============================================
    v1.1 — Homepage: CTA Buttons
    ============================================= */
 .cta-buttons {
@@ -1322,9 +1276,6 @@ a.link-block:focus i {
   .btn-primary-custom,
   .btn-outline-custom {
     justify-content: center;
-  }
-  .stat-card {
-    max-width: 100%;
   }
 }
 
@@ -1831,9 +1782,11 @@ textarea:focus-visible,
   margin: 0;
 }
 
+/* auto-fit rather than a fixed 4, so adding or removing a highlight
+   reflows instead of leaving a lone tile on a second row. */
 .home-highlights {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(186px, 1fr));
   gap: 12px;
   margin: 28px 0 46px;
 }
@@ -2057,10 +2010,6 @@ textarea:focus-visible,
 .home-social {
   text-align: center;
   margin: 34px 0 10px;
-}
-
-.stat-card {
-  border-top: 1px solid var(--border-soft);
 }
 
 .btn-primary-custom,
@@ -2580,6 +2529,103 @@ h3.section-header-title {
   font-size: 14px;
   margin-left: auto;
   text-align: right;
+}
+
+/* Stacked variant: for entries that need more than one line (a
+   publication's authors, title and venue). Same card, same dividers. */
+.entry-row--stacked {
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.entry-index {
+  color: var(--primary);
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 28px;
+  padding-top: 3px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.entry-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.entry-body .entry-title {
+  font-size: 16px;
+  line-height: 1.42;
+}
+
+.entry-authors {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.entry-venue {
+  color: var(--text-dark);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.entry-venue .entry-year {
+  color: var(--text-muted);
+}
+
+/* Plain prose row, for project bullet points. */
+.entry-row--note {
+  align-items: flex-start;
+  gap: 11px;
+  color: var(--text-dark);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.entry-row--note::before {
+  content: "";
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  margin-top: 9px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.entry-repo {
+  align-items: center;
+  background: var(--surface-soft);
+  display: flex;
+  gap: 9px;
+  padding: 11px 18px;
+}
+
+.entry-repo a {
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.entry-repo i {
+  color: var(--text-muted);
+}
+
+/* Secondary links on an entry, e.g. a thesis's slides. */
+.entry-extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 2px 0 0;
+}
+
+.entry-extras a {
+  font-size: 13.5px;
+  font-weight: 600;
 }
 
 /* --- Services: supervision ------------------------------------ */

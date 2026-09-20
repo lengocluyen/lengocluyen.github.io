@@ -1,0 +1,99 @@
+# Projects.
+#
+# collaborations : the funded / partner project cards at the top
+# work           : per-project detail, one section each
+# The "N active lines" badge is derived from `collaborations`.
+
+collaborations:
+  - name: "ANR Vivocaz"
+    ref: "ANR-21-PRRD-0072-01 / Vivocaz"
+    summary: "Personalized recommender systems for the used-vehicle market, combining domain ontologies, knowledge graphs, deep learning, and user-facing interfaces."
+    tags: ["Recommender Systems", "Knowledge Graphs", "Mobility"]
+  - name: "FORTEIM"
+    ref: "France 2030 / CINav"
+    summary: "Competency modeling for maritime professions and ecological transition, with knowledge graph design, learning traces, pathway monitoring, and educational resource recommendation."
+    tags: ["Competency Modeling", "Learning Traces", "Skill Recommendation"]
+  - name: "Ikigai Games for Citizens"
+    ref: "Prometheus-X / Edge-Skills"
+    summary: "Personal competency graph architecture for exporting and importing competency maps to job-matching services, including LRS/PLRS and data-space connector integration."
+    tags: ["Competency Graphs", "Data Spaces", "Job Matching"]
+  - name: "AI for Educational Authoring"
+    ref: "Gamaizer.ia / MIXAP-EU"
+    summary: "Knowledge graph and LLM ecosystem for competency management, visualization, and generative AI support for mixed-reality educational activity design."
+    tags: ["LLMs", "Agentic AI", "Mixed Reality"]
+
+work:
+  - section: "Skiller (Forteim / BSEA)"
+    icon: fas fa-user-graduate
+    points:
+      - "Development of a skill management platform for mapping competencies, learner profiles, training programs, and professional objectives."
+      - "Design of ontology-backed knowledge bases to represent skills, prerequisite relations, learning resources, and domain-specific competency structures."
+      - "Integration of knowledge graph search with LLM-based fallback methods to support grounded skill search, explanation, and recommendation."
+      - "Implementation of skill gap analysis and personalized course or training recommendations based on user context and career goals."
+      - "Contribution to applied workflows for Forteim and BSEA around competency modeling, training alignment, and explainable AI-assisted guidance."
+  - section: "Emonat (Graph Tasks & Memory)"
+    icon: fas fa-diagram-project
+    repo:
+      name: "emonat"
+      url: https://github.com/lengocluyen/emonat
+    demo:
+      name: "emonat.vercel.app"
+      url: https://emonat.vercel.app/app/
+    points:
+      - "Web-first prototype for organizing tasks, notes, and lightweight memory through graph-based interactions."
+      - "Supports task-level graph views where each task can keep its own saved memory, context, and connected notes."
+      - "Designed as a lightweight personal task and knowledge workspace with a static frontend and Node.js/Postgres backend."
+  - section: "Vehicle Recommender System"
+    icon: fas fa-car-side
+    repo:
+      name: "vivo_portals"
+      url: https://github.com/lengocluyen/vivo_portals
+    points:
+      - "Comprehensive analysis of recommender system algorithms tailored for the vehicle domain."
+      - "Integration of user preferences, historical interactions, and semantic understanding of vehicle features."
+      - "Development of personalized models considering make, model, and contextual factors."
+      - "Use of ontologies to represent complex relationships and better capture user intent."
+      - "Research on semantic similarity estimation between vehicles beyond basic attributes."
+      - "Development of personalized, context-aware vehicle recommendations aligned with unique user needs."
+  - section: "SYSPHERICE Project"
+    icon: fas fa-seedling
+    repo:
+      name: "Syspherice"
+      url: https://github.com/lengocluyen/Syspherice
+    points:
+      - "Focus on the study of genetic and phenotypic diversity in Asian and African rice varieties."
+      - "Challenges addressed: handling large, heterogeneous datasets stored in varied formats."
+      - "Developed a generic integration and indexing tool to streamline data navigation, sharing, and annotation."
+  - section: "Term Extraction"
+    icon: fas fa-file-lines
+    repo:
+      name: "semanticextraction"
+      url: https://github.com/lengocluyen/semanticextraction
+    points:
+      - "Developed a tool to extract concepts and terms from PDF text files."
+      - "Used POS tagging to identify meaningful patterns in input sentences."
+      - "Incorporated frequency analysis to detect commonly occurring terms in general context."
+      - "Generated a triplet dataset matching the standard Subject-Verb-Object (SVO) structure."
+  - section: "The French CCG Corpus"
+    icon: fas fa-language
+    repo:
+      name: "FrenchCCGBank"
+      url: https://github.com/lengocluyen/FrenchCCGBank
+    points:
+      - "Combinatory Categorial Grammars (CCG) serve as a bridge between surface syntax and semantic representations."
+      - "Introduced a novel method to generate CCG derivation trees from dependency syntax trees, focused on French."
+      - "Developed a binarization algorithm to convert dependency tree structures into binary trees."
+      - "Assigned lexical categories by leveraging context and dependency relations of words and POS tags."
+      - "Generated full CCG derivations using binary structures and CCG combinatory rules."
+      - "Evaluation performed on the 21,550-sentence French Treebank Corpus."
+  - section: "CCG Supertagging Task"
+    icon: fas fa-tags
+    repo:
+      name: "ccg_supertagging_french"
+      url: https://github.com/lengocluyen/ccg_supertagging_french
+    points:
+      - "Used the French CCG corpus and the Groningen Treebank for English as training datasets."
+      - "Developed a new BiLSTM+CRF neural architecture for supertagging."
+      - "Incorporated morphosyntactic input features and feature correlation embeddings."
+      - "Demonstrated that dependency syntax significantly improves supertagging accuracy for French."
+      - "Results highlight the effectiveness of deep learning for inflectional languages in syntactic tasks."

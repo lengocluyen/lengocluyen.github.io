@@ -1,0 +1,96 @@
+name: build
+
+# Builds the site on every push/PR, and checks links on a schedule.
+# The link check runs weekly rather than per-push because this site
+# cites ~85 external conference and journal URLs, which rot over time
+# but are not affected by a given commit.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"   # Mondays 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+
+      - name: Build
+        run: bundle exec jekyll build --trace
+
+      - name: Check data files parse and counts are sane
+        run: |
+          ruby -ryaml -e '
+            reviews = YAML.load_file("_data/reviews.yml")
+            pubs    = YAML.load_file("_data/publications.yml")
+            projs   = YAML.load_file("_data/projects.yml")
+
+            rounds = reviews.sum { |r| r["reviews"].length }
+            venues = reviews.map { |r| r["venue"] }.uniq.length
+            puts "reviews: #{rounds} rounds across #{venues} venues"
+
+            reviews.each do |r|
+              %w[venue short kind detail url reviews].each do |k|
+                abort "reviews.yml: #{r["short"]} missing #{k}" unless r[k]
+              end
+              abort "reviews.yml: #{r["short"]} bad kind" unless
+                %w[journal conference].include?(r["kind"])
+            end
+
+            n = pubs.sum { |s| s["items"].length }
+            puts "publications: #{n} in #{pubs.length} sections"
+            pubs.each do |s|
+              s["items"].each do |i|
+                %w[title authors url].each do |k|
+                  abort "publications.yml: #{i["title"]} missing #{k}" unless i[k]
+                end
+              end
+            end
+
+            puts "projects: #{projs["collaborations"].length} collaborations, " \
+                 "#{projs["work"].length} detailed"
+          '
+
+      - name: Check internal links and markup
+        run: |
+          gem install html-proofer -v "~> 5.0" --no-document
+          htmlproofer ./_site \
+            --disable-external \
+            --ignore-status-codes "0" \
+            --no-enforce-https \
+            --swap-urls "^https://lengocluyen.github.io:"
+
+  external-links:
+    # External URLs rot on their own schedule, so this is advisory:
+    # it reports but never blocks a push.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+
+      - run: bundle exec jekyll build
+
+      - name: Check external links
+        run: |
+          gem install html-proofer -v "~> 5.0" --no-document
+          htmlproofer ./_site \
+            --no-check-internal-hash \
+            --ignore-status-codes "0,403,429,503" \
+            --no-enforce-https \
+            --hydra '{"max_concurrency": 4}' \
+            --swap-urls "^https://lengocluyen.github.io:"

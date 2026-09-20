@@ -1,0 +1,237 @@
+# Publications. Section badge counts are derived from `items`, so they
+# cannot drift the way hand-typed numbers do.
+#
+# noun  : pluralised in the badge as "<n> <noun>" (omit for a literal label)
+# label : literal badge text, for sections where a count makes no sense
+# venue : everything after the title except the year
+
+- section: "In Peer-Reviewed Journals"
+  icon: fas fa-newspaper
+  noun: "articles"
+  items:
+    - title: "From Prompts to Context: An Ontology-Driven Framework for Human-Generative AI Collaboration"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
+      venue: "Information Systems Frontiers"
+      year: 2026
+      url: https://link.springer.com/article/10.1007/s10796-026-10754-y
+    - title: "Development of ontological knowledge bases by leveraging large language models"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "International Journal of Knowledge Management Studies, Volume 17, article number 2"
+      year: 2026
+      url: https://arxiv.org/abs/2601.10436
+    - title: "Integrating context and criteria: a multi-head attention-based approach for multi-criteria group recommender systems"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel"
+      venue: "World Wide Web, Volume 28, article number 50"
+      year: 2025
+      url: https://link.springer.com/article/10.1007/s11280-025-01358-8
+    - title: "Enhancing Context‐Aware Recommender Systems Through Deep Feature Interaction Learning"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "Journal of Multi-Criteria Decision Analysis"
+      year: 2025
+      url: https://onlinelibrary.wiley.com/doi/10.1002/mcda.70012
+    - title: "Ontology-based crisis simulation system for population sheltering management"
+      authors: "Jinfeng Zhong, Ngoc Luyen Le, Elsa Negre, Marie-Hélène Abel"
+      venue: "SIMULATION, 100(4):379-399"
+      year: 2023
+      url: https://journals.sagepub.com/doi/abs/10.1177/00375497231214563
+
+- section: "In Book Chapters"
+  icon: fas fa-book
+  noun: "chapters"
+  items:
+    - title: "Designing a User Contextual Profile Ontology: A Focus on the Vehicle Sales Domain"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "Lecture Notes in Business Information Processing, vol.486, Springer"
+      year: 2024
+      url: https://link.springer.com/chapter/10.1007/978-3-031-51664-1_14
+    - title: "A Personalized Recommender System Based-on Knowledge Graph Embeddings"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "Lecture Notes on Data Engineering and Communications Technologies, vol. 164, Springer"
+      year: 2023
+      url: https://link.springer.com/chapter/10.1007/978-3-031-27762-7_35
+    - title: "Improving Semantic Similarity Measure Within a Recommender System Based-on RDF Graphs"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "Information Technology and Systems, Lecture Notes in Networks and Systems, vol. 691, pp. 463–474"
+      year: 2023
+      url: https://link.springer.com/chapter/10.1007/978-3-031-33258-6_42
+    - title: "Towards an ontology-based recommender system for the vehicle sales area"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "Progresses in Artificial Intelligence & Robotics: Algorithms & Applications, Lecture Notes in Networks and Systems, vol. 441, pp. 126-136"
+      year: 2022
+      url: https://link.springer.com/chapter/10.1007/978-3-030-98531-8_13
+
+- section: "In International Peer-Reviewed Conferences"
+  icon: fas fa-globe
+  noun: "papers"
+  items:
+    - title: "From Learning Resources to Competencies: LLM-Based Tagging with Evidence and Graph Constraints"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
+      venue: "27th International Conference on AI in Education, Jun 2026, Seoul, South Korea"
+      year: 2026
+      url: https://hal.science/hal-05634864
+    - title: "When Can We Trust Early Warnings? Leakage-Excluded Early Outcome Prediction from LMS Interaction Logs"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
+      venue: "22nd International Conference on Intelligent Tutoring Systems, Jun 2026, Pafos, Cyprus"
+      year: 2026
+      url: https://hal.science/hal-05632080
+    - title: "KG-First, LLM-Fallback: A Hybrid Microservice for Grounded Skill Search and Explanation"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
+      venue: "IEEE 29th International Conference on Computer Supported Cooperative Work in Design (CSCWD 2026), May 2026, Fuzhou, China"
+      year: 2026
+      url: https://hal.science/hal-05610286
+    - title: "MRGEN: A Conceptual Framework for LLM-Powered Mixed Reality Authoring Tools for Education"
+      authors: "Mohammed Oussama Seddini, Mohamed Ez-Zaouia, Ngoc Luyen Le, Iza Marfisi"
+      venue: "Mobile Learning 2026 International Conference, Mar 2026, Zagreb, Croatia"
+      year: 2026
+      url: https://hal.science/hal-05547558
+    - title: "Automated Skill Decomposition Meets Expert Ontologies: Bridging the Granularity Gap with LLMs"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel"
+      venue: "International Conference on Management of Digital EcoSystems (MEDES), Nov 2025, Ho Chi Minh City, Viet Nam"
+      year: 2025
+      url: https://arxiv.org/abs/2510.11313
+    - title: "How Well Do LLMs Predict Prerequisite Skills? Zero-Shot Comparison to Expert-Defined Concepts"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel"
+      venue: "IEEE International Conference on Systems, Man, and Cybernetics (SMC), Oct 2025, Vienna, Austria"
+      year: 2025
+      url: https://arxiv.org/abs/2507.18479
+    - title: "Modeling and Visualizing Competency Progression: A Semantic Integration of Pedagogical Graphs and Generative AI"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
+      venue: "International Meeting for Innovative Pedagogy (IMIP25), April 2025, Compiègne, France"
+      year: 2025
+      url: https://inria.hal.science/hal-05151429v1
+    - title: "Joint Group Profiling and Recommendation via Deep Neural Network-based Multi-Task Learning"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel"
+      venue: "IEEE 28th International Conference on Computer Supported Cooperative Work in Design, May 2025, Compiègne, France"
+      year: 2025
+      url: https://hal.science/hal-05001120
+    - title: "Enhancing Recommender Systems Using Textual Embeddings from Pre-trained Language Models"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel"
+      venue: "8th International Conference on Information Technology & Systems (ICITS), 2025, Mexico City, Mexico"
+      year: 2025
+      url: https://hal.science/hal-05001083
+    - title: "Context-Aware Multi-Criteria Recommender Systems Using Variable Selection Networks"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel"
+      venue: "11th International Conference on Advanced Intelligent Systems and Informatics (AISI), 2025, Port Said, Egypt"
+      year: 2025
+      url: https://inria.hal.science/hal-04961071
+    - title: "From Individual to Group: Developing a Context-Aware Multi-Criteria Group Recommender System"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel"
+      venue: "16th International Conference on Management of Digital EcoSystems (MEDES), 2024, Naples, Italy"
+      year: 2024
+      url: https://hal.science/hal-05001106
+    - title: "Exploring Weighted Property Approaches for RDF Graph Similarity Measure"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "27th IEEE International Conference on Computer Supported Cooperative Work in Design (CSCWD), 2024, Tianjin, China"
+      year: 2024
+      url: https://hal.science/hal-04645427
+    - title: "Recognizing Similar Crises through the Application of Ontology-based Knowledge Mining"
+      authors: "Ngoc Luyen Le, Elsa Negre, Marie-Hélène Abel"
+      venue: "57th Hawaii International Conference on System Sciences (HICSS), 2024, Oahu, Hawaii"
+      year: 2024
+      url: https://hal.science/hal-04378722
+    - title: "CORec-Cri: How collaborative and social technologies can help to contextualize crises?"
+      authors: "Ngoc Luyen Le, Jinfeng Zhong, Elsa Negre, Marie-Hélène Abel"
+      venue: "IEEE International Conference on Systems, Man, and Cybernetics (SMC), 2023, Oahu, Hawaii"
+      year: 2023
+      url: https://hal.science/hal-04454260
+    - title: "Combining Embedding-Based and Semantic-Based Models for Post-hoc Explanations in Recommender Systems"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "IEEE International Conference on Systems, Man, and Cybernetics (SMC), 2023, Oahu, Hawaii"
+      year: 2023
+      url: https://hal.science/hal-04454269
+    - title: "Constraint-based recommender system for crisis management simulations"
+      authors: "Ngoc Luyen Le, Jinfeng Zhong, Elsa Negre, Marie-Hélène Abel"
+      venue: "56th Hawaii International Conference on System Sciences (HICSS), 2023, Maui, Hawaii"
+      year: 2023
+      url: https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/cc2753a1-fa6a-4f6a-8f35-a4275214816d/content
+    - title: "A Constraint-based Recommender System via RDF Knowledge Graphs"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "IEEE 26th International Conference on Computer Supported Cooperative Work in Design (CSCWD), 2023, Rio de Janeiro, Brazil"
+      year: 2023
+      url: https://ieeexplore.ieee.org/abstract/document/10152701
+    - title: "Towards a DRS Parsing Framework for French"
+      authors: "Ngoc Luyen Le, Yannis Haralambous, Philippe Lenca"
+      venue: "6th International Conference on Social Networks Analysis, Management and Security (SNAMS), 2019, Granada, Spain"
+      year: 2019
+      url: https://hal.science/hal-02280800/
+    - title: "CCG Supertagging Using Morphological and Dependency Syntax Information"
+      authors: "Ngoc Luyen Le, Yannis Haralambous"
+      venue: "20th International Conference on Computational Linguistics and Intelligent Text Processing (CICLING), 2019, La Rochelle, France"
+      year: 2019
+      url: https://link.springer.com/chapter/10.1007/978-3-031-24337-0_43
+    - title: "Development of a knowledge system for Big Data: Case study to plant phenotyping data"
+      authors: "Ngoc Luyen Le, Anne Tireau, Aravind Venkatesan, Pascal Neveu, Pierre Larmande"
+      venue: "6th International Conference on Web Intelligence, Mining and Semantics (WIMS'16), 2016, Nimes, France"
+      year: 2016
+      url: https://hal.science/hal-01411565v1
+
+- section: "In National Peer-Reviewed Conferences"
+  icon: fas fa-flag
+  noun: "papers"
+  items:
+    - title: "Vers un cadre ontologique pour la gestion des compétences: à des fins de formation, de recrutement, de métier, ou de recherches associées"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
+      venue: "36es Journées francophones d'Ingénierie des Connaissances (IC 2025) @ PFIA, 2025, Dijon, France"
+      year: 2025
+      url: https://hal.science/hal-05147866v1
+    - title: "Extraction de relations multi-étiquettes en utilisant des modèles pré-entraînés et des couches de Transformer"
+      authors: "Ngoc Luyen Le, Gildas Tagny Ngompé"
+      venue: "Atelier TextMine 2025 @ EGC, 2025, Strasbourg, France"
+      year: 2025
+      url: https://hal.science/hal-04919844v
+    - title: "Système de simulations de crises, basé sur une ontologie, pour la mise à l'abri des populations"
+      authors: "Jinfeng Zhong, Ngoc Luyen Le, Elsa Negre, Marie-Hélène Abel"
+      venue: "42ème édition INFORSID, 2024, Nancy, France"
+      year: 2024
+      url: https://inforsid.fr/actes/2024/inforsid24-57-58.pdf
+    - title: "Construction d'un système de recommandation basé sur des contraintes via des graphes de connaissances"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "34es Journées francophones d'Ingénierie des Connaissances (IC 2023) @ PFIA, 2023, Strasbourg, France"
+      year: 2023
+      url: https://arxiv.org/pdf/2306.03247
+    - title: "Système de recommandations basé sur les contraintes pour les simulations de gestion de crise"
+      authors: "Ngoc Luyen Le, Jinfeng Zhong, Elsa Negre, Marie-Hélène Abel"
+      venue: "34es Journées francophones d'Ingénierie des Connaissances (IC 2023) @ PFIA, 2023, Strasbourg, France"
+      year: 2023
+      url: https://arxiv.org/pdf/2306.01504
+    - title: "Apport des ontologies pour le calcul de la similarité sémantique au sein d'un système de recommandation"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
+      venue: "33es Journées francophones d'Ingénierie des Connaissances (IC 2022) @ PFIA, 2022, Saint-Étienne, France"
+      year: 2022
+      url: https://arxiv.org/pdf/2205.12539
+
+- section: "In Conference Posters"
+  icon: fas fa-chalkboard-user
+  noun: "posters"
+  items:
+    - title: "Détection du Déficit d'Information dans un Fil de Discussion"
+      authors: "Ngoc Luyen Le, Yannis Haralambous, Philippe Lenca"
+      venue: "Séminaire du Département d'Informatique de l'IMT Atlantique, 2018, L'Aberwrac'h, France"
+      year: 2018
+      url: https://dx.doi.org/10.13140/RG.2.2.22822.24644
+    - title: "Development of a generic indexing tool to optimize the use of biological data"
+      authors: "Ngoc Luyen Le, Stéphane Jouannic, Pascal Gantet, Pierre Larmande"
+      venue: "Journées Ouvertes Biologie Informatique Mathématiques (JOBIM'15), 2015, Clermont-Ferrand, France"
+      year: 2015
+      url: https://inria.hal.science/lirmm-01274707/
+
+- section: "Theses"
+  icon: fas fa-graduation-cap
+  label: "PhD & Master's Work"
+  items:
+    - title: "French Language DRS Parsing"
+      authors: "Ngoc Luyen Le"
+      venue: "PhD thesis, IMT Atlantique, Brest, defended September 15"
+      year: 2020
+      url: https://theses.hal.science/tel-03132658/
+      links:
+        - label: "Slides"
+          url: https://drive.google.com/file/d/1XJcZMBND2y4uXkqRpPKpjlNTtUaZFd7p/view?usp=sharing
+    - title: "Développement d'un système connaissances pour les big data: application aux données de phénotypage chez le riz (O.Sativa)"
+      authors: "Ngoc Luyen Le"
+      venue: "Master thesis, IFI, Ha Noi, defended November 30"
+      year: 2015
+      url: https://repository.vnu.edu.vn/bitstream/VNU_123/9876/1/Le%20Ngoc%20Luyen%20-memoire.pdf
+      links:
+        - label: "Slides"
+          url: https://drive.google.com/file/d/11BWrHkAosKGbwdz8giC6DPgvU1TzYhuA/view?usp=sharing

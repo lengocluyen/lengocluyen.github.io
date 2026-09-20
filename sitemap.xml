@@ -31,7 +31,13 @@ layout: null
       {% endif %}
     </url>
   {% endfor %}
+  {%- comment -%}
+    Skip pages that must not be indexed: anything marked noindex (the
+    admin dashboards), and the feed/sitemap files themselves.
+  {%- endcomment -%}
   {% for page in site.pages %}
+  {% if page.noindex %}{% continue %}{% endif %}
+  {% unless page.url contains '.xml' or page.url contains '.txt' or page.url contains '404' %}
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
     {% if page.sitemap.lastmod %}
@@ -52,5 +58,6 @@ layout: null
       <priority>0.3</priority>
     {% endif %}
   </url>
+  {% endunless %}
   {% endfor %}
 </urlset>

@@ -1,0 +1,19 @@
+# Main navigation. `match` is compared against page.url with any
+# extension stripped, so it works whether Jekyll emits /publications
+# or /publications.html.
+
+- label: ACADEMIC SERVICE
+  url: /services.html
+  match: /services
+
+- label: PUBLICATIONS
+  url: /publications.html
+  match: /publications
+
+- label: PROJECTS
+  url: /projects.html
+  match: /projects
+
+- label: RESUME
+  url: /resume.html
+  match: /resume

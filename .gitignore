@@ -1,0 +1,15 @@
+# Jekyll build output — regenerated on every build, and `jekyll serve`
+# rewrites it with localhost URLs. Committing it risks shipping
+# canonical/og:url tags pointing at localhost:3000.
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Installed gems. These were committed as Linux binaries with CRLF line
+# endings, which broke `bundle exec` on any fresh clone.
+vendor/
+
+# Editor and OS cruft
+*~
+.DS_Store
+Thumbs.db

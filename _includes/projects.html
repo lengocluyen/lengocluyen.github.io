@@ -1,170 +1,92 @@
+{%- comment -%}
+  Projects, rendered from _data/projects.yml.
+
+  `collaborations` drives the funded/partner card grid and its badge;
+  `work` drives the per-project detail sections. Counts are derived.
+{%- endcomment -%}
+
+{%- assign collabs = site.data.projects.collaborations -%}
+{%- assign work = site.data.projects.work -%}
+
+{%- assign repo_count = 0 -%}
+{%- assign point_count = 0 -%}
+{%- for w in work -%}
+  {%- if w.repo -%}{%- assign repo_count = repo_count | plus: 1 -%}{%- endif -%}
+  {%- assign point_count = point_count | plus: w.points.size -%}
+{%- endfor -%}
+
 <section id="projects">
-<div class="container">
+  <div class="container">
 
-  <h2 class="section-title mb-4"><i class="fa fa-folder-open fa-xs"></i>&nbsp;PROJECTS</h2>
+    <h2 class="section-title mb-4"><i class="fa fa-folder-open fa-xs"></i>&nbsp;PROJECTS</h2>
 
-  <div class="section-header">
-    <span class="section-header-title"><i class="fas fa-handshake section-header-icon" aria-hidden="true"></i>Projects &amp; Collaborations</span>
-    <span class="badge badge-primary">4 active lines</span>
-  </div>
-  <div class="collaboration-grid">
-    <article class="collaboration-card">
-      <span class="collaboration-meta">ANR-21-PRRD-0072-01 / Vivocaz</span>
-      <h3>ANR Vivocaz</h3>
-      <p>Personalized recommender systems for the used-vehicle market, combining domain ontologies, knowledge graphs, deep learning, and user-facing interfaces.</p>
-      <div class="collaboration-tags">
-        <span>Recommender Systems</span>
-        <span>Knowledge Graphs</span>
-        <span>Mobility</span>
+    <div class="stat-row">
+      <div class="stat-tile">
+        <span class="stat-value">{{ collabs | size }}</span>
+        <span class="stat-label">Active project lines</span>
+        <span class="stat-note">Funded &amp; partner work</span>
       </div>
-    </article>
-    <article class="collaboration-card">
-      <span class="collaboration-meta">France 2030 / CINav</span>
-      <h3>FORTEIM</h3>
-      <p>Competency modeling for maritime professions and ecological transition, with knowledge graph design, learning traces, pathway monitoring, and educational resource recommendation.</p>
-      <div class="collaboration-tags">
-        <span>Competency Modeling</span>
-        <span>Learning Traces</span>
-        <span>Skill Recommendation</span>
+      <div class="stat-tile">
+        <span class="stat-value">{{ work | size }}</span>
+        <span class="stat-label">Projects detailed</span>
+        <span class="stat-note">Research &amp; applied</span>
       </div>
-    </article>
-    <article class="collaboration-card">
-      <span class="collaboration-meta">Prometheus-X / Edge-Skills</span>
-      <h3>Ikigai Games for Citizens</h3>
-      <p>Personal competency graph architecture for exporting and importing competency maps to job-matching services, including LRS/PLRS and data-space connector integration.</p>
-      <div class="collaboration-tags">
-        <span>Competency Graphs</span>
-        <span>Data Spaces</span>
-        <span>Job Matching</span>
+      <div class="stat-tile">
+        <span class="stat-value">{{ repo_count }}</span>
+        <span class="stat-label">Public repositories</span>
+        <span class="stat-note">On GitHub</span>
       </div>
-    </article>
-    <article class="collaboration-card">
-      <span class="collaboration-meta">Gamaizer.ia / MIXAP-EU</span>
-      <h3>AI for Educational Authoring</h3>
-      <p>Knowledge graph and LLM ecosystem for competency management, visualization, and generative AI support for mixed-reality educational activity design.</p>
-      <div class="collaboration-tags">
-        <span>LLMs</span>
-        <span>Agentic AI</span>
-        <span>Mixed Reality</span>
-      </div>
-    </article>
-  </div>
-
-  <div class="section-header">
-    <span class="section-header-title"><i class="fas fa-user-graduate section-header-icon" aria-hidden="true"></i>Skiller (Forteim / BSEA)</span>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Development of a skill management platform for mapping competencies, learner profiles, training programs, and professional objectives.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Design of ontology-backed knowledge bases to represent skills, prerequisite relations, learning resources, and domain-specific competency structures.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Integration of knowledge graph search with LLM-based fallback methods to support grounded skill search, explanation, and recommendation.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Implementation of skill gap analysis and personalized course or training recommendations based on user context and career goals.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Contribution to applied workflows for Forteim and BSEA around competency modeling, training alignment, and explainable AI-assisted guidance.</div>
-    </div>
-  </div>
-
-  <div class="section-header">
-    <span class="section-header-title"><i class="fas fa-diagram-project section-header-icon" aria-hidden="true"></i>Emonat (Graph Tasks &amp; Memory)</span>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Web-first prototype for organizing tasks, notes, and lightweight memory through graph-based interactions.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Supports task-level graph views where each task can keep its own saved memory, context, and connected notes.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Designed as a lightweight personal task and knowledge workspace with a static frontend and Node.js/Postgres backend.</div>
-      <div class="div-justify-pub">
-        <i class="fa fa-caret-right"></i>&nbsp;Demo:
-        <a href="https://emonat.vercel.app/app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> emonat.vercel.app</a>
-      </div>
-      <div class="div-justify-pub">
-        <i class="fa fa-caret-right"></i>&nbsp;Repository:
-        <a href="https://github.com/lengocluyen/emonat" target="_blank" rel="noopener noreferrer" class="githublink"><i class="fab fa-github"></i> emonat</a>
+      <div class="stat-tile">
+        <span class="stat-value">{{ point_count }}</span>
+        <span class="stat-label">Contributions listed</span>
+        <span class="stat-note">Across all projects</span>
       </div>
     </div>
-  </div>
 
-  <div class="section-header">
-    <span class="section-header-title"><i class="fas fa-car-side section-header-icon" aria-hidden="true"></i>Vehicle Recommender System</span>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Comprehensive analysis of recommender system algorithms tailored for the vehicle domain.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Integration of user preferences, historical interactions, and semantic understanding of vehicle features.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Development of personalized models considering make, model, and contextual factors.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Use of ontologies to represent complex relationships and better capture user intent.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Research on semantic similarity estimation between vehicles beyond basic attributes.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Development of personalized, context-aware vehicle recommendations aligned with unique user needs.</div>
-      <div class="div-justify-pub">
-        <i class="fa fa-caret-right"></i>&nbsp;Repository:
-        <a href="https://github.com/lengocluyen/vivo_portals" target="_blank" rel="noopener noreferrer" class="githublink"><i class="fab fa-github"></i> vivo_portals</a>
-      </div>
+    <div class="section-header">
+      <h2 class="section-header-title"><i class="fas fa-handshake section-header-icon" aria-hidden="true"></i>Projects &amp; Collaborations</h2>
+      <span class="badge badge-primary">{{ collabs | size }} active lines</span>
     </div>
-  </div>
 
-  <div class="section-header">
-    <span class="section-header-title"><i class="fas fa-seedling section-header-icon" aria-hidden="true"></i>SYSPHERICE Project</span>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Focus on the study of genetic and phenotypic diversity in Asian and African rice varieties.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Challenges addressed: handling large, heterogeneous datasets stored in varied formats.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Developed a generic integration and indexing tool to streamline data navigation, sharing, and annotation.</div>
-      <div class="div-justify-pub">
-        <i class="fa fa-caret-right"></i>&nbsp;Repository:
-        <a href="https://github.com/lengocluyen/Syspherice" target="_blank" rel="noopener noreferrer" class="githublink"><i class="fab fa-github"></i> Syspherice</a>
-      </div>
+    <div class="collaboration-grid">
+      {%- for c in collabs %}
+      <article class="collaboration-card">
+        <span class="collaboration-meta">{{ c.ref }}</span>
+        <h3>{{ c.name }}</h3>
+        <p>{{ c.summary }}</p>
+        <div class="collaboration-tags">
+          {%- for t in c.tags %}
+          <span>{{ t }}</span>
+          {%- endfor %}
+        </div>
+      </article>
+      {%- endfor %}
     </div>
-  </div>
 
-  <div class="section-header">
-    <span class="section-header-title"><i class="fas fa-file-lines section-header-icon" aria-hidden="true"></i>Term Extraction</span>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Developed a tool to extract concepts and terms from PDF text files.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Used POS tagging to identify meaningful patterns in input sentences.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Incorporated frequency analysis to detect commonly occurring terms in general context.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Generated a triplet dataset matching the standard Subject-Verb-Object (SVO) structure.</div>
-      <div class="div-justify-pub">
-        <i class="fa fa-caret-right"></i>&nbsp;Repository:
-        <a href="https://github.com/lengocluyen/semanticextraction" target="_blank" rel="noopener noreferrer" class="githublink"><i class="fab fa-github"></i> semanticextraction</a>
-      </div>
+    {%- for w in work %}
+    <div class="section-header" style="margin-top: 40px;">
+      <h2 class="section-header-title"><i class="{{ w.icon }} section-header-icon" aria-hidden="true"></i>{{ w.section }}</h2>
+      <span class="badge badge-primary">{{ w.points | size }} points</span>
     </div>
-  </div>
 
-  <div class="section-header">
-    <span class="section-header-title"><i class="fas fa-language section-header-icon" aria-hidden="true"></i>The French CCG Corpus</span>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Combinatory Categorial Grammars (CCG) serve as a bridge between surface syntax and semantic representations.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Introduced a novel method to generate CCG derivation trees from dependency syntax trees, focused on French.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Developed a binarization algorithm to convert dependency tree structures into binary trees.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Assigned lexical categories by leveraging context and dependency relations of words and POS tags.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Generated full CCG derivations using binary structures and CCG combinatory rules.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Evaluation performed on the 21,550-sentence French Treebank Corpus.</div>
-      <div class="div-justify-pub">
-        <i class="fa fa-caret-right"></i>&nbsp;Repository:
-        <a href="https://github.com/lengocluyen/FrenchCCGBank" target="_blank" rel="noopener noreferrer" class="githublink"><i class="fab fa-github"></i> FrenchCCGBank</a>
+    <div class="entry-list">
+      {%- for p in w.points %}
+      <div class="entry-row entry-row--note">{{ p }}</div>
+      {%- endfor %}
+      {%- if w.repo or w.demo %}
+      <div class="entry-repo">
+        {%- if w.repo %}
+        <i class="fab fa-github" aria-hidden="true"></i>
+        <a href="{{ w.repo.url }}" target="_blank" rel="noopener noreferrer">{{ w.repo.name }}</a>
+        {%- endif %}
+        {%- if w.demo %}
+        <i class="fas fa-external-link-alt" aria-hidden="true"{% if w.repo %} style="margin-left: 10px;"{% endif %}></i>
+        <a href="{{ w.demo.url }}" target="_blank" rel="noopener noreferrer">{{ w.demo.name }}</a>
+        {%- endif %}
       </div>
+      {%- endif %}
     </div>
-  </div>
+    {%- endfor %}
 
-  <div class="section-header">
-    <span class="section-header-title"><i class="fas fa-tags section-header-icon" aria-hidden="true"></i>CCG Supertagging Task</span>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Used the French CCG corpus and the Groningen Treebank for English as training datasets.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Developed a new BiLSTM+CRF neural architecture for supertagging.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Incorporated morphosyntactic input features and feature correlation embeddings.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Demonstrated that dependency syntax significantly improves supertagging accuracy for French.</div>
-      <div class="div-justify-pub"><i class="fa fa-caret-right"></i>&nbsp;Results highlight the effectiveness of deep learning for inflectional languages in syntactic tasks.</div>
-      <div class="div-justify-pub">
-        <i class="fa fa-caret-right"></i>&nbsp;Repository:
-        <a href="https://github.com/lengocluyen/ccg_supertagging_french" target="_blank" rel="noopener noreferrer" class="githublink"><i class="fab fa-github"></i> ccg_supertagging_french</a>
-      </div>
-    </div>
-  </div>
-
-</div>
 </section>

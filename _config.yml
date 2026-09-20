@@ -4,8 +4,11 @@ markdown: kramdown
 rdiscount:
   extensions: [smart]
 permalink: /:title.html
-paginate: 5
-gems: [jekyll-paginate]
+# Pagination was configured but never used - blog.html iterates site.posts
+# directly, and nothing references `paginator`. The old `gems:` key was
+# Jekyll 3 syntax anyway (Jekyll 4 reads `plugins:`), so this only ever
+# produced a deprecation warning on every build. Removed rather than
+# fixed, to avoid adding a gem for a feature nothing calls.
 port: 3000
 safe: true
 
@@ -49,4 +52,4 @@ address:
   country: France
 
 # needed for travis-ci build
-exclude: [vendor]
+exclude: [vendor, Gemfile, Gemfile.lock, installations.txt, README.md]
