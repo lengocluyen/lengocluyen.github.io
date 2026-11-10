@@ -99,10 +99,12 @@ $(document).ready(function () {
     var $reviewList = $('#review-list');
     var $summary = $('#review-summary');
     var baseSummary = $summary.text();
-    var totalRounds = parseInt($filterBar.attr('data-total'), 10) || 0;
+    var totalVenues = parseInt($filterBar.attr('data-total'), 10) || 0;
 
     function applyReviewFilter(kind) {
-      var shownRounds = 0;
+      /* A venue reviewed in several years has one row per year, so the
+         filter counts DISTINCT venues to match the pill counts. */
+      var shownVenues = {};
 
       $reviewList.find('.entry-list').each(function () {
         var $group = $(this);
@@ -115,12 +117,12 @@ $(document).ready(function () {
           $row.prop('hidden', !match).removeClass('is-first');
           if (match) {
             groupRounds += parseInt($row.attr('data-rounds'), 10) || 1;
+            shownVenues[$row.attr('data-venue') || ''] = true;
             $visible = $visible.add($row);
           }
         });
 
         $visible.first().addClass('is-first');
-        shownRounds += groupRounds;
 
         $group.find('.year-tally').text(groupRounds + (groupRounds === 1 ? ' round' : ' rounds'));
         $group.prop('hidden', groupRounds === 0);
@@ -129,7 +131,7 @@ $(document).ready(function () {
       if (kind === 'all') {
         $summary.text(baseSummary);
       } else {
-        $summary.text('Showing ' + shownRounds + ' of ' + totalRounds + ' rounds');
+        $summary.text('Showing ' + Object.keys(shownVenues).length + ' of ' + totalVenues + ' venues');
       }
     }
 

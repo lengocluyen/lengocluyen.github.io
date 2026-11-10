@@ -44,9 +44,9 @@
         <span class="stat-note">13 students supervised</span>
       </div>
       <div class="stat-tile">
-        <span class="stat-value">{{ total_rounds }}</span>
-        <span class="stat-label">Review rounds</span>
-        <span class="stat-note">Across {{ venue_count }} venues</span>
+        <span class="stat-value">{{ venue_count }}</span>
+        <span class="stat-label">Venues reviewed for</span>
+        <span class="stat-note">{{ journal_venues }} journals &middot; {{ conference_venues }} conferences</span>
       </div>
       <div class="stat-tile">
         <span class="stat-value">4</span>
@@ -185,14 +185,14 @@
     <!-- Peer Review -->
     <div class="section-header" id="review" style="margin-top: 40px;">
       <h2 class="section-header-title"><i class="fas fa-clipboard-check section-header-icon" aria-hidden="true"></i>Peer Review</h2>
-      <span class="badge badge-primary">{{ total_rounds }} rounds</span>
+      <span class="badge badge-primary">{{ journal_venues }} journals &middot; {{ conference_venues }} conferences</span>
     </div>
 
-    <div class="filter-bar" id="review-filter" data-total="{{ total_rounds }}" hidden>
-      <button type="button" class="filter-pill is-active" data-filter="all" aria-pressed="true">All venues <span class="filter-count">{{ total_rounds }}</span></button>
-      <button type="button" class="filter-pill" data-filter="journal" aria-pressed="false">Journals <span class="filter-count">{{ journal_rounds }}</span></button>
-      <button type="button" class="filter-pill" data-filter="conference" aria-pressed="false">Conferences <span class="filter-count">{{ conference_rounds }}</span></button>
-      <span class="filter-summary" id="review-summary" role="status">{{ venue_count }} venues &middot; {{ journal_venues }} journals, {{ conference_venues }} conference series</span>
+    <div class="filter-bar" id="review-filter" data-total="{{ venue_count }}" hidden>
+      <button type="button" class="filter-pill is-active" data-filter="all" aria-pressed="true">All venues <span class="filter-count">{{ venue_count }}</span></button>
+      <button type="button" class="filter-pill" data-filter="journal" aria-pressed="false">Journals <span class="filter-count">{{ journal_venues }}</span></button>
+      <button type="button" class="filter-pill" data-filter="conference" aria-pressed="false">Conferences <span class="filter-count">{{ conference_venues }}</span></button>
+      <span class="filter-summary" id="review-summary" role="status">{{ venue_count }} venues &middot; {{ total_rounds }} review rounds since {{ review_years | last }}</span>
     </div>
 
     <div id="review-list">
@@ -217,7 +217,7 @@
               {%- if ry == y_num -%}{%- assign n = n | plus: 1 -%}{%- endif -%}
             {%- endfor -%}
             {%- if n > 0 -%}
-              <div class="entry-row" data-kind="{{ r.kind }}" data-rounds="{{ n }}">
+              <div class="entry-row" data-kind="{{ r.kind }}" data-rounds="{{ n }}" data-venue="{{ r.venue }}">
                 <span class="entry-kind entry-kind--{{ r.kind }}">{% if r.kind == "journal" %}Journal{% else %}Conf.{% endif %}</span>
                 <a class="entry-title" href="{{ r.url }}"{% if r.short != r.venue %} title="{{ r.venue }}"{% endif %}>{{ r.short }}</a>
                 {%- if n > 1 %}<span class="entry-repeat" title="{{ n }} review rounds in {{ y }}">&times;{{ n }}</span>{% endif -%}
