@@ -2,6 +2,13 @@
 # `role` is the label shown above the venue; `tone` picks the accent
 # (primary = technical programme committee, secondary = programme committee).
 
+- role: Programme Committee
+  tone: secondary
+  short: IEEE 3SCEA 2027
+  venue: 2nd IEEE International Conference on Smart Sustainable Systems for Computer and Engineering Applications
+  detail: 20&ndash;22 April 2027 &middot; Alexandria, Egypt
+  url: https://ufe.edu.eg/3scea2027/
+
 - role: Technical Programme Committee
   tone: primary
   short: WISE 2026

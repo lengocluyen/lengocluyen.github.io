@@ -182,9 +182,11 @@ description: Ngoc Luyen Le, also searchable as Le Ngoc Luyen, is a research and 
         <a href="{{ '/publications.html' | relative_url }}">View all publications</a>
       </div>
       {%- comment -%}
-        The three most recent publications, taken straight from
+        The five most recent publications, taken straight from
         _data/publications.yml rather than kept as a second hand-edited
-        copy that drifts from the publications page.
+        copy that drifts from the publications page. Within a year,
+        sections are walked in file order, so journal articles are
+        listed ahead of conference papers.
       {%- endcomment -%}
       <div class="research-output-list">
         {%- assign shown = 0 -%}
@@ -198,7 +200,7 @@ description: Ngoc Luyen Le, also searchable as Le Ngoc Luyen, is a research and 
             {%- else -%}{%- assign kind = "Paper" -%}
             {%- endif -%}
             {%- for i in s.items -%}
-              {%- if i.year == yn and shown < 3 %}
+              {%- if i.year == yn and shown < 5 %}
         <a href="{{ i.url }}" target="_blank" rel="noopener noreferrer">
           <span class="research-output-year">{{ i.year }}</span>
           <strong>{{ i.title }}</strong>
