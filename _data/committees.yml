@@ -16,16 +16,16 @@
   detail: November 2026 &middot; Venice, Italy
   url: https://conferences.sigappfr.org/wise2026/
 
-- role: Technical Programme Committee
-  tone: primary
-  short: CSCWD 2026
-  venue: 26th International Conference on Computer Supported Cooperative Work in Design
-  detail: May 2026 &middot; Compi&egrave;gne, France
-  url: https://cscwd2025.hds.utc.fr/
-
 - role: Programme Committee
   tone: secondary
   short: IEEE 3SCEA 2026
   venue: 1st International Workshop on Sustainable Governance and Social Responsibility based on Artificial Intelligence Approaches
   detail: 19&ndash;21 April 2026 &middot; Cairo, Egypt
   url: https://ufe.edu.eg/wp-content/uploads/2025/08/IEEE-3SCEA2026-19-21-April-2026-CFP-Flyer.pdf
+
+- role: Technical Programme Committee
+  tone: primary
+  short: CSCWD 2025
+  venue: 28th International Conference on Computer Supported Cooperative Work in Design
+  detail: May 2025 &middot; Compi&egrave;gne, France
+  url: https://cscwd2025.hds.utc.fr/

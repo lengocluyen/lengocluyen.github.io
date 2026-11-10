@@ -193,6 +193,13 @@
   url: https://www.ieeesmc.org/conference-2023/
   reviews: [2023]
 
+- venue: International Conference on Computer Supported Cooperative Work in Design
+  short: CSCWD 2023
+  kind: conference
+  detail: May 2023 &middot; Rio de Janeiro, Brazil
+  url: http://2023.cscwd.org/
+  reviews: [2023]
+
 - venue: International Conference on Information Technology &amp; Systems
   short: ICITS 2023
   kind: conference
