@@ -64,6 +64,21 @@
   icon: fas fa-globe
   noun: "papers"
   items:
+    - title: "CA-HNM: Constraint-Aware Hard Negative Mining for Dense Retrieval with Structured Domain Models"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
+      venue: "18th International Conference on Management of Digital EcoSystems (MEDES 2026), Nov 2026, A Coruña, Spain"
+      year: 2026
+      url: https://arxiv.org/abs/2610.35045
+    - title: "An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
+      venue: "27th International Conference on Web Information Systems Engineering (WISE 2026), Nov 2026, Venice, Italy"
+      year: 2026
+      url: https://arxiv.org/abs/2610.36820
+    - title: "From Student Risk Prediction to SC2R: Semantics-Constrained Counterfactual Recourse for Educational Decision Support"
+      authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
+      venue: "IEEE International Conference on Systems, Man, and Cybernetics (SMC), Oct 2026, Bellevue, WA, USA"
+      year: 2026
+      url: https://arxiv.org/abs/2608.17618
     - title: "From Learning Resources to Competencies: LLM-Based Tagging with Evidence and Graph Constraints"
       authors: "Ngoc Luyen Le, Marie-Hélène Abel, Bertrand Laforge"
       venue: "27th International Conference on AI in Education, Jun 2026, Seoul, South Korea"

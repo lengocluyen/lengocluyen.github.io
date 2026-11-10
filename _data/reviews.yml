@@ -70,6 +70,27 @@
   url: https://www.frontiersin.org/journals/computer-science
   reviews: [2026]
 
+- venue: International Journal of Data Science and Analytics
+  short: International Journal of Data Science and Analytics
+  kind: journal
+  detail: Springer
+  url: https://link.springer.com/journal/41060
+  reviews: [2026]
+
+- venue: BMC Medical Informatics and Decision Making
+  short: BMC Medical Informatics and Decision Making
+  kind: journal
+  detail: Springer
+  url: https://link.springer.com/journal/12911
+  reviews: [2026]
+
+- venue: IET Collaborative Intelligent Manufacturing
+  short: IET Collaborative Intelligent Manufacturing
+  kind: journal
+  detail: Wiley
+  url: https://ietresearch.onlinelibrary.wiley.com/journal/25168398
+  reviews: [2026]
+
 # Two rounds in 2025, one in 2026.
 - venue: International Journal of Electrical and Computer Engineering
   short: IJECE
