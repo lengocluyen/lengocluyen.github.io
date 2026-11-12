@@ -66,7 +66,7 @@
     <![endif]-->
 
 	<!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="{{ '/static/css/main.css' | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ '/static/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
     <link rel="stylesheet" href="{{ '/static/css/academicons.css' | relative_url }}">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,7 +103,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ '/static/js/main.js' | relative_url }}"></script>
+    <script src="{{ '/static/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
     {% include site_analytics.html %}
   </body>
 </html>
