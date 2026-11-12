@@ -366,6 +366,9 @@
       venue: "42ème édition INFORSID, 2024, Nancy, France"
       year: 2024
       url: https://inforsid.fr/actes/2024/inforsid24-57-58.pdf
+      links:
+        - label: PDF
+          url: /static/papers/zhong2024-inforsid-simulation-crises.pdf
     - title: "Construction d'un système de recommandation basé sur des contraintes via des graphes de connaissances"
       authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
       venue: "34es Journées francophones d'Ingénierie des Connaissances (IC 2023) @ PFIA, 2023, Strasbourg, France"
@@ -406,6 +409,9 @@
       venue: "Séminaire du Département d'Informatique de l'IMT Atlantique, 2018, L'Aberwrac'h, France"
       year: 2018
       url: https://dx.doi.org/10.13140/RG.2.2.22822.24644
+      links:
+        - label: Poster
+          url: /static/papers/le2018-deficit-information-poster.pdf
     - title: "Development of a generic indexing tool to optimize the use of biological data"
       authors: "Ngoc Luyen Le, Stéphane Jouannic, Pascal Gantet, Pierre Larmande"
       venue: "Journées Ouvertes Biologie Informatique Mathématiques (JOBIM'15), 2015, Clermont-Ferrand, France"

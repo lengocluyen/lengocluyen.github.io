@@ -2668,6 +2668,7 @@ h3.section-header-title {
 #publications .entry-extras a.link-chip--code     { --chip-bg: var(--link-code-bg);  --chip-fg: var(--link-code-fg); }
 #publications .entry-extras a.link-chip--dataset  { --chip-bg: var(--link-data-bg);  --chip-fg: var(--link-data-fg); }
 #publications .entry-extras a.link-chip--ontology { --chip-bg: var(--link-onto-bg);  --chip-fg: var(--link-onto-fg); }
+#publications .entry-extras a.link-chip--poster   { --chip-bg: var(--link-pdf-bg);   --chip-fg: var(--link-pdf-fg); }
 
 .link-chip i {
   font-size: 0.95em;
