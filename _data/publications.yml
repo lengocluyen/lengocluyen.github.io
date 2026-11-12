@@ -44,6 +44,9 @@
       venue: "Journal of Multi-Criteria Decision Analysis"
       year: 2025
       url: https://onlinelibrary.wiley.com/doi/10.1002/mcda.70012
+      links:
+        - label: PDF
+          url: https://www.researchgate.net/publication/390048710_Enhancing_Context-Aware_Recommender_Systems_Through_Deep_Feature_Interaction_Learning
     - title: "Ontology-based crisis simulation system for population sheltering management"
       authors: "Jinfeng Zhong, Ngoc Luyen Le, Elsa Negre, Marie-Hélène Abel"
       venue: "SIMULATION, 100(4):379-399"
