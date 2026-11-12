@@ -22,6 +22,17 @@
   --chip-journal-fg: #235c4c;
   --chip-conf-bg:   #f4ebe3;
   --chip-conf-fg:   #7a4726;
+  /* Publication link chips: one hue per resource kind. */
+  --link-pdf-bg:    #fdf0e3;
+  --link-pdf-fg:    #9a4a0b;
+  --link-arxiv-bg:  #fbe9e9;
+  --link-arxiv-fg:  #a31919;
+  --link-code-bg:   #eceff3;
+  --link-code-fg:   #24292f;
+  --link-data-bg:   #e3efea;
+  --link-data-fg:   #235c4c;
+  --link-onto-bg:   #f1ebf8;
+  --link-onto-fg:   #5b3a8c;
   /* Footer is dark in both themes by design; these let it follow the
      theme instead of being frozen. --footer-dim replaces #546e7a,
      which scored 2.86:1 on the footer background. */
@@ -2619,21 +2630,58 @@ h3.section-header-title {
 .entry-extras {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin: 2px 0 0;
+  gap: 8px;
+  margin: 6px 0 0;
 }
 
-.entry-extras a {
+/* Each link is a small chip coloured by resource kind. The #publications
+   prefix outranks the generic (and dark-mode) `.container a` colour rules. */
+#publications .entry-extras a.link-chip {
+  --chip-bg: var(--primary-soft);
+  --chip-fg: var(--primary);
   align-items: center;
+  background: var(--chip-bg);
+  border: 1px solid color-mix(in srgb, var(--chip-fg) 22%, transparent);
+  border-radius: 999px;
+  color: var(--chip-fg);
   display: inline-flex;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
-  gap: 5px;
+  gap: 6px;
+  line-height: 1;
+  padding: 5px 11px 5px 9px;
+  text-decoration: none;
+  transition: var(--transition);
 }
 
-.entry-extras a i {
+#publications .entry-extras a.link-chip:hover,
+#publications .entry-extras a.link-chip:focus-visible {
+  border-color: var(--chip-fg);
+  box-shadow: var(--shadow-sm);
+  color: var(--chip-fg);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+#publications .entry-extras a.link-chip--pdf      { --chip-bg: var(--link-pdf-bg);   --chip-fg: var(--link-pdf-fg); }
+#publications .entry-extras a.link-chip--arxiv    { --chip-bg: var(--link-arxiv-bg); --chip-fg: var(--link-arxiv-fg); }
+#publications .entry-extras a.link-chip--code     { --chip-bg: var(--link-code-bg);  --chip-fg: var(--link-code-fg); }
+#publications .entry-extras a.link-chip--dataset  { --chip-bg: var(--link-data-bg);  --chip-fg: var(--link-data-fg); }
+#publications .entry-extras a.link-chip--ontology { --chip-bg: var(--link-onto-bg);  --chip-fg: var(--link-onto-fg); }
+
+.link-chip i {
   font-size: 0.95em;
-  opacity: 0.85;
+}
+
+/* "HAL" mark for open-access PDFs deposited on HAL. */
+.hal-mark {
+  background: var(--chip-fg);
+  border-radius: 3px;
+  color: var(--chip-bg);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 2px 4px;
 }
 
 /* --- Services: supervision ------------------------------------ */
@@ -2892,6 +2940,16 @@ html.dark-mode {
   --chip-journal-fg: #7fd4bd;
   --chip-conf-bg:  #33241a;
   --chip-conf-fg:  #e0a97a;
+  --link-pdf-bg:   #36261a;
+  --link-pdf-fg:   #f2b27a;
+  --link-arxiv-bg: #3a1c1f;
+  --link-arxiv-fg: #f39a9a;
+  --link-code-bg:  #232f40;
+  --link-code-fg:  #dbe4ee;
+  --link-data-bg:  #12302a;
+  --link-data-fg:  #7fd4bd;
+  --link-onto-bg:  #2a2140;
+  --link-onto-fg:  #c8adf0;
   /* Darker than the page (#0f1722) so the footer grounds the layout
      instead of floating lighter than the content above it. */
   --footer-bg:      #0a111b;

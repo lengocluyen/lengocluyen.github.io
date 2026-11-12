@@ -81,7 +81,10 @@
                 {%- when 'Slides' %}{% assign icon = 'fa-solid fa-person-chalkboard' %}
                 {%- else %}{% assign icon = 'fa-solid fa-link' %}
               {%- endcase %}
-            <a href="{{ l.url }}" target="_blank" rel="noopener noreferrer"><i class="{{ icon }}" aria-hidden="true"></i>{{ l.label }}</a>
+              {%- assign on_hal = false %}
+              {%- if l.label == 'PDF' %}{% if l.url contains 'hal.science' or l.url contains 'ccsd.cnrs.fr' %}{% assign on_hal = true %}{% endif %}{% endif %}
+            <a class="link-chip link-chip--{{ l.label | downcase }}" href="{{ l.url }}" target="_blank" rel="noopener noreferrer"{% if on_hal %} title="Open-access PDF on HAL"{% endif %}>
+              {%- if on_hal %}<span class="hal-mark" aria-hidden="true">HAL</span>{% else %}<i class="{{ icon }}" aria-hidden="true"></i>{% endif %}{{ l.label }}</a>
             {%- endfor %}
           </p>
           {%- endif %}
