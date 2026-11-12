@@ -37,6 +37,8 @@
       year: 2025
       url: https://link.springer.com/article/10.1007/s11280-025-01358-8
       links:
+        - label: PDF
+          url: /static/papers/le2025-www-multi-criteria-group-recommender.pdf
         - label: Code
           url: https://github.com/lengocluyen/mhamodel
     - title: "Enhancing Context‐Aware Recommender Systems Through Deep Feature Interaction Learning"
