@@ -19,6 +19,8 @@
           url: https://arxiv.org/abs/2605.29675
         - label: Code
           url: https://github.com/lengocluyen/human-genai-collaboration
+        - label: Ontology
+          url: https://github.com/lengocluyen/ccai_ontology
     - title: "Development of ontological knowledge bases by leveraging large language models"
       authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
       venue: "International Journal of Knowledge Management Studies, Volume 17, article number 2"
@@ -177,6 +179,8 @@
           url: https://hal.science/hal-05450473/document
         - label: arXiv
           url: https://arxiv.org/abs/2510.11313
+        - label: Code
+          url: https://github.com/lengocluyen/losd
         - label: Dataset
           url: https://github.com/lengocluyen/ROME-ESCO-DecompSkill
     - title: "How Well Do LLMs Predict Prerequisite Skills? Zero-Shot Comparison to Expert-Defined Concepts"
@@ -259,6 +263,8 @@
           url: https://hal.science/hal-04378722/document
         - label: arXiv
           url: https://arxiv.org/abs/2401.03770
+        - label: Ontology
+          url: https://github.com/lengocluyen/OBCS-KB
     - title: "CORec-Cri: How collaborative and social technologies can help to contextualize crises?"
       authors: "Ngoc Luyen Le, Jinfeng Zhong, Elsa Negre, Marie-Hélène Abel"
       venue: "IEEE International Conference on Systems, Man, and Cybernetics (SMC), 2023, Oahu, Hawaii"
@@ -317,6 +323,8 @@
           url: https://hal.science/hal-02110790/document
         - label: Code
           url: https://github.com/lengocluyen/ccg_supertagging_french
+        - label: Dataset
+          url: https://github.com/lengocluyen/FrenchCCGBank
     - title: "Development of a knowledge system for Big Data: Case study to plant phenotyping data"
       authors: "Ngoc Luyen Le, Anne Tireau, Aravind Venkatesan, Pascal Neveu, Pierre Larmande"
       venue: "6th International Conference on Web Intelligence, Mining and Semantics (WIMS'16), 2016, Nimes, France"
