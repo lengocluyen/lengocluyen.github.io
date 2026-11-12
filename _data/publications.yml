@@ -93,6 +93,9 @@
       venue: "Progresses in Artificial Intelligence & Robotics: Algorithms & Applications, Lecture Notes in Networks and Systems, vol. 441, pp. 126-136"
       year: 2022
       url: https://link.springer.com/chapter/10.1007/978-3-030-98531-8_13
+      links:
+        - label: PDF
+          url: /static/papers/le2022-ontology-recommender-vehicle-sales.pdf
 
 - section: "In International Peer-Reviewed Conferences"
   icon: fas fa-globe
