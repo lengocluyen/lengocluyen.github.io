@@ -2624,8 +2624,16 @@ h3.section-header-title {
 }
 
 .entry-extras a {
+  align-items: center;
+  display: inline-flex;
   font-size: 13.5px;
   font-weight: 600;
+  gap: 5px;
+}
+
+.entry-extras a i {
+  font-size: 0.95em;
+  opacity: 0.85;
 }
 
 /* --- Services: supervision ------------------------------------ */
