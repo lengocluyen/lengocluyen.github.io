@@ -2688,7 +2688,10 @@ h3.section-header-title {
 
 /* --- Publications: research-theme cloud -------------------------
    Size = number of papers (theme-size-1..5), colour = research phase.
-   Words are buttons: clicking one filters the list (static/js/main.js). */
+   Words are buttons: clicking one filters the list, hovering one draws
+   arcs to the themes it most often shares papers with (static/js/main.js).
+   Motion: words blur in one by one, then drift; an aurora in the three
+   phase colours moves behind them. All of it stops under reduced motion. */
 .theme-cloud {
   --phase-nlp: var(--warm);
   --phase-recsys: var(--primary);
@@ -2697,8 +2700,46 @@ h3.section-header-title {
   border: 1px solid var(--border-soft);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-sm);
+  isolation: isolate;
   margin: 8px 0 36px;
+  overflow: hidden;
   padding: 22px 24px 18px;
+  position: relative;
+}
+
+/* Aurora: three soft blobs, one per research phase, slowly drifting. */
+.theme-cloud::before {
+  animation: theme-aurora 26s ease-in-out infinite alternate;
+  background:
+    radial-gradient(38% 55% at 12% 30%, color-mix(in srgb, var(--phase-nlp) 15%, transparent), transparent 70%),
+    radial-gradient(40% 60% at 52% 15%, color-mix(in srgb, var(--phase-recsys) 13%, transparent), transparent 70%),
+    radial-gradient(42% 60% at 88% 75%, color-mix(in srgb, var(--phase-edu) 15%, transparent), transparent 70%);
+  content: "";
+  inset: -20%;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Spotlight that follows the cursor (--mx/--my set by main.js). */
+.theme-cloud::after {
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%),
+              color-mix(in srgb, var(--primary) 9%, transparent), transparent 65%);
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.theme-cloud:hover::after { opacity: 1; }
+
+@keyframes theme-aurora {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+  50%  { transform: translate(5%, -4%) rotate(6deg) scale(1.08); }
+  100% { transform: translate(-4%, 3%) rotate(-5deg) scale(1.03); }
 }
 
 .theme-cloud-head {
@@ -2724,25 +2765,78 @@ h3.section-header-title {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 10px;
+  gap: 10px 10px;
   justify-content: center;
-  padding: 6px 0 4px;
+  padding: 10px 0 6px;
+  position: relative;
 }
+
+/* Arcs between the hovered theme and its related themes. */
+.theme-links {
+  color: var(--primary);
+  height: 100%;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.theme-links path {
+  animation: theme-link-draw 0.55s cubic-bezier(.3, .7, .3, 1) forwards;
+  animation-delay: calc(var(--k, 0) * 70ms);
+  fill: none;
+  stroke: currentColor;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  stroke-linecap: round;
+  stroke-opacity: 0.55;
+}
+
+.theme-links circle {
+  animation: theme-link-dot 0.3s ease-out backwards;
+  animation-delay: calc(var(--k, 0) * 70ms + 0.4s);
+  fill: currentColor;
+}
+
+@keyframes theme-link-draw { to { stroke-dashoffset: 0; } }
+@keyframes theme-link-dot  { from { opacity: 0; r: 0; } }
 
 .theme-word {
   --word: var(--phase-recsys);
   align-items: baseline;
-  background: transparent;
-  border: 1px solid transparent;
+  animation:
+    theme-word-in 0.7s cubic-bezier(.2, .75, .25, 1) backwards,
+    theme-word-float 5.4s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i, 0) * 45ms), calc(var(--i, 0) * -830ms);
+  background: color-mix(in srgb, var(--word) 7%, var(--bg-white));
+  border: 1px solid color-mix(in srgb, var(--word) 22%, transparent);
   border-radius: 999px;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--word) 10%, transparent);
   color: var(--word);
   cursor: pointer;
   display: inline-flex;
-  font-weight: 650;
+  font-weight: 600;
   gap: 3px;
   line-height: 1.15;
-  padding: 3px 10px;
-  transition: var(--transition), opacity 0.2s ease;
+  padding: 4px 12px;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(.2, .8, .2, 1), box-shadow 0.25s ease,
+              background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+  z-index: 1;
+}
+
+.theme-word:nth-of-type(3n)   { animation-duration: 0.7s, 6.6s; }
+.theme-word:nth-of-type(3n+1) { animation-duration: 0.7s, 4.6s; }
+
+@keyframes theme-word-in {
+  from { filter: blur(6px); opacity: 0; scale: 0.6; }
+}
+
+@keyframes theme-word-float {
+  from { translate: 0 2.5px; }
+  to   { translate: 0 -2.5px; }
 }
 
 .theme-word--nlp    { --word: var(--phase-nlp); }
@@ -2751,9 +2845,9 @@ h3.section-header-title {
 
 .theme-size-1 { font-size: 14px; }
 .theme-size-2 { font-size: 16.5px; }
-.theme-size-3 { font-size: 19.5px; }
-.theme-size-4 { font-size: 23.5px; }
-.theme-size-5 { font-size: 28px; font-weight: 750; }
+.theme-size-3 { font-size: 19.5px; font-weight: 650; }
+.theme-size-4 { font-size: 23.5px; font-weight: 700; }
+.theme-size-5 { font-size: 28px; font-weight: 750; letter-spacing: -0.01em; }
 
 .theme-word-count {
   font-size: 11px;
@@ -2764,30 +2858,66 @@ h3.section-header-title {
 }
 
 .theme-word:hover,
-.theme-word:focus-visible {
-  background: color-mix(in srgb, var(--word) 10%, transparent);
-  border-color: color-mix(in srgb, var(--word) 35%, transparent);
+.theme-word:focus-visible,
+.theme-word.is-hot {
+  animation-play-state: paused;
+  background: color-mix(in srgb, var(--word) 14%, var(--bg-white));
+  border-color: color-mix(in srgb, var(--word) 55%, transparent);
+  box-shadow: 0 8px 22px -6px color-mix(in srgb, var(--word) 45%, transparent),
+              0 0 0 3px color-mix(in srgb, var(--word) 12%, transparent);
   outline: none;
+  transform: translateY(-2px) scale(1.07);
+}
+
+.theme-word.is-related {
+  border-color: color-mix(in srgb, var(--word) 50%, transparent);
 }
 
 /* With a theme selected, the others step back and the chosen one fills. */
 .theme-cloud.has-selection .theme-word[aria-pressed="false"] { opacity: 0.45; }
 .theme-cloud.has-selection .theme-word[aria-pressed="false"]:hover { opacity: 1; }
 
+/* While hovering, unrelated themes fade so the connections stand out. */
+.theme-cloud.is-hovering .theme-word { filter: saturate(0.5); opacity: 0.3; }
+.theme-cloud.is-hovering .theme-word.is-hot,
+.theme-cloud.is-hovering .theme-word.is-related,
+.theme-cloud.is-hovering .theme-word[aria-pressed="true"] { filter: none; opacity: 1; }
+
 .theme-word[aria-pressed="true"] {
+  animation: theme-word-pop 0.45s cubic-bezier(.3, 1.6, .5, 1);
   background: var(--word);
   border-color: var(--word);
+  box-shadow: 0 8px 24px -6px color-mix(in srgb, var(--word) 60%, transparent);
   color: var(--bg-white);
 }
 
-.theme-cloud-status {
-  color: var(--text-muted);
-  font-size: 14px;
-  margin: 12px 0 0;
-  text-align: center;
+@keyframes theme-word-pop {
+  0%   { scale: 0.88; }
+  100% { scale: 1; }
 }
 
-.theme-cloud-status strong { color: var(--text-dark); }
+/* Status (filter result, announced) and hover hint (visual only) share a line. */
+.theme-cloud-foot {
+  display: grid;
+  margin: 12px 0 0;
+}
+
+.theme-cloud-status,
+.theme-cloud-hint {
+  color: var(--text-muted);
+  font-size: 14px;
+  grid-area: 1 / 1;
+  margin: 0;
+  text-align: center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.theme-cloud-hint { opacity: 0; transform: translateY(4px); }
+.theme-cloud.is-hovering .theme-cloud-hint { opacity: 1; transform: none; }
+.theme-cloud.is-hovering .theme-cloud-status { opacity: 0; transform: translateY(-4px); }
+
+.theme-cloud-status strong,
+.theme-cloud-hint strong { color: var(--text-dark); }
 
 .theme-clear {
   background: none;
@@ -2801,9 +2931,34 @@ h3.section-header-title {
 /* Rows and sections hidden by the theme filter. */
 #publications [hidden] { display: none !important; }
 
+/* Rows revealed by the theme filter slide in one after another. */
+#publications .entry-row.is-entering {
+  animation: theme-row-in 0.45s cubic-bezier(.2, .75, .25, 1) backwards;
+  animation-delay: calc(var(--r, 0) * 40ms);
+}
+
+@keyframes theme-row-in {
+  from { opacity: 0; transform: translateY(12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-cloud::before,
+  .theme-word,
+  .theme-word[aria-pressed="true"],
+  .theme-links path,
+  .theme-links circle,
+  #publications .entry-row.is-entering { animation: none !important; }
+  .theme-links path { stroke-dashoffset: 0; }
+  .theme-word:hover,
+  .theme-word:focus-visible,
+  .theme-word.is-hot { transform: none; }
+}
+
 @media (max-width: 576px) {
   .theme-cloud { padding: 18px 14px 14px; }
   .theme-cloud-head { justify-content: center; text-align: center; }
+  .theme-cloud-words { gap: 8px 6px; }
+  .theme-word { padding: 3px 10px; }
   .theme-size-4 { font-size: 21px; }
   .theme-size-5 { font-size: 24px; }
 }

@@ -11,6 +11,26 @@ phases:
   label: Competency, education & LLMs
   years: 2025–
 themes:
+- label: Natural language processing
+  slug: natural-language-processing
+  phase: nlp
+  count: 2
+  first: 2018
+  last: 2025
+  papers:
+  - Extraction de relations multi-étiquettes en utilisant des modèles pré-entraînés et des couches de Transformer
+  - Détection du Déficit d'Information dans un Fil de Discussion
+  size: 1
+- label: Combinatory Categorial Grammar
+  slug: combinatory-categorial-grammar
+  phase: nlp
+  count: 2
+  first: 2019
+  last: 2020
+  papers:
+  - CCG Supertagging Using Morphological and Dependency Syntax Information
+  - French Language DRS Parsing
+  size: 1
 - label: Big data
   slug: big-data
   phase: nlp
@@ -22,16 +42,6 @@ themes:
   - Development of a generic indexing tool to optimize the use of biological data
   - 'Développement d''un système connaissances pour les big data: application aux données de phénotypage chez le riz (O.Sativa)'
   size: 2
-- label: Combinatory Categorial Grammar
-  slug: combinatory-categorial-grammar
-  phase: nlp
-  count: 2
-  first: 2019
-  last: 2020
-  papers:
-  - CCG Supertagging Using Morphological and Dependency Syntax Information
-  - French Language DRS Parsing
-  size: 1
 - label: Discourse representation
   slug: discourse-representation
   phase: nlp
@@ -42,33 +52,42 @@ themes:
   - Towards a DRS Parsing Framework for French
   - French Language DRS Parsing
   size: 1
-- label: Natural language processing
-  slug: natural-language-processing
-  phase: nlp
-  count: 2
-  first: 2018
+- label: Multi-criteria
+  slug: multi-criteria
+  phase: recsys
+  count: 3
+  first: 2024
   last: 2025
   papers:
-  - Extraction de relations multi-étiquettes en utilisant des modèles pré-entraînés et des couches de Transformer
-  - Détection du Déficit d'Information dans un Fil de Discussion
-  size: 1
-- label: Constraint-based methods
-  slug: constraint-based-methods
+  - 'Integrating context and criteria: a multi-head attention-based approach for multi-criteria group recommender systems'
+  - Context-Aware Multi-Criteria Recommender Systems Using Variable Selection Networks
+  - 'From Individual to Group: Developing a Context-Aware Multi-Criteria Group Recommender System'
+  size: 2
+- label: Semantic similarity
+  slug: semantic-similarity
   phase: recsys
-  count: 9
-  first: 2023
-  last: 2026
+  count: 4
+  first: 2022
+  last: 2024
   papers:
-  - 'From Prompts to Context: An Ontology-Driven Framework for Human-Generative AI Collaboration'
-  - Ontology-based crisis simulation system for population sheltering management
-  - 'CA-HNM: Constraint-Aware Hard Negative Mining for Dense Retrieval with Structured Domain Models'
-  - 'From Student Risk Prediction to SC2R: Semantics-Constrained Counterfactual Recourse for Educational Decision Support'
-  - 'From Learning Resources to Competencies: LLM-Based Tagging with Evidence and Graph Constraints'
-  - 'KG-First, LLM-Fallback: A Hybrid Microservice for Grounded Skill Search and Explanation'
-  - Constraint-based recommender system for crisis management simulations
+  - Improving Semantic Similarity Measure Within a Recommender System Based-on RDF Graphs
+  - Exploring Weighted Property Approaches for RDF Graph Similarity Measure
+  - Recognizing Similar Crises through the Application of Ontology-based Knowledge Mining
+  - Apport des ontologies pour le calcul de la similarité sémantique au sein d'un système de recommandation
+  size: 3
+- label: Semantic Web & RDF
+  slug: semantic-web-rdf
+  phase: recsys
+  count: 5
+  first: 2016
+  last: 2024
+  papers:
+  - Improving Semantic Similarity Measure Within a Recommender System Based-on RDF Graphs
+  - Exploring Weighted Property Approaches for RDF Graph Similarity Measure
   - A Constraint-based Recommender System via RDF Knowledge Graphs
+  - 'Development of a knowledge system for Big Data: Case study to plant phenotyping data'
   - Construction d'un système de recommandation basé sur des contraintes via des graphes de connaissances
-  size: 4
+  size: 3
 - label: Context-aware
   slug: context-aware
   phase: recsys
@@ -84,64 +103,6 @@ themes:
   - 'From Individual to Group: Developing a Context-Aware Multi-Criteria Group Recommender System'
   - 'CORec-Cri: How collaborative and social technologies can help to contextualize crises?'
   size: 3
-- label: Crisis management
-  slug: crisis-management
-  phase: recsys
-  count: 6
-  first: 2023
-  last: 2024
-  papers:
-  - Ontology-based crisis simulation system for population sheltering management
-  - Recognizing Similar Crises through the Application of Ontology-based Knowledge Mining
-  - 'CORec-Cri: How collaborative and social technologies can help to contextualize crises?'
-  - Constraint-based recommender system for crisis management simulations
-  - Système de simulations de crises, basé sur une ontologie, pour la mise à l'abri des populations
-  - Système de recommandations basé sur les contraintes pour les simulations de gestion de crise
-  size: 3
-- label: Deep learning
-  slug: deep-learning
-  phase: recsys
-  count: 2
-  first: 2025
-  last: 2025
-  papers:
-  - Enhancing Context‐Aware Recommender Systems Through Deep Feature Interaction Learning
-  - Joint Group Profiling and Recommendation via Deep Neural Network-based Multi-Task Learning
-  size: 1
-- label: Group recommendation
-  slug: group-recommendation
-  phase: recsys
-  count: 3
-  first: 2024
-  last: 2025
-  papers:
-  - 'Integrating context and criteria: a multi-head attention-based approach for multi-criteria group recommender systems'
-  - Joint Group Profiling and Recommendation via Deep Neural Network-based Multi-Task Learning
-  - 'From Individual to Group: Developing a Context-Aware Multi-Criteria Group Recommender System'
-  size: 2
-- label: Knowledge graphs
-  slug: knowledge-graphs
-  phase: recsys
-  count: 4
-  first: 2023
-  last: 2026
-  papers:
-  - A Personalized Recommender System Based-on Knowledge Graph Embeddings
-  - An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning
-  - A Constraint-based Recommender System via RDF Knowledge Graphs
-  - Construction d'un système de recommandation basé sur des contraintes via des graphes de connaissances
-  size: 3
-- label: Multi-criteria
-  slug: multi-criteria
-  phase: recsys
-  count: 3
-  first: 2024
-  last: 2025
-  papers:
-  - 'Integrating context and criteria: a multi-head attention-based approach for multi-criteria group recommender systems'
-  - Context-Aware Multi-Criteria Recommender Systems Using Variable Selection Networks
-  - 'From Individual to Group: Developing a Context-Aware Multi-Criteria Group Recommender System'
-  size: 2
 - label: Ontologies
   slug: ontologies
   phase: recsys
@@ -186,46 +147,90 @@ themes:
   - Système de recommandations basé sur les contraintes pour les simulations de gestion de crise
   - Apport des ontologies pour le calcul de la similarité sémantique au sein d'un système de recommandation
   size: 5
-- label: Semantic similarity
-  slug: semantic-similarity
+- label: Constraint-based methods
+  slug: constraint-based-methods
+  phase: recsys
+  count: 9
+  first: 2023
+  last: 2026
+  papers:
+  - 'From Prompts to Context: An Ontology-Driven Framework for Human-Generative AI Collaboration'
+  - Ontology-based crisis simulation system for population sheltering management
+  - 'CA-HNM: Constraint-Aware Hard Negative Mining for Dense Retrieval with Structured Domain Models'
+  - 'From Student Risk Prediction to SC2R: Semantics-Constrained Counterfactual Recourse for Educational Decision Support'
+  - 'From Learning Resources to Competencies: LLM-Based Tagging with Evidence and Graph Constraints'
+  - 'KG-First, LLM-Fallback: A Hybrid Microservice for Grounded Skill Search and Explanation'
+  - Constraint-based recommender system for crisis management simulations
+  - A Constraint-based Recommender System via RDF Knowledge Graphs
+  - Construction d'un système de recommandation basé sur des contraintes via des graphes de connaissances
+  size: 4
+- label: Crisis management
+  slug: crisis-management
+  phase: recsys
+  count: 6
+  first: 2023
+  last: 2024
+  papers:
+  - Ontology-based crisis simulation system for population sheltering management
+  - Recognizing Similar Crises through the Application of Ontology-based Knowledge Mining
+  - 'CORec-Cri: How collaborative and social technologies can help to contextualize crises?'
+  - Constraint-based recommender system for crisis management simulations
+  - Système de simulations de crises, basé sur une ontologie, pour la mise à l'abri des populations
+  - Système de recommandations basé sur les contraintes pour les simulations de gestion de crise
+  size: 3
+- label: Knowledge graphs
+  slug: knowledge-graphs
   phase: recsys
   count: 4
-  first: 2022
-  last: 2024
+  first: 2023
+  last: 2026
   papers:
-  - Improving Semantic Similarity Measure Within a Recommender System Based-on RDF Graphs
-  - Exploring Weighted Property Approaches for RDF Graph Similarity Measure
-  - Recognizing Similar Crises through the Application of Ontology-based Knowledge Mining
-  - Apport des ontologies pour le calcul de la similarité sémantique au sein d'un système de recommandation
-  size: 3
-- label: Semantic Web & RDF
-  slug: semantic-web-rdf
-  phase: recsys
-  count: 5
-  first: 2016
-  last: 2024
-  papers:
-  - Improving Semantic Similarity Measure Within a Recommender System Based-on RDF Graphs
-  - Exploring Weighted Property Approaches for RDF Graph Similarity Measure
+  - A Personalized Recommender System Based-on Knowledge Graph Embeddings
+  - An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning
   - A Constraint-based Recommender System via RDF Knowledge Graphs
-  - 'Development of a knowledge system for Big Data: Case study to plant phenotyping data'
   - Construction d'un système de recommandation basé sur des contraintes via des graphes de connaissances
   size: 3
-- label: Competencies & skills
-  slug: competencies-skills
+- label: Group recommendation
+  slug: group-recommendation
+  phase: recsys
+  count: 3
+  first: 2024
+  last: 2025
+  papers:
+  - 'Integrating context and criteria: a multi-head attention-based approach for multi-criteria group recommender systems'
+  - Joint Group Profiling and Recommendation via Deep Neural Network-based Multi-Task Learning
+  - 'From Individual to Group: Developing a Context-Aware Multi-Criteria Group Recommender System'
+  size: 2
+- label: Deep learning
+  slug: deep-learning
+  phase: recsys
+  count: 2
+  first: 2025
+  last: 2025
+  papers:
+  - Enhancing Context‐Aware Recommender Systems Through Deep Feature Interaction Learning
+  - Joint Group Profiling and Recommendation via Deep Neural Network-based Multi-Task Learning
+  size: 1
+- label: Student modeling
+  slug: student-modeling
   phase: edu
-  count: 7
+  count: 2
+  first: 2026
+  last: 2026
+  papers:
+  - An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning
+  - 'From Student Risk Prediction to SC2R: Semantics-Constrained Counterfactual Recourse for Educational Decision Support'
+  size: 1
+- label: Generative AI
+  slug: generative-ai
+  phase: edu
+  count: 2
   first: 2025
   last: 2026
   papers:
   - 'From Prompts to Context: An Ontology-Driven Framework for Human-Generative AI Collaboration'
-  - 'From Learning Resources to Competencies: LLM-Based Tagging with Evidence and Graph Constraints'
-  - 'KG-First, LLM-Fallback: A Hybrid Microservice for Grounded Skill Search and Explanation'
-  - 'Automated Skill Decomposition Meets Expert Ontologies: Bridging the Granularity Gap with LLMs'
-  - How Well Do LLMs Predict Prerequisite Skills? Zero-Shot Comparison to Expert-Defined Concepts
   - 'Modeling and Visualizing Competency Progression: A Semantic Integration of Pedagogical Graphs and Generative AI'
-  - 'Vers un cadre ontologique pour la gestion des compétences: à des fins de formation, de recrutement, de métier, ou de recherches associées'
-  size: 3
+  size: 1
 - label: Early warning
   slug: early-warning
   phase: edu
@@ -251,27 +256,21 @@ themes:
   - 'Modeling and Visualizing Competency Progression: A Semantic Integration of Pedagogical Graphs and Generative AI'
   - 'From Individual to Group: Developing a Context-Aware Multi-Criteria Group Recommender System'
   size: 3
-- label: Explainability
-  slug: explainability
+- label: Competencies & skills
+  slug: competencies-skills
   phase: edu
-  count: 3
-  first: 2023
-  last: 2026
-  papers:
-  - An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning
-  - 'KG-First, LLM-Fallback: A Hybrid Microservice for Grounded Skill Search and Explanation'
-  - Combining Embedding-Based and Semantic-Based Models for Post-hoc Explanations in Recommender Systems
-  size: 2
-- label: Generative AI
-  slug: generative-ai
-  phase: edu
-  count: 2
+  count: 7
   first: 2025
   last: 2026
   papers:
   - 'From Prompts to Context: An Ontology-Driven Framework for Human-Generative AI Collaboration'
+  - 'From Learning Resources to Competencies: LLM-Based Tagging with Evidence and Graph Constraints'
+  - 'KG-First, LLM-Fallback: A Hybrid Microservice for Grounded Skill Search and Explanation'
+  - 'Automated Skill Decomposition Meets Expert Ontologies: Bridging the Granularity Gap with LLMs'
+  - How Well Do LLMs Predict Prerequisite Skills? Zero-Shot Comparison to Expert-Defined Concepts
   - 'Modeling and Visualizing Competency Progression: A Semantic Integration of Pedagogical Graphs and Generative AI'
-  size: 1
+  - 'Vers un cadre ontologique pour la gestion des compétences: à des fins de formation, de recrutement, de métier, ou de recherches associées'
+  size: 3
 - label: Large language models
   slug: large-language-models
   phase: edu
@@ -286,6 +285,17 @@ themes:
   - 'Automated Skill Decomposition Meets Expert Ontologies: Bridging the Granularity Gap with LLMs'
   - How Well Do LLMs Predict Prerequisite Skills? Zero-Shot Comparison to Expert-Defined Concepts
   size: 3
+- label: Explainability
+  slug: explainability
+  phase: edu
+  count: 3
+  first: 2023
+  last: 2026
+  papers:
+  - An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning
+  - 'KG-First, LLM-Fallback: A Hybrid Microservice for Grounded Skill Search and Explanation'
+  - Combining Embedding-Based and Semantic-Based Models for Post-hoc Explanations in Recommender Systems
+  size: 2
 - label: Learning analytics
   slug: learning-analytics
   phase: edu
@@ -295,14 +305,4 @@ themes:
   papers:
   - 'From Learning Resources to Competencies: LLM-Based Tagging with Evidence and Graph Constraints'
   - When Can We Trust Early Warnings? Leakage-Excluded Early Outcome Prediction from LMS Interaction Logs
-  size: 1
-- label: Student modeling
-  slug: student-modeling
-  phase: edu
-  count: 2
-  first: 2026
-  last: 2026
-  papers:
-  - An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning
-  - 'From Student Risk Prediction to SC2R: Semantics-Constrained Counterfactual Recourse for Educational Decision Support'
   size: 1

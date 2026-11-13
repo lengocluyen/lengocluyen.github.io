@@ -66,12 +66,15 @@
         <h3 class="theme-cloud-title" id="theme-cloud-title"><i class="fas fa-tags section-header-icon" aria-hidden="true"></i>Research themes</h3>
       </div>
       <div class="theme-cloud-words">
+        <svg class="theme-links" aria-hidden="true" focusable="false"></svg>
         {%- for t in kw.themes %}
-        {%- assign phase_label = kw.phases | where: "id", t.phase | map: "label" | first %}
-        <button type="button" class="theme-word theme-word--{{ t.phase }} theme-size-{{ t.size }}" data-theme="{{ t.slug }}" aria-pressed="false" title="{{ t.count }} papers &middot; {{ t.first }}{% if t.last != t.first %}&ndash;{{ t.last }}{% endif %} &middot; {{ phase_label }}">{{ t.label }}<span class="theme-word-count">{{ t.count }}</span></button>
+        <button type="button" class="theme-word theme-word--{{ t.phase }} theme-size-{{ t.size }}" style="--i: {{ forloop.index0 }}" data-theme="{{ t.slug }}" data-label="{{ t.label | escape }}" data-count="{{ t.count }}" data-span="{{ t.first }}{% if t.last != t.first %}&ndash;{{ t.last }}{% endif %}" aria-pressed="false">{{ t.label | escape }}<span class="theme-word-count"><span class="sr-only">, </span>{{ t.count }}<span class="sr-only"> papers</span></span></button>
         {%- endfor %}
       </div>
-      <p class="theme-cloud-status" aria-live="polite">Click a theme to show only its papers.</p>
+      <div class="theme-cloud-foot">
+        <p class="theme-cloud-status" aria-live="polite">Hover a theme to see what it connects to &middot; click to show only its papers.</p>
+        <p class="theme-cloud-hint" aria-hidden="true"></p>
+      </div>
     </div>
     {%- endif %}
 
