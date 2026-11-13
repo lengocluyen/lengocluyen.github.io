@@ -74,7 +74,7 @@
             {%- for l in i.links %}
               {%- case l.label %}
                 {%- when 'PDF' %}{% assign icon = 'fa-solid fa-file-pdf' %}
-                {%- when 'arXiv' %}{% assign icon = 'fa-solid fa-scroll' %}
+                {%- when 'arXiv' %}{% assign icon = 'ai ai-arxiv' %}
                 {%- when 'Code' %}{% if l.url contains 'github.com' %}{% assign icon = 'fa-brands fa-github' %}{% else %}{% assign icon = 'fa-solid fa-code' %}{% endif %}
                 {%- when 'Dataset' %}{% assign icon = 'fa-solid fa-database' %}
                 {%- when 'Ontology' %}{% assign icon = 'fa-solid fa-diagram-project' %}
@@ -85,11 +85,11 @@
               {%- assign on_hal = false %}
               {%- assign tip = '' %}
               {%- if l.label == 'PDF' %}
-                {%- if l.url contains 'hal.science' or l.url contains 'ccsd.cnrs.fr' %}{% assign on_hal = true %}{% assign tip = 'Open-access PDF on HAL' %}
+                {%- if l.url contains 'hal.science' or l.url contains 'ccsd.cnrs.fr' %}{% assign on_hal = true %}{% assign icon = 'ai ai-hal' %}{% assign tip = 'Open-access PDF on HAL' %}
                 {%- elsif l.url contains 'researchgate.net' %}{% assign icon = 'fa-brands fa-researchgate' %}{% assign tip = 'PDF on ResearchGate' %}{% endif %}
               {%- endif %}
             <a class="link-chip link-chip--{{ l.label | downcase }}" href="{{ l.url }}" target="_blank" rel="noopener noreferrer"{% if tip != '' %} title="{{ tip }}"{% endif %}>
-              {%- if on_hal %}<span class="hal-mark" aria-hidden="true">HAL</span>{% else %}<i class="{{ icon }}" aria-hidden="true"></i>{% endif %}{{ l.label }}</a>
+              <i class="{{ icon }}" aria-hidden="true"></i>{% if on_hal %}HAL{% else %}{{ l.label }}{% endif %}</a>
             {%- endfor %}
           </p>
           {%- endif %}

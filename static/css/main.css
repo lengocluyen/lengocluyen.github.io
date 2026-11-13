@@ -2674,15 +2674,9 @@ h3.section-header-title {
   font-size: 0.95em;
 }
 
-/* "HAL" mark for open-access PDFs deposited on HAL. */
-.hal-mark {
-  background: var(--chip-fg);
-  border-radius: 3px;
-  color: var(--chip-bg);
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  padding: 2px 4px;
+/* Academicons (HAL, arXiv) run slightly small next to Font Awesome. */
+.link-chip .ai {
+  font-size: 1.1em;
 }
 
 /* --- Services: supervision ------------------------------------ */
