@@ -2765,9 +2765,9 @@ h3.section-header-title {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 10px;
+  gap: 18px 10px;
   justify-content: center;
-  padding: 10px 0 6px;
+  padding: 14px 0 10px;
   position: relative;
 }
 
@@ -2957,7 +2957,7 @@ h3.section-header-title {
 @media (max-width: 576px) {
   .theme-cloud { padding: 18px 14px 14px; }
   .theme-cloud-head { justify-content: center; text-align: center; }
-  .theme-cloud-words { gap: 8px 6px; }
+  .theme-cloud-words { gap: 14px 6px; }
   .theme-word { padding: 3px 10px; }
   .theme-size-4 { font-size: 21px; }
   .theme-size-5 { font-size: 24px; }
