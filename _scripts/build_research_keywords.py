@@ -51,8 +51,8 @@ THEMES = {
     # NLP & semantics (2015-2020)
     "CCG parsing": ("nlp", r"\bccg\b|combinatory categorial|supertag"),
     "Discourse representation": ("nlp", r"\bdrs\b|discourse representation|repr[ée]sentation du discours"),
-    "Natural language processing": ("nlp", r"natural language processing|\bnlp\b|relation extraction|syntactic pars|traitement automatique"),
-    "Big data": ("nlp", r"big data"),
+    "Natural language processing": ("nlp", r"natural language processing|\bnlp\b|relation extraction|syntactic pars|traitement automatique|extraction de relations|d[ée]ficit d.information|discussion thread|fil de discussion"),
+    "Big data": ("nlp", r"big data|biological data|indexing tool"),
     "Phenotyping data": ("nlp", r"ph[ée]notyp"),
     # Ontology-based recommendation (2021-2025)
     "Recommender systems": ("recsys", r"recommend|recommandation"),

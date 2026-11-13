@@ -14,13 +14,14 @@ themes:
 - label: Big data
   slug: big-data
   phase: nlp
-  count: 2
+  count: 3
   first: 2015
   last: 2016
   papers:
   - 'Development of a knowledge system for Big Data: Case study to plant phenotyping data'
+  - Development of a generic indexing tool to optimize the use of biological data
   - 'Développement d''un système connaissances pour les big data: application aux données de phénotypage chez le riz (O.Sativa)'
-  size: 1
+  size: 2
 - label: CCG parsing
   slug: ccg-parsing
   phase: nlp
@@ -40,6 +41,16 @@ themes:
   papers:
   - Towards a DRS Parsing Framework for French
   - French Language DRS Parsing
+  size: 1
+- label: Natural language processing
+  slug: natural-language-processing
+  phase: nlp
+  count: 2
+  first: 2018
+  last: 2025
+  papers:
+  - Extraction de relations multi-étiquettes en utilisant des modèles pré-entraînés et des couches de Transformer
+  - Détection du Déficit d'Information dans un Fil de Discussion
   size: 1
 - label: Phenotyping data
   slug: phenotyping-data
