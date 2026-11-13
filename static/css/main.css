@@ -2711,7 +2711,10 @@ h3.section-header-title {
 }
 
 .theme-cloud-title {
+  align-items: center;
   color: var(--text-dark);
+  display: inline-flex;
+  gap: 9px;
   font-size: 18px;
   font-weight: 700;
   margin: 0;
