@@ -953,7 +953,14 @@ input:checked + .slide-container .nav label { display: block; }
       justify-self: start;
     }
   }
-  
+
+  /* #555 / #666 above are light-mode greys; on the dark card they fell
+     to about 2:1 contrast. Follow the theme's muted token instead. */
+  html.dark-mode .experience-meta,
+  html.dark-mode .experience-meta .center-meta {
+    color: var(--text-muted);
+  }
+
   .experience-card p {
     font-size: 16px;
     text-align: justify;
