@@ -3067,7 +3067,10 @@ html.dark-mode .teaching-card h3                         { color: var(--text-dar
 html.dark-mode .teaching-card p                          { color: var(--text-muted); }
 html.dark-mode .education-card em,
 html.dark-mode .edu-note                                 { color: var(--text-muted); }
-html.dark-mode .edu-meta                                 { color: var(--text-muted); }html.dark-mode .experience-card p                        { color: var(--text-muted); }
+html.dark-mode .edu-meta                                 { color: var(--text-muted); }
+html.dark-mode .experience-card p                        { color: var(--text-muted); }
+/* Skill-category icons were a fixed #666 (2.7:1 on the dark card). */
+html.dark-mode .skill-block i                            { color: var(--primary); }
 /* .supervision-* and the v1.4 components resolve through the custom
    properties, which already flip, so they need no patch here. */
 html.dark-mode .email-icon                               { color: var(--primary); }
