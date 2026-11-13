@@ -57,6 +57,7 @@ THEMES = {
     # Ontology-based recommendation (2021-2025)
     "Recommender systems": ("recsys", r"recommend|recommandation"),
     "Ontologies": ("recsys", r"ontolog"),
+    "Knowledge graphs": ("recsys", r"knowledge-graphs?|knowledge graphs?|graphes? de connaissances"),
     "Knowledge bases": ("recsys", r"knowledge-bases?|knowledge bases?|bases? de connaissances"),
     "Semantic Web & RDF": ("recsys", r"\brdf\b|semantic web|\bowl\b|\bsparql\b|web s[ée]mantique"),
     "Context-aware": ("recsys", r"context-aware|contextual|integrating context|sensible au contexte"),
@@ -72,7 +73,6 @@ THEMES = {
     "Crisis management": ("recsys", r"\bcris[ie]s\b|\bcrises?\b"),
     "Population sheltering": ("recsys", r"shelter|mise [àa] l.abri|evacuat"),
     # Competency, education & LLMs (2025-)
-    "Knowledge graphs": ("edu", r"knowledge-graphs?|knowledge graphs?|graphes? de connaissances"),
     "Large language models": ("edu", r"\bllms?\b|large language models?|grands? mod[eè]les? de langu"),
     "Generative AI": ("edu", r"generative (?:ai|artificial)|\bgenai\b|ia g[ée]n[ée]rative"),
     "Human-AI collaboration": ("edu", r"human-(?:generative-)?ai collaboration|human-generative ai|human-ai\b|human-in-the-loop"),

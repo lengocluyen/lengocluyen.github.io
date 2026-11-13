@@ -129,6 +129,18 @@ themes:
   - Joint Group Profiling and Recommendation via Deep Neural Network-based Multi-Task Learning
   - 'From Individual to Group: Developing a Context-Aware Multi-Criteria Group Recommender System'
   size: 2
+- label: Knowledge graphs
+  slug: knowledge-graphs
+  phase: recsys
+  count: 4
+  first: 2023
+  last: 2026
+  papers:
+  - A Personalized Recommender System Based-on Knowledge Graph Embeddings
+  - An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning
+  - A Constraint-based Recommender System via RDF Knowledge Graphs
+  - Construction d'un système de recommandation basé sur des contraintes via des graphes de connaissances
+  size: 3
 - label: Multi-criteria
   slug: multi-criteria
   phase: recsys
@@ -295,18 +307,6 @@ themes:
   - 'From Prompts to Context: An Ontology-Driven Framework for Human-Generative AI Collaboration'
   - 'Modeling and Visualizing Competency Progression: A Semantic Integration of Pedagogical Graphs and Generative AI'
   size: 1
-- label: Knowledge graphs
-  slug: knowledge-graphs
-  phase: edu
-  count: 4
-  first: 2023
-  last: 2026
-  papers:
-  - A Personalized Recommender System Based-on Knowledge Graph Embeddings
-  - An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning
-  - A Constraint-based Recommender System via RDF Knowledge Graphs
-  - Construction d'un système de recommandation basé sur des contraintes via des graphes de connaissances
-  size: 3
 - label: Large language models
   slug: large-language-models
   phase: edu
