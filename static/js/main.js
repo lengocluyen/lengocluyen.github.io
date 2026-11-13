@@ -148,6 +148,71 @@ $(document).ready(function () {
     $filterBar.prop('hidden', false);
   }
 
+  /* ── Research-theme cloud (publications page) ──
+     Clicking a theme shows only the papers tagged with it (data-themes on
+     each row); clicking it again, or "Show all", restores the full list.
+     The choice is kept in the URL (#theme=slug) so a filtered view can be
+     shared. Without JS the cloud is still a readable overview. */
+  var $cloud = $('#theme-cloud');
+
+  if ($cloud.length) {
+    var $pubRows = $('#publications .entry-row[data-themes]');
+    var $pubLists = $('#publications .entry-list');
+    var $cloudStatus = $cloud.find('.theme-cloud-status');
+    var baseCloudStatus = $cloudStatus.text();
+    var totalPubs = $pubRows.length;
+
+    function applyTheme(slug, updateUrl) {
+      var $word = slug ? $cloud.find('.theme-word[data-theme="' + slug + '"]') : $();
+      if (!$word.length) slug = '';
+
+      $cloud.toggleClass('has-selection', !!slug);
+      $cloud.find('.theme-word').attr('aria-pressed', 'false');
+      $word.attr('aria-pressed', 'true');
+
+      var shown = 0;
+      $pubRows.each(function () {
+        var match = !slug || (' ' + this.getAttribute('data-themes') + ' ').indexOf(' ' + slug + ' ') !== -1;
+        this.hidden = !match;
+        if (match) shown++;
+      });
+      /* Hide a whole section (header + list) when none of its papers match. */
+      $pubLists.each(function () {
+        var empty = $(this).children('.entry-row').filter(function () { return !this.hidden; }).length === 0;
+        this.hidden = empty;
+        $(this).prev('.section-header').prop('hidden', empty);
+      });
+
+      $cloudStatus.empty();
+      if (slug) {
+        $cloudStatus.append(
+          document.createTextNode('Showing ' + shown + ' of ' + totalPubs + ' publications on '),
+          $('<strong>').text($word.contents().first().text()),
+          document.createTextNode(' · '),
+          $('<button type="button" class="theme-clear">Show all</button>')
+        );
+      } else {
+        $cloudStatus.text(baseCloudStatus);
+      }
+
+      if (updateUrl && window.history && history.replaceState) {
+        history.replaceState(null, '', slug ? '#theme=' + slug : location.pathname + location.search);
+      }
+    }
+
+    $cloud.on('click', '.theme-word', function () {
+      var slug = $(this).attr('data-theme');
+      applyTheme($(this).attr('aria-pressed') === 'true' ? '' : slug, true);
+    });
+    $cloud.on('click', '.theme-clear', function () {
+      applyTheme('', true);
+      $cloud.find('.theme-word').first().trigger('focus');
+    });
+
+    var hashTheme = (location.hash.match(/^#theme=([a-z0-9-]+)$/) || [])[1];
+    if (hashTheme) applyTheme(hashTheme, false);
+  }
+
   /* ── Scrollspy for the in-page section nav ── */
   var $subnav = $('#service-subnav');
 

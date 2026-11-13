@@ -2686,6 +2686,159 @@ h3.section-header-title {
   font-size: 1.1em;
 }
 
+/* --- Publications: research-theme cloud -------------------------
+   Size = number of papers (theme-size-1..5), colour = research phase.
+   Words are buttons: clicking one filters the list (static/js/main.js). */
+.theme-cloud {
+  --phase-nlp: var(--warm);
+  --phase-recsys: var(--primary);
+  --phase-edu: var(--secondary);
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin: 8px 0 36px;
+  padding: 22px 24px 18px;
+}
+
+.theme-cloud-head {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.theme-cloud-title {
+  color: var(--text-dark);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.theme-cloud-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.theme-phase {
+  align-items: center;
+  color: var(--text-dark);
+  display: inline-flex;
+  font-size: 13.5px;
+  font-weight: 600;
+  gap: 7px;
+}
+
+.theme-phase-years {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.theme-phase-dot {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+
+.theme-phase--nlp    .theme-phase-dot { background: var(--phase-nlp); }
+.theme-phase--recsys .theme-phase-dot { background: var(--phase-recsys); }
+.theme-phase--edu    .theme-phase-dot { background: var(--phase-edu); }
+
+.theme-cloud-words {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  justify-content: center;
+  padding: 6px 0 4px;
+}
+
+.theme-word {
+  --word: var(--phase-recsys);
+  align-items: baseline;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--word);
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 650;
+  gap: 3px;
+  line-height: 1.15;
+  padding: 3px 10px;
+  transition: var(--transition), opacity 0.2s ease;
+}
+
+.theme-word--nlp    { --word: var(--phase-nlp); }
+.theme-word--recsys { --word: var(--phase-recsys); }
+.theme-word--edu    { --word: var(--phase-edu); }
+
+.theme-size-1 { font-size: 14px; }
+.theme-size-2 { font-size: 16.5px; }
+.theme-size-3 { font-size: 19.5px; }
+.theme-size-4 { font-size: 23.5px; }
+.theme-size-5 { font-size: 28px; font-weight: 750; }
+
+.theme-word-count {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.75;
+  position: relative;
+  top: -0.55em;
+}
+
+.theme-word:hover,
+.theme-word:focus-visible {
+  background: color-mix(in srgb, var(--word) 10%, transparent);
+  border-color: color-mix(in srgb, var(--word) 35%, transparent);
+  outline: none;
+}
+
+/* With a theme selected, the others step back and the chosen one fills. */
+.theme-cloud.has-selection .theme-word[aria-pressed="false"] { opacity: 0.45; }
+.theme-cloud.has-selection .theme-word[aria-pressed="false"]:hover { opacity: 1; }
+
+.theme-word[aria-pressed="true"] {
+  background: var(--word);
+  border-color: var(--word);
+  color: var(--bg-white);
+}
+
+.theme-cloud-status {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 12px 0 0;
+  text-align: center;
+}
+
+.theme-cloud-status strong { color: var(--text-dark); }
+
+.theme-clear {
+  background: none;
+  border: 0;
+  color: var(--primary);
+  font-weight: 600;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Rows and sections hidden by the theme filter. */
+#publications [hidden] { display: none !important; }
+
+@media (max-width: 576px) {
+  .theme-cloud { padding: 18px 14px 14px; }
+  .theme-cloud-head { justify-content: center; text-align: center; }
+  .theme-cloud-legend { justify-content: center; }
+  .theme-size-4 { font-size: 21px; }
+  .theme-size-5 { font-size: 24px; }
+}
+
 /* --- Services: supervision ------------------------------------ */
 .supervision-entry {
   background: var(--bg-white);
