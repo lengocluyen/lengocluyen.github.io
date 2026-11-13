@@ -22,8 +22,8 @@ themes:
   - Development of a generic indexing tool to optimize the use of biological data
   - 'Développement d''un système connaissances pour les big data: application aux données de phénotypage chez le riz (O.Sativa)'
   size: 2
-- label: CCG parsing
-  slug: ccg-parsing
+- label: Combinatory Categorial Grammar
+  slug: combinatory-categorial-grammar
   phase: nlp
   count: 2
   first: 2019
@@ -51,16 +51,6 @@ themes:
   papers:
   - Extraction de relations multi-étiquettes en utilisant des modèles pré-entraînés et des couches de Transformer
   - Détection du Déficit d'Information dans un Fil de Discussion
-  size: 1
-- label: Phenotyping data
-  slug: phenotyping-data
-  phase: nlp
-  count: 2
-  first: 2015
-  last: 2016
-  papers:
-  - 'Development of a knowledge system for Big Data: Case study to plant phenotyping data'
-  - 'Développement d''un système connaissances pour les big data: application aux données de phénotypage chez le riz (O.Sativa)'
   size: 1
 - label: Constraint-based methods
   slug: constraint-based-methods
@@ -172,18 +162,6 @@ themes:
   - Système de simulations de crises, basé sur une ontologie, pour la mise à l'abri des populations
   - Apport des ontologies pour le calcul de la similarité sémantique au sein d'un système de recommandation
   size: 4
-- label: Population sheltering
-  slug: population-sheltering
-  phase: recsys
-  count: 4
-  first: 2023
-  last: 2024
-  papers:
-  - Ontology-based crisis simulation system for population sheltering management
-  - Constraint-based recommender system for crisis management simulations
-  - Système de simulations de crises, basé sur une ontologie, pour la mise à l'abri des populations
-  - Système de recommandations basé sur les contraintes pour les simulations de gestion de crise
-  size: 3
 - label: Recommender systems
   slug: recommender-systems
   phase: recsys

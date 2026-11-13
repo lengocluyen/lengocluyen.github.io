@@ -64,11 +64,6 @@
     <div class="theme-cloud" id="theme-cloud" aria-labelledby="theme-cloud-title">
       <div class="theme-cloud-head">
         <h3 class="theme-cloud-title" id="theme-cloud-title">Research themes</h3>
-        <ul class="theme-cloud-legend">
-          {%- for p in kw.phases %}
-          <li class="theme-phase theme-phase--{{ p.id }}"><span class="theme-phase-dot" aria-hidden="true"></span>{{ p.label }} <span class="theme-phase-years">{{ p.years }}</span></li>
-          {%- endfor %}
-        </ul>
       </div>
       <div class="theme-cloud-words">
         {%- for t in kw.themes %}

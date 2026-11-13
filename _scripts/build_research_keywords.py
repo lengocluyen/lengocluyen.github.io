@@ -49,11 +49,10 @@ PHASES = [
 # would put the 2025 multi-criteria recommender papers in the "edu" phase.
 THEMES = {
     # NLP & semantics (2015-2020)
-    "CCG parsing": ("nlp", r"\bccg\b|combinatory categorial|supertag"),
+    "Combinatory Categorial Grammar": ("nlp", r"\bccg\b|combinatory categorial|supertag"),
     "Discourse representation": ("nlp", r"\bdrs\b|discourse representation|repr[ée]sentation du discours"),
     "Natural language processing": ("nlp", r"natural language processing|\bnlp\b|relation extraction|syntactic pars|traitement automatique|extraction de relations|d[ée]ficit d.information|discussion thread|fil de discussion"),
     "Big data": ("nlp", r"big data|biological data|indexing tool"),
-    "Phenotyping data": ("nlp", r"ph[ée]notyp"),
     # Ontology-based recommendation (2021-2025)
     "Recommender systems": ("recsys", r"recommend|recommandation"),
     "Ontologies": ("recsys", r"ontolog"),
@@ -71,7 +70,6 @@ THEMES = {
     "Multi-task learning": ("recsys", r"multi-task"),
     "Vehicle domain": ("recsys", r"vehicle|v[ée]hicule|automotive"),
     "Crisis management": ("recsys", r"\bcris[ie]s\b|\bcrises?\b"),
-    "Population sheltering": ("recsys", r"shelter|mise [àa] l.abri|evacuat"),
     # Competency, education & LLMs (2025-)
     "Large language models": ("edu", r"\bllms?\b|large language models?|grands? mod[eè]les? de langu"),
     "Generative AI": ("edu", r"generative (?:ai|artificial)|\bgenai\b|ia g[ée]n[ée]rative"),
