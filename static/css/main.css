@@ -3084,7 +3084,10 @@ html.dark-mode .section-subtitle                         { color: var(--text-dar
 /* Badges */
 html.dark-mode .badge-fluent                             { background: #1a2d3e; color: var(--primary); }
 html.dark-mode .badge-native                             { background: #0f2a1e; color: #4caf50; }
-html.dark-mode .badge-primary                            { background-color: var(--primary-dark); color: #fff; }
+/* --primary-dark (#0288d1) under white text was 3.9:1; #0277bd is 4.9:1. */
+html.dark-mode .badge-primary                            { background-color: #0277bd; color: #fff; }
+/* Bootstrap's label-danger red under white text was 4.0:1. */
+html.dark-mode .label-danger                             { background-color: #c62828; }
 
 /* Tags */
 html.dark-mode .tag,
