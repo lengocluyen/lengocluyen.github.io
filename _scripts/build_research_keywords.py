@@ -68,7 +68,6 @@ THEMES = {
     "Deep learning": ("recsys", r"deep (?:learning|feature|neural)|neural network"),
     "Attention mechanisms": ("recsys", r"\battention\b"),
     "Multi-task learning": ("recsys", r"multi-task"),
-    "Vehicle domain": ("recsys", r"vehicle|v[ée]hicule|automotive"),
     "Crisis management": ("recsys", r"\bcris[ie]s\b|\bcrises?\b"),
     # Competency, education & LLMs (2025-)
     "Large language models": ("edu", r"\bllms?\b|large language models?|grands? mod[eè]les? de langu"),

@@ -211,19 +211,6 @@ themes:
   - 'Development of a knowledge system for Big Data: Case study to plant phenotyping data'
   - Construction d'un système de recommandation basé sur des contraintes via des graphes de connaissances
   size: 3
-- label: Vehicle domain
-  slug: vehicle-domain
-  phase: recsys
-  count: 5
-  first: 2022
-  last: 2024
-  papers:
-  - Ontology-based crisis simulation system for population sheltering management
-  - 'Designing a User Contextual Profile Ontology: A Focus on the Vehicle Sales Domain'
-  - Towards an ontology-based recommender system for the vehicle sales area
-  - Constraint-based recommender system for crisis management simulations
-  - Système de recommandations basé sur les contraintes pour les simulations de gestion de crise
-  size: 3
 - label: Competencies & skills
   slug: competencies-skills
   phase: edu
