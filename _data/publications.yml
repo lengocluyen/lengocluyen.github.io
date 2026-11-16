@@ -109,6 +109,8 @@
       year: 2026
       url: https://arxiv.org/abs/2610.35045
       links:
+        - label: PDF
+          url: https://hal.science/hal-05858612/document
         - label: arXiv
           url: https://arxiv.org/abs/2610.35045
         - label: Code
@@ -119,6 +121,8 @@
       year: 2026
       url: https://arxiv.org/abs/2610.36820
       links:
+        - label: PDF
+          url: https://hal.science/hal-05862860/document
         - label: arXiv
           url: https://arxiv.org/abs/2610.36820
         - label: Code
@@ -129,6 +133,8 @@
       year: 2026
       url: https://arxiv.org/abs/2608.17618
       links:
+        - label: PDF
+          url: https://hal.science/hal-05862848/document
         - label: arXiv
           url: https://arxiv.org/abs/2608.17618
         - label: Code
