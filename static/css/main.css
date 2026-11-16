@@ -2586,6 +2586,16 @@ h3.section-header-title {
   margin: 0;
 }
 
+/* Invention disclosures: the official French title under the English one. */
+.entry-original-title {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-style: italic;
+  margin: -2px 0 0;
+}
+
+span.entry-title { color: var(--text-dark); }
+
 .entry-venue {
   color: var(--text-dark);
   font-size: 14px;

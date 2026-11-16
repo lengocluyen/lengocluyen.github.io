@@ -126,5 +126,43 @@
     </div>
     {%- endfor %}
 
+    {%- comment -%}
+      Software invention disclosures, from _data/inventions.yml. Kept out of
+      every publication count above; hidden while a research theme is selected.
+    {%- endcomment -%}
+    {%- assign inventions = site.data.inventions %}
+    {%- if inventions %}
+    {%- assign inv_count = inventions | size %}
+    <div class="section-header section-header--extra" style="margin-top: 40px;">
+      <h2 class="section-header-title"><i class="fas fa-lightbulb section-header-icon" aria-hidden="true"></i>Invention Disclosures</h2>
+      <span class="badge badge-primary">{{ inv_count }} software</span>
+    </div>
+
+    <div class="entry-list entry-list--extra">
+      {%- for i in inventions %}
+      <div class="entry-row entry-row--stacked">
+        <span class="entry-index">{{ inv_count | minus: forloop.index0 | prepend: '0' | slice: -2, 2 }}</span>
+        <div class="entry-body">
+          <span class="entry-title">{{ i.title }}</span>
+          {%- if i.original_title %}
+          <p class="entry-original-title" lang="fr">{{ i.original_title }}</p>
+          {%- endif %}
+          <p class="entry-authors">{{ i.authors }}</p>
+          <p class="entry-venue">{{ i.venue }}{% if i.date %} &middot; <span class="entry-year">{{ i.date }}</span>{% endif %}</p>
+          {%- if i.links %}
+          <p class="entry-extras">
+            {%- for l in i.links %}
+              {%- if l.label == 'Code' %}{% assign icon = 'fa-brands fa-github' %}{% else %}{% assign icon = 'fa-solid fa-file-lines' %}{% endif %}
+            <a class="link-chip link-chip--{{ l.label | downcase }}" href="{{ l.url }}" target="_blank" rel="noopener noreferrer"{% if l.label == 'Paper' %} title="Related publication"{% endif %}>
+              <i class="{{ icon }}" aria-hidden="true"></i>{{ l.label }}</a>
+            {%- endfor %}
+          </p>
+          {%- endif %}
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
   </div>
 </section>

@@ -296,7 +296,9 @@ $(document).ready(function () {
       });
       /* Hide a whole section (header + list) when none of its papers match. */
       $pubLists.each(function () {
-        var empty = $(this).children('.entry-row').filter(function () { return !this.hidden; }).length === 0;
+        /* Invention disclosures are not tagged with themes: hide them while filtering. */
+        var empty = $(this).hasClass('entry-list--extra') ? !!slug :
+          $(this).children('.entry-row').filter(function () { return !this.hidden; }).length === 0;
         this.hidden = empty;
         $(this).prev('.section-header').prop('hidden', empty);
       });
