@@ -8,6 +8,9 @@
   authors: "Wail Ouaret, Ngoc Luyen Le, Marie-Hélène Abel"
   venue: "Software invention disclosure, Université de technologie de Compiègne (UTC), version 0.3.1"
   date: "Oct 2026"
+  links:
+    - label: Code
+      url: https://github.com/WailOuaret/moodle-competency-alignment-mvp
 - title: "Semantic Similarity Computation over RDF Graphs"
   original_title: "Calcul de similarité via des graphes RDF"
   authors: "Ngoc Luyen Le, Marie-Hélène Abel, Philippe Gouspillou"
